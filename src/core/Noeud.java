@@ -72,6 +72,9 @@ public class Noeud {
     	
 	}
 	
+	/**
+	 * @return tous les noeuds sucesseurs 
+	 */
 	public ArrayList<Noeud> getSuccesseurs(){
 		ArrayList<Noeud> noeuds = new ArrayList<Noeud>();
 		for(Liaison l : liaisons){
@@ -80,6 +83,11 @@ public class Noeud {
 		return noeuds ;
 	}
 	
+	/**
+	 * @param dessin
+	 * @param color
+	 * dessine le noeud 
+	 */
 	public void dessiner(Dessin dessin, Color color){
 		dessin.setColor(color == null? Color.GREEN : color);
 		dessin.drawPoint (longitude, latitude, 5);
