@@ -1,10 +1,15 @@
 package core;
 
-import LogLine;
 
+import java.awt.Color;
 import java.io.DataInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
+
+import base.Dessin;
+
+import exceptions.PropreSuccesseurException;
 
 public class Noeud {
 	// variables
@@ -21,7 +26,7 @@ public class Noeud {
 		this.longitude = longitude ;
 		this.numero = compteur++;
 		this.visited = false ;
-		this.liaisons = new ArrayList<liaison>();
+		this.liaisons = new ArrayList<Liaison>();
 	    }
 	
 	// getteurs
@@ -44,22 +49,40 @@ public class Noeud {
 	/**
 	 * @return le noeud successeur
 	 */
-	public Noeud getSuccesseur (Liaison L) {
-		return L.getSuccesseur() ;
+	public Noeud getSuccesseur (Liaison l) {
+		return l.getSuccesseur() ;
 	}
 	
-	public int getNbSuccesseur() {
+	/**
+	 * @return le nombre de successeur
+	 * @throws PropreSuccesseurException
+	 */
+	public int getNbSuccesseur() throws PropreSuccesseurException{
 		Iterator <Liaison> ite = liaisons.iterator();
     	int nbSucc = 0 ;
     	while (ite.hasNext()){
-    		Liaison I = ite.next();
-    		Noeud succ = I.getSuccesseur();
+      		Liaison l = ite.next();
+    		Noeud succ = l.getSuccesseur();
+    		if (succ == this)
+    			throw new PropreSuccesseurException() ;
+    		else 
+    			nbSucc=+ 1 ;
     	}
-    		
+    	return nbSucc ;
+    	
 	}
 	
-	public List<Noeud> getSuccesseurs (){
-	 // TODO
+	public ArrayList<Noeud> getSuccesseurs(){
+		ArrayList<Noeud> noeuds = new ArrayList<Noeud>();
+		for(Liaison l : liaisons){
+			noeuds.add(l.getSuccesseur());
+		}
+		return noeuds ;
+	}
+	
+	public void dessiner(Dessin dessin, Color color){
+		dessin.setColor(color == null? Color.GREEN : color);
+		dessin.drawPoint (longitude, latitude, 5);
 		
 	}
 }
