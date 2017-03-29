@@ -70,7 +70,7 @@ public class Graphe {
 	    int nb_descripteurs = dis.readInt () ;
 	    int nb_nodes = dis.readInt () ;
 
-	    // Nombre de successeurs enregistrÃ©s dans le fichier.
+	    // Nombre de successeurs enregistrés dans le fichier.
 	    int[] nsuccesseurs_a_lire = new int[nb_nodes] ;
 	    
 	    // En fonction de vos choix de conception, vous devrez certainement adapter la suite.
