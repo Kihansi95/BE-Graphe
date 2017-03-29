@@ -104,7 +104,7 @@ public class Liaison {
 		}
 		
 		//TODO: check if le noeud destinataire est dans la carte
-		if(true)	{
+		if (true) {
 			dessin.drawLine(current_long, current_lat, successeur.getLongitude(), successeur.getLatitude());
 		}
 	}
