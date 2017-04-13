@@ -12,6 +12,9 @@ import base.Dessin;
 import exceptions.PropreSuccesseurException;
 
 public class Noeud {
+	
+	public final static int RAD = 10;
+	
 	// variables
 	private float longitude ;
 	private float latitude ;
@@ -19,15 +22,21 @@ public class Noeud {
 	private static int compteur ;
 	private boolean visited ;
 	private ArrayList<Liaison> liaisons ;
+	private int zone;
 	
 	// constructeur 
-	public Noeud ( float latitude, float longitude ){
+	public Noeud ( float longitude, float latitude, int zone){
 		this.latitude = latitude ;
 		this.longitude = longitude ;
 		this.numero = compteur++;
 		this.visited = false ;
 		this.liaisons = new ArrayList<Liaison>();
-	    }
+		this.zone = zone;				// zone == -1 : zone not defined
+	}
+	
+	public Noeud(float longitude, float latitude)	{
+		this(longitude, latitude, -1);
+	}
 	
 	// getteurs
 	
@@ -51,6 +60,12 @@ public class Noeud {
 	 */
 	public Noeud getSuccesseur (Liaison l) {
 		return l.getSuccesseur() ;
+	}
+	
+	public void addLiaison(Liaison liaison)	{
+		if(liaison == null)
+			throw new IllegalArgumentException();
+		liaisons.add(liaison);
 	}
 	
 	/**
@@ -82,7 +97,16 @@ public class Noeud {
 	
 	public void dessiner(Dessin dessin, Color color){
 		dessin.setColor(color == null? Color.GREEN : color);
-		dessin.drawPoint (longitude, latitude, 5);
+		System.out.println("Noeud: "+longitude+", "+latitude);
+		dessin.drawPoint (longitude, latitude, RAD);
 		
+	}
+	
+	public boolean inZone(int zone)	{
+		return this.zone == zone;
+	}
+	
+	public void setZone(int zone)	{
+		this.zone = zone;
 	}
 }

@@ -1,7 +1,5 @@
 package core;
 
-import java.awt.Color;
-
 import base.Dessin;
 
 public class Segment {
@@ -21,7 +19,7 @@ public class Segment {
 	 * @param from_lat
 	 */
 	public void dessiner(Dessin dessin, float from_long, float from_lat) {
-		dessin.drawLine(from_long, from_lat, from_long + deltaLong, from_lat + deltaLat);
+		dessin.drawLine(from_long, from_lat, (from_long + deltaLong), (from_lat + deltaLat));
 	}
 
 	public float getDeltaLong() {

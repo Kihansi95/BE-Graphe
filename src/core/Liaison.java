@@ -1,6 +1,7 @@
 package core;
 
 import java.awt.Color;
+import java.util.LinkedList;
 import java.util.List;
 
 import base.Descripteur;
@@ -24,7 +25,7 @@ public class Liaison {
 	 * @param descripteur
 	 * @param segments
 	 */
-	public Liaison(Noeud successeur, Noeud predecesseur, float longueur, Descripteur descripteur, List<Segment> segments)	{
+	public Liaison(Noeud predecesseur, Noeud successeur, float longueur, Descripteur descripteur, List<Segment> segments)	{
 		if(successeur == null)
 			throw new IllegalArgumentException("Liaison doit savoir son successeur");
 		if(predecesseur == null)
@@ -34,7 +35,9 @@ public class Liaison {
 		
 		this.successeur = successeur;
 		this.predecesseur = predecesseur;
-		this. longueur = longueur;
+		this.predecesseur.addLiaison(this);
+		this.longueur = longueur;
+		this.descripteur = descripteur;
 		this.segments = segments;
 	}
 	
@@ -45,8 +48,8 @@ public class Liaison {
 	 * @param longueur
 	 * @param descripteur
 	 */
-	public Liaison(Noeud successeur, Noeud predecesseur, float longueur, Descripteur descripteur)	{
-		this(successeur, predecesseur, longueur, descripteur, null);
+	public Liaison(Noeud predecesseur, Noeud successeur, float longueur, Descripteur descripteur)	{
+		this(predecesseur, successeur, longueur, descripteur, new LinkedList<Segment>());
 	}
 	
 	/**
@@ -54,6 +57,12 @@ public class Liaison {
 	 */
 	public float getLongueur() {
 		return longueur;
+	}
+	
+	public void addSegment(Segment segment)	{
+		if(segment == null)
+			throw new IllegalArgumentException();
+		segments.add(segment);
 	}
 
 	/**
@@ -92,19 +101,21 @@ public class Liaison {
 	 * @param dessin 
 	 * @param couleur : par default (null) YELLOW
 	 */
-	public void dessiner(Dessin dessin, Color couleur)	{
+	public void dessiner(Dessin dessin, Color couleur, int zone)	{
+		if(dessin == null)
+			throw new IllegalArgumentException("dessin null");
+		
 		float current_long = predecesseur.getLongitude();
 		float current_lat = predecesseur.getLatitude();
 		
-		dessin.setColor(couleur == null? Color.YELLOW : couleur);
+		//dessin.setColor(couleur == null? Color.YELLOW : couleur);
 		for(Segment s: segments)	{
 			s.dessiner(dessin, current_long, current_lat);
 			current_long += s.getDeltaLong();
 			current_lat += s.getDeltaLat();
 		}
 		
-		//TODO: check if le noeud destinataire est dans la carte
-		if (true) {
+		if (successeur.inZone(zone)) {
 			dessin.drawLine(current_long, current_lat, successeur.getLongitude(), successeur.getLatitude());
 		}
 	}

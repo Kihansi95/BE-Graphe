@@ -57,7 +57,6 @@ public class Launch {
 
 	    boolean display = (1 == this.readarg.lireInt ("Voulez-vous une sortie graphique (0 = non, 1 = oui) ? ")) ;	    
 	    Dessin dessin = (display) ? new DessinVisible(800,600) : new DessinInvisible() ;
-
 	    Graphe graphe = new Graphe(nomcarte, mapdata, dessin) ;
 
 	    // Boucle principale : le menu est accessible 

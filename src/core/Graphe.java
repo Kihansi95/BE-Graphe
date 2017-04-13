@@ -7,6 +7,7 @@ package core ;
 
 import java.io.* ;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import base.* ;
@@ -40,124 +41,138 @@ public class Graphe {
     private float[] longitudes ;
     private float[] latitudes ;
     private Descripteur[] descripteurs ;
-
+    
+    private List<Noeud> noeuds;
+    private List<Liaison> routes;
     
     // Deux malheureux getters.
     public Dessin getDessin() { return dessin ; }
     public int getZone() { return numzone ; }
 
-    // Le constructeur cree le graphe en lisant les donnees depuis le DataInputStream
+    
     public Graphe (String nomCarte, DataInputStream dis, Dessin dessin) {
 
-	this.nomCarte = nomCarte ;
-	this.dessin = dessin ;
-	Utils.calibrer(nomCarte, dessin) ;
-	
-	// Lecture du fichier MAP. 
-	// Voir le fichier "FORMAT" pour le detail du format binaire.
-	try {
+    	this.nomCarte = nomCarte ;
+    	this.dessin = dessin ;
+    	this.noeuds = new ArrayList<Noeud>();
+    	this.routes = new ArrayList<Liaison>();
+    	Utils.calibrer(nomCarte, dessin) ;
+    	
+    	// Lecture du fichier MAP. 
+    	// Voir le fichier "FORMAT" pour le detail du format binaire.
+    	try {
 
-	    // Nombre d'aretes
-	    int edges = 0 ;
+    	    // Nombre d'aretes
+    	    int edges = 0 ;
 
-	    // Verification du magic number et de la version du format du fichier .map
-	    int magic = dis.readInt () ;
-	    int version = dis.readInt () ;
-	    Utils.checkVersion(magic, magic_number_map, version, version_map, nomCarte, ".map") ;
+    	    // Verification du magic number et de la version du format du fichier .map
+    	    int magic = dis.readInt () ;
+    	    int version = dis.readInt () ;
+    	    Utils.checkVersion(magic, magic_number_map, version, version_map, nomCarte, ".map") ;
 
-	    // Lecture de l'identifiant de carte et du numero de zone, 
-	    this.idcarte = dis.readInt () ;
-	    this.numzone = dis.readInt () ;
+    	    // Lecture de l'identifiant de carte et du numero de zone, 
+    	    this.idcarte = dis.readInt () ;
+    	    this.numzone = dis.readInt () ;
 
-	    // Lecture du nombre de descripteurs, nombre de noeuds.
-	    int nb_descripteurs = dis.readInt () ;
-	    int nb_nodes = dis.readInt () ;
+    	    // Lecture du nombre de descripteurs, nombre de noeuds.
+    	    int nb_descripteurs = dis.readInt () ;
+    	    int nb_nodes = dis.readInt () ;
 
-	    // Nombre de successeurs enregistrés dans le fichier.
-	    int[] nsuccesseurs_a_lire = new int[nb_nodes] ;
-	    
-	    // En fonction de vos choix de conception, vous devrez certainement adapter la suite.
-	    this.longitudes = new float[nb_nodes] ;
-	    this.latitudes = new float[nb_nodes] ;
-	    this.descripteurs = new Descripteur[nb_descripteurs] ;
+    	    // Nombre de successeurs enregistrés dans le fichier.
+    	    int[] nsuccesseurs_a_lire = new int[nb_nodes] ;
+    	    
+    	    // En fonction de vos choix de conception, vous devrez certainement adapter la suite.
+    	    this.longitudes = new float[nb_nodes] ;
+    	    this.latitudes = new float[nb_nodes] ;
+    	    this.descripteurs = new Descripteur[nb_descripteurs] ;
+    	    
 
-	    // Lecture des noeuds
-	    for (int num_node = 0 ; num_node < nb_nodes ; num_node++) {
-		// Lecture du noeud numero num_node
-		longitudes[num_node] = ((float)dis.readInt ()) / 1E6f ;
-		latitudes[num_node] = ((float)dis.readInt ()) / 1E6f ;
-		nsuccesseurs_a_lire[num_node] = dis.readUnsignedByte() ;
-	    }
-	    
-	    Utils.checkByte(255, dis) ;
-	    
-	    // Lecture des descripteurs
-	    for (int num_descr = 0 ; num_descr < nb_descripteurs ; num_descr++) {
-		// Lecture du descripteur numero num_descr
-		descripteurs[num_descr] = new Descripteur(dis) ;
+    	    // Lecture des noeuds
+    	    for (int num_node = 0 ; num_node < nb_nodes ; num_node++) {
+	    		// Lecture du noeud numero num_node
+	    		longitudes[num_node] = ((float)dis.readInt ()) / 1E6f ;
+	    		latitudes[num_node] = ((float)dis.readInt ()) / 1E6f ;
+	    		noeuds.add(new Noeud(longitudes[num_node], latitudes[num_node]));
+	    		nsuccesseurs_a_lire[num_node] = dis.readUnsignedByte() ;
+    	    }
+    	    
+    	    Utils.checkByte(255, dis) ;
+    	    
+    	    // Lecture des descripteurs
+    	    for (int num_descr = 0 ; num_descr < nb_descripteurs ; num_descr++) {
+    		// Lecture du descripteur numero num_descr
+    		descripteurs[num_descr] = new Descripteur(dis) ;
 
-		// On affiche quelques descripteurs parmi tous.
-		if (0 == num_descr % (1 + nb_descripteurs / 400))
-		    System.out.println("Descripteur " + num_descr + " = " + descripteurs[num_descr]) ;
-	    }
-	    
-	    Utils.checkByte(254, dis) ;
-	    
-	    // Lecture des successeurs
-	    for (int num_node = 0 ; num_node < nb_nodes ; num_node++) {
-		// Lecture de tous les successeurs du noeud num_node
-		for (int num_succ = 0 ; num_succ < nsuccesseurs_a_lire[num_node] ; num_succ++) {
-		    // zone du successeur
-		    int succ_zone = dis.readUnsignedByte() ;
+    		// On affiche quelques descripteurs parmi tous.
+    		if (0 == num_descr % (1 + nb_descripteurs / 400))
+    		    System.out.println("Descripteur " + num_descr + " = " + descripteurs[num_descr]) ;
+    	    }
+    	    
+    	    Utils.checkByte(254, dis) ;
+    	    
+    	    // Lecture des successeurs
+    	    for (int num_node = 0 ; num_node < nb_nodes ; num_node++) {
+    	    	Noeud pred = noeuds.get(num_node);
+    	    	//pred.dessiner(dessin, null);
+    		// Lecture de tous les successeurs du noeud num_node
+    		for (int num_succ = 0 ; num_succ < nsuccesseurs_a_lire[num_node] ; num_succ++) {
+    		    // zone du successeur
+    		    int succ_zone = dis.readUnsignedByte() ;
 
-		    // numero de noeud du successeur
-		    int dest_node = Utils.read24bits(dis) ;
+    		    // numero de noeud du successeur
+    		    int dest_node = Utils.read24bits(dis) ;
 
-		    // descripteur de l'arete
-		    int descr_num = Utils.read24bits(dis) ;
+    		    // descripteur de l'arete
+    		    int descr_num = Utils.read24bits(dis) ;
 
-		    // longueur de l'arete en metres
-		    int longueur  = dis.readUnsignedShort() ;
+    		    // longueur de l'arete en metres
+    		    int longueur  = dis.readUnsignedShort() ;
 
-		    // Nombre de segments constituant l'arete
-		    int nb_segm   = dis.readUnsignedShort() ;
+    		    // Nombre de segments constituant l'arete
+    		    int nb_segm   = dis.readUnsignedShort() ;
 
-		    edges++ ;
-		    
-		    Couleur.set(dessin, descripteurs[descr_num].getType()) ;
+    		    edges++ ;
+    		    
+    		    Couleur.set(dessin, descripteurs[descr_num].getType()) ;
 
-		    float current_long = longitudes[num_node] ;
-		    float current_lat  = latitudes[num_node] ;
+    		    
+    		    //float current_long = longitudes[num_node] ;
+    		    //float current_lat  = latitudes[num_node] ;
+    		    
+    		    float current_long = pred.getLongitude() ;
+    		    float current_lat  = pred.getLatitude() ;
+    		    
+    		    Noeud succ = noeuds.get(dest_node);
+    		    succ.setZone(succ_zone);
+    		    Liaison l = new Liaison(pred, succ, longueur, descripteurs[descr_num]);
+    		    
+    		    // Chaque segment est dessine'
+    		    for (int i = 0 ; i < nb_segm ; i++) {
+    			float delta_lon = (dis.readShort()) / 2.0E5f ;
+    			float delta_lat = (dis.readShort()) / 2.0E5f ;
+    			Segment s = new Segment(delta_lon, delta_lat);
+    			l.addSegment(s);
+    			
+    			current_long += delta_lon ;
+    			current_lat  += delta_lat ;
+    		    }
+    		    l.dessiner(dessin, null, numzone);
+    		    
+    		}
+    	    }
+    	    
+    	    Utils.checkByte(253, dis) ;
 
-		    // Chaque segment est dessine'
-		    for (int i = 0 ; i < nb_segm ; i++) {
-			float delta_lon = (dis.readShort()) / 2.0E5f ;
-			float delta_lat = (dis.readShort()) / 2.0E5f ;
-			dessin.drawLine(current_long, current_lat, (current_long + delta_lon), (current_lat + delta_lat)) ;
-			current_long += delta_lon ;
-			current_lat  += delta_lat ;
-		    }
-		    
-		    // Le dernier trait rejoint le sommet destination.
-		    // On le dessine si le noeud destination est dans la zone du graphe courant.
-		    if (succ_zone == numzone) {
-			dessin.drawLine(current_long, current_lat, longitudes[dest_node], latitudes[dest_node]) ;
-		    }
-		}
-	    }
-	    
-	    Utils.checkByte(253, dis) ;
+    	    System.out.println("Fichier lu : " + nb_nodes + " sommets, " + edges + " aretes, " 
+    			       + nb_descripteurs + " descripteurs.") ;
 
-	    System.out.println("Fichier lu : " + nb_nodes + " sommets, " + edges + " aretes, " 
-			       + nb_descripteurs + " descripteurs.") ;
+    	} catch (IOException e) {
+    	    e.printStackTrace() ;
+    	    System.exit(1) ;
+    	}
 
-	} catch (IOException e) {
-	    e.printStackTrace() ;
-	    System.exit(1) ;
-	}
-
-    }
-
+        }
+    
     // Rayon de la terre en metres
     private static final double rayon_terre = 6378137.0 ;
 
