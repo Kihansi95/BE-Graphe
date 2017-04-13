@@ -1,4 +1,4 @@
-package core;
+package core.graphe;
 
 import base.Dessin;
 

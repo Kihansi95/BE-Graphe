@@ -1,4 +1,4 @@
-package core;
+package core.graphe;
 
 import java.awt.Color;
 import java.util.LinkedList;
@@ -99,9 +99,8 @@ public class Liaison {
 	/**
 	 * Dessiner la route.
 	 * @param dessin 
-	 * @param couleur : par default (null) YELLOW
 	 */
-	public void dessiner(Dessin dessin, Color couleur, int zone)	{
+	public void dessiner(Dessin dessin, int zone)	{
 		if(dessin == null)
 			throw new IllegalArgumentException("dessin null");
 		

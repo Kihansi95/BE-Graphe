@@ -1,7 +1,8 @@
-package core ;
+package core.algorithme ;
 
 import java.io.* ;
 import base.Readarg ;
+import core.Graphe;
 
 public class PccStar extends Pcc {
 

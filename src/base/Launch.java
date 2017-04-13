@@ -14,6 +14,10 @@ package base ;
  */
 
 import core.* ;
+import core.algorithme.Connexite;
+import core.algorithme.Pcc;
+import core.algorithme.PccStar;
+
 import java.io.* ;
 
 public class Launch {

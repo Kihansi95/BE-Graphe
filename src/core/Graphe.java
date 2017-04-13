@@ -1,5 +1,7 @@
 package core ;
 
+
+
 /**
  *   Classe representant un graphe.
  *   A vous de completer selon vos choix de conception.
@@ -7,10 +9,12 @@ package core ;
 
 import java.io.* ;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import base.* ;
+import core.graphe.Liaison;
+import core.graphe.Noeud;
+import core.graphe.Segment;
 
 public class Graphe {
 
@@ -89,9 +93,11 @@ public class Graphe {
 
     	    // Lecture des noeuds
     	    for (int num_node = 0 ; num_node < nb_nodes ; num_node++) {
+    	    	
 	    		// Lecture du noeud numero num_node
 	    		longitudes[num_node] = ((float)dis.readInt ()) / 1E6f ;
 	    		latitudes[num_node] = ((float)dis.readInt ()) / 1E6f ;
+	    		
 	    		noeuds.add(new Noeud(longitudes[num_node], latitudes[num_node]));
 	    		nsuccesseurs_a_lire[num_node] = dis.readUnsignedByte() ;
     	    }
@@ -100,66 +106,52 @@ public class Graphe {
     	    
     	    // Lecture des descripteurs
     	    for (int num_descr = 0 ; num_descr < nb_descripteurs ; num_descr++) {
-    		// Lecture du descripteur numero num_descr
-    		descripteurs[num_descr] = new Descripteur(dis) ;
-
-    		// On affiche quelques descripteurs parmi tous.
-    		if (0 == num_descr % (1 + nb_descripteurs / 400))
-    		    System.out.println("Descripteur " + num_descr + " = " + descripteurs[num_descr]) ;
+	    		// Lecture du descripteur numero num_descr
+	    		descripteurs[num_descr] = new Descripteur(dis) ;
+	
+	    		// On affiche quelques descripteurs parmi tous.
+	    		if (0 == num_descr % (1 + nb_descripteurs / 400))
+	    		    System.out.println("Descripteur " + num_descr + " = " + descripteurs[num_descr]) ;
     	    }
     	    
     	    Utils.checkByte(254, dis) ;
     	    
     	    // Lecture des successeurs
     	    for (int num_node = 0 ; num_node < nb_nodes ; num_node++) {
-    	    	Noeud pred = noeuds.get(num_node);
-    	    	//pred.dessiner(dessin, null);
-    		// Lecture de tous les successeurs du noeud num_node
-    		for (int num_succ = 0 ; num_succ < nsuccesseurs_a_lire[num_node] ; num_succ++) {
-    		    // zone du successeur
-    		    int succ_zone = dis.readUnsignedByte() ;
-
-    		    // numero de noeud du successeur
-    		    int dest_node = Utils.read24bits(dis) ;
-
-    		    // descripteur de l'arete
-    		    int descr_num = Utils.read24bits(dis) ;
-
-    		    // longueur de l'arete en metres
-    		    int longueur  = dis.readUnsignedShort() ;
-
-    		    // Nombre de segments constituant l'arete
-    		    int nb_segm   = dis.readUnsignedShort() ;
-
-    		    edges++ ;
-    		    
-    		    Couleur.set(dessin, descripteurs[descr_num].getType()) ;
-
-    		    
-    		    //float current_long = longitudes[num_node] ;
-    		    //float current_lat  = latitudes[num_node] ;
-    		    
-    		    float current_long = pred.getLongitude() ;
-    		    float current_lat  = pred.getLatitude() ;
-    		    
-    		    Noeud succ = noeuds.get(dest_node);
-    		    succ.setZone(succ_zone);
-    		    Liaison l = new Liaison(pred, succ, longueur, descripteurs[descr_num]);
-    		    
-    		    // Chaque segment est dessine'
-    		    for (int i = 0 ; i < nb_segm ; i++) {
-    			float delta_lon = (dis.readShort()) / 2.0E5f ;
-    			float delta_lat = (dis.readShort()) / 2.0E5f ;
-    			Segment s = new Segment(delta_lon, delta_lat);
-    			l.addSegment(s);
-    			
-    			current_long += delta_lon ;
-    			current_lat  += delta_lat ;
-    		    }
-    		    l.dessiner(dessin, null, numzone);
-    		    
-    		}
+    	    	Noeud predecesseur = noeuds.get(num_node);
+    	    	
+    	    	// Lecture de tous les successeurs du noeud num_node
+	    		for (int num_succ = 0 ; num_succ < nsuccesseurs_a_lire[num_node] ; num_succ++) {
+	    		    
+	    		    int succ_zone = dis.readUnsignedByte() ;		// zone du successeur	
+	    		    
+	    		    int dest_node = Utils.read24bits(dis) ;			// numero de noeud du successeur	
+	    		    
+	    		    int descr_num = Utils.read24bits(dis) ;			// descripteur de l'arete
+	    		  
+	    		    int longueur  = dis.readUnsignedShort() ;		// longueur de l'arete en metres
+	
+	    		    int nb_segm   = dis.readUnsignedShort() ;		// Nombre de segments constituant l'arete
+	
+	    		    edges++ ;
+	    		    	    		    
+	    		    Noeud successeur = noeuds.get(dest_node);
+	    		    successeur.setZone(succ_zone);
+	    		    Liaison route = new Liaison(predecesseur, successeur, longueur, descripteurs[descr_num]);
+	    		    
+	    		    // Chaque segment est dessine'
+	    		    for (int i = 0 ; i < nb_segm ; i++) {
+		    			float delta_lon = (dis.readShort()) / 2.0E5f ;
+		    			float delta_lat = (dis.readShort()) / 2.0E5f ;
+		    			Segment segment = new Segment(delta_lon, delta_lat);
+		    			route.addSegment(segment);
+	    		    }
+	    		    
+	    		    route.dessiner(dessin, numzone);
+	    		}
     	    }
+    	    
+    	    this.dessiner();
     	    
     	    Utils.checkByte(253, dis) ;
 
@@ -171,7 +163,24 @@ public class Graphe {
     	    System.exit(1) ;
     	}
 
-        }
+    }
+    
+    
+    
+    /*
+     * Dessiner tous les routes et les noeud dans un graphe à couleur par défaut
+     */
+    public void dessiner()	{
+    	for(Liaison route: this.routes)	{
+    		Couleur.set(dessin, route.getDescripteur().getType()) ;
+    		route.dessiner(dessin, numzone);
+    	}
+    	
+    	for(Noeud noeud: this.noeuds)	{
+    		noeud.dessiner(dessin, null);
+    	}
+    		
+    }
     
     // Rayon de la terre en metres
     private static final double rayon_terre = 6378137.0 ;

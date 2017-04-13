@@ -1,7 +1,9 @@
-package core ;
+package core.algorithme ;
 
 import java.io.* ;
 import base.Readarg ;
+import core.Algo;
+import core.Graphe;
 
 public class Pcc extends Algo {
 
