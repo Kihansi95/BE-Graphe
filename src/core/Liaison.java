@@ -119,5 +119,19 @@ public class Liaison {
 			dessin.drawLine(current_long, current_lat, successeur.getLongitude(), successeur.getLatitude());
 		}
 	}
+	
+	public float coutChemin(Boolean choix){
+		float cout = 0.0f ;
+		if (choix==true){
+			// on calcul le cout temporel
+			cout = (this.getLongueur()*this.getDescripteur().vitesseMax());
+		}
+		else {
+			// on calcul le cout en distance 
+			cout = this.getLongueur();
+		}
+		
+		return cout ;
+	}
 
 }
