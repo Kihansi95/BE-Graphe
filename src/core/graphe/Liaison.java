@@ -119,7 +119,7 @@ public class Liaison {
 		}
 	}
 	
-	public float coutChemin(Boolean choix){
+	public float coutRoute(Boolean choix){
 		float cout = 0.0f ;
 		if (choix==true){
 			// on calcul le cout temporel

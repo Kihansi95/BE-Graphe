@@ -67,6 +67,30 @@ public class Noeud {
 		liaisons.add(liaison);
 	}
 	
+	/*
+	 * getteur de la liste des liaisons
+	 */
+	
+	public ArrayList<Liaison> getLiaisons(){
+		return new ArrayList<Liaison> (this.liaisons);
+	}
+	/*
+	 * getteur liste des liaisons de 1 vers 2
+	 */
+	public ArrayList<Liaison> getLiaisons_1vers2 (Noeud dest){
+		ArrayList<Liaison> liste_retour = new ArrayList<Liaison>() ;
+		Iterator <Liaison> ite = liaisons.iterator() ;
+		while (ite.hasNext()) {
+			Liaison l = ite.next() ;
+			Noeud succes = l.getSuccesseur() ;
+			if (succes == dest){
+				liste_retour.add(l);
+			}
+		}
+		
+		return liste_retour ;
+	}
+	
 	/**
 	 * @return le nombre de successeur
 	 * @throws PropreSuccesseurException
