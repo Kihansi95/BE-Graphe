@@ -10,7 +10,7 @@ import java.util.Iterator;
 import base.Dessin;
 import exceptions.PropreSuccesseurException;
 
-public class Noeud {
+public class Noeud implements Comparable<Noeud> {
 	
 	public final static int RAD = 10;
 	
@@ -142,5 +142,11 @@ public class Noeud {
 	
 	public void setZone(int zone)	{
 		this.zone = zone;
+	}
+
+	@Override
+	public int compareTo(Noeud arg0) {
+		// TODO à définir ici le travail à faire
+		return 0;
 	}
 }

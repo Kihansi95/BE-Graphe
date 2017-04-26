@@ -1,9 +1,12 @@
 package core.algorithme ;
 
 import java.io.* ;
+
+import base.BinaryHeap;
 import base.Readarg ;
 import core.Algo;
 import core.Graphe;
+import core.graphe.Noeud;
 
 public class Pcc extends Algo {
 
@@ -13,6 +16,8 @@ public class Pcc extends Algo {
 
     protected int zoneDestination ;
     protected int destination ;
+    
+    private BinaryHeap<Noeud> tas;
 
     public Pcc(Graphe gr, PrintStream sortie, Readarg readarg) {
 	super(gr, sortie, readarg) ;
