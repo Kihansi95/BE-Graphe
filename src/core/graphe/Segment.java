@@ -22,10 +22,18 @@ public class Segment {
 		dessin.drawLine(from_long, from_lat, (from_long + deltaLong), (from_lat + deltaLat));
 	}
 
+	/**
+	 * get delta longitude
+	 * @return float
+	 */
 	public float getDeltaLong() {
 		return deltaLong;
 	}
 
+	/**
+	 * get delta latitude
+	 * @return float
+	 */
 	public float getDeltaLat() {
 		return deltaLat;
 	}

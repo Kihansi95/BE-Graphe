@@ -98,9 +98,9 @@ public class Noeud {
 	}
 	
 	/**
+	 * dessine le noeud 
 	 * @param dessin
 	 * @param color
-	 * dessine le noeud 
 	 */
 	public void dessiner(Dessin dessin, Color color){
 		System.out.println("Noeud: "+longitude+", "+latitude);

@@ -1,9 +1,9 @@
 package core.graphe;
 
-import java.awt.Color;
 import java.util.LinkedList;
 import java.util.List;
 
+import base.Couleur;
 import base.Descripteur;
 import base.Dessin;
 
@@ -104,10 +104,11 @@ public class Liaison {
 		if(dessin == null)
 			throw new IllegalArgumentException("dessin null");
 		
+		Couleur.set(dessin, getDescripteur().getType()) ;	// couleur par définition de la route
+		
 		float current_long = predecesseur.getLongitude();
 		float current_lat = predecesseur.getLatitude();
 		
-		//dessin.setColor(couleur == null? Color.YELLOW : couleur);
 		for(Segment s: segments)	{
 			s.dessiner(dessin, current_long, current_lat);
 			current_long += s.getDeltaLong();

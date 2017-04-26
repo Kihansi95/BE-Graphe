@@ -9,6 +9,7 @@ package core ;
 
 import java.io.* ;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import base.* ;
@@ -165,21 +166,34 @@ public class Graphe {
 
     }
     
+    /**
+     * Get les noeuds de graphe.<br/>
+     * <b>ceci n'est qu'une copie de la liste, toutes modification ne sera ignoré</b>
+     * @return List Noeud
+     */
+    public List<Noeud> getNoeuds()	{
+    	return new LinkedList<Noeud>(noeuds);
+    }
     
+    /**
+     * Get les routes de graphe.<br/>
+     * <b>ceci n'est qu'une copie de la liste, toutes modification ne sera ignoré</b>
+     * @return List Liaison
+     */
+    public List<Liaison> getRoutes()	{
+    	return new LinkedList<Liaison>(routes);
+    }
     
     /*
      * Dessiner tous les routes et les noeud dans un graphe à couleur par défaut
      */
     public void dessiner()	{
-    	for(Liaison route: this.routes)	{
-    		Couleur.set(dessin, route.getDescripteur().getType()) ;
+    	for(Liaison route: this.routes)	
     		route.dessiner(dessin, numzone);
-    	}
     	
-    	for(Noeud noeud: this.noeuds)	{
+    	for(Noeud noeud: this.noeuds)	
     		noeud.dessiner(dessin, null);
-    	}
-    		
+    	
     }
     
     // Rayon de la terre en metres
