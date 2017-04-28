@@ -1,11 +1,17 @@
 package core.algorithme ;
 
 import java.io.* ;
+import java.util.ArrayList;
+import java.util.List;
+
+
+
 
 import base.BinaryHeap;
 import base.Readarg ;
 import core.Algo;
 import core.Graphe;
+import core.graphe.Liaison;
 import core.graphe.Noeud;
 
 public class Pcc extends Algo {
@@ -35,6 +41,45 @@ public class Pcc extends Algo {
 	System.out.println("Run PCC de " + zoneOrigine + ":" + origine + " vers " + zoneDestination + ":" + destination) ;
 
 	// A vous d'implementer la recherche de plus court chemin.
+	
+	// DEBUT IMPLEMENTATION DIJKSTRA 
+	// mon tas
+	BinaryHeap<Label> tas = new BinaryHeap<Label>() ;
+	
+	List<Noeud> liste_sommets = graphe.getNoeuds() ;
+	int nbsommets = liste_sommets.size();
+	ArrayList<Label> liste_labels = new ArrayList<Label>() ;
+	// c'est dans cette liste qu'on m.a.j. le cout, le marquage, ... pour chaque sommets.
+	int nb_marques = 0;
+	Noeud sorigine = liste_sommets.get(origine) ;
+	Noeud sdest = liste_sommets.get(destination) ;
+	Label x ;
+
+	// INIT 
+	for (Noeud sommet : liste_sommets ){
+		Label lab = new Label(sommet);
+		// a la cration du label, marquage à false, pere null et cout fixé à max value
+		liste_labels.add(lab) ; // on ajoute le labell à notre liste de label
+	}
+	// on set le label de l'origine)
+	// on insert le label de l'origine dans le tas
+	liste_labels.get(origine).setCout(0);
+	tas.insert(liste_labels.get(origine)) ;
+	
+	// ITERATION
+	boolean som_non_marques = true ;
+	ArrayList<Liaison> routes_autour = new ArrayList<Liaison>() ;
+	Liaison Route_actuelle ;
+	Label y ; 
+	float aux ;
+	while (som_non_marques){
+		x = tas.findMin();
+		x.setMarquage(true);
+		routes_autour = x.getSommetCourant().getLiaisons() ;
+		// TODO trouver le numero du sommet x...
+		
+	}
+	
     }
 
 }
