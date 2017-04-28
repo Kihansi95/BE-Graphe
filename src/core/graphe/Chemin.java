@@ -8,9 +8,7 @@ import base.Dessin;
  */
 public class Chemin {
 
-	
-	// nom du chemin
-	private String nom_chemin ;
+
 	
 	// listes des chemins empruntés dans l'ordre du chemin
 	private List<Noeud> liste_sommets_empruntes ;
@@ -29,11 +27,16 @@ public class Chemin {
 	/**
 	 * constructeur 
 	 */
-	public Chemin(String nom_chemin){
+	public Chemin(){
 		liste_sommets_empruntes = new ArrayList<Noeud>();
 		temps_total = 0 ;
-		distance_totale = 0 ;
-		this.nom_chemin = nom_chemin ;		
+		distance_totale = 0 ;	
+	}
+	public Chemin(ArrayList<Noeud> liste_som, ArrayList<Liaison> routesEmprunt,float tmps_min, float dist){
+		this.liste_sommets_empruntes = liste_som ;
+		this.temps_total = tmps_min ;
+		this.distance_totale = dist ;
+		this.routesEmpruntes = routesEmprunt;
 	}
 	
 	/**
@@ -150,6 +153,8 @@ public class Chemin {
 			route.dessiner(dessin, zone);
 		liste_sommets_empruntes.get(liste_sommets_empruntes.size() - 1).dessiner(dessin);
 	}
+	
+	
 	
 	
 }

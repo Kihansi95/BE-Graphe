@@ -5,17 +5,17 @@ import core.graphe.*;
 public class Label implements Comparable < Label > {
 	private boolean marquage;
 	private float cout;
-	private Label pere;
-	private Noeud sommetCourant;
+	private int pere;
+	private int sommetCourant;
 	
 	public Label(Noeud sommetCourant)	{
 		if(sommetCourant == null)
 			throw new IllegalArgumentException("sommet courant est null\n");
 		
-		this.sommetCourant = sommetCourant;
+		this.sommetCourant = sommetCourant.getNumero();
 		this.marquage = false;
 		this.cout = Float.MAX_VALUE ;
-		this.pere = null ; 
+		this.pere = 0 ; 
 	}
 	
 	/**
@@ -34,13 +34,13 @@ public class Label implements Comparable < Label > {
 		this.marquage = marq ;
 	}
 	
-	public void setPere(Label papa){
+	public void setPere(int papa){
 		this.pere = papa ;
 	}
 	public void setCout(float cout){
 		this.cout = cout ;
 	}
-	public Label getPere (){
+	public int getPere (){
 		return this.pere ;
 	}
 	public boolean getMarquage(){
@@ -49,11 +49,12 @@ public class Label implements Comparable < Label > {
 	public float getCout(){
 		return this.cout ;
 	}
-	public Noeud getSommetCourant(){
+	public int getSommetCourant(){
 		return this.sommetCourant ;
 	}
 
-	public int compareTo(Label label) {
+	public int compareTo(Label label) { 
+		// on multiplie par mille pour prendre en compte les chiffres derière la virgule
 		return (int)((this.cout - label.cout)*1000) ;
 	}
 }
