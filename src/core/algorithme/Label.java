@@ -14,6 +14,8 @@ public class Label {
 		
 		this.sommetCourant = sommetCourant;
 		this.marquage = false;
+		this.cout = Float.MAX_VALUE ;
+		this.pere = null ; 
 	}
 	
 	/**
@@ -46,5 +48,8 @@ public class Label {
 	}
 	public float getCout(){
 		return this.cout ;
+	}
+	public Noeud getSommetCourant(){
+		return this.sommetCourant ;
 	}
 }
