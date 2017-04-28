@@ -2,7 +2,7 @@ package core.algorithme;
 
 import core.graphe.*;
 
-public class Label {
+public class Label implements Comparable < Label > {
 	private boolean marquage;
 	private float cout;
 	private Noeud pere;
@@ -51,5 +51,9 @@ public class Label {
 	}
 	public Noeud getSommetCourant(){
 		return this.sommetCourant ;
+	}
+
+	public int compareTo(Label label) {
+		return (int)((this.cout - label.cout)*1000) ;
 	}
 }
