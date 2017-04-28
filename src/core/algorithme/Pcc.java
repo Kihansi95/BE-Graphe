@@ -53,13 +53,13 @@ public class Pcc extends Algo {
 	int nb_marques = 0;
 	Noeud sorigine = liste_sommets.get(origine) ;
 	Noeud sdest = liste_sommets.get(destination) ;
-	Label x ;
+	Label courant ;
 
 	// INIT 
 	for (Noeud sommet : liste_sommets ){
 		Label lab = new Label(sommet);
-		// a la cration du label, marquage à false, pere null et cout fixé à max value
-		liste_labels.add(lab) ; // on ajoute le labell à notre liste de label
+		// a la cration du label, marquage ï¿½ false, pere null et cout fixï¿½ ï¿½ max value
+		liste_labels.add(lab) ; // on ajoute le labell ï¿½ notre liste de label
 	}
 	// on set le label de l'origine)
 	// on insert le label de l'origine dans le tas
@@ -68,18 +68,31 @@ public class Pcc extends Algo {
 	
 	// ITERATION
 	boolean som_non_marques = true ;
-	ArrayList<Liaison> routes_autour = new ArrayList<Liaison>() ;
+	ArrayList<Noeud> successeurs = new ArrayList<Noeud>() ;
 	Liaison Route_actuelle ;
 	Label y ; 
-	float aux ;
+	float coutAux ;
 	while (som_non_marques){
-		x = tas.findMin();
-		x.setMarquage(true);
-		routes_autour = x.getSommetCourant().getLiaisons() ;
-		// TODO trouver le numero du sommet x...
+		courant = tas.findMin();
+		courant.setMarquage(true);
+		successeurs = courant.getSommetCourant().getSuccesseurs() ;
+		if (x.getSommetCourant()== sdest){
+			som_non_marques= true ; // on sort de la boucle (on peut pas faire break ?)
+		}
+		for (Noeud suc : successeurs){
+			// on regarde tous les successeurs 
+			y = getLabel(suc, liste_labels);
+			if (y.getMarquage()){
+				coutAux
+			}
+		}
 		
 	}
 	
+    }
+    
+    private Label getLabel(Noeud sommet, List<Label> lists)	{
+    	return lists.get(sommet.getNumero());
     }
 
 }

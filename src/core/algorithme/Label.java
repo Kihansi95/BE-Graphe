@@ -5,7 +5,7 @@ import core.graphe.*;
 public class Label implements Comparable < Label > {
 	private boolean marquage;
 	private float cout;
-	private Noeud pere;
+	private Label pere;
 	private Noeud sommetCourant;
 	
 	public Label(Noeud sommetCourant)	{
@@ -34,13 +34,13 @@ public class Label implements Comparable < Label > {
 		this.marquage = marq ;
 	}
 	
-	public void setPere(Noeud papa){
+	public void setPere(Label papa){
 		this.pere = papa ;
 	}
 	public void setCout(float cout){
 		this.cout = cout ;
 	}
-	public Noeud getPere (){
+	public Label getPere (){
 		return this.pere ;
 	}
 	public boolean getMarquage(){
