@@ -127,6 +127,9 @@ public class Chemin {
 			setTempsTotal(getTempsTotal()+temps);			
 		}
 		
+		// TODO : rajouter une liste de routes (la plus courte donc celle par laquelle on passe.
+		// comme ça on va pouvoir dessiner plus facillement.
+		// TODO : faire la méthode dessinerchemin
 	}
 	
 	
