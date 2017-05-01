@@ -99,7 +99,7 @@ public class Graphe {
 	    		longitudes[num_node] = ((float)dis.readInt ()) / 1E6f ;
 	    		latitudes[num_node] = ((float)dis.readInt ()) / 1E6f ;
 	    		
-	    		noeuds.add(new Noeud(longitudes[num_node], latitudes[num_node]));
+	    		noeuds.add(new Noeud(num_node, longitudes[num_node], latitudes[num_node]));
 	    		nsuccesseurs_a_lire[num_node] = dis.readUnsignedByte() ;
     	    }
     	    

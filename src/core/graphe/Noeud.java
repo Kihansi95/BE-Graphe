@@ -18,26 +18,27 @@ public class Noeud implements Comparable<Noeud> {
 	private float longitude ;
 	private float latitude ;
 	private int numero ;
-	private static int compteur ;
-	private boolean visited ;
 	private ArrayList<Liaison> liaisons ;
 	private int zone;
 	
 	// constructeur 
-	public Noeud ( float longitude, float latitude, int zone){
+	public Noeud (int numero, float longitude, float latitude, int zone){
 		this.latitude = latitude ;
 		this.longitude = longitude ;
-		this.numero = compteur++;
-		this.visited = false ;
+		this.numero = numero;
 		this.liaisons = new ArrayList<Liaison>();
 		this.zone = zone;				// zone == -1 : zone not defined
 	}
 	
-	public Noeud(float longitude, float latitude)	{
-		this(longitude, latitude, -1);
+	public Noeud(int numero, float longitude, float latitude)	{
+		this(numero, longitude, latitude, -1);
 	}
 	
 	// getteurs
+	
+	public int getNumero()	{
+		return numero;
+	}
 	
 	/**
 	 * @return la latitude
