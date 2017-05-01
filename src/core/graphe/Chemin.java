@@ -61,12 +61,12 @@ public class Chemin {
 	public void setDistanceTotale(float nouveauD){
 		this.distance_totale = nouveauD ;
 	}
+	
 	/**
 	 * ajouter une route empruntée à la liste des routes empruntées
 	 * => si liste nulle, on ajoute la 1ere liaison
 	 * => si liste non nulle, on ajoute  la liaison et on update le temps et la distance
-	 */
-	
+	 */	
 	public void addRoute (Noeud sommet_next, boolean choix){
 		if (liste_sommets_empruntes.size()== 0){
 			liste_sommets_empruntes.add(sommet_next);
