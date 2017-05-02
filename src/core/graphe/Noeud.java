@@ -6,11 +6,12 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import base.Dessin;
 import exceptions.PropreSuccesseurException;
 
-public class Noeud implements Comparable<Noeud> {
+public class Noeud {
 	
 	public final static int RAD = 10;
 	
@@ -72,9 +73,18 @@ public class Noeud implements Comparable<Noeud> {
 	 * getteur de la liste des liaisons
 	 */
 	
-	public ArrayList<Liaison> getLiaisons(){
+	public List<Liaison> getLiaisons(){
 		return new ArrayList<Liaison> (this.liaisons);
 	}
+	
+	public List<Liaison> getLiaisons(Noeud successeur)	{
+		List<Liaison> liaisons = new ArrayList<Liaison>() ;
+		for(Liaison l: liaisons)
+			if(l.getSuccesseur() == successeur)
+				liaisons.add(l);
+		return liaisons;
+	}
+	
 	/*
 	 * getteur liste des liaisons de 1 vers 2
 	 */
@@ -114,8 +124,8 @@ public class Noeud implements Comparable<Noeud> {
 	/**
 	 * @return tous les noeuds sucesseurs 
 	 */
-	public ArrayList<Noeud> getSuccesseurs(){
-		ArrayList<Noeud> noeuds = new ArrayList<Noeud>();
+	public List<Noeud> getSuccesseurs(){
+		List<Noeud> noeuds = new ArrayList<Noeud>();
 		for(Liaison l : liaisons){
 			noeuds.add(l.getSuccesseur());
 		}
@@ -143,11 +153,5 @@ public class Noeud implements Comparable<Noeud> {
 	
 	public void setZone(int zone)	{
 		this.zone = zone;
-	}
-
-	@Override
-	public int compareTo(Noeud arg0) {
-		// TODO à définir ici le travail à faire
-		return 0;
 	}
 }

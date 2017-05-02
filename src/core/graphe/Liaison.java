@@ -7,7 +7,7 @@ import base.Couleur;
 import base.Descripteur;
 import base.Dessin;
 
-public class Liaison {
+public class Liaison implements Comparable<Liaison>{
 	
 	private float longueur;
 	
@@ -92,9 +92,10 @@ public class Liaison {
 	 * @param liaison
 	 * @return > 0 si this > liaison.
 	 */
-	public float compareTo(Liaison liaison)	{
-		return getLongueur() - liaison.getLongueur();
+	public int compareTo(Liaison liaison)	{
+		return (int) ((getLongueur() - liaison.getLongueur())*PRECISION);
 	}
+	private static final int PRECISION = 10000000;
 	
 	/**
 	 * Dessiner la route.

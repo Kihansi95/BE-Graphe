@@ -1,14 +1,14 @@
-package core.graphe;
+package core.algo_duc;
 import  java.util. * ;
 
 import base.Dessin;
+import core.graphe.Liaison;
+import core.graphe.Noeud;
 
 /**
  *  permet de retrnir le chemin entre 2 sommets (origine et destination) avec les routes empruntées 
  */
 public class Chemin {
-
-
 	
 	// listes des chemins empruntés dans l'ordre du chemin
 	private List<Noeud> liste_sommets_empruntes ;
@@ -149,6 +149,18 @@ public class Chemin {
 			route.dessiner(dessin, zone);
 		liste_sommets_empruntes.get(liste_sommets_empruntes.size() - 1).dessiner(dessin);
 	}
-
 	
+	/**
+	 * get le route le plus court entre 2 noeuds
+	 * @param depart
+	 * @param dest
+	 * @return
+	 */
+	public static Liaison getLiaisonOptimal(Noeud depart, Noeud dest)	{
+		// TODO à vérifier l'endroit plus propre pour mettre ce bout de code
+		List<Liaison> routes = depart.getLiaisons_1vers2(dest);
+		Collections.sort(routes);
+		return routes.get(0);
+	}
+
 }

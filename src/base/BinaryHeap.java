@@ -44,7 +44,7 @@ public class BinaryHeap<E extends Comparable<E>> {
     }
 
     // Constructor used for debug.
-    private BinaryHeap(BinaryHeap<E> heap) {
+    public BinaryHeap(BinaryHeap<E> heap) {
 		this.currentSize = heap.currentSize ;
 		this.array = new ArrayList<E>(heap.array) ;
 		this.dictionary = new HashMap<E, Integer>(heap.dictionary);
