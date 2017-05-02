@@ -1,4 +1,7 @@
-package core;
+package base;
+
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 public class UnEntier implements Comparable<UnEntier> {
 
@@ -25,7 +28,20 @@ public class UnEntier implements Comparable<UnEntier> {
 	// Ne pas utiliser a bord d'un avion : ne resiste pas a un overflow.
 	return this.zeint - other.zeint ;
     }
-
+/*
+    public static void main(String[] args)	{
+    	BinaryHeap<UnEntier> tas = new BinaryHeap<UnEntier>();
+    	UnEntier tab[] = new UnEntier[4];
+    	for(int i = 0; i < 4; i++)	{
+    		tab[i] = new UnEntier(i);
+    		tas.insert(tab[i]);
+    	}
+    	
+    	tab[1].set(2);
+    	tas.update(tab[3]);
+    	for(int i = 0; i< 4; i ++)
+    		System.out.println(tas.deleteMin());
+    }*/
 
     // Voici le test reel.
     public static void main(String[] args) {
@@ -63,9 +79,12 @@ public class UnEntier implements Comparable<UnEntier> {
 	    // Cette ligne ne compile pas avec le tas que l'on vous fournit au depart, c'est normal.
 	    // A vous de completer le tas pour que cela fonctionne.
 	    tas.update(element) ;
+	    //tas.printSorted();
 	}
 
 	// Et on verifie que le tas est toujours trie.
 	tas.printSorted() ;
+	
     }
+    
 }

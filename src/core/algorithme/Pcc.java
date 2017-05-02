@@ -23,10 +23,10 @@ public class Pcc extends Algo {
     
     // contiendra les labels (avec le cout des noeuds)
     private BinaryHeap<Label> tas;
-    // Tableau qui contient tous les labels (choix d'implémentation)
+    // Tableau qui contient tous les labels (choix d'implï¿½mentation)
     private Label tableau_labels[] ;
     
-    private boolean choix_tps_dist = false // par defaut en distance ;
+    private boolean choix_tps_dist = false; // par defaut en distance ;
     
     public Pcc(Graphe gr, PrintStream sortie, Readarg readarg, boolean choix) {
 	super(gr, sortie, readarg) ;
@@ -114,10 +114,10 @@ public class Pcc extends Algo {
 				}
 				// on compare l'ancien et le nouveau coup 
 				if (coutAux < lab_next.getCout()){
-					// on Met à jour le label actuel  :
+					// on Met ï¿½ jour le label actuel  :
 					lab_next.setCout(coutAux);
 					lab_next.setPere(courant.getSommetCourant());
-					// puis on l'insere ou l'actualise si déja présent dans le tas
+					// puis on l'insere ou l'actualise si dï¿½ja prï¿½sent dans le tas
 					if (tas.existe(lab_next){ // TODO : methode exite dans binaryHeap
 						tas.update(lab_next);
 					}
@@ -131,11 +131,11 @@ public class Pcc extends Algo {
 		
 		// ACTUALISER LE CHEMIN SI le label courant est la destination :
 		if (courant.getSommetCourant() == destination){
-			// en partant de la destination et en retraçant à l'envers grace au père !!!
+			// en partant de la destination et en retraï¿½ant ï¿½ l'envers grace au pï¿½re !!!
 			// TODO !!!!
 		}
 		
-		// TODO : separer Dijkstra en plusieurs méthodes pour plus de lisibilité !!
+		// TODO : separer Dijkstra en plusieurs mï¿½thodes pour plus de lisibilitï¿½ !!
 		
 	}
 	

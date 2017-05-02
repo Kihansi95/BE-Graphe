@@ -9,6 +9,7 @@ package base;
 // Throws RuntimeException for findMin and deleteMin when empty
 
 import java.util.* ;
+import java.util.Map.Entry;
 
 /**
  * Implements a binary heap.
@@ -25,27 +26,39 @@ public class BinaryHeap<E extends Comparable<E>> {
     private ArrayList<E> array; // The heap array
 
     /**
+     * Dictionnary which will return object's index
+     */
+    private HashMap<E, Integer> dictionary;
+    
+    public HashMap<E, Integer> getDict()	{
+    	return dictionary;
+    }
+    
+    /**
      * Construct the binary heap.
      */
     public BinaryHeap() {
         this.currentSize = 0;
         this.array = new ArrayList<E>() ;
+        this.dictionary = new HashMap<E, Integer>();
     }
 
     // Constructor used for debug.
     private BinaryHeap(BinaryHeap<E> heap) {
-	this.currentSize = heap.currentSize ;
-	this.array = new ArrayList<E>(heap.array) ;
+		this.currentSize = heap.currentSize ;
+		this.array = new ArrayList<E>(heap.array) ;
+		this.dictionary = new HashMap<E, Integer>(heap.dictionary);
     }
 
     // Sets an element in the array
     private void arraySet(int index, E value) {
-	if (index == this.array.size()) {
-	    this.array.add(value) ;
-	}
-	else {
-	    this.array.set(index, value) ;
-	}
+		if (index == this.array.size()) {
+		    this.array.add(value) ;
+		}
+		else {
+			this.array.set(index, value);
+		}
+		this.dictionary.put(value, new Integer(index));
     }
 
     /**
@@ -80,9 +93,9 @@ public class BinaryHeap<E extends Comparable<E>> {
      * @param x the item to insert.
      */
     public void insert(E x) {
-	int index = this.currentSize++ ;
-	this.arraySet(index, x) ;
-	this.percolateUp(index) ;
+		int index = this.currentSize++ ;
+		this.arraySet(index, x) ;
+		this.percolateUp(index) ;
     }
 
     /**
@@ -90,12 +103,12 @@ public class BinaryHeap<E extends Comparable<E>> {
      * @param index the index at which the percolate begins.
      */
     private void percolateUp(int index) {
-	E x = this.array.get(index) ;
+    	E x = this.array.get(index) ;
 
         for( ; index > 0 && x.compareTo(this.array.get(index_parent(index)) ) < 0; index = index_parent(index) ) {
 	    E moving_val = this.array.get(index_parent(index)) ;
             this.arraySet(index, moving_val) ;
-	}
+        }
 
         this.arraySet(index, x) ;
     }
@@ -151,11 +164,14 @@ public class BinaryHeap<E extends Comparable<E>> {
      */
     public E deleteMin( ) {
         E minItem = findMin( );
-	E lastItem = this.array.get(--this.currentSize) ;
+        E lastItem = this.array.get(--this.currentSize) ;
+        this.dictionary.remove(lastItem);
         this.arraySet(0, lastItem) ;
         this.percolateDown( 0 );
         return minItem;
     }
+    
+
     
     /**
      * Prints the heap
@@ -193,6 +209,20 @@ public class BinaryHeap<E extends Comparable<E>> {
 	System.out.println("--------  End of heap  --------") ;
 	System.out.println() ;
 	}
+    
+    /**
+     * Update an object
+     * @param element
+     */
+    public void update(E element)	{
+    	if(element == null)
+    		throw new IllegalArgumentException("element null");
+    	Integer index = dictionary.get(element);
+    	if(index == null)
+    		throw new IllegalArgumentException("Element "+element+" doesn't exist in heap");
+    	arraySet(index, element);
+    	this.percolateUp(index) ;
+    }
 
 
     

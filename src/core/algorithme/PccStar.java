@@ -7,7 +7,7 @@ import core.Graphe;
 public class PccStar extends Pcc {
 
     public PccStar(Graphe gr, PrintStream sortie, Readarg readarg) {
-	super(gr, sortie, readarg) ;
+    	super(gr, sortie, readarg) ;
     }
 
     public void run() {
