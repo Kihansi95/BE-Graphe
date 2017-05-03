@@ -1,4 +1,5 @@
 package core.algo_duc;
+import java.awt.Color;
 import  java.util. * ;
 
 import base.Dessin;
@@ -133,8 +134,8 @@ public class Chemin {
 			// on ajoute le prochain sommet  et on a la route la plus courte (en distance ou temps) donc on uptdate les couts 
 			liste_sommets_empruntes.add(sommet_next);
 			this.routesEmpruntes.add(route_plus_court);
-			setDistanceTotale(getDistanceTotale()+distance);
-			setTempsTotal(getTempsTotal()+temps);			
+			setDistanceTotale(this.getDistanceTotale()+distance);
+			setTempsTotal(this.getTempsTotal()+temps);			
 		}
 	}
 	
@@ -144,6 +145,8 @@ public class Chemin {
 	 * @param zone
 	 */
 	public void dessiner(Dessin dessin, int zone)	{
+		dessin.setColor(Color.BLACK);
+		dessin.setWidth(3);
 		liste_sommets_empruntes.get(0).dessiner(dessin);
 		for(Liaison route: routesEmpruntes)
 			route.dessiner(dessin, zone);

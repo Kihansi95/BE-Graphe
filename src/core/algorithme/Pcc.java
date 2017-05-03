@@ -1,10 +1,12 @@
 package core.algorithme ;
 
+import java.awt.Color;
 import java.io.* ;
 import java.util.ArrayList;
 import java.util.List;
 
 import base.BinaryHeap;
+import base.Dessin;
 import base.Readarg ;
 import core.Algo;
 import core.Graphe;
@@ -22,6 +24,7 @@ public class Pcc extends Algo {
     protected int destination ;
     
     private boolean choix_tps_dist = false; // par defaut en distance ;
+    
     
     public Pcc(Graphe gr, PrintStream sortie, Readarg readarg, boolean choix) {
 	super(gr, sortie, readarg) ;
@@ -43,6 +46,12 @@ public class Pcc extends Algo {
 
 	// A vous d'implementer la recherche de plus court chemin.
 	
+	// POUR DESSINER APRES :
+	
+	Dessin dessin = this.graphe.getDessin();
+	dessin.setColor(Color.GREEN);
+	dessin.setWidth(3);
+	
 	// DEBUT IMPLEMENTATION DIJKSTRA 
 	// LES VARIABLES
 	Chemin chemin_final = new Chemin();
@@ -56,8 +65,7 @@ public class Pcc extends Algo {
 	int nbsommets = liste_sommets.size();
 	
 	int nb_marques = 0;
-	Noeud sorigine = liste_sommets.get(origine) ;
-	Noeud sdest = liste_sommets.get(destination) ;
+
 	
 	// AFFICHAGE SI MODE TEMPS OU DISTANCE 
 	if (choix_tps_dist){
@@ -91,11 +99,12 @@ public class Pcc extends Algo {
 		Label lab_next ; 
 		
 		while (!tas.isEmpty() && !destination_atteinte){
-			courant = tas.findMin();
-			tas.deleteMin() ;
+			courant = tas.deleteMin();
+			chemin_final.addSommet(liste_sommets.get(courant.getSommetCourant()));
+
 			
 			courant.setMarquage(true);
-			if (liste_sommets.get(courant.getSommetCourant())== sdest){
+			if (liste_sommets.get(courant.getSommetCourant())== liste_sommets.get(destination)){
 				destination_atteinte = true ; // on sort de la boucle (on peut pas faire break ?)
 			}
 			
@@ -104,39 +113,64 @@ public class Pcc extends Algo {
 			for ( Liaison rt : routes_vers_voisins){
 				// TODO : traiter si on sort de la zone
 				lab_next = liste_labels.get(rt.getSuccesseur().getNumero());// on recupere le label
-				// CONDITION POUR DIJKSTRA7
+				// CONDITION POUR DIJKSTRA
 				float coutAux;
-				//suitvant le mode choisi 
-				if (choix_tps_dist){ // en temporel 
-					coutAux = courant.getCout() + rt.coutRoute(choix_tps_dist);
-				}
-				else{ // en distance 
-					coutAux = courant.getCout()+rt.coutRoute(choix_tps_dist);
-				}
-				// on compare l'ancien et le nouveau coup 
-				if (coutAux < lab_next.getCout()){
-					// on Met a jour le label actuel  :
-					lab_next.setCout(coutAux);
-					lab_next.setPere(courant.getSommetCourant());
-					// puis on l'insere ou l'actualise si deja present dans le tas
-					if (tas.existe(lab_next)){ 
-						tas.update(lab_next);
+				if (!lab_next.getMarquage()){
+					//suivant le mode choisi 
+					if (choix_tps_dist){ // en temporel 
+						coutAux = courant.getCout() + rt.coutRoute(choix_tps_dist);
 					}
-					else{
-						tas.insert(lab_next);
+					else{ // en distance 
+						coutAux = courant.getCout()+rt.coutRoute(choix_tps_dist);
 					}
-					nb_marques++ ;
+					// on compare l'ancien et le nouveau coup 
+					if (coutAux < lab_next.getCout()){
+						// on Met a jour le label actuel  :
+						lab_next.setCout(coutAux);
+						lab_next.setPere(courant.getSommetCourant());
+						// puis on l'insere ou l'actualise si deja present dans le tas
+						if (tas.existe(lab_next)){ 
+							tas.update(lab_next);
+						}
+						else{
+							tas.insert(lab_next);
+						}
+						nb_marques++ ;
+						chemin_final.addSommet(liste_sommets.get(lab_next.getSommetCourant()));
+						chemin_final.addRoute(rt);
+					}
 				}
 			}// fin FOR
 		}//fin WHILE
 		
+		System.out.println("je suis ici ! \n" + "destination atteinte : " + destination_atteinte + "\n");
 		// ACTUALISER LE CHEMIN SI le label courant est la destination :
-		if (courant.getSommetCourant() == destination){
+		if (liste_sommets.get(courant.getSommetCourant()) == liste_sommets.get(destination)){
+			/*// en se servant du tas 
+			System.out.println("je suis là ! : \n");
+			tas.printSorted();
+
+			Label position; 
+			Noeud sommet_pos ;
+			Noeud next ;
+			
+			while (tas.isEmpty()== false){
+				
+				System.out.println("il y a " + tas.size()+ " sommets dans le tas \n");
+				position = tas.deleteMin();
+				sommet_pos = liste_sommets.get(position.getSommetCourant());
+				next = liste_sommets.get(tas.findMin().getSommetCourant());
+				chemin_final.addSommet(sommet_pos);
+				chemin_final.addRoute(next, choix_tps_dist);
+			}
+			
+			
+			*/
+			/*System.out.println("je suis là ! \n");
 			// en partant de la destination et en retournant a l'envers grace au pere !!!
-			// TODO !!!!
 			int position = destination ;
-			Label lab_pos = null;
-			Noeud sommet_pos = null;	
+			Label lab_pos;
+			Noeud sommet_pos;	
 			while(position!=origine){
 				sommet_pos = liste_sommets.get(position) ;
 				chemin_final.addSommet(sommet_pos);
@@ -148,13 +182,16 @@ public class Pcc extends Algo {
 			// enfin on ajoute le noeud origine 
 			// la liaison vers l'origine a deja ete ajoutee
 			chemin_final.addSommet(liste_sommets.get(origine));
+			*/
 		}
 		
 		// TODO : separer Dijkstra en plusieurs mï¿½thodes pour plus de lisibilitï¿½ !!
-		
-	}
+		System.out.println(" === Longueur du chemin : "+chemin_final.getDistanceTotale()+" metres");
+		System.out.println(" === temps du chemin : "+chemin_final.getTempsTotal()+" minutes");
+		chemin_final.dessiner(dessin, graphe.getZone());
+
+		}
 	
-    }
-
-
+	}
+    
 }

@@ -30,15 +30,17 @@ public class Chemin {
 	 */
 	public Chemin(){
 		liste_sommets_empruntes = new ArrayList<Noeud>();
+		routesEmpruntes = new ArrayList<Liaison>();
 		temps_total = 0 ;
 		distance_totale = 0 ;	
 	}
-	public Chemin(ArrayList<Noeud> liste_som, ArrayList<Liaison> routesEmprunt,float tmps_min, float dist){
+	
+	/*public Chemin(ArrayList<Noeud> liste_som, ArrayList<Liaison> routesEmprunt,float tmps_min, float dist){
 		this.liste_sommets_empruntes = liste_som ;
 		this.temps_total = tmps_min ;
 		this.distance_totale = dist ;
 		this.routesEmpruntes = routesEmprunt;
-	}
+	}*/
 	
 	/**
 	 * getteur temps_total
@@ -77,6 +79,11 @@ public class Chemin {
 	 * => si liste nulle, on ajoute la 1ere liaison
 	 * => si liste non nulle, on ajoute  la liaison et on update le temps et la distance
 	 */	
+	public void addRoute(Liaison route){
+		routesEmpruntes.add(route);
+		this.distance_totale =+ route.coutRoute(false);
+		this.temps_total=+ route.coutRoute(true);
+	}
 	public void addRoute (Noeud sommet_next, boolean choix){
 		if (liste_sommets_empruntes.size()== 0){
 			liste_sommets_empruntes.add(sommet_next);
@@ -151,10 +158,14 @@ public class Chemin {
 	 * @param zone
 	 */
 	public void dessiner(Dessin dessin, int zone)	{
+		System.out.println ("nb sommet"+ liste_sommets_empruntes.size()+ "\n");
 		liste_sommets_empruntes.get(0).dessiner(dessin);
-		for(Liaison route: routesEmpruntes)
+		for(Liaison route: routesEmpruntes){
+			int i=1 ;
 			route.dessiner(dessin, zone);
-		liste_sommets_empruntes.get(liste_sommets_empruntes.size() - 1).dessiner(dessin);
+			liste_sommets_empruntes.get(i).dessiner(dessin);
+			i++;
+		}
 	}
 
 	
