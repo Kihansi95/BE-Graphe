@@ -21,11 +21,6 @@ public class Pcc extends Algo {
     protected int zoneDestination ;
     protected int destination ;
     
-    // contiendra les labels (avec le cout des noeuds)
-    private BinaryHeap<Label> tas;
-    // Tableau qui contient tous les labels (choix d'impl�mentation)
-    private Label tableau_labels[] ;
-    
     private boolean choix_tps_dist = false; // par defaut en distance ;
     
     public Pcc(Graphe gr, PrintStream sortie, Readarg readarg, boolean choix) {
@@ -39,6 +34,8 @@ public class Pcc extends Algo {
 	this.destination = readarg.lireInt ("Numero du sommet destination ? ");
 	this.choix_tps_dist = choix ;
     }
+    
+    
 
     public void run() {
 
@@ -49,12 +46,15 @@ public class Pcc extends Algo {
 	// DEBUT IMPLEMENTATION DIJKSTRA 
 	// LES VARIABLES
 	Chemin chemin_final = new Chemin();
-	// mon tas
-	tas = new BinaryHeap<Label>() ;
-	List<Noeud> liste_sommets = graphe.getNoeuds() ;
+	// contiendra les labels (avec le cout des noeuds)
+    BinaryHeap<Label> tas = new BinaryHeap<Label>() ;
+    // Tableau qui contient tous les labels (choix d'impl�mentation)
+   ArrayList<Label>liste_labels = new ArrayList<Label>() ;
+ // c'est dans cette liste qu'on m.a.j. le cout, le marquage, ... pour chaque sommets.
+    
+	ArrayList<Noeud> liste_sommets = (ArrayList<Noeud>) graphe.getNoeuds() ;
 	int nbsommets = liste_sommets.size();
-	tableau_labels = new Label[nbsommets] ;
-	// c'est dans cette liste qu'on m.a.j. le cout, le marquage, ... pour chaque sommets.
+	
 	int nb_marques = 0;
 	Noeud sorigine = liste_sommets.get(origine) ;
 	Noeud sdest = liste_sommets.get(destination) ;
@@ -69,14 +69,15 @@ public class Pcc extends Algo {
 	
 	// INIT 
 	for (Noeud sommet : liste_sommets ){
+		Label lab = new Label(sommet);
 		// a la creation du label, marquage a false, pere null et cout fix� � max value
-		tableau_labels[sommet.getNumero()] = new Label(sommet);
+		liste_labels.add(sommet.getNumero(), lab);
 	}
 	// on set le label de l'origine : cout et absence de pere
 	// on insert le label de l'origine dans le tas
-	tableau_labels[origine].setCout(0);
-	tableau_labels[origine].setPere(-1); 
-	tas.insert(tableau_labels[origine]) ;
+	liste_labels.get(origine).setCout(0);
+	liste_labels.get(origine).setPere(-1); 
+	tas.insert(liste_labels.get(origine)) ;
 	
 	// ITERATION ( parcours)
 	boolean destination_atteinte = false ;
@@ -102,7 +103,7 @@ public class Pcc extends Algo {
 			// on regarde tous les successeurs 
 			for ( Liaison rt : routes_vers_voisins){
 				// TODO : traiter si on sort de la zone
-				lab_next = tableau_labels[rt.getSuccesseur().getNumero()];// on recupere le label
+				lab_next = liste_labels.get(rt.getSuccesseur().getNumero());// on recupere le label
 				// CONDITION POUR DIJKSTRA7
 				float coutAux;
 				//suitvant le mode choisi 
@@ -114,11 +115,11 @@ public class Pcc extends Algo {
 				}
 				// on compare l'ancien et le nouveau coup 
 				if (coutAux < lab_next.getCout()){
-					// on Met � jour le label actuel  :
+					// on Met a jour le label actuel  :
 					lab_next.setCout(coutAux);
 					lab_next.setPere(courant.getSommetCourant());
-					// puis on l'insere ou l'actualise si d�ja pr�sent dans le tas
-					if (tas.existe(lab_next){ // TODO : methode exite dans binaryHeap
+					// puis on l'insere ou l'actualise si deja present dans le tas
+					if (tas.existe(lab_next)){ 
 						tas.update(lab_next);
 					}
 					else{
@@ -131,8 +132,22 @@ public class Pcc extends Algo {
 		
 		// ACTUALISER LE CHEMIN SI le label courant est la destination :
 		if (courant.getSommetCourant() == destination){
-			// en partant de la destination et en retra�ant � l'envers grace au p�re !!!
+			// en partant de la destination et en retournant a l'envers grace au pere !!!
 			// TODO !!!!
+			int position = destination ;
+			Label lab_pos = null;
+			Noeud sommet_pos = null;	
+			while(position!=origine){
+				sommet_pos = liste_sommets.get(position) ;
+				chemin_final.addSommet(sommet_pos);
+				lab_pos = liste_labels.get(position);
+				chemin_final.addRoute(liste_sommets.get(lab_pos.getPere()), choix_tps_dist);
+				// on remonte sur le noeud precedent
+				position = lab_pos.getPere();
+			}
+			// enfin on ajoute le noeud origine 
+			// la liaison vers l'origine a deja ete ajoutee
+			chemin_final.addSommet(liste_sommets.get(origine));
 		}
 		
 		// TODO : separer Dijkstra en plusieurs m�thodes pour plus de lisibilit� !!

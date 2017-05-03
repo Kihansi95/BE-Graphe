@@ -9,7 +9,6 @@ package base;
 // Throws RuntimeException for findMin and deleteMin when empty
 
 import java.util.* ;
-import java.util.Map.Entry;
 
 /**
  * Implements a binary heap.
@@ -222,6 +221,15 @@ public class BinaryHeap<E extends Comparable<E>> {
     		throw new IllegalArgumentException("Element "+element+" doesn't exist in heap");
     	arraySet(index, element);
     	this.percolateUp(index) ;
+    	// TODO : pas besoin de percolateDown ? juste une question pcq je sais aps ..
+    }
+    
+    /**
+     * Regarde si l'élément existe dans le tas
+     * @param args
+     */
+    public boolean existe(E element){
+    	return dictionary.containsKey(element) ;
     }
 
 

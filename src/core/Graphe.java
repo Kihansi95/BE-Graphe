@@ -47,7 +47,7 @@ public class Graphe {
     private float[] latitudes ;
     private Descripteur[] descripteurs ;
     
-    private List<Noeud> noeuds;
+    private ArrayList<Noeud> noeuds;
     private List<Liaison> routes;
     
     // Deux malheureux getters.
@@ -171,8 +171,8 @@ public class Graphe {
      * <b>ceci n'est qu'une copie de la liste, toutes modification ne sera ignoré</b>
      * @return List Noeud
      */
-    public List<Noeud> getNoeuds()	{
-    	return new LinkedList<Noeud>(noeuds);
+    public ArrayList<Noeud> getNoeuds()	{
+    	return noeuds;
     }
     
     /**

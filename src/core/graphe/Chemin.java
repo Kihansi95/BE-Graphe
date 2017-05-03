@@ -8,7 +8,8 @@ import base.Dessin;
  */
 public class Chemin {
 
-
+	// DANS LA LISTE DE SOMMETS (d'apr�s le remplissage avec Dijkstra, 
+	//le 1er sommet est le sommet DESTINATION. 
 	
 	// listes des chemins empruntés dans l'ordre du chemin
 	private List<Noeud> liste_sommets_empruntes ;
@@ -65,6 +66,12 @@ public class Chemin {
 		this.distance_totale = nouveauD ;
 	}
 	
+	/**
+	 * pour ajouter des sommets 
+	 */
+	public void addSommet( Noeud sommet){
+		liste_sommets_empruntes.add(sommet);
+	}
 	/**
 	 * ajouter une route empruntée à la liste des routes empruntées
 	 * => si liste nulle, on ajoute la 1ere liaison
