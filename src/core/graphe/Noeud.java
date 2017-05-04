@@ -77,14 +77,6 @@ public class Noeud {
 		return new ArrayList<Liaison> (this.liaisons);
 	}
 	
-	public List<Liaison> getLiaisons(Noeud successeur)	{
-		List<Liaison> liaisons = new ArrayList<Liaison>() ;
-		for(Liaison l: liaisons)
-			if(l.getSuccesseur() == successeur)
-				liaisons.add(l);
-		return liaisons;
-	}
-	
 	/*
 	 * getteur liste des liaisons de 1 vers 2
 	 */
@@ -153,5 +145,15 @@ public class Noeud {
 	
 	public void setZone(int zone)	{
 		this.zone = zone;
+	}
+	
+	@Override
+	public boolean equals(Object noeud)	{
+		return noeud instanceof Noeud && ((Noeud) noeud).numero == this.numero;
+	}
+	
+	@Override
+	public String toString()	{
+		return "Noeud n°"+numero+" ("+longitude+","+latitude+")";
 	}
 }

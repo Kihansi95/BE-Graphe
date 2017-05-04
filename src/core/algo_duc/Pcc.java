@@ -1,16 +1,18 @@
 package core.algo_duc ;
 
+import java.awt.Color;
 import java.io.* ;
-import java.util.ArrayList;
+import java.util.AbstractMap;
+import java.util.HashMap;
 import java.util.List;
 
 import base.BinaryHeap;
+import base.Dessin;
 import base.Readarg ;
 import core.Algo;
 import core.Graphe;
 import core.graphe.Liaison;
 import core.graphe.Noeud;
-import exceptions.PereAbsentException;
 
 public class Pcc extends Algo {
 
@@ -37,42 +39,56 @@ public class Pcc extends Algo {
 
 		System.out.println("Run PCC de " + zoneOrigine + ":" + origine + " vers " + zoneDestination + ":" + destination) ;
 	
-		// init lables
-		BinaryHeap<Label> tas = new BinaryHeap<Label>();
-		List<Noeud> noeuds = this.graphe.getNoeuds();
-		for(Noeud noeud : noeuds)	{
-			tas.insert(new Label(noeud));
+		// init label
+		Chemin solution;
+		AbstractMap<Noeud, Label> sommets = new HashMap<Noeud, Label>();
+		BinaryHeap<Label> visites = new BinaryHeap<Label>();
+		Label label_destination = null;
+		Label label_origine = null;
+
+		for(Noeud noeud : this.graphe.getNoeuds())	{
+			Label label = new Label(noeud);
+			sommets.put(noeud, label);
+			visites.insert(label);
+			if(noeud.getNumero() == this.destination)
+				label_destination = label;
+			if(noeud.getNumero() == this.origine)
+				label_origine = label;
 		}
-		Label destination = tas.get(this.destination);
 		
-		Label sommet_actuel = labels.get(this.origine);
+		if(label_destination == null)
+			throw new RuntimeException("Sommet destination not found, à vérifier l'algo");
+		if(label_origine == null)
+			throw new RuntimeException("Sommet origine not found, à vérifier l'algo");
 		
+		// init algo
+		Label label_actuel = label_origine;
+		solution = new Chemin(label_actuel.getSommetCourant());
 		
-		while(sommet_actuel != destination)	{
-			List<Noeud> successeurs = sommet_actuel.getSommetCourant().getSuccesseurs();
-			for(Noeud succ : successeurs)	{
-				Label label_succ = labels.get(succ.getNumero());
-				update(label_succ, sommet_actuel);
+		// algo procédure
+		while(label_actuel != label_destination)	{
+			List<Noeud> successeurs = label_actuel.getSommetCourant().getSuccesseurs();
+			
+			// visiter chaque successeur
+			for(Noeud succ : successeurs)	{		
+				Label label_succ = sommets.get(succ);
+				if(!label_succ.isMarque())	{					
+					updateSuccesseur(label_succ, label_actuel);
+					visites.update(label_succ);
+					label_succ.getSommetCourant().dessiner(this.getDessin(), Color.GREEN);
+				}
 			}
 			
+			// fin de la visite du sommet actuel, marquer et place dans la solution
+			label_actuel.marquer();
+			solution.addRoute(label_actuel.getLiaison());
+			label_actuel.getSommetCourant().dessiner(this.getDessin(), Color.DARK_GRAY); 
+
 			
-			do	{
-				sommet_actuel = tmp.deleteMin();
-			}
-		}
+			// label suivant
+			label_actuel = visites.findMin();
+		}	
 		
-		
-		
-	
-    }
-    
-    private Label getLabelSuivant(final BinaryHeap<Label> tas)	{
-    	BinaryHeap<Label> tmp = new BinaryHeap<Label>(tas);
-    	Label suivant = tmp.deleteMin();
-		while	(sommet_actuel.isMarque)	{
-			suivant = tmp.deleteMin();
-		}
-		return suivant;
     }
     
     /**
@@ -81,27 +97,26 @@ public class Pcc extends Algo {
      * @param courant
      * @return
      */
-    private Label update(Label successeur, Label courant)	{
-    	if(successeur.getPere() == null)
+    private Label updateSuccesseur(Label successeur, Label courant)	{
+    	if(successeur.getPere() == null)	{
     		successeur.setPere(courant);
+    		successeur.setCout(0f);
+    	}
     	else	{
-    		float new_cout = courant.getCout() + Chemin.getLiaisonOptimal(courant.getSommetCourant(), successeur.getSommetCourant()).getLongueur();
-    		if(successeur.getCout() > new_cout)
-    			successeur.setPere(courant);
+    		Liaison liaisonOptimal = Chemin.getLiaisonOptimal(courant.getSommetCourant(), successeur.getSommetCourant());
+    		if(successeur.getCout() > courant.getCout() + liaisonOptimal.getLongueur())	{
+    			successeur.update(courant, liaisonOptimal);
+    		}
     	}
     	return successeur;
     }
     
     /**
-     * Chauque fois quand on a fini à exploité un sommet, on le marquerais 
-     * @param tas
+     * Shortcut dessin
+     * @return
      */
-    private void exploite(BinaryHeap<Label> tas, Label label)	{
-    	
-    	tas.insert(label);
-    	label.marquer();
-    	label.getSommetCourant().dessiner(this.graphe.getDessin());
+    private Dessin getDessin()	{
+    	return this.graphe.getDessin();
     }
-
 
 }

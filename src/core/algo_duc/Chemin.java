@@ -11,131 +11,80 @@ import core.graphe.Noeud;
 public class Chemin {
 	
 	// listes des chemins empruntés dans l'ordre du chemin
-	private List<Noeud> liste_sommets_empruntes ;
+	private List<Noeud> noeudsPasses ;
 	
 	/**
 	 * liaison optimal à chaque fois qu'on passe une noeud à l'autre
 	 */
 	private List<Liaison> routesEmpruntes;
 	
-	/**
-	 * cout du chemin (en temps et distance)
-	 */
-	private float temps_total ;
-	private float distance_totale ;
+	private float longueur;
 	
-	/**
-	 * constructeur 
-	 */
-	public Chemin(){
-		liste_sommets_empruntes = new ArrayList<Noeud>();
-		temps_total = 0 ;
-		distance_totale = 0 ;	
-	}
-	public Chemin(ArrayList<Noeud> liste_som, ArrayList<Liaison> routesEmprunt,float tmps_min, float dist){
-		this.liste_sommets_empruntes = liste_som ;
-		this.temps_total = tmps_min ;
-		this.distance_totale = dist ;
-		this.routesEmpruntes = routesEmprunt;
+	public Chemin(Noeud origine){
+		this(origine, null, null);
 	}
 	
-	/**
-	 * getteur temps_total
-	 */
-	public float getTempsTotal(){
-		return temps_total ;
-	}
-	/**
-	 * setteur temps_total
-	 */
-	public void setTempsTotal(float nouveauT){
-		this.temps_total = nouveauT ;
+	private Chemin(Noeud origine, List<Liaison> routes, List<Noeud> noeudsIntermediaires)	{
+		
+		// asset
+		if(routes != null && noeudsIntermediaires != null && routes.size() != noeudsIntermediaires.size())
+			throw new IllegalArgumentException("Nombre de routes et nombre de noeuds intermediaires non correspondant");
+		
+		// add noeuds
+		noeudsPasses = new ArrayList<Noeud>();
+		noeudsPasses.add(origine);
+		noeudsPasses.addAll(noeudsIntermediaires);
+		
+		// init list or routes and noeuds
+		this.routesEmpruntes = routes == null? new LinkedList<Liaison>() : routes;
+		this.noeudsPasses = noeudsIntermediaires == null? new LinkedList<Noeud>() : noeudsIntermediaires;
+		
+		// calcul longueur
+		longueur = 0;
+		for(Liaison liaison : routesEmpruntes)
+			longueur += liaison.getLongueur();
+
 	}
 	
 	/**
-	 * getteur distance_totale 
+	 * Ajouter la nouvelle liaison vers le prochain noeud dans ce chemin
+	 * @param liaison
 	 */
-	public float getDistanceTotale (){
-		return distance_totale ;
-	}
-	/**
-	 * setteur distance_totale 
-	 */
-	public void setDistanceTotale(float nouveauD){
-		this.distance_totale = nouveauD ;
-	}
-	
-	/**
-	 * ajouter une route empruntée à la liste des routes empruntées
-	 * => si liste nulle, on ajoute la 1ere liaison
-	 * => si liste non nulle, on ajoute  la liaison et on update le temps et la distance
-	 */	
-	public void addRoute (Noeud sommet_next, boolean choix){
-		if (liste_sommets_empruntes.size()== 0){
-			liste_sommets_empruntes.add(sommet_next);
-		}
-		else {
-			// on prend la route en fin de liste
-			Noeud sommet_actuel = liste_sommets_empruntes.get(liste_sommets_empruntes.size()-1);
-			// on fait la liste des routes possibles entre les 2 sommets 
-			ArrayList<Liaison> routes = sommet_actuel.getLiaisons_1vers2(sommet_next);
-			Liaison route_plus_court ;
-			float temps ;
-			float distance ;
-			float temps_aux ;
-			float distance_aux ;
+	public void addRoute(Liaison liaison)	{
+		
+		// asset
+		Noeud lastNoeud = noeudsPasses.get(noeudsPasses.size() - 1);
+		if(liaison.getDescripteur().isSensUnique())	{
 			
-			// on teste si il existe bien des routes : 
-			if (routes.size()==0){
-				throw new EmptyStackException();
-			}
-			else {
-				
-				route_plus_court = routes.get(0);
-				temps = route_plus_court.coutRoute(true) ; 
-				distance = route_plus_court.coutRoute(false) ;
-				// on cherche le chemin le plus court en temporel :
-				if (choix == true){
-					for (Liaison rt : routes){
-						temps_aux = rt.coutRoute(true);
-						distance_aux = rt.coutRoute(false);
-						if (temps_aux<temps){
-							route_plus_court = rt ;
-							distance = distance_aux ;
-							temps = temps_aux ;
-						}
-						if (temps_aux==temps && distance_aux < distance){
-							route_plus_court = rt ;
-							distance = distance_aux ;
-							temps= temps_aux ;
-						}
-					}
-				}
-				//choix== false chemin le plus court en distance 
-				else {
-					for (Liaison rt : routes){
-						temps_aux = rt.coutRoute(true);
-						distance_aux = rt.coutRoute(false);
-						if (distance_aux<distance){
-							route_plus_court = rt ;
-							distance = distance_aux ;
-							temps = temps_aux ;
-						}
-						if (distance_aux==distance && temps_aux < temps){
-							route_plus_court = rt ;
-							distance = distance_aux ;
-							temps= temps_aux ;
-						}
-					}
-				}
-				
-			}
-			// on ajoute le prochain sommet  et on a la route la plus courte (en distance ou temps) donc on uptdate les couts 
-			liste_sommets_empruntes.add(sommet_next);
-			this.routesEmpruntes.add(route_plus_court);
-			setDistanceTotale(getDistanceTotale()+distance);
-			setTempsTotal(getTempsTotal()+temps);			
+			// vérif si prédécesseur est bien la fin de chemin
+			if(!liaison.getPredecesseur().equals(lastNoeud))
+				throw new IllegalArgumentException("Liaison ["+liaison+"] ne reprend pas du dernier noeud: ["+lastNoeud+"]");
+			
+			// vérif si successeur présent dans chemin (cycle)
+			if(noeudsPasses.contains(liaison.getSuccesseur()))
+				throw new IllegalArgumentException("Liaison ["+liaison+"] revient sur le noeud dans chemin: ["+lastNoeud+"]");
+		} else	{
+			
+			// vérif si les 2 extremités présents dans chemin (cycle)
+			if(noeudsPasses.contains(liaison.getPredecesseur()) && noeudsPasses.contains(liaison.getSuccesseur()))
+				throw new IllegalArgumentException("Cycle detecté: Liaison ["+liaison+"] reprend 2 noeuds dans chemin"+this);
 		}
+		
+		// add new noeud and new liaison
+		if(liaison.getDescripteur().isSensUnique())	{
+			noeudsPasses.add(liaison.getSuccesseur());
+		}	else	{
+			Noeud newNoeud = liaison.getPredecesseur() == lastNoeud? liaison.getSuccesseur() : liaison.getPredecesseur();
+			noeudsPasses.add(newNoeud);
+		}
+		routesEmpruntes.add(liaison);
+		
+		// update longueur
+		longueur += liaison.getLongueur();
+	}
+	
+	public float getLongueur()	{
+		return longueur;
 	}
 	
 	/**
@@ -144,10 +93,9 @@ public class Chemin {
 	 * @param zone
 	 */
 	public void dessiner(Dessin dessin, int zone)	{
-		liste_sommets_empruntes.get(0).dessiner(dessin);
 		for(Liaison route: routesEmpruntes)
 			route.dessiner(dessin, zone);
-		liste_sommets_empruntes.get(liste_sommets_empruntes.size() - 1).dessiner(dessin);
+		routesEmpruntes.get(routesEmpruntes.size() - 1).dessiner(dessin, zone);
 	}
 	
 	/**
@@ -163,4 +111,12 @@ public class Chemin {
 		return routes.get(0);
 	}
 
+	@Override
+	public String toString()	{
+		StringBuilder str = new StringBuilder();
+		for(Noeud n : noeudsPasses)
+			str.append(n.toString() + " - ");
+		str.delete(-2, -1);
+		return "Chemin longueur "+longueur+" :" + str.toString();
+	}
 }

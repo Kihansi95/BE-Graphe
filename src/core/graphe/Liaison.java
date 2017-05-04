@@ -80,6 +80,13 @@ public class Liaison implements Comparable<Liaison>{
 	}
 	
 	/**
+	 * @return le prédécesseur de cette liaison
+	 */
+	public Noeud getPredecesseur()	{
+		return predecesseur;
+	}
+	
+	/**
 	 * Verifier si le liason est arrete ou chemin
 	 * @return true si arrete, falst si chemin
 	 */
@@ -100,6 +107,7 @@ public class Liaison implements Comparable<Liaison>{
 	/**
 	 * Dessiner la route.
 	 * @param dessin 
+	 * @param int: numéro de zone dans lequel on dessine
 	 */
 	public void dessiner(Dessin dessin, int zone)	{
 		if(dessin == null)
@@ -135,4 +143,8 @@ public class Liaison implements Comparable<Liaison>{
 		return cout ;
 	}
 
+	@Override
+	public String toString()	{
+		return "Liaison "+predecesseur + (descripteur.isSensUnique()?" -> ":" <-> ") + successeur+ ". Description:\n"+descripteur;
+	}
 }
