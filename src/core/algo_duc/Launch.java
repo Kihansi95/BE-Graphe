@@ -1,4 +1,4 @@
-package base ;
+package core.algo_duc ;
 
 /*
  * Ce programme propose de lancer divers algorithmes sur les graphes
@@ -13,6 +13,11 @@ package base ;
  * ecrit le resultat dans le fichier '/tmp/sortie', puis quitte le programme.
  */
 
+import base.Dessin;
+import base.DessinInvisible;
+import base.DessinVisible;
+import base.Openfile;
+import base.Readarg;
 import core.* ;
 import core.algorithme.Connexite;
 import core.algorithme.Pcc;
@@ -81,7 +86,8 @@ public class Launch {
 
 		case 1 : algo = new Connexite(graphe, this.fichierSortie (), this.readarg) ; break ;
 		
-		case 2 : algo = new Pcc(graphe, this.fichierSortie (), this.readarg) ; break ;
+		case 2 : 
+			algo = new Pcc(graphe, this.fichierSortie (), this.readarg) ; break ;
 		
 		case 3 : algo = new PccStar(graphe, this.fichierSortie (), this.readarg) ; break ;
 	

@@ -73,7 +73,7 @@ public class Noeud {
 	 * getteur de la liste des liaisons
 	 */
 	
-	public List<Liaison> getLiaisons(){
+	public ArrayList<Liaison> getLiaisons(){
 		return new ArrayList<Liaison> (this.liaisons);
 	}
 	
@@ -116,8 +116,8 @@ public class Noeud {
 	/**
 	 * @return tous les noeuds sucesseurs 
 	 */
-	public List<Noeud> getSuccesseurs(){
-		List<Noeud> noeuds = new ArrayList<Noeud>();
+	public ArrayList<Noeud> getSuccesseurs(){
+		ArrayList<Noeud> noeuds = new ArrayList<Noeud>();
 		for(Liaison l : liaisons){
 			noeuds.add(l.getSuccesseur());
 		}
