@@ -138,7 +138,9 @@ public class Graphe {
 	    		    	    		    
 	    		    Noeud successeur = noeuds.get(dest_node);
 	    		    successeur.setZone(succ_zone);
-	    		    Liaison route = new Liaison(predecesseur, successeur, longueur, descripteurs[descr_num]);
+	    		    Descripteur descripteur = descripteurs[descr_num];
+	    		    Liaison route = new Liaison(predecesseur, successeur, longueur, descripteur);
+	    		    Liaison routeInverse = descripteur.isSensUnique()? null : new Liaison(successeur, predecesseur, longueur, descripteur);
 	    		    
 	    		    // Chaque segment est dessine'
 	    		    for (int i = 0 ; i < nb_segm ; i++) {
@@ -146,14 +148,17 @@ public class Graphe {
 		    			float delta_lat = (dis.readShort()) / 2.0E5f ;
 		    			Segment segment = new Segment(delta_lon, delta_lat);
 		    			route.addSegment(segment);
+		    			if(routeInverse != null)
+		    				routeInverse.addSegment(segment);
 	    		    }
 	    		    
-	    		    route.dessiner(dessin, numzone);
+	    		    routes.add(route);
+	    		    if(routeInverse != null)
+	    		    	routes.add(routeInverse);
 	    		}
     	    }
     	    
     	    this.dessiner();
-    	    
     	    Utils.checkByte(253, dis) ;
 
     	    System.out.println("Fichier lu : " + nb_nodes + " sommets, " + edges + " aretes, " 

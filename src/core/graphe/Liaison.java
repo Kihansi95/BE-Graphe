@@ -87,14 +87,6 @@ public class Liaison implements Comparable<Liaison>{
 	}
 	
 	/**
-	 * Verifier si le liason est arrete ou chemin
-	 * @return true si arrete, falst si chemin
-	 */
-	public boolean isSensUnique()	{
-		return descripteur.isSensUnique();
-	}
-	
-	/**
 	 * Compare longueur
 	 * @param liaison
 	 * @return > 0 si this > liaison.

@@ -64,10 +64,15 @@ public class Pcc extends Algo {
 		// init algo
 		Label label_actuel = label_origine;
 		solution = new Chemin(label_actuel.getSommetCourant());
+		label_actuel.setCout(0f);
 		
 		// algo procédure
-		while(label_actuel != label_destination)	{
+		while(!label_actuel.equals(label_destination))	{
 			List<Noeud> successeurs = label_actuel.getSommetCourant().getSuccesseurs();
+			
+			// si non successeurs: no route
+			if(successeurs.isEmpty())
+				break;
 			
 			// visiter chaque successeur
 			for(Noeud succ : successeurs)	{		
@@ -81,13 +86,21 @@ public class Pcc extends Algo {
 			
 			// fin de la visite du sommet actuel, marquer et place dans la solution
 			label_actuel.marquer();
-			solution.addRoute(label_actuel.getLiaison());
+			if(label_actuel != label_origine)
+				solution.addRoute(label_actuel.getLiaison());
 			label_actuel.getSommetCourant().dessiner(this.getDessin(), Color.DARK_GRAY); 
 
-			
 			// label suivant
-			label_actuel = visites.findMin();
+			label_actuel = visites.deleteMin();
 		}	
+		
+		solution.addRoute(label_actuel.getLiaison());
+		label_actuel.getSommetCourant().dessiner(this.getDessin(), Color.DARK_GRAY); 
+		
+		if(!label_actuel.equals(label_destination))
+			System.out.println("Pas de route de "+label_origine.getSommetCourant() +" vers "+label_destination.getSommetCourant());
+		else
+			System.out.println(solution);
 		
     }
     
@@ -98,16 +111,12 @@ public class Pcc extends Algo {
      * @return
      */
     private Label updateSuccesseur(Label successeur, Label courant)	{
-    	if(successeur.getPere() == null)	{
-    		successeur.setPere(courant);
-    		successeur.setCout(0f);
-    	}
-    	else	{
-    		Liaison liaisonOptimal = Chemin.getLiaisonOptimal(courant.getSommetCourant(), successeur.getSommetCourant());
-    		if(successeur.getCout() > courant.getCout() + liaisonOptimal.getLongueur())	{
-    			successeur.update(courant, liaisonOptimal);
-    		}
-    	}
+
+		Liaison liaisonOptimal = Chemin.getLiaisonOptimal(courant.getSommetCourant(), successeur.getSommetCourant());
+		if(successeur.getCout() > courant.getCout() + liaisonOptimal.getLongueur())	{
+			successeur.update(courant, liaisonOptimal);
+		}
+    	
     	return successeur;
     }
     

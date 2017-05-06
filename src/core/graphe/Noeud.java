@@ -72,9 +72,21 @@ public class Noeud {
 	/*
 	 * getteur de la liste des liaisons
 	 */
-	
-	public ArrayList<Liaison> getLiaisons(){
+	public List<Liaison> getLiaisons(){
 		return new ArrayList<Liaison> (this.liaisons);
+	}
+	
+	/**
+	 * get Liaison qui va vers destination (dest)
+	 * @param dest: le noeud destinatire
+	 * @return List
+	 */
+	public List<Liaison> getLiaisons(Noeud dest)	{
+		List<Liaison> liaisons_possibles = new ArrayList<Liaison>();
+		for(Liaison l : liaisons)
+			if(l.getSuccesseur().equals(dest))
+				liaisons_possibles.add(l);
+		return liaisons_possibles;
 	}
 	
 	/*
@@ -130,7 +142,7 @@ public class Noeud {
 	 * @param color
 	 */
 	public void dessiner(Dessin dessin, Color color){
-		System.out.println("Noeud: "+longitude+", "+latitude);
+		dessin.setColor(color);
 		dessin.drawPoint (longitude, latitude, RAD);
 		
 	}

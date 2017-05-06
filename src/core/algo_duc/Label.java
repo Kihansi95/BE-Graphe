@@ -76,4 +76,14 @@ public class Label implements Comparable < Label > {
 	public Liaison getLiaison()	{
 		return liaisonOptimal;
 	}
+	
+	@Override
+	public boolean equals(Object label)	{
+		return label instanceof Label && ((Label) label).getSommetCourant().equals(this.getSommetCourant());
+	}
+	
+	@Override
+	public String toString()	{
+		return "Label no "+sommetCourant.getNumero()+" - cout = "+cout;
+	}
 }

@@ -20,7 +20,11 @@ import base.Openfile;
 import base.Readarg;
 import core.* ;
 import core.algorithme.Connexite;
-import core.algorithme.Pcc;
+//TODO ATTENTIONNNNNNNNNNNNNNNN
+
+import core.algo_duc.Pcc;	
+
+//TODO ATTENTIONNNNNNNNNNNNNNNN
 import core.algorithme.PccStar;
 
 import java.io.* ;

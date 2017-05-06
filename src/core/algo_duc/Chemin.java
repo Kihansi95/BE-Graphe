@@ -24,7 +24,7 @@ public class Chemin {
 		this(origine, null, null);
 	}
 	
-	private Chemin(Noeud origine, List<Liaison> routes, List<Noeud> noeudsIntermediaires)	{
+	public Chemin(Noeud origine, List<Liaison> routes, List<Noeud> noeudsIntermediaires)	{
 		
 		// asset
 		if(routes != null && noeudsIntermediaires != null && routes.size() != noeudsIntermediaires.size())
@@ -33,11 +33,11 @@ public class Chemin {
 		// add noeuds
 		noeudsPasses = new ArrayList<Noeud>();
 		noeudsPasses.add(origine);
-		noeudsPasses.addAll(noeudsIntermediaires);
+		if(noeudsIntermediaires != null)
+			noeudsPasses.addAll(noeudsIntermediaires);
 		
-		// init list or routes and noeuds
+		// init routes
 		this.routesEmpruntes = routes == null? new LinkedList<Liaison>() : routes;
-		this.noeudsPasses = noeudsIntermediaires == null? new LinkedList<Noeud>() : noeudsIntermediaires;
 		
 		// calcul longueur
 		longueur = 0;
@@ -54,6 +54,7 @@ public class Chemin {
 		
 		// asset
 		Noeud lastNoeud = noeudsPasses.get(noeudsPasses.size() - 1);
+		
 		if(liaison.getDescripteur().isSensUnique())	{
 			
 			// vérif si prédécesseur est bien la fin de chemin
@@ -87,6 +88,14 @@ public class Chemin {
 		return longueur;
 	}
 	
+	public Noeud getOrigine()	{
+		return noeudsPasses.get(0);
+	}
+	
+	public Noeud getDestinataire()	{
+		return noeudsPasses.get(noeudsPasses.size() - 1);
+	}
+	
 	/**
 	 * Dessiner l'emsemble de chemin
 	 * @param dessin
@@ -106,7 +115,7 @@ public class Chemin {
 	 */
 	public static Liaison getLiaisonOptimal(Noeud depart, Noeud dest)	{
 		// TODO à vérifier l'endroit plus propre pour mettre ce bout de code
-		List<Liaison> routes = depart.getLiaisons_1vers2(dest);
+		List<Liaison> routes = depart.getLiaisons(dest);
 		Collections.sort(routes);
 		return routes.get(0);
 	}
@@ -116,7 +125,8 @@ public class Chemin {
 		StringBuilder str = new StringBuilder();
 		for(Noeud n : noeudsPasses)
 			str.append(n.toString() + " - ");
-		str.delete(-2, -1);
-		return "Chemin longueur "+longueur+" :" + str.toString();
+		int length = str.length();
+		str.delete(length-3, length-1);
+		return "Chemin longueur "+longueur+" :\n[" + str.toString()+"]";
 	}
 }

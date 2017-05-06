@@ -49,7 +49,7 @@ public class BinaryHeap<E extends Comparable<E>> {
 		this.dictionary = new HashMap<E, Integer>(heap.dictionary);
     }
 
-    // Sets an element in the array
+    
     private void arraySet(int index, E value) {
 		if (index == this.array.size()) {
 		    this.array.add(value) ;
@@ -225,7 +225,7 @@ public class BinaryHeap<E extends Comparable<E>> {
     }
     
     /**
-     * Regarde si l'élément existe dans le tas
+     * Regarde si l'ï¿½lï¿½ment existe dans le tas
      * @param args
      */
     public boolean existe(E element){
