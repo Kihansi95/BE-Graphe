@@ -5,6 +5,8 @@ import java.io.* ;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JSpinner.ListEditor;
+
 import base.BinaryHeap;
 import base.Dessin;
 import base.Readarg ;
@@ -53,15 +55,16 @@ public class Pcc extends Algo {
 	dessin.setWidth(3);
 	
 	// DEBUT IMPLEMENTATION DIJKSTRA 
+	//--------------------------------------------------------------------
 	// LES VARIABLES
-	Chemin chemin_final = new Chemin();
-	// contiendra les labels (avec le cout des noeuds)
     BinaryHeap<Label> tas = new BinaryHeap<Label>() ;
-    // Tableau qui contient tous les labels (choix d'implï¿½mentation)
-   ArrayList<Label>liste_labels = new ArrayList<Label>() ;
- // c'est dans cette liste qu'on m.a.j. le cout, le marquage, ... pour chaque sommets.
-    
-	ArrayList<Noeud> liste_sommets = (ArrayList<Noeud>) graphe.getNoeuds() ;
+    // Tableau qui contient tous les labels (choix d'implémentation)
+    ArrayList<Label>liste_labels = new ArrayList<Label>() ;
+    // c'est dans cette liste qu'on m.a.j. le cout, le marquage, ... pour chaque sommets.
+   	ArrayList<Noeud> liste_sommets = (ArrayList<Noeud>) graphe.getNoeuds() ;
+   	Noeud sorigine = liste_sommets.get(origine);
+	Chemin chemin_recherche = new Chemin(sorigine);
+
 	int nbsommets = liste_sommets.size();
 	
 	int nb_marques = 0;
@@ -78,7 +81,7 @@ public class Pcc extends Algo {
 	// INIT 
 	for (Noeud sommet : liste_sommets ){
 		Label lab = new Label(sommet);
-		// a la creation du label, marquage a false, pere null et cout fixï¿½ ï¿½ max value
+		// a la creation du label, marquage a false, pere null et cout fixe a max value
 		liste_labels.add(sommet.getNumero(), lab);
 	}
 	// on set le label de l'origine : cout et absence de pere
@@ -86,7 +89,7 @@ public class Pcc extends Algo {
 	liste_labels.get(origine).setCout(0);
 	liste_labels.get(origine).setPere(-1); 
 	tas.insert(liste_labels.get(origine)) ;
-	
+	//-------------------------------------------------------------------------
 	// ITERATION ( parcours)
 	boolean destination_atteinte = false ;
 	Label courant = null ;
@@ -95,17 +98,15 @@ public class Pcc extends Algo {
 		System.out.println("Sorry, you already made it to your destination. I can't do anything for you...\n");
 	}
 	else {
-				ArrayList<Liaison> routes_vers_voisins = new ArrayList<Liaison>(); ;
+		ArrayList<Liaison> routes_vers_voisins = new ArrayList<Liaison>();
 		Label lab_next ; 
 		
 		while (!tas.isEmpty() && !destination_atteinte){
 			courant = tas.deleteMin();
-			chemin_final.addSommet(liste_sommets.get(courant.getSommetCourant()));
-
-			
+			chemin_recherche.addSommet(liste_sommets.get(courant.getSommetCourant())); // on ajoute le sommet au tas et on le marque
 			courant.setMarquage(true);
 			if (liste_sommets.get(courant.getSommetCourant())== liste_sommets.get(destination)){
-				destination_atteinte = true ; // on sort de la boucle (on peut pas faire break ?)
+				destination_atteinte = true ; // on sort de la boucle (on ne peut pas faire break ?)
 			}
 			
 			routes_vers_voisins = liste_sommets.get(courant.getSommetCourant()).getLiaisons();
@@ -115,7 +116,7 @@ public class Pcc extends Algo {
 				lab_next = liste_labels.get(rt.getSuccesseur().getNumero());// on recupere le label
 				// CONDITION POUR DIJKSTRA
 				float coutAux;
-				if (!lab_next.getMarquage()){
+				if (!lab_next.getMarquage()){ // si marquage false
 					//suivant le mode choisi 
 					if (choix_tps_dist){ // en temporel 
 						coutAux = courant.getCout() + rt.coutRoute(choix_tps_dist);
@@ -136,9 +137,10 @@ public class Pcc extends Algo {
 							tas.insert(lab_next);
 						}
 						nb_marques++ ;
-						chemin_final.addSommet(liste_sommets.get(lab_next.getSommetCourant()));
-						chemin_final.addRoute(rt);
+						chemin_recherche.addSommet(liste_sommets.get(lab_next.getSommetCourant()));
+						chemin_recherche.addRoute(rt);
 					}
+					// else on garde le chemin le plus cort ou égal déja choisi (choix)
 				}
 			}// fin FOR
 		}//fin WHILE
@@ -166,9 +168,10 @@ public class Pcc extends Algo {
 			
 			
 			*/
-			/*System.out.println("je suis là ! \n");
+			System.out.println("je suis là bis ! \n");
 			// en partant de la destination et en retournant a l'envers grace au pere !!!
 			int position = destination ;
+			Chemin chemin_final ;
 			Label lab_pos;
 			Noeud sommet_pos;	
 			while(position!=origine){
@@ -186,9 +189,9 @@ public class Pcc extends Algo {
 		}
 		
 		// TODO : separer Dijkstra en plusieurs mï¿½thodes pour plus de lisibilitï¿½ !!
-		System.out.println(" === Longueur du chemin : "+chemin_final.getDistanceTotale()+" metres");
-		System.out.println(" === temps du chemin : "+chemin_final.getTempsTotal()+" minutes");
-		chemin_final.dessiner(dessin, graphe.getZone());
+		System.out.println(" === Longueur du chemin : "+chemin_recherche.getDistanceTotale()+" metres");
+		System.out.println(" === temps du chemin : "+chemin_recherche.getTempsTotal()+" minutes");
+		chemin_recherche.dessiner(dessin, graphe.getZone());
 
 		}
 	

@@ -72,7 +72,7 @@ public class Noeud {
 	/*
 	 * getteur de la liste des liaisons
 	 */
-	public List<Liaison> getLiaisons(){
+	public ArrayList<Liaison> getLiaisons(){
 		return new ArrayList<Liaison> (this.liaisons);
 	}
 	

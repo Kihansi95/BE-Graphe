@@ -64,6 +64,9 @@ public class Liaison implements Comparable<Liaison>{
 			throw new IllegalArgumentException();
 		segments.add(segment);
 	}
+	public List<Segment> getSegments (){
+		return segments ;
+	}
 
 	/**
 	 * @return the descripteurs
@@ -101,7 +104,7 @@ public class Liaison implements Comparable<Liaison>{
 	 * @param dessin 
 	 * @param int: numéro de zone dans lequel on dessine
 	 */
-	public void dessiner(Dessin dessin, int zone)	{
+	public void dessiner(Dessin dessin, int zone )	{
 		if(dessin == null)
 			throw new IllegalArgumentException("dessin null");
 		

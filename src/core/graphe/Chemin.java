@@ -1,6 +1,8 @@
 package core.graphe;
+import java.awt.Color;
 import  java.util. * ;
 
+import base.Couleur;
 import base.Dessin;
 
 /**
@@ -13,7 +15,7 @@ public class Chemin {
 	
 	// listes des chemins empruntés dans l'ordre du chemin
 	private List<Noeud> liste_sommets_empruntes ;
-	
+	private Noeud origine ;
 	/**
 	 * liaison optimal à chaque fois qu'on passe une noeud à l'autre
 	 */
@@ -28,19 +30,34 @@ public class Chemin {
 	/**
 	 * constructeur 
 	 */
-	public Chemin(){
+	public Chemin(Noeud origine){
 		liste_sommets_empruntes = new ArrayList<Noeud>();
 		routesEmpruntes = new ArrayList<Liaison>();
 		temps_total = 0 ;
 		distance_totale = 0 ;	
+		this.origine = origine ;
 	}
 	
-	/*public Chemin(ArrayList<Noeud> liste_som, ArrayList<Liaison> routesEmprunt,float tmps_min, float dist){
-		this.liste_sommets_empruntes = liste_som ;
+	public Chemin(Noeud origine,ArrayList<Noeud> liste_som, ArrayList<Liaison> routesEmprunt,float tmps_min, float dist){
+		if(routesEmpruntes == null ||  liste_som == null || (routesEmpruntes.size()-1) != liste_som.size()){
+			throw new IllegalArgumentException("Nombre de routes et sommets ne correspondent pas entre eux...");
+		}
+		this.liste_sommets_empruntes = new ArrayList<Noeud>();
+		
+		if (liste_som != null){
+			this.liste_sommets_empruntes.addAll(liste_som) ;
+		}
+		
+		this.routesEmpruntes = new ArrayList<Liaison>();
+		if (routesEmprunt != null){
+			this.routesEmpruntes.addAll(routesEmprunt);
+		}
+		// TODO : calcul temps distance avec for
+		
 		this.temps_total = tmps_min ;
 		this.distance_totale = dist ;
-		this.routesEmpruntes = routesEmprunt;
-	}*/
+		this.origine = origine ;
+	}
 	
 	/**
 	 * getteur temps_total
@@ -83,8 +100,15 @@ public class Chemin {
 		routesEmpruntes.add(route);
 		this.distance_totale =+ route.coutRoute(false);
 		this.temps_total=+ route.coutRoute(true);
+		if (!liste_sommets_empruntes.contains(route.getPredecesseur())){
+			liste_sommets_empruntes.add(route.getPredecesseur());
+		}
+		if(!liste_sommets_empruntes.contains(route.getSuccesseur())){
+			liste_sommets_empruntes.add(route.getSuccesseur());
+		}
+		
 	}
-	public void addRoute (Noeud sommet_next, boolean choix){
+	/*public void addRoute (Noeud sommet_next, boolean choix){
 		if (liste_sommets_empruntes.size()== 0){
 			liste_sommets_empruntes.add(sommet_next);
 		}
@@ -151,19 +175,38 @@ public class Chemin {
 			setTempsTotal(getTempsTotal()+temps);			
 		}
 	}
-	
+	*/
 	/**
 	 * Dessiner l'emsemble de chemin
 	 * @param dessin
 	 * @param zone
 	 */
 	public void dessiner(Dessin dessin, int zone)	{
-		System.out.println ("nb sommet"+ liste_sommets_empruntes.size()+ "\n");
+		System.out.println ("nb sommet emprunt�s"+ liste_sommets_empruntes.size()+ "\n");
 		liste_sommets_empruntes.get(0).dessiner(dessin);
 		for(Liaison route: routesEmpruntes){
+			System.out.println("j'essaie de dessiner une route\n");
 			int i=1 ;
 			route.dessiner(dessin, zone);
-			liste_sommets_empruntes.get(i).dessiner(dessin);
+			
+			if(dessin == null)
+				throw new IllegalArgumentException("dessin null");
+			
+			dessin.setColor(Color.GREEN);
+			
+			float current_long = route.getPredecesseur().getLongitude();
+			float current_lat = route.getPredecesseur().getLatitude();
+			
+			for(Segment s: route.getSegments())	{
+				s.dessiner(dessin, current_long, current_lat);
+				current_long += s.getDeltaLong();
+				current_lat += s.getDeltaLat();
+			}
+			
+			if (route.getSuccesseur().inZone(zone)) {
+				dessin.drawLine(current_long, current_lat, route.getSuccesseur().getLongitude(), route.getSuccesseur().getLatitude());
+			}
+			//liste_sommets_empruntes.get(i).dessiner(dessin);
 			i++;
 		}
 	}
