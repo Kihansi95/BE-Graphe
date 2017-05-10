@@ -4,6 +4,8 @@ import  java.util. * ;
 import base.Dessin;
 import core.graphe.Liaison;
 import core.graphe.Noeud;
+import exceptions.CheminNonOrigineException;
+import exceptions.CheminNonRouteException;
 
 /**
  *  permet de retrnir le chemin entre 2 sommets (origine et destination) avec les routes empruntées 
@@ -11,12 +13,12 @@ import core.graphe.Noeud;
 public class Chemin {
 	
 	// listes des chemins empruntés dans l'ordre du chemin
-	private List<Noeud> noeudsPasses ;
+	private Stack<Noeud> noeudsPasses ;
 	
 	/**
 	 * liaison optimal à chaque fois qu'on passe une noeud à l'autre
 	 */
-	private List<Liaison> routesEmpruntes;
+	private Stack<Liaison> routesEmpruntes;
 	
 	private float longueur;
 	
@@ -31,13 +33,15 @@ public class Chemin {
 			throw new IllegalArgumentException("Nombre de routes et nombre de noeuds intermediaires non correspondant");
 		
 		// add noeuds
-		noeudsPasses = new ArrayList<Noeud>();
-		noeudsPasses.add(origine);
+		noeudsPasses = new Stack<Noeud>();
+		noeudsPasses.push(origine);
 		if(noeudsIntermediaires != null)
 			noeudsPasses.addAll(noeudsIntermediaires);
 		
 		// init routes
-		this.routesEmpruntes = routes == null? new LinkedList<Liaison>() : routes;
+		this.routesEmpruntes = new Stack<Liaison>();
+		if(routes != null)
+			this.routesEmpruntes.addAll(routes);
 		
 		// calcul longueur
 		longueur = 0;
@@ -73,27 +77,56 @@ public class Chemin {
 		
 		// add new noeud and new liaison
 		if(liaison.getDescripteur().isSensUnique())	{
-			noeudsPasses.add(liaison.getSuccesseur());
+			noeudsPasses.push(liaison.getSuccesseur());
 		}	else	{
 			Noeud newNoeud = liaison.getPredecesseur() == lastNoeud? liaison.getSuccesseur() : liaison.getPredecesseur();
-			noeudsPasses.add(newNoeud);
+			noeudsPasses.push(newNoeud);
 		}
-		routesEmpruntes.add(liaison);
+		routesEmpruntes.push(liaison);
 		
 		// update longueur
 		longueur += liaison.getLongueur();
 	}
 	
+	/**
+	 * Supprimer le dernier route et dernier noeud ajouté
+	 * @return Noeud: noeud retiré
+	 * @throws CheminNonOrigineException
+	 * @throws CheminNonRouteException
+	 */
+	public Noeud removeLastNoeud() throws CheminNonOrigineException, CheminNonRouteException	{
+		if(noeudsPasses == null || noeudsPasses.isEmpty())
+			throw new CheminNonOrigineException("Le chemin n'a pas d'origine, erreur dans construction!");
+		
+		if(noeudsPasses.size() == 1)
+			throw new CheminNonRouteException();
+		
+		this.longueur -= routesEmpruntes.pop().getLongueur();	// update longueur, TODO check si ça marche correctement
+		return noeudsPasses.pop();
+	}
+	
+	/**
+	 * Get longueur total de chemin
+	 * @return float
+	 */
 	public float getLongueur()	{
 		return longueur;
 	}
 	
+	/**
+	 * Get le noeud d'origine de chemin
+	 * @return Noeud
+	 */
 	public Noeud getOrigine()	{
 		return noeudsPasses.get(0);
 	}
 	
+	/**
+	 * Get le dernier noeud ajouté
+	 * @return Noeud: noeud destinataire
+	 */
 	public Noeud getDestinataire()	{
-		return noeudsPasses.get(noeudsPasses.size() - 1);
+		return noeudsPasses.peek();
 	}
 	
 	/**
@@ -104,7 +137,7 @@ public class Chemin {
 	public void dessiner(Dessin dessin, int zone)	{
 		for(Liaison route: routesEmpruntes)
 			route.dessiner(dessin, zone);
-		routesEmpruntes.get(routesEmpruntes.size() - 1).dessiner(dessin, zone);
+		//routesEmpruntes.get(routesEmpruntes.size() - 1).dessiner(dessin, zone);
 	}
 	
 	/**

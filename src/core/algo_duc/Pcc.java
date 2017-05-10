@@ -102,6 +102,9 @@ public class Pcc extends Algo {
 		else
 			System.out.println(solution);
 		
+		
+		
+		
     }
     
     /**
@@ -126,6 +129,16 @@ public class Pcc extends Algo {
      */
     private Dessin getDessin()	{
     	return this.graphe.getDessin();
+    }
+    
+    /**
+     * Ecrire la solution dans fichier de sortie.
+     * @param solution
+     */
+    private void writeDown(Chemin solution)	{
+    	this.sortie.println("Solution de Dijkstra de "+zoneOrigine + ":" + origine + " vers " + zoneDestination + ":" + destination);
+    	this.sortie.println(solution);
+		this.sortie.flush();
     }
 
 }

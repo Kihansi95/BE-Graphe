@@ -58,7 +58,7 @@ public class Pcc extends Algo {
 	// contiendra les labels (avec le cout des noeuds)
     BinaryHeap<Label> tas = new BinaryHeap<Label>() ;
     // Tableau qui contient tous les labels (choix d'implï¿½mentation)
-   ArrayList<Label>liste_labels = new ArrayList<Label>() ;
+    List<Label>liste_labels = new ArrayList<Label>() ;
  // c'est dans cette liste qu'on m.a.j. le cout, le marquage, ... pour chaque sommets.
     
 	ArrayList<Noeud> liste_sommets = (ArrayList<Noeud>) graphe.getNoeuds() ;
@@ -95,7 +95,7 @@ public class Pcc extends Algo {
 		System.out.println("Sorry, you already made it to your destination. I can't do anything for you...\n");
 	}
 	else {
-				ArrayList<Liaison> routes_vers_voisins = new ArrayList<Liaison>(); ;
+				List<Liaison> routes_vers_voisins = new ArrayList<Liaison>(); ;
 		Label lab_next ; 
 		
 		while (!tas.isEmpty() && !destination_atteinte){
@@ -147,7 +147,7 @@ public class Pcc extends Algo {
 		// ACTUALISER LE CHEMIN SI le label courant est la destination :
 		if (liste_sommets.get(courant.getSommetCourant()) == liste_sommets.get(destination)){
 			/*// en se servant du tas 
-			System.out.println("je suis là ! : \n");
+			System.out.println("je suis lï¿½ ! : \n");
 			tas.printSorted();
 
 			Label position; 
@@ -166,7 +166,7 @@ public class Pcc extends Algo {
 			
 			
 			*/
-			/*System.out.println("je suis là ! \n");
+			/*System.out.println("je suis lï¿½ ! \n");
 			// en partant de la destination et en retournant a l'envers grace au pere !!!
 			int position = destination ;
 			Label lab_pos;
