@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -91,6 +92,7 @@ public class Noeud {
 	
 	/*
 	 * getteur liste des liaisons de 1 vers 2
+	 * TODO sert vriament � quelque chose ? 
 	 */
 	public ArrayList<Liaison> getLiaisons_1vers2 (Noeud dest){
 		ArrayList<Liaison> liste_retour = new ArrayList<Liaison>() ;
@@ -102,10 +104,15 @@ public class Noeud {
 				liste_retour.add(l);
 			}
 		}
-		
 		return liste_retour ;
 	}
 	
+	public Liaison getLiaisonOptimal( Noeud dest)	{
+		// TODO à vérifier l'endroit plus propre pour mettre ce bout de code
+		List<Liaison> routes = this.getLiaisons(dest);
+		Collections.sort(routes);
+		return routes.get(0);
+	}
 	/**
 	 * @return le nombre de successeur
 	 * @throws PropreSuccesseurException

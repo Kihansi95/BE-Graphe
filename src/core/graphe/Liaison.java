@@ -9,7 +9,7 @@ import base.Dessin;
 
 public class Liaison implements Comparable<Liaison>{
 	
-	private float longueur;
+	private float longueur; // en metres !!!!!
 	
 	private Descripteur descripteur;
 	private List<Segment> segments;
@@ -128,7 +128,11 @@ public class Liaison implements Comparable<Liaison>{
 		float cout = 0.0f ;
 		if (choix==true){
 			// on calcul le cout temporel
-			cout = (this.getLongueur()*this.getDescripteur().vitesseMax());
+			// la vitesse est en km/h
+			//la longueur en m.
+			// donc on met la vitesse en m/h 
+			// et pour plus de lisibilité, on met le temps en minute
+			cout = (this.getLongueur()/(this.getDescripteur().vitesseMax()* 1000))*60;
 		}
 		else {
 			// on calcul le cout en distance 

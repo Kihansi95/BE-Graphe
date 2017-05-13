@@ -32,6 +32,7 @@ public class Pcc extends Algo {
 	super(gr, sortie, readarg) ;
 
 	this.zoneOrigine = gr.getZone () ;
+	
 	this.origine = readarg.lireInt ("Numero du sommet d'origine ? ") ;
 
 	// Demander la zone et le sommet destination.
@@ -63,7 +64,8 @@ public class Pcc extends Algo {
     // c'est dans cette liste qu'on m.a.j. le cout, le marquage, ... pour chaque sommets.
    	ArrayList<Noeud> liste_sommets = (ArrayList<Noeud>) graphe.getNoeuds() ;
    	Noeud sorigine = liste_sommets.get(origine);
-	Chemin chemin_recherche = new Chemin(sorigine);
+	Chemin chemin_recherche = new Chemin();
+	Chemin chemin_final = new Chemin() ;
 
 	int nbsommets = liste_sommets.size();
 	
@@ -148,51 +150,39 @@ public class Pcc extends Algo {
 		System.out.println("je suis ici ! \n" + "destination atteinte : " + destination_atteinte + "\n");
 		// ACTUALISER LE CHEMIN SI le label courant est la destination :
 		if (liste_sommets.get(courant.getSommetCourant()) == liste_sommets.get(destination)){
-			/*// en se servant du tas 
-			System.out.println("je suis là ! : \n");
-			tas.printSorted();
-
-			Label position; 
-			Noeud sommet_pos ;
-			Noeud next ;
 			
-			while (tas.isEmpty()== false){
-				
-				System.out.println("il y a " + tas.size()+ " sommets dans le tas \n");
-				position = tas.deleteMin();
-				sommet_pos = liste_sommets.get(position.getSommetCourant());
-				next = liste_sommets.get(tas.findMin().getSommetCourant());
-				chemin_final.addSommet(sommet_pos);
-				chemin_final.addRoute(next, choix_tps_dist);
-			}
-			
-			
-			*/
 			System.out.println("je suis là bis ! \n");
 			// en partant de la destination et en retournant a l'envers grace au pere !!!
 			int position = destination ;
-			Chemin chemin_final ;
 			Label lab_pos;
+			Noeud sommet_pere ;
 			Noeud sommet_pos;	
+			Liaison liaison_aux ;
 			while(position!=origine){
-				sommet_pos = liste_sommets.get(position) ;
-				chemin_final.addSommet(sommet_pos);
 				lab_pos = liste_labels.get(position);
-				chemin_final.addRoute(liste_sommets.get(lab_pos.getPere()), choix_tps_dist);
+				sommet_pos = liste_sommets.get(position) ;
+				sommet_pere = liste_sommets.get(lab_pos.getPere());
+				chemin_final.addSommet(sommet_pos);
+				liaison_aux = sommet_pere.getLiaisonOptimal(sommet_pos);
+				chemin_final.addRoute(liaison_aux);
 				// on remonte sur le noeud precedent
 				position = lab_pos.getPere();
 			}
 			// enfin on ajoute le noeud origine 
 			// la liaison vers l'origine a deja ete ajoutee
 			chemin_final.addSommet(liste_sommets.get(origine));
-			*/
+			
+			chemin_final.reverse();
 		}
 		
 		// TODO : separer Dijkstra en plusieurs mï¿½thodes pour plus de lisibilitï¿½ !!
-		System.out.println(" === Longueur du chemin : "+chemin_recherche.getDistanceTotale()+" metres");
-		System.out.println(" === temps du chemin : "+chemin_recherche.getTempsTotal()+" minutes");
-		chemin_recherche.dessiner(dessin, graphe.getZone());
-
+		// TODO : Faire hashmap entre sommet et label
+		System.out.println(" === Longueur du chemin recherche: "+chemin_recherche.getDistanceTotale()+" metres");
+		System.out.println(" === temps du chemin recherche: "+chemin_recherche.getTempsTotal()+" minutes");
+		System.out.println(" === Longueur du chemin final: "+chemin_final.getDistanceTotale()+" metres");
+		System.out.println(" === temps du chemin final: "+chemin_final.getTempsTotal()+" minutes");
+		chemin_recherche.dessiner(dessin, graphe.getZone(), Color.GREEN);
+		chemin_final.dessiner(dessin, graphe.getZone(), Color.BLUE);
 		}
 	
 	}
