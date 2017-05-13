@@ -15,7 +15,7 @@ public class Chemin {
 	
 	// listes des chemins empruntés dans l'ordre du chemin
 	private List<Noeud> liste_sommets_empruntes ;
-	private Noeud origine ;
+
 	/**
 	 * liaison optimal à chaque fois qu'on passe une noeud à l'autre
 	 */
@@ -30,15 +30,14 @@ public class Chemin {
 	/**
 	 * constructeur 
 	 */
-	public Chemin(Noeud origine){
+	public Chemin(){
 		liste_sommets_empruntes = new ArrayList<Noeud>();
 		routesEmpruntes = new ArrayList<Liaison>();
 		temps_total = 0 ;
 		distance_totale = 0 ;	
-		this.origine = origine ;
 	}
 	
-	public Chemin(Noeud origine,ArrayList<Noeud> liste_som, ArrayList<Liaison> routesEmprunt,float tmps_min, float dist){
+	public Chemin(ArrayList<Noeud> liste_som, ArrayList<Liaison> routesEmprunt,float tmps_min, float dist){
 		if(routesEmpruntes == null ||  liste_som == null || (routesEmpruntes.size()-1) != liste_som.size()){
 			throw new IllegalArgumentException("Nombre de routes et sommets ne correspondent pas entre eux...");
 		}
@@ -56,7 +55,6 @@ public class Chemin {
 		
 		this.temps_total = tmps_min ;
 		this.distance_totale = dist ;
-		this.origine = origine ;
 	}
 	
 	/**
@@ -86,6 +84,20 @@ public class Chemin {
 	}
 	
 	/**
+	 * getteur liste sommets
+	 */
+	
+	public List<Noeud> getListe_sommets(){
+		return liste_sommets_empruntes ;
+	}
+	/** 
+	 * getteur liste_liaison
+	 */
+	
+	public List<Liaison> getListe_liaisons(){
+		return routesEmpruntes ;
+	}
+	/**
 	 * pour ajouter des sommets 
 	 */
 	public void addSommet( Noeud sommet){
@@ -98,8 +110,8 @@ public class Chemin {
 	 */	
 	public void addRoute(Liaison route){
 		routesEmpruntes.add(route);
-		this.distance_totale =+ route.coutRoute(false);
-		this.temps_total=+ route.coutRoute(true);
+		this.distance_totale = this.distance_totale + route.coutRoute(false);
+		this.temps_total=this.temps_total+ route.coutRoute(true);
 		if (!liste_sommets_empruntes.contains(route.getPredecesseur())){
 			liste_sommets_empruntes.add(route.getPredecesseur());
 		}
@@ -108,91 +120,25 @@ public class Chemin {
 		}
 		
 	}
-	/*public void addRoute (Noeud sommet_next, boolean choix){
-		if (liste_sommets_empruntes.size()== 0){
-			liste_sommets_empruntes.add(sommet_next);
-		}
-		else {
-			// on prend la route en fin de liste
-			Noeud sommet_actuel = liste_sommets_empruntes.get(liste_sommets_empruntes.size()-1);
-			// on fait la liste des routes possibles entre les 2 sommets 
-			ArrayList<Liaison> routes = sommet_actuel.getLiaisons_1vers2(sommet_next);
-			Liaison route_plus_court ;
-			float temps ;
-			float distance ;
-			float temps_aux ;
-			float distance_aux ;
-			
-			// on teste si il existe bien des routes : 
-			if (routes.size()==0){
-				throw new EmptyStackException();
-			}
-			else {
-				
-				route_plus_court = routes.get(0);
-				temps = route_plus_court.coutRoute(true) ; 
-				distance = route_plus_court.coutRoute(false) ;
-				// on cherche le chemin le plus court en temporel :
-				if (choix == true){
-					for (Liaison rt : routes){
-						temps_aux = rt.coutRoute(true);
-						distance_aux = rt.coutRoute(false);
-						if (temps_aux<temps){
-							route_plus_court = rt ;
-							distance = distance_aux ;
-							temps = temps_aux ;
-						}
-						if (temps_aux==temps && distance_aux < distance){
-							route_plus_court = rt ;
-							distance = distance_aux ;
-							temps= temps_aux ;
-						}
-					}
-				}
-				//choix== false chemin le plus court en distance 
-				else {
-					for (Liaison rt : routes){
-						temps_aux = rt.coutRoute(true);
-						distance_aux = rt.coutRoute(false);
-						if (distance_aux<distance){
-							route_plus_court = rt ;
-							distance = distance_aux ;
-							temps = temps_aux ;
-						}
-						if (distance_aux==distance && temps_aux < temps){
-							route_plus_court = rt ;
-							distance = distance_aux ;
-							temps= temps_aux ;
-						}
-					}
-				}
-				
-			}
-			// on ajoute le prochain sommet  et on a la route la plus courte (en distance ou temps) donc on uptdate les couts 
-			liste_sommets_empruntes.add(sommet_next);
-			this.routesEmpruntes.add(route_plus_court);
-			setDistanceTotale(getDistanceTotale()+distance);
-			setTempsTotal(getTempsTotal()+temps);			
-		}
-	}
-	*/
+	
+	
+	
 	/**
 	 * Dessiner l'emsemble de chemin
 	 * @param dessin
 	 * @param zone
 	 */
-	public void dessiner(Dessin dessin, int zone)	{
+	public void dessiner(Dessin dessin, int zone, Color couleur)	{
 		System.out.println ("nb sommet emprunt�s"+ liste_sommets_empruntes.size()+ "\n");
 		liste_sommets_empruntes.get(0).dessiner(dessin);
 		for(Liaison route: routesEmpruntes){
-			System.out.println("j'essaie de dessiner une route\n");
 			int i=1 ;
 			route.dessiner(dessin, zone);
 			
 			if(dessin == null)
 				throw new IllegalArgumentException("dessin null");
 			
-			dessin.setColor(Color.GREEN);
+			dessin.setColor(couleur);
 			
 			float current_long = route.getPredecesseur().getLongitude();
 			float current_lat = route.getPredecesseur().getLatitude();
@@ -209,7 +155,16 @@ public class Chemin {
 			//liste_sommets_empruntes.get(i).dessiner(dessin);
 			i++;
 		}
+		liste_sommets_empruntes.get(liste_sommets_empruntes.size()-1).dessiner(dessin);
 	}
-
+	
+	public void reverse(){
+		if(!this.liste_sommets_empruntes.isEmpty()){
+			Collections.reverse(getListe_sommets());
+		}
+		if (!this.routesEmpruntes.isEmpty()){
+			Collections.reverse(getListe_liaisons());
+		}
+	}
 	
 }
