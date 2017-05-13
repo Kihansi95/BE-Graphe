@@ -5,6 +5,7 @@ import java.io.* ;
 import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Stack;
 
 import base.BinaryHeap;
 import base.Dessin;
@@ -13,6 +14,7 @@ import core.Algo;
 import core.Graphe;
 import core.graphe.Liaison;
 import core.graphe.Noeud;
+import exceptions.SommetNonExisteException;
 
 public class Pcc extends Algo {
 
@@ -27,12 +29,19 @@ public class Pcc extends Algo {
     public Pcc(Graphe gr, PrintStream sortie, Readarg readarg) {
 		super(gr, sortie, readarg) ;
 	
-		this.zoneOrigine = gr.getZone () ;
-		this.origine = readarg.lireInt ("Numero du sommet d'origine ? ") ;
+		try {
+			this.origine = readarg.lireInt ("Numero du sommet d'origine ? ") ;
+			this.zoneOrigine = gr.getZone (this.origine) ;
+
+			// Demander la zone et le sommet destination.
+			this.destination = readarg.lireInt ("Numero du sommet destination ? ");
+			this.zoneDestination = gr.getZone (this.destination) ;
+			
+		} catch (SommetNonExisteException e) {
+			System.err.println("Vous essayer de choisir un sommet n'existe pas sur la carte.");
+		}
 	
-		// Demander la zone et le sommet destination.
-		this.zoneOrigine = gr.getZone () ;
-		this.destination = readarg.lireInt ("Numero du sommet destination ? ");
+
     }
 
     public void run() {
@@ -40,7 +49,6 @@ public class Pcc extends Algo {
 		System.out.println("Run PCC de " + zoneOrigine + ":" + origine + " vers " + zoneDestination + ":" + destination) ;
 	
 		// init label
-		Chemin solution;
 		AbstractMap<Noeud, Label> sommets = new HashMap<Noeud, Label>();
 		BinaryHeap<Label> visites = new BinaryHeap<Label>();
 		Label label_destination = null;
@@ -52,8 +60,11 @@ public class Pcc extends Algo {
 			visites.insert(label);
 			if(noeud.getNumero() == this.destination)
 				label_destination = label;
-			if(noeud.getNumero() == this.origine)
+			if(noeud.getNumero() == this.origine)	{
 				label_origine = label;
+				label.setCout(0f);
+				visites.update(label);
+			}
 		}
 		
 		if(label_destination == null)
@@ -62,9 +73,7 @@ public class Pcc extends Algo {
 			throw new RuntimeException("Sommet origine not found, à vérifier l'algo");
 		
 		// init algo
-		Label label_actuel = label_origine;
-		solution = new Chemin(label_actuel.getSommetCourant());
-		label_actuel.setCout(0f);
+		Label label_actuel = visites.deleteMin(); // pop the origine;
 		
 		// algo procédure
 		while(!label_actuel.equals(label_destination))	{
@@ -86,25 +95,43 @@ public class Pcc extends Algo {
 			
 			// fin de la visite du sommet actuel, marquer et place dans la solution
 			label_actuel.marquer();
-			if(label_actuel != label_origine)
-				solution.addRoute(label_actuel.getLiaison());
 			label_actuel.getSommetCourant().dessiner(this.getDessin(), Color.DARK_GRAY); 
 
 			// label suivant
 			label_actuel = visites.deleteMin();
 		}	
 		
-		solution.addRoute(label_actuel.getLiaison());
-		label_actuel.getSommetCourant().dessiner(this.getDessin(), Color.DARK_GRAY); 
+		Chemin solution = buildChemin(label_actuel);
 		
-		if(!label_actuel.equals(label_destination))
+		if(!label_actuel.equals(label_destination))	{
+			System.out.println("label actuel: "+label_actuel);
 			System.out.println("Pas de route de "+label_origine.getSommetCourant() +" vers "+label_destination.getSommetCourant());
-		else
-			System.out.println(solution);
+		}	else	{
+			System.out.println("Le chemin le plus cours: "+solution);
+		}
 		
-		
-		
-		
+		solution.dessiner(getDessin(), this.graphe.getZone(), Color.RED);
+		writeDown(solution);
+    }
+    
+    /**
+     * Reconstruire le Chemin grace a la notion de label
+     * @param destination: Le dernier label apres l'algo
+     * @return Chemin: chemin de solution
+     */
+    private Chemin buildChemin(Label destination)	{
+    	
+    	Stack<Liaison> tmp = new Stack<Liaison>();
+    	
+    	while(destination.getLiaison() != null)	{
+    		tmp.push(destination.getLiaison());
+    		destination = destination.getPere();
+    	}
+    	
+    	Chemin chemin = new Chemin(destination.getSommetCourant());
+    	while(!tmp.isEmpty()) chemin.addRoute(tmp.pop());
+    	
+    	return chemin;
     }
     
     /**

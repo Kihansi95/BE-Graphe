@@ -54,7 +54,7 @@ public class Label implements Comparable < Label > {
 	}
 
 	public int compareTo(Label label) { 
-		// on multiplie par mille pour prendre en compte les chiffres derière la virgule
+		// on multiplie par mille pour prendre en compte les chiffres deriï¿½re la virgule
 		return (int)((this.cout - label.cout)*1000) ;
 	}
 }

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import base.Couleur;
 import base.Dessin;
 import exceptions.PropreSuccesseurException;
 
@@ -144,7 +145,6 @@ public class Noeud {
 	public void dessiner(Dessin dessin, Color color){
 		dessin.setColor(color);
 		dessin.drawPoint (longitude, latitude, RAD);
-		
 	}
 	
 	public void dessiner(Dessin dessin)	{
@@ -157,6 +157,10 @@ public class Noeud {
 	
 	public void setZone(int zone)	{
 		this.zone = zone;
+	}
+	
+	public int getZone()	{
+		return zone;
 	}
 	
 	@Override

@@ -1,5 +1,6 @@
 package core.graphe;
 
+import java.awt.Color;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -105,10 +106,22 @@ public class Liaison implements Comparable<Liaison>{
 	 * @param int: numéro de zone dans lequel on dessine
 	 */
 	public void dessiner(Dessin dessin, int zone )	{
-		if(dessin == null)
-			throw new IllegalArgumentException("dessin null");
 		
 		Couleur.set(dessin, getDescripteur().getType()) ;	// couleur par définition de la route
+		this.dessiner(dessin, zone, null);
+	}
+	
+	/**
+	 * Dessiner la route avec couleur
+	 * @param dessin
+	 * @param zone
+	 * @param color
+	 */
+	public void dessiner(Dessin dessin, int zone, Color color)	{
+		if(color != null)
+			dessin.setColor(color);
+		if(dessin == null)
+			throw new IllegalArgumentException("dessin null");
 		
 		float current_long = predecesseur.getLongitude();
 		float current_lat = predecesseur.getLatitude();

@@ -1,6 +1,8 @@
 package core.algo_duc;
+import java.awt.Color;
 import  java.util. * ;
 
+import base.Couleur;
 import base.Dessin;
 import core.graphe.Liaison;
 import core.graphe.Noeud;
@@ -63,7 +65,7 @@ public class Chemin {
 			
 			// vérif si prédécesseur est bien la fin de chemin
 			if(!liaison.getPredecesseur().equals(lastNoeud))
-				throw new IllegalArgumentException("Liaison ["+liaison+"] ne reprend pas du dernier noeud: ["+lastNoeud+"]");
+				throw new IllegalArgumentException("Liaison ["+liaison+"] ne reprend pas le dernier noeud: ["+lastNoeud+"]");
 			
 			// vérif si successeur présent dans chemin (cycle)
 			if(noeudsPasses.contains(liaison.getSuccesseur()))
@@ -134,10 +136,19 @@ public class Chemin {
 	 * @param dessin
 	 * @param zone
 	 */
-	public void dessiner(Dessin dessin, int zone)	{
+	public void dessiner(Dessin dessin, int zone, Color color)	{
 		for(Liaison route: routesEmpruntes)
-			route.dessiner(dessin, zone);
-		//routesEmpruntes.get(routesEmpruntes.size() - 1).dessiner(dessin, zone);
+			route.dessiner(dessin, zone, color);
+	}
+	
+
+	/**
+	 * Dessiner le chemin avec la couleur par default
+	 * @param dessin
+	 * @param zone
+	 */
+	public void dessiner(Dessin dessin, int zone)	{
+		dessiner(dessin, zone, null);
 	}
 	
 	/**
@@ -157,7 +168,7 @@ public class Chemin {
 	public String toString()	{
 		StringBuilder str = new StringBuilder();
 		for(Noeud n : noeudsPasses)
-			str.append(n.toString() + " - ");
+			str.append(n.toString() + "\n");
 		int length = str.length();
 		str.delete(length-3, length-1);
 		return "Chemin longueur "+longueur+" :\n[" + str.toString()+"]";

@@ -16,6 +16,7 @@ import base.* ;
 import core.graphe.Liaison;
 import core.graphe.Noeud;
 import core.graphe.Segment;
+import exceptions.SommetNonExisteException;
 
 public class Graphe {
 
@@ -198,7 +199,18 @@ public class Graphe {
     	
     	for(Noeud noeud: this.noeuds)	
     		noeud.dessiner(dessin, null);
-    	
+    }
+    
+    /**
+     * Get numero de zone d'un sommet
+     * @param numSommet
+     * @return
+     * @throws SommetNonExisteException
+     */
+    public int getZone(int numSommet) throws SommetNonExisteException	{
+    	if(numSommet < 0 || numSommet >= noeuds.size())
+    		throw new SommetNonExisteException();
+    	return this.noeuds.get(numSommet).getZone();
     }
     
     // Rayon de la terre en metres

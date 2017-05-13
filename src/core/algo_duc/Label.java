@@ -2,7 +2,7 @@ package core.algo_duc;
 
 import core.graphe.*;
 
-public class Label implements Comparable < Label > {
+public class Label implements Comparable<Label> {
 	private boolean marquage;
 	private float cout;
 	private Label pere;
@@ -22,10 +22,6 @@ public class Label implements Comparable < Label > {
 		this.liaisonOptimal = null;
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
 	public boolean isMarque()	{
 		return marquage;
 	}
@@ -54,7 +50,7 @@ public class Label implements Comparable < Label > {
 	}
 
 	public int compareTo(Label label) { 
-		return (int)((this.cout - label.cout)*1000) ;
+		return (int)((this.cout - label.cout)*1000f) ;
 	}
 	
 	

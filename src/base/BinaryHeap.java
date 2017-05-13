@@ -221,7 +221,6 @@ public class BinaryHeap<E extends Comparable<E>> {
     		throw new IllegalArgumentException("Element "+element+" doesn't exist in heap");
     	arraySet(index, element);
     	this.percolateUp(index) ;
-    	// TODO : pas besoin de percolateDown ? juste une question pcq je sais aps ..
     }
     
     /**
@@ -232,7 +231,14 @@ public class BinaryHeap<E extends Comparable<E>> {
     	return dictionary.containsKey(element) ;
     }
 
-
+    public String toString()	{
+    	BinaryHeap<E> copy = new BinaryHeap<E>(this) ;
+    	StringBuilder builder = new StringBuilder();
+    	while (!copy.isEmpty()) {
+    	    builder.append(copy.deleteMin().toString()) ;
+    	}
+    	return builder.toString();
+    }
     
     // Test program : compare with the reference implementation PriorityQueue.
     public static void main(String [] args) {
