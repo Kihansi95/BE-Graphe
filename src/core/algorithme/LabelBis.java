@@ -7,9 +7,9 @@ public class LabelBis implements Comparable < LabelBis > {
 	private float cout;
 	private int pere;
 	private int courant;
-	private float heuristique ;
+	private double heuristique ;
 	
-	public LabelBis(boolean marquage, float cout, int pere, int courant, float heuristique)	{
+	public LabelBis(boolean marquage, float cout, int pere, int courant, double heuristique)	{
 		
 		this.courant = courant;
 		this.marquage = false;
@@ -52,7 +52,7 @@ public class LabelBis implements Comparable < LabelBis > {
 	public int getSommetCourant(){
 		return this.courant ;
 	}
-	public float getHeuristique() {
+	public double getHeuristique() {
 		return heuristique;
 	}
 
@@ -68,7 +68,8 @@ public class LabelBis implements Comparable < LabelBis > {
 	 */
 	// On multiplie par mille, au cas oÃ¹ le float serait trop petit, le cast en int donnerait la valeur 0
 	public int compareTo(LabelBis other) {
-		return (int)( ( (this.cout + this.heuristique)-(other.cout + other.heuristique) ) * 1000);
+		//return (int)( ( (this.cout + this.heuristique)-(other.cout + other.heuristique) ) * 1000);
+		return (int)((this.heuristique-other.heuristique)*1000);
 	}
 	
 	public String toString() {
