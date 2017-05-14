@@ -180,6 +180,12 @@ public class Graphe {
     public ArrayList<Noeud> getNoeuds()	{
     	return noeuds;
     }
+     /**
+      * get ne noeud avec son numro
+      */
+    public Noeud getNoeudInt(int numero){
+    	return this.noeuds.get(numero);
+    }
     
     /**
      * Get les routes de graphe.<br/>
