@@ -219,6 +219,10 @@ public class Pcc extends Algo {
 		// la liaison vers l'origine a deja ete ajoutee
 		chemin_final.addSommet( graphe.getNoeudInt(origine));
 		chemin_final.reverse();
+		
+		if (chemin_final.getDistanceTotale() < assoc.get(origine).getHeuristique()){
+			System.out.println("Ce chemin est un faux, ton algorithme est débile ! \n");
+		}
 	}
 		
 	/**
