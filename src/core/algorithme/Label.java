@@ -2,59 +2,106 @@ package core.algorithme;
 
 import core.graphe.*;
 
-public class Label implements Comparable < Label > {
+public class Label implements Comparable<Label> {
+	
 	private boolean marquage;
 	private float cout;
-	private int pere;
-	private int sommetCourant;
+	private Label pere;
+	private Noeud sommetCourant;
+	private double heuristique ;
+
+	// Je sauvegarde ici la liaison optimal trouvé à chaque fois on maj son père
+	private Liaison liaisonOptimal;
 	
 	public Label(Noeud sommetCourant)	{
 		if(sommetCourant == null)
 			throw new IllegalArgumentException("sommet courant est null\n");
 		
-		this.sommetCourant = sommetCourant.getNumero();
+		this.sommetCourant = sommetCourant;
 		this.marquage = false;
+		
 		this.cout = Float.MAX_VALUE ;
-		this.pere = 0 ; 
+		this.pere = null ; 
+		
+		//TODO pour Duc
+		this.liaisonOptimal = null;
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
 	public boolean isMarque()	{
 		return marquage;
 	}
 	
-	/**
-	 * getteur et setteurs
-	 */
-	
-	public void setMarquage(boolean marq) {
-		this.marquage = marq ;
+	public void marquer()	{
+		marquage = true;
 	}
 	
-	public void setPere(int papa){
-		this.pere = papa ;
+	public void setPere(Label pere){
+		this.pere = pere ;
 	}
+	
 	public void setCout(float cout){
 		this.cout = cout ;
 	}
-	public int getPere (){
+	
+	public Label getPere (){
 		return this.pere ;
 	}
-	public boolean getMarquage(){
-		return this.marquage ;
-	}
+	
 	public float getCout(){
 		return this.cout ;
 	}
-	public int getSommetCourant(){
-		return this.sommetCourant ;
+	public Noeud getSommetCourant(){
+		return sommetCourant ;
 	}
 
 	public int compareTo(Label label) { 
-		// on multiplie par mille pour prendre en compte les chiffres deri�re la virgule
-		return (int)((this.cout - label.cout)*1000) ;
+		return (int)((this.cout - label.cout)*1000f) ;
+	}
+	
+	public double getHeuristique() {
+		return heuristique;
+	}
+
+	public void setHeuristique(float heuristique) {
+		this.heuristique = heuristique;
+	}	
+	
+	/**
+	 * Maj son père et liaison de père vers sommet courant
+	 * @param pere
+	 * @param liaison
+	 */
+	public void update(Label pere, Liaison liaison, Critere critere)	{
+		this.pere = pere;
+		this.liaisonOptimal = liaison;
+		
+		switch (critere)	{
+		case TEMPS:
+			this.cout = pere.cout + liaison.getLongueur()/liaison.getDescripteur().vitesseMax();
+			break;
+		case DISTANCE:
+			this.cout = pere.cout + liaison.getLongueur();
+			break;
+		case VITESSE:
+			this.cout = pere.cout + liaison.getLongueur();
+			break;
+		default:
+			throw new IllegalArgumentException("Critere num " + critere + " non connu");
+			
+		}			
+	}
+	
+	public Liaison getLiaison()	{
+		return liaisonOptimal;
+	}
+	
+	@Override
+	public boolean equals(Object label)	{
+		return label instanceof Label && ((Label) label).getSommetCourant().equals(this.getSommetCourant());
+	}
+	
+	@Override
+	public String toString()	{
+		return "Label no "+sommetCourant.getNumero()+" - cout = "+cout;
 	}
 }

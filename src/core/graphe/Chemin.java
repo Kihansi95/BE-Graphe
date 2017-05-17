@@ -4,167 +4,204 @@ import  java.util. * ;
 
 import base.Couleur;
 import base.Dessin;
+import core.algorithme.ComparatorFactory;
+import core.algorithme.Critere;
+import exceptions.CheminNonOrigineException;
+import exceptions.CheminNonRouteException;
 
 /**
  *  permet de retrnir le chemin entre 2 sommets (origine et destination) avec les routes empruntées 
  */
 public class Chemin {
-
-	// DANS LA LISTE DE SOMMETS (d'apr�s le remplissage avec Dijkstra, 
-	//le 1er sommet est le sommet DESTINATION. 
 	
 	// listes des chemins empruntés dans l'ordre du chemin
-	private List<Noeud> liste_sommets_empruntes ;
-
+	private Stack<Noeud> noeudsPasses ;
+	
 	/**
 	 * liaison optimal à chaque fois qu'on passe une noeud à l'autre
 	 */
-	private List<Liaison> routesEmpruntes;
+	private Stack<Liaison> routesEmpruntes;
 	
-	/**
-	 * cout du chemin (en temps et distance)
-	 */
-	private float temps_total ;
-	private float distance_totale ;
-	
-	/**
-	 * constructeur 
-	 */
-	public Chemin(){
-		liste_sommets_empruntes = new ArrayList<Noeud>();
-		routesEmpruntes = new ArrayList<Liaison>();
-		temps_total = 0 ;
-		distance_totale = 0 ;	
+	public Chemin(Noeud origine){
+		this(origine, null, null);
 	}
 	
-	public Chemin(ArrayList<Noeud> liste_som, ArrayList<Liaison> routesEmprunt,float tmps_min, float dist){
-		if(routesEmpruntes == null ||  liste_som == null || (routesEmpruntes.size()-1) != liste_som.size()){
-			throw new IllegalArgumentException("Nombre de routes et sommets ne correspondent pas entre eux...");
-		}
-		this.liste_sommets_empruntes = new ArrayList<Noeud>();
+	public Chemin(Noeud origine, List<Liaison> routes, List<Noeud> noeudsIntermediaires)	{
 		
-		if (liste_som != null){
-			this.liste_sommets_empruntes.addAll(liste_som) ;
+		// asset
+		if(routes != null && noeudsIntermediaires != null && routes.size() != noeudsIntermediaires.size())
+			throw new IllegalArgumentException("Nombre de routes et nombre de noeuds intermediaires non correspondant");
+		
+		// add noeuds
+		noeudsPasses = new Stack<Noeud>();
+		noeudsPasses.push(origine);
+		if(noeudsIntermediaires != null)
+			noeudsPasses.addAll(noeudsIntermediaires);
+		
+		// init routes
+		this.routesEmpruntes = new Stack<Liaison>();
+		if(routes != null)
+			this.routesEmpruntes.addAll(routes);
+
+	}
+	
+	/**
+	 * Ajouter la nouvelle liaison vers le prochain noeud dans ce chemin
+	 * @param liaison
+	 */
+	public void addRoute(Liaison liaison)	{
+		
+		// asset
+		Noeud lastNoeud = noeudsPasses.get(noeudsPasses.size() - 1);
+		
+		if(liaison.getDescripteur().isSensUnique())	{
+			
+			// vérif si prédécesseur est bien la fin de chemin
+			if(!liaison.getPredecesseur().equals(lastNoeud))
+				throw new IllegalArgumentException("Liaison ["+liaison+"] ne reprend pas le dernier noeud: ["+lastNoeud+"]");
+			
+			// vérif si successeur présent dans chemin (cycle)
+			if(noeudsPasses.contains(liaison.getSuccesseur()))
+				throw new IllegalArgumentException("Liaison ["+liaison+"] revient sur le noeud dans chemin: ["+lastNoeud+"]");
+		} else	{
+			
+			// vérif si les 2 extremités présents dans chemin (cycle)
+			if(noeudsPasses.contains(liaison.getPredecesseur()) && noeudsPasses.contains(liaison.getSuccesseur()))
+				throw new IllegalArgumentException("Cycle detecté: Liaison ["+liaison+"] reprend 2 noeuds dans chemin"+this);
 		}
 		
-		this.routesEmpruntes = new ArrayList<Liaison>();
-		if (routesEmprunt != null){
-			this.routesEmpruntes.addAll(routesEmprunt);
+		// add new noeud and new liaison
+		if(liaison.getDescripteur().isSensUnique())	{
+			noeudsPasses.push(liaison.getSuccesseur());
+		}	else	{
+			Noeud newNoeud = liaison.getPredecesseur() == lastNoeud? liaison.getSuccesseur() : liaison.getPredecesseur();
+			noeudsPasses.push(newNoeud);
 		}
-		// TODO : calcul temps distance avec for
-		
-		this.temps_total = tmps_min ;
-		this.distance_totale = dist ;
-	}
-	
-	/**
-	 * getteur temps_total
-	 */
-	public float getTempsTotal(){
-		return temps_total ;
-	}
-	/**
-	 * setteur temps_total
-	 */
-	public void setTempsTotal(float nouveauT){
-		this.temps_total = nouveauT ;
-	}
-	
-	/**
-	 * getteur distance_totale 
-	 */
-	public float getDistanceTotale (){
-		return distance_totale ;
-	}
-	/**
-	 * setteur distance_totale 
-	 */
-	public void setDistanceTotale(float nouveauD){
-		this.distance_totale = nouveauD ;
-	}
-	
-	/**
-	 * getteur liste sommets
-	 */
-	
-	public List<Noeud> getListe_sommets(){
-		return liste_sommets_empruntes ;
-	}
-	/** 
-	 * getteur liste_liaison
-	 */
-	
-	public List<Liaison> getListe_liaisons(){
-		return routesEmpruntes ;
-	}
-	/**
-	 * pour ajouter des sommets 
-	 */
-	public void addSommet( Noeud sommet){
-		liste_sommets_empruntes.add(sommet);
-	}
-	/**
-	 * ajouter une route empruntée à la liste des routes empruntées
-	 * => si liste nulle, on ajoute la 1ere liaison
-	 * => si liste non nulle, on ajoute  la liaison et on update le temps et la distance
-	 */	
-	public void addRoute(Liaison route){
-		routesEmpruntes.add(route);
-		this.distance_totale = this.distance_totale + route.coutRoute(false);
-		this.temps_total=this.temps_total+ route.coutRoute(true);
-		if (!liste_sommets_empruntes.contains(route.getPredecesseur())){
-			liste_sommets_empruntes.add(route.getPredecesseur());
-		}
-		if(!liste_sommets_empruntes.contains(route.getSuccesseur())){
-			liste_sommets_empruntes.add(route.getSuccesseur());
-		}
+		routesEmpruntes.push(liaison);
 		
 	}
 	
+	public void addSommet(Noeud noeud, Critere critere)	{
+		
+		// asset
+		if(this.noeudsPasses.contains(noeud))
+			throw new IllegalArgumentException("Noeud "+noeud+ " existe déjà dans le chemin");
+		
+		try	{
+			Liaison optimum = getLiaisonOptimal(getDestinataire(), noeud, critere);
+		} catch (IndexOutOfBoundsException e)	{
+			throw new IllegalArgumentException("Noeud "+noeud+" n'est pas en mesure de la continuite de chemin");
+		}
+	}
 	
+	/**
+	 * Supprimer le dernier route et dernier noeud ajouté
+	 * @return Noeud: noeud retiré
+	 * @throws CheminNonOrigineException
+	 * @throws CheminNonRouteException
+	 */
+	public Noeud removeLastNoeud() throws CheminNonOrigineException, CheminNonRouteException	{
+		if(noeudsPasses == null || noeudsPasses.isEmpty())
+			throw new CheminNonOrigineException("Le chemin n'a pas d'origine, erreur dans construction!");
+		
+		if(noeudsPasses.size() == 1)
+			throw new CheminNonRouteException();
+		
+		return noeudsPasses.pop();
+	}
+		
+	/**
+	 * Calcul le cout de la route en fonction du choix
+	 * @param choix
+	 * @return
+	 */
+	public float coutRoute(Critere choix)	{
+		
+		float coutChemin = 0f;
+		
+		switch(choix)	{
+		case TEMPS:
+			for(Liaison route : this.routesEmpruntes)
+				coutChemin +=  route.getLongueur() *60f / (route.getDescripteur().vitesseMax() * 1000f);
+			break;
+		case DISTANCE:
+			for(Liaison route : this.routesEmpruntes)
+				coutChemin += route.getLongueur();
+			break;
+		default:
+			throw new IllegalArgumentException("Choix de cout non implemente: " + choix);
+		}
+		return coutChemin;
+	}
+	
+	/**
+	 * Get le noeud d'origine de chemin
+	 * @return Noeud
+	 */
+	public Noeud getOrigine()	{
+		return noeudsPasses.firstElement();
+	}
+	
+	/**
+	 * Get le dernier noeud ajouté
+	 * @return Noeud: noeud destinataire
+	 */
+	public Noeud getDestinataire()	{
+		return noeudsPasses.peek();
+	}
 	
 	/**
 	 * Dessiner l'emsemble de chemin
 	 * @param dessin
 	 * @param zone
 	 */
-	public void dessiner(Dessin dessin, int zone, Color couleur)	{
-		System.out.println ("nb sommet emprunt�s"+ liste_sommets_empruntes.size()+ "\n");
-		liste_sommets_empruntes.get(0).dessiner(dessin);
-		for(Liaison route: routesEmpruntes){
-			int i=1 ;
-			route.dessiner(dessin, zone);
-			
-			if(dessin == null)
-				throw new IllegalArgumentException("dessin null");
-			
-			dessin.setColor(couleur);
-			
-			float current_long = route.getPredecesseur().getLongitude();
-			float current_lat = route.getPredecesseur().getLatitude();
-			
-			for(Segment s: route.getSegments())	{
-				s.dessiner(dessin, current_long, current_lat);
-				current_long += s.getDeltaLong();
-				current_lat += s.getDeltaLat();
-			}
-			
-			if (route.getSuccesseur().inZone(zone)) {
-				dessin.drawLine(current_long, current_lat, route.getSuccesseur().getLongitude(), route.getSuccesseur().getLatitude());
-			}
-			//liste_sommets_empruntes.get(i).dessiner(dessin);
-			i++;
-		}
-		liste_sommets_empruntes.get(liste_sommets_empruntes.size()-1).dessiner(dessin);
+	public void dessiner(Dessin dessin, int zone, Color color)	{
+		for(Liaison route: routesEmpruntes)
+			route.dessiner(dessin, zone, color);
+		for(Noeud noeud: noeudsPasses)
+			noeud.dessiner(dessin, color);
 	}
 	
-	public void reverse(){
-		if(!this.liste_sommets_empruntes.isEmpty()){
-			Collections.reverse(getListe_sommets());
-		}
-		if (!this.routesEmpruntes.isEmpty()){
-			Collections.reverse(getListe_liaisons());
-		}
+
+	/**
+	 * Dessiner le chemin avec la couleur par default
+	 * @param dessin
+	 * @param zone
+	 */
+	public void dessiner(Dessin dessin, int zone)	{
+		dessiner(dessin, zone, null);
 	}
 	
+	/**
+	 * get le route le plus court entre 2 noeuds
+	 * @param depart
+	 * @param dest
+	 * @return
+	 */
+	public static Liaison getLiaisonOptimal(Noeud depart, Noeud dest, Critere critere)	{
+		// TODO à vérifier l'endroit plus propre pour mettre ce bout de code
+		List<Liaison> routes = depart.getLiaisons(dest);
+		routes.sort(ComparatorFactory.getComparator(critere));
+		return routes.get(0);
+	}
+
+	@Override
+	public String toString()	{
+		StringBuilder str = new StringBuilder("Chemin de "+ this.getOrigine() +" vers "+ this.getDestinataire() + "\n");
+		
+		Iterator<Noeud> noeud = noeudsPasses.iterator();
+		Iterator<Liaison> liaison = routesEmpruntes.iterator();
+		
+		str.append(noeud.next()+"\n");
+		
+		while(noeud.hasNext() && liaison.hasNext())	{
+			str.append("--> " + noeud.next()+" par " + liaison.next() +"\n");
+		}
+		
+		str.append("===========================\n");
+		str.append("Longueur totale = "+ this.coutRoute(Critere.DISTANCE) +" m\n");
+		str.append("Temps total = "+ this.coutRoute(Critere.TEMPS) + " minutes\n");
+
+		return str.toString();
+	}
 }

@@ -13,8 +13,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import base.* ;
-import core.algo_duc.Chemin;
-import core.algo_duc.Critere;
+import core.algorithme.Critere;
+import core.graphe.Chemin;
 import core.graphe.Liaison;
 import core.graphe.Noeud;
 import core.graphe.Segment;
@@ -41,6 +41,11 @@ public class Graphe {
 
     // Numero de zone de la carte
     private int numzone ;
+    
+    /**
+     * Vitesse maximum existant sur la carte
+     */
+    private int vitesseMax;
 
     /*
      * Ces attributs constituent une structure ad-hoc pour stocker les informations du graphe.
@@ -108,6 +113,7 @@ public class Graphe {
     	    
     	    Utils.checkByte(255, dis) ;
     	    
+    	    this.vitesseMax = 0;
     	    // Lecture des descripteurs
     	    for (int num_descr = 0 ; num_descr < nb_descripteurs ; num_descr++) {
 	    		// Lecture du descripteur numero num_descr
@@ -116,6 +122,9 @@ public class Graphe {
 	    		// On affiche quelques descripteurs parmi tous.
 	    		if (0 == num_descr % (1 + nb_descripteurs / 400))
 	    		    System.out.println("Descripteur " + num_descr + " = " + descripteurs[num_descr]) ;
+	    		
+	    		if(descripteurs[num_descr].vitesseMax() > this.vitesseMax)
+	    			this.vitesseMax = descripteurs[num_descr].vitesseMax();
     	    }
     	    
     	    Utils.checkByte(254, dis) ;
@@ -172,6 +181,14 @@ public class Graphe {
     	    System.exit(1) ;
     	}
 
+    }
+    
+    /**
+     * get la vitesse Maximal existante sur la carte
+     * @return
+     */
+    public int getVitesseMax()	{
+    	return this.vitesseMax;
     }
     
     /**

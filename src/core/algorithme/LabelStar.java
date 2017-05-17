@@ -1,6 +1,5 @@
 package core.algorithme;
 
-import core.algo_duc.Label;
 import core.graphe.Liaison;
 import core.graphe.Noeud;
 

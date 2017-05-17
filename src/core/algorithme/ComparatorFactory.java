@@ -1,4 +1,4 @@
-package core.algo_duc;
+package core.algorithme;
 
 import java.util.Comparator;
 
