@@ -13,6 +13,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import base.* ;
+import core.algo_duc.Chemin;
+import core.algo_duc.Critere;
 import core.graphe.Liaison;
 import core.graphe.Noeud;
 import core.graphe.Segment;
@@ -304,11 +306,18 @@ public class Graphe {
 	    int current_zone = 0 ;
 	    int current_node = 0 ;
 
+	    Chemin chemin = null;
+	    
 	    // Tous les noeuds du chemin
 	    for (int i = 0 ; i < nb_noeuds ; i++) {
-		current_zone = dis.readUnsignedByte() ;
-		current_node = Utils.read24bits(dis) ;
-		System.out.println(" --> " + current_zone + ":" + current_node) ;
+			current_zone = dis.readUnsignedByte() ;
+			current_node = Utils.read24bits(dis) ;
+			
+			if(i == 0)
+				chemin = new Chemin(this.getNoeuds().get(current_node));
+			else
+				chemin.addSommet(this.getNoeuds().get(current_node), Critere.VITESSE);
+			// System.out.println(" --> " + current_zone + ":" + current_node) ;
 	    }
 
 	    if ((current_zone != last_zone) || (current_node != last_node)) {

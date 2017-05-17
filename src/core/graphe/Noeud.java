@@ -15,7 +15,7 @@ import exceptions.PropreSuccesseurException;
 
 public class Noeud {
 	
-	public final static int RAD = 10;
+	public final static int RAD = 10; //radian de noeud
 	
 	// variables
 	private float longitude ;
@@ -93,7 +93,7 @@ public class Noeud {
 	
 	/*
 	 * getteur liste des liaisons de 1 vers 2
-	 * TODO sert vriament à quelque chose ? 
+	 * TODO sert vriament ï¿½ quelque chose ? 
 	 */
 	public ArrayList<Liaison> getLiaisons_1vers2 (Noeud dest){
 		ArrayList<Liaison> liste_retour = new ArrayList<Liaison>() ;
@@ -177,6 +177,6 @@ public class Noeud {
 	
 	@Override
 	public String toString()	{
-		return "Noeud nÂ°"+numero+" ("+longitude+","+latitude+")";
+		return this.zone +":" + this.numero;
 	}
 }

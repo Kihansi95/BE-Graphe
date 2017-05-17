@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.io.* ;
 import java.util.AbstractMap;
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Stack;
 
@@ -24,7 +25,9 @@ public class Pcc extends Algo {
 
     protected int zoneDestination ;
     protected int destination ;
-        
+    
+    protected Critere critere;
+    
     
     public Pcc(Graphe gr, PrintStream sortie, Readarg readarg) {
 		super(gr, sortie, readarg) ;
@@ -37,16 +40,24 @@ public class Pcc extends Algo {
 			this.destination = readarg.lireInt ("Numero du sommet destination ? ");
 			this.zoneDestination = gr.getZone (this.destination) ;
 			
+			int choice = readarg.lireInt("Votre critere a optimiser : (0) temps (1) distance (2) vitesse optimale pour chaque route ");
+			
+			if(zoneOrigine != this.graphe.getZone() || zoneDestination != this.graphe.getZone())
+				throw new SommetNonExisteException();
+			
+			if(choice < 0 && choice >= Critere.values().length)
+				throw new InputMismatchException("Je ne comprends pas votre critere?");
+			critere = Critere.values()[choice];
+			
 		} catch (SommetNonExisteException e) {
 			System.err.println("Vous essayer de choisir un sommet n'existe pas sur la carte.");
 		}
-	
-
     }
 
     public void run() {
 
 		System.out.println("Run PCC de " + zoneOrigine + ":" + origine + " vers " + zoneDestination + ":" + destination) ;
+		this.graphe.dessiner();
 	
 		// init label
 		AbstractMap<Noeud, Label> sommets = new HashMap<Noeud, Label>();
@@ -95,7 +106,7 @@ public class Pcc extends Algo {
 			
 			// fin de la visite du sommet actuel, marquer et place dans la solution
 			label_actuel.marquer();
-			label_actuel.getSommetCourant().dessiner(this.getDessin(), Color.DARK_GRAY); 
+			label_actuel.getSommetCourant().dessiner(this.getDessin(), Color.ORANGE); 
 
 			// label suivant
 			label_actuel = visites.deleteMin();
@@ -104,13 +115,12 @@ public class Pcc extends Algo {
 		Chemin solution = buildChemin(label_actuel);
 		
 		if(!label_actuel.equals(label_destination))	{
-			System.out.println("label actuel: "+label_actuel);
 			System.out.println("Pas de route de "+label_origine.getSommetCourant() +" vers "+label_destination.getSommetCourant());
 		}	else	{
 			System.out.println("Le chemin le plus cours: "+solution);
+			solution.dessiner(getDessin(), this.graphe.getZone(), Color.DARK_GRAY);
 		}
 		
-		solution.dessiner(getDessin(), this.graphe.getZone(), Color.RED);
 		writeDown(solution);
     }
     
@@ -140,11 +150,11 @@ public class Pcc extends Algo {
      * @param courant
      * @return
      */
-    private Label updateSuccesseur(Label successeur, Label courant)	{
+    protected Label updateSuccesseur(Label successeur, Label courant)	{
 
-		Liaison liaisonOptimal = Chemin.getLiaisonOptimal(courant.getSommetCourant(), successeur.getSommetCourant());
+		Liaison liaisonOptimal = Chemin.getLiaisonOptimal(courant.getSommetCourant(), successeur.getSommetCourant(), this.critere);
 		if(successeur.getCout() > courant.getCout() + liaisonOptimal.getLongueur())	{
-			successeur.update(courant, liaisonOptimal);
+			successeur.update(courant, liaisonOptimal, this.critere);
 		}
     	
     	return successeur;
@@ -154,7 +164,7 @@ public class Pcc extends Algo {
      * Shortcut dessin
      * @return
      */
-    private Dessin getDessin()	{
+    protected Dessin getDessin()	{
     	return this.graphe.getDessin();
     }
     
@@ -162,7 +172,7 @@ public class Pcc extends Algo {
      * Ecrire la solution dans fichier de sortie.
      * @param solution
      */
-    private void writeDown(Chemin solution)	{
+    protected void writeDown(Chemin solution)	{
     	this.sortie.println("Solution de Dijkstra de "+zoneOrigine + ":" + origine + " vers " + zoneDestination + ":" + destination);
     	this.sortie.println(solution);
 		this.sortie.flush();

@@ -4,6 +4,7 @@ import  java.util. * ;
 
 import base.Couleur;
 import base.Dessin;
+import core.graphe.ChoixDeCout;
 import core.graphe.Liaison;
 import core.graphe.Noeud;
 import exceptions.CheminNonOrigineException;
@@ -21,8 +22,6 @@ public class Chemin {
 	 * liaison optimal à chaque fois qu'on passe une noeud à l'autre
 	 */
 	private Stack<Liaison> routesEmpruntes;
-	
-	private float longueur;
 	
 	public Chemin(Noeud origine){
 		this(origine, null, null);
@@ -44,11 +43,6 @@ public class Chemin {
 		this.routesEmpruntes = new Stack<Liaison>();
 		if(routes != null)
 			this.routesEmpruntes.addAll(routes);
-		
-		// calcul longueur
-		longueur = 0;
-		for(Liaison liaison : routesEmpruntes)
-			longueur += liaison.getLongueur();
 
 	}
 	
@@ -86,8 +80,19 @@ public class Chemin {
 		}
 		routesEmpruntes.push(liaison);
 		
-		// update longueur
-		longueur += liaison.getLongueur();
+	}
+	
+	public void addSommet(Noeud noeud, Critere critere)	{
+		
+		// asset
+		if(this.noeudsPasses.contains(noeud))
+			throw new IllegalArgumentException("Noeud "+noeud+ " existe déjà dans le chemin");
+		
+		try	{
+			Liaison optimum = getLiaisonOptimal(getDestinataire(), noeud, critere);
+		} catch (IndexOutOfBoundsException e)	{
+			throw new IllegalArgumentException("Noeud "+noeud+" n'est pas en mesure de la continuite de chemin");
+		}
 	}
 	
 	/**
@@ -103,16 +108,31 @@ public class Chemin {
 		if(noeudsPasses.size() == 1)
 			throw new CheminNonRouteException();
 		
-		this.longueur -= routesEmpruntes.pop().getLongueur();	// update longueur, TODO check si ça marche correctement
 		return noeudsPasses.pop();
 	}
-	
+		
 	/**
-	 * Get longueur total de chemin
-	 * @return float
+	 * Calcul le cout de la route en fonction du choix
+	 * @param choix
+	 * @return
 	 */
-	public float getLongueur()	{
-		return longueur;
+	public float coutRoute(Critere choix)	{
+		
+		float coutChemin = 0f;
+		
+		switch(choix)	{
+		case TEMPS:
+			for(Liaison route : this.routesEmpruntes)
+				coutChemin +=  route.getLongueur() *60f / route.getDescripteur().vitesseMax();
+			break;
+		case DISTANCE:
+			for(Liaison route : this.routesEmpruntes)
+				coutChemin += route.getLongueur();
+			break;
+		default:
+			throw new IllegalArgumentException("Choix de cout non implemente: " + choix);
+		}
+		return coutChemin;
 	}
 	
 	/**
@@ -120,7 +140,7 @@ public class Chemin {
 	 * @return Noeud
 	 */
 	public Noeud getOrigine()	{
-		return noeudsPasses.get(0);
+		return noeudsPasses.firstElement();
 	}
 	
 	/**
@@ -139,6 +159,8 @@ public class Chemin {
 	public void dessiner(Dessin dessin, int zone, Color color)	{
 		for(Liaison route: routesEmpruntes)
 			route.dessiner(dessin, zone, color);
+		for(Noeud noeud: noeudsPasses)
+			noeud.dessiner(dessin, color);
 	}
 	
 
@@ -157,20 +179,30 @@ public class Chemin {
 	 * @param dest
 	 * @return
 	 */
-	public static Liaison getLiaisonOptimal(Noeud depart, Noeud dest)	{
+	public static Liaison getLiaisonOptimal(Noeud depart, Noeud dest, Critere critere)	{
 		// TODO à vérifier l'endroit plus propre pour mettre ce bout de code
 		List<Liaison> routes = depart.getLiaisons(dest);
-		Collections.sort(routes);
+		routes.sort(ComparatorFactory.getComparator(critere));
 		return routes.get(0);
 	}
 
 	@Override
 	public String toString()	{
-		StringBuilder str = new StringBuilder();
-		for(Noeud n : noeudsPasses)
-			str.append(n.toString() + "\n");
-		int length = str.length();
-		str.delete(length-3, length-1);
-		return "Chemin longueur "+longueur+" :\n[" + str.toString()+"]";
+		StringBuilder str = new StringBuilder("Chemin de "+ this.getOrigine() +" vers "+ this.getDestinataire() + "\n");
+		
+		Iterator<Noeud> noeud = noeudsPasses.iterator();
+		Iterator<Liaison> liaison = routesEmpruntes.iterator();
+		
+		str.append(noeud.next()+"\n");
+		
+		while(noeud.hasNext() && liaison.hasNext())	{
+			str.append("--> " + noeud.next()+" par " + liaison.next() +"\n");
+		}
+		
+		str.append("===========================\n");
+		str.append("Longueur totale = "+ this.coutRoute(Critere.DISTANCE) +" m\n");
+		str.append("Temps total = "+ this.coutRoute(Critere.TEMPS) + " minutes\n");
+
+		return str.toString();
 	}
 }

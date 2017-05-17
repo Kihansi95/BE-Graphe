@@ -3,6 +3,7 @@ package core.algo_duc;
 import core.graphe.*;
 
 public class Label implements Comparable<Label> {
+	
 	private boolean marquage;
 	private float cout;
 	private Label pere;
@@ -63,10 +64,24 @@ public class Label implements Comparable<Label> {
 	 * @param pere
 	 * @param liaison
 	 */
-	public void update(Label pere, Liaison liaison)	{
+	public void update(Label pere, Liaison liaison, Critere critere)	{
 		this.pere = pere;
 		this.liaisonOptimal = liaison;
-		this.cout = pere.cout + liaison.getLongueur();
+		
+		switch (critere)	{
+		case TEMPS:
+			this.cout = pere.cout + liaison.getLongueur()/liaison.getDescripteur().vitesseMax();
+			break;
+		case DISTANCE:
+			this.cout = pere.cout + liaison.getLongueur();
+			break;
+		case VITESSE:
+			this.cout = pere.cout + liaison.getLongueur();
+			break;
+		default:
+			throw new IllegalArgumentException("Critere num " + critere + " non connu");
+			
+		}			
 	}
 	
 	public Liaison getLiaison()	{

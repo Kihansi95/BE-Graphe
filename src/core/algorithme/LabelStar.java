@@ -12,12 +12,13 @@ public class LabelStar extends Label {
 		super(sommetCourant);
 	}
 	
-	public void update(LabelStar pere, Liaison liaison, LabelStar labelDestination)	{
-		this.update(pere, liaison);
-		
-		Noeud courrant = this.getSommetCourant();
-		Noeud destination = labelDestination.getSommetCourant();
-		this.butEstimation = Math.sqrt((courrant.getLatitude() - destination.getLatitude()) + (courrant.getLongitude() - destination.getLongitude()));
+	protected void updateEstimation(final LabelStar destination)	{
+		Noeud courant = this.getSommetCourant();
+		Noeud dest = destination.getSommetCourant();
+		this.butEstimation = Math.sqrt(
+					Math.pow(courant.getLatitude() - dest.getLatitude(),2d) 
+					+ Math.pow(courant.getLongitude() - dest.getLongitude(),2d)
+				);
 	}
 	
 	@Override

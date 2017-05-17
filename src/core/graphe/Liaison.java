@@ -98,7 +98,7 @@ public class Liaison implements Comparable<Liaison>{
 	public int compareTo(Liaison liaison)	{
 		return (int) ((getLongueur() - liaison.getLongueur())*PRECISION);
 	}
-	private static final int PRECISION = 10000000;
+	private static final float PRECISION = 10000000f;
 	
 	/**
 	 * Dessiner la route.
@@ -106,7 +106,6 @@ public class Liaison implements Comparable<Liaison>{
 	 * @param int: numéro de zone dans lequel on dessine
 	 */
 	public void dessiner(Dessin dessin, int zone )	{
-		
 		Couleur.set(dessin, getDescripteur().getType()) ;	// couleur par définition de la route
 		this.dessiner(dessin, zone, null);
 	}
@@ -144,7 +143,7 @@ public class Liaison implements Comparable<Liaison>{
 			// la vitesse est en km/h
 			//la longueur en m.
 			// donc on met la vitesse en m/h 
-			// et pour plus de lisibilit�, on met le temps en minute
+			// et pour plus de lisibilit�, on met le temps en minute
 			cout = (this.getLongueur()/(this.getDescripteur().vitesseMax()* 1000))*60;
 		}
 		else {
@@ -157,6 +156,6 @@ public class Liaison implements Comparable<Liaison>{
 
 	@Override
 	public String toString()	{
-		return "Liaison "+predecesseur + (descripteur.isSensUnique()?" -> ":" <-> ") + successeur+ ". Description:\n"+descripteur;
+		return "Liaison "+predecesseur + (descripteur.isSensUnique()?" -> ":" <-> ") + successeur+ " - "+descripteur;
 	}
 }
