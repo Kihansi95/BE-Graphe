@@ -182,6 +182,12 @@ public class Graphe {
     public ArrayList<Noeud> getNoeuds()	{
     	return noeuds;
     }
+     /**
+      * get ne noeud avec son numro
+      */
+    public Noeud getNoeudInt(int numero){
+    	return this.noeuds.get(numero);
+    }
     
     /**
      * Get les routes de graphe.<br/>
@@ -234,6 +240,13 @@ public class Graphe {
         return rayon_terre*Math.acos(sinLat+cosLat*cosLong);
     }
 
+    public double distance_sommets (int sommet1, int sommet2){
+    	double latA = this.noeuds.get(sommet1).getLatitude();
+    	double latB = this.noeuds.get(sommet2).getLatitude();
+    	double longA = this.noeuds.get(sommet1).getLongitude();
+    	double longB = this.noeuds.get(sommet2).getLongitude();
+    	return distance(longA,latA,longB,latB) ;
+    }
     /**
      *  Attend un clic sur la carte et affiche le numero de sommet le plus proche du clic.
      *  A n'utiliser que pour faire du debug ou des tests ponctuels.
