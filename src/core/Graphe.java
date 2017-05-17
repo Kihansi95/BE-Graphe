@@ -13,8 +13,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import base.* ;
-import core.algorithme.Critere;
 import core.graphe.Chemin;
+import core.graphe.Critere;
 import core.graphe.Liaison;
 import core.graphe.Noeud;
 import core.graphe.Segment;

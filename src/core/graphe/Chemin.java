@@ -5,7 +5,6 @@ import  java.util. * ;
 import base.Couleur;
 import base.Dessin;
 import core.algorithme.ComparatorFactory;
-import core.algorithme.Critere;
 import exceptions.CheminNonOrigineException;
 import exceptions.CheminNonRouteException;
 

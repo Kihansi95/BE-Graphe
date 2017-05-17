@@ -5,6 +5,7 @@ import java.util.Comparator;
 import core.algorithme.comparator.DistanceComparator;
 import core.algorithme.comparator.TempsComparator;
 import core.algorithme.comparator.VitesseComparator;
+import core.graphe.Critere;
 import core.graphe.Liaison;
 
 public class ComparatorFactory {

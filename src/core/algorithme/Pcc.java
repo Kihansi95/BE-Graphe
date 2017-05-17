@@ -14,6 +14,7 @@ import base.Readarg ;
 import core.Algo;
 import core.Graphe;
 import core.graphe.Chemin;
+import core.graphe.Critere;
 import core.graphe.Liaison;
 import core.graphe.Noeud;
 import exceptions.SommetNonExisteException;
@@ -43,12 +44,12 @@ public class Pcc extends Algo {
 			
 			int choice = readarg.lireInt("Votre critere a optimiser : (0) temps (1) distance (2) vitesse optimale pour chaque route ");
 			
-			if(zoneOrigine != this.graphe.getZone() || zoneDestination != this.graphe.getZone())
-				throw new SommetNonExisteException();
-			
 			if(choice < 0 && choice >= Critere.values().length)
 				throw new InputMismatchException("Je ne comprends pas votre critere?");
 			this.critere = Critere.values()[choice];
+			
+			if(zoneOrigine != this.graphe.getZone() || zoneDestination != this.graphe.getZone())
+				throw new SommetNonExisteException();
 			
 		} catch (SommetNonExisteException e) {
 			System.err.println("Vous essayer de choisir un sommet n'existe pas sur la carte.");

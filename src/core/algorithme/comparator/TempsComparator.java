@@ -10,7 +10,6 @@ public class TempsComparator implements Comparator<Liaison> {
 
 	@Override
 	public int compare(Liaison first, Liaison second) {
-		System.out.println("Temps comparateur invoque\n");
 		return (int) ((
 				first.getLongueur()/ first.getDescripteur().vitesseMax() 		// first route time
 				- second.getLongueur()/ second.getDescripteur().vitesseMax() 	// second route time

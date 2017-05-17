@@ -1,4 +1,4 @@
-package core.algorithme;
+package core.graphe;
 
 public enum Critere {
 	TEMPS, DISTANCE, VITESSE;
