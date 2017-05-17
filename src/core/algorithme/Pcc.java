@@ -70,7 +70,7 @@ public class Pcc extends Algo {
 		for(Noeud noeud : this.graphe.getNoeuds())	{
 			Label label = new Label(noeud);
 			sommets.put(noeud, label);
-			visites.insert(label);
+			visites.insert(label);// TODO : Enlever cette ligne d'ici. On ne met pas tous les labels dans le tas. Doit se faire dans le parcours
 			if(noeud.getNumero() == this.destination)
 				label_destination = label;
 			if(noeud.getNumero() == this.origine)	{
