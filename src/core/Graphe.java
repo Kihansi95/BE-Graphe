@@ -121,7 +121,7 @@ public class Graphe {
 	
 	    		// On affiche quelques descripteurs parmi tous.
 	    		if (0 == num_descr % (1 + nb_descripteurs / 400))
-	    		    System.out.println("Descripteur " + num_descr + " = " + descripteurs[num_descr]) ;
+	    		    //System.out.println("Descripteur " + num_descr + " = " + descripteurs[num_descr]) ;
 	    		
 	    		if(descripteurs[num_descr].vitesseMax() > this.vitesseMax)
 	    			this.vitesseMax = descripteurs[num_descr].vitesseMax();
