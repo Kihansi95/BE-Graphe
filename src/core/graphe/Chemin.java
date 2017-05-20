@@ -7,6 +7,7 @@ import base.Dessin;
 import core.algorithme.ComparatorFactory;
 import exceptions.CheminNonOrigineException;
 import exceptions.CheminNonRouteException;
+import exceptions.SuccesseurNonExistantException;
 
 /**
  *  permet de retrnir le chemin entre 2 sommets (origine et destination) avec les routes empruntées 
@@ -98,8 +99,12 @@ public class Chemin {
 			throw new IllegalArgumentException("Noeud "+noeud+ " existe déjà dans le chemin");
 		
 		try	{
-			Liaison optimum = getLiaisonOptimal(getDestinataire(), noeud, critere);
-		} catch (IndexOutOfBoundsException e)	{
+			
+			Liaison optimum = getDestinataire().getLiaisonOptimal(noeud, critere);
+			this.routesEmpruntes.add(optimum);
+			this.noeudsPasses.add(noeud);
+			
+		} catch (SuccesseurNonExistantException e)	{
 			throw new IllegalArgumentException("Noeud "+noeud+" n'est pas en mesure de la continuite de chemin");
 		}
 	}
@@ -180,19 +185,6 @@ public class Chemin {
 	 */
 	public void dessiner(Dessin dessin, int zone)	{
 		dessiner(dessin, zone, null);
-	}
-	
-	/**
-	 * get le route le plus court entre 2 noeuds
-	 * @param depart
-	 * @param dest
-	 * @return
-	 */
-	public static Liaison getLiaisonOptimal(Noeud depart, Noeud dest, Critere critere)	{
-		// TODO à vérifier l'endroit plus propre pour mettre ce bout de code
-		List<Liaison> routes = depart.getLiaisons(dest);
-		routes.sort(ComparatorFactory.getComparator(critere));
-		return routes.get(0);
 	}
 
 	@Override

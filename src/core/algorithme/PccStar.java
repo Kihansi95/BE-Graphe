@@ -5,10 +5,11 @@ import java.io.* ;
 import base.Readarg ;
 import core.Graphe;
 import core.graphe.Noeud;
+import exceptions.SommetNonExisteException;
 
 public class PccStar extends Pcc {
 
-    public PccStar(Graphe gr, PrintStream sortie, Readarg readarg) {
+    public PccStar(Graphe gr, PrintStream sortie, Readarg readarg) throws SommetNonExisteException {
     	super(gr, sortie, readarg) ;
 
     }

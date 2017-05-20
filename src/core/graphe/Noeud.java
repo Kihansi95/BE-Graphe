@@ -11,7 +11,9 @@ import java.util.List;
 
 import base.Couleur;
 import base.Dessin;
+import core.algorithme.ComparatorFactory;
 import exceptions.PropreSuccesseurException;
+import exceptions.SuccesseurNonExistantException;
 
 public class Noeud {
 	
@@ -91,27 +93,21 @@ public class Noeud {
 		return liaisons_possibles;
 	}
 	
-	/*
-	 * getteur liste des liaisons de 1 vers 2
-	 * TODO sert vriament � quelque chose ? 
+	/**
+	 * Trouver la liaison le plus optimal parmi tous
+	 * @param dest
+	 * @param critere
+	 * @return
+	 * @throws SuccesseurNonExistantException 
 	 */
-	public ArrayList<Liaison> getLiaisons_1vers2 (Noeud dest){
-		ArrayList<Liaison> liste_retour = new ArrayList<Liaison>() ;
-		Iterator <Liaison> ite = liaisons.iterator() ;
-		while (ite.hasNext()) {
-			Liaison l = ite.next() ;
-			Noeud succes = l.getSuccesseur() ;
-			if (succes == dest){
-				liste_retour.add(l);
-			}
-		}
-		return liste_retour ;
-	}
-	
-	public Liaison getLiaisonOptimal( Noeud dest)	{
-		// TODO à vérifier l'endroit plus propre pour mettre ce bout de code
+	public Liaison getLiaisonOptimal(Noeud dest, Critere critere) throws SuccesseurNonExistantException	{
+		
+		// asset
+		if(!this.getSuccesseurs().contains(dest))	
+			throw new SuccesseurNonExistantException("Noeud " + dest + " n'est pas successeur de noeud "+this);
+		
 		List<Liaison> routes = this.getLiaisons(dest);
-		Collections.sort(routes);
+		routes.sort(ComparatorFactory.getComparator(critere));
 		return routes.get(0);
 	}
 	/**

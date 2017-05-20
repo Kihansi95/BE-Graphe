@@ -19,9 +19,15 @@ import core.graphe.Critere;
 import core.graphe.Liaison;
 import core.graphe.Noeud;
 import exceptions.SommetNonExisteException;
+import exceptions.SuccesseurNonExistantException;
 
 public class Pcc extends Algo {
-
+	
+	// config couleur de l'algo
+	private static final Color COULEUR_SUCCESSEUR_VISITE = Color.GREEN;
+	private static final Color COULEUR_EXPLORE = Color.BLUE;
+	private static final Color COULEUR_SOLUTION = Color.DARK_GRAY;
+	
     private Noeud noeudOrigine;
     
     private Noeud noeudDestination;
@@ -36,29 +42,24 @@ public class Pcc extends Algo {
     protected Critere critere;
 
     
-    public Pcc(Graphe gr, PrintStream sortie, Readarg readarg) {
+    public Pcc(Graphe gr, PrintStream sortie, Readarg readarg) throws SommetNonExisteException {
 		super(gr, sortie, readarg) ;
 		this.noeudOrigine = null;
 		this.noeudDestination = null;
 		this.solution = null;
-		
-		try {
-			int origine = readarg.lireInt ("Numero du sommet d'origine ? ") ;
-			this.noeudOrigine = gr.getNoeud(origine);
 
-			// Demander la zone et le sommet destination.
-			int destination = readarg.lireInt ("Numero du sommet destination ? ");
-			this.noeudDestination = gr.getNoeud(destination) ;
-			
-			int choice = readarg.lireInt("Votre critere a optimiser : (0) temps (1) distance (2) vitesse optimale pour chaque route ");
-			
-			if(choice < 0 && choice >= Critere.values().length)
-				throw new InputMismatchException("Je ne comprends pas votre critere?");
-			this.critere = Critere.values()[choice];
-			
-		} catch (SommetNonExisteException e) {
-			System.err.println("Vous essayer de choisir un sommet n'existe pas sur la carte.");
-		}
+		int origine = readarg.lireInt ("Numero du sommet d'origine ? ") ;
+		this.noeudOrigine = gr.getNoeud(origine);
+
+		// Demander la zone et le sommet destination.
+		int destination = readarg.lireInt ("Numero du sommet destination ? ");
+		this.noeudDestination = gr.getNoeud(destination) ;
+		
+		int choice = readarg.lireInt("Votre critere a optimiser : (0) temps (1) distance (2) vitesse optimale pour chaque route ");
+		
+		if(choice < 0 && choice >= Critere.values().length)
+			throw new InputMismatchException("Je ne comprends pas votre critere?");
+		this.critere = Critere.values()[choice];
 		
 		sommets = null;
     }
@@ -109,6 +110,8 @@ public class Pcc extends Algo {
     	System.out.println("Run "+ this.getClass().getSimpleName() +" de " + this.noeudOrigine + " vers " + this.noeudDestination) ;
 		this.graphe.dessiner();
 		
+		// INIT ALGORITHME
+		
 		// init perfomance
 		long startTime = System.currentTimeMillis();
 		int nbVisites = 0; 
@@ -137,10 +140,9 @@ public class Pcc extends Algo {
 		if(label_origine == null)
 			throw new RuntimeException("Sommet origine non existant");
 		
-		// init algo
 		Label label_actuel = this.getLabel(this.noeudOrigine); // pop the origine;
 		
-		// algo procédure
+		// PROCEDURE ALGORITHME
 		while(!label_actuel.equals(label_destination))	{
 			List<Noeud> successeurs = label_actuel.getSommetCourant().getSuccesseurs();
 			
@@ -158,14 +160,14 @@ public class Pcc extends Algo {
 					else
 						visites.insert(label_succ);
 					nbVisites++;
-					label_succ.getSommetCourant().dessiner(this.getDessin(), Color.GREEN);
+					label_succ.getSommetCourant().dessiner(this.getDessin(), COULEUR_SUCCESSEUR_VISITE);
 				}
 			}
 			
 			// fin de la visite du sommet actuel, marquer et place dans la solution
 			label_actuel.marquer();
 			nbMarque++;
-			label_actuel.getSommetCourant().dessiner(this.getDessin(), Color.BLUE); 
+			label_actuel.getSommetCourant().dessiner(this.getDessin(), COULEUR_EXPLORE); 
 
 			// label suivant
 			if(maxTas < visites.size())
@@ -174,13 +176,16 @@ public class Pcc extends Algo {
 			
 		}	
 		
+		// FIN ALGORITHME
 		this.solution = buildChemin(label_actuel);
 		
 		if(!label_actuel.equals(label_destination))	{
 			System.out.println("Pas de route de "+label_origine.getSommetCourant() +" vers "+label_destination.getSommetCourant());
+			System.out.println("Chemin actuellement trouve : " + this.solution);
+			this.solution.dessiner(getDessin(), this.graphe.getZone(), COULEUR_SOLUTION);
 		}	else	{
-			System.out.println("Le chemin le plus cours: "+this.solution);
-			solution.dessiner(getDessin(), this.graphe.getZone(), Color.DARK_GRAY);
+			System.out.println("Le chemin le plus cours: " + this.solution);
+			this.solution.dessiner(getDessin(), this.graphe.getZone(), COULEUR_SOLUTION);
 		}
 		
 		writeDown(nbVisites, nbMarque, maxTas, System.currentTimeMillis() - startTime);
@@ -215,12 +220,19 @@ public class Pcc extends Algo {
      */
     protected Label updateSuccesseur(Label successeur, Label courant)	{
 
-		Liaison liaisonOptimal = Chemin.getLiaisonOptimal(courant.getSommetCourant(), successeur.getSommetCourant(), this.critere);
-		if(successeur.getCout() > courant.getCout() + liaisonOptimal.getLongueur())	{
-			successeur.update(courant, liaisonOptimal, this.critere);
+		Liaison liaisonOptimal;
+		try {
+			liaisonOptimal = courant.getSommetCourant().getLiaisonOptimal(successeur.getSommetCourant(), this.critere);
+			if(successeur.getCout() > courant.getCout() + liaisonOptimal.getLongueur())	{
+				successeur.update(courant, liaisonOptimal, this.critere);
+			}
+	    	
+		} catch (SuccesseurNonExistantException e) {
+			e.printStackTrace();	// jamais arrivé
 		}
-    	
-    	return successeur;
+		
+		return successeur;
+
     }
     
     /**
@@ -240,8 +252,16 @@ public class Pcc extends Algo {
     	this.sortie.println(">>> Algorithme "+this +" de "+this.noeudOrigine+ " vers "+this.noeudDestination +" <<<\n");
     	
     	if(this.solution == null)	{
+    		
     		this.sortie.println("Solution n'existe pas ou run() n'est pas appellé");
+    		
+    	}	else if(!this.solution.getDestinataire().equals(this.noeudDestination))	{
+    		
+    		this.sortie.println("Chemin trouvé: ");
+    		this.sortie.println(this.solution);
+    		
     	}	else	{
+    		
     		this.sortie.println("Solution de Dijkstra de "+ this.noeudOrigine + " vers " + this.noeudDestination);
     		this.sortie.println(this.solution);
     		this.sortie.println("=============================================================================================");

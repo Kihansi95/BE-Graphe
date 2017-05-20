@@ -360,7 +360,6 @@ public class Graphe {
 				chemin = new Chemin(this.getNoeuds().get(current_node));
 			else
 				chemin.addSommet(this.getNoeuds().get(current_node), Critere.VITESSE);
-			// System.out.println(" --> " + current_zone + ":" + current_node) ;
 	    }
 
 	    if ((current_zone != last_zone) || (current_node != last_node)) {
