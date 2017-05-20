@@ -153,7 +153,10 @@ public class Pcc extends Algo {
 				Label label_succ = getLabel(succ);
 				if(!label_succ.isMarque())	{					
 					updateSuccesseur(label_succ, label_actuel);
-					visites.insert(label_succ);
+					if(visites.existe(label_succ))
+						visites.update(label_succ);
+					else
+						visites.insert(label_succ);
 					nbVisites++;
 					label_succ.getSommetCourant().dessiner(this.getDessin(), Color.GREEN);
 				}
