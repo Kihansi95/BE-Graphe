@@ -72,7 +72,7 @@ public class Pcc extends Algo {
     }
     
     /**
-     * get clone de chemin solution, la solution ne peut être modifié à l'intérieur de l'algo
+     * get clone de chemin solution, la solution ne peut être modifiée à l'intérieur de l'algo
      * @return
      */
     public Chemin getSolution()	{
@@ -80,7 +80,7 @@ public class Pcc extends Algo {
     }
     
     /**
-     * Instancier le nouvel label
+     * Instancier le nouveau label
      * @param sommet
      * @return
      */
@@ -198,6 +198,7 @@ public class Pcc extends Algo {
     	while(destination.getLiaison() != null)	{
     		tmp.push(destination.getLiaison());
     		destination = destination.getPere();
+    		// TODO : Je ne suis pas sur qu'il faille stocker la liaison optimale dans le label. C'est pas le sujet .. 
     	}
     	
     	Chemin chemin = new Chemin(destination.getSommetCourant());

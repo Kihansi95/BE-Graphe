@@ -9,9 +9,9 @@ public class Label implements Comparable<Label> {
 	private float cout;
 	private Label pere;
 	private Noeud sommetCourant;
-	private double heuristique ;
+	private double heuristique ; // TODO : a supprimer ? 
 
-	// Je sauvegarde ici la liaison optimal trouvé à chaque fois on maj son père
+	// Je sauvegarde ici la liaison optimale trouvé à chaque fois on maj son père
 	private Liaison liaisonOptimal;
 	
 	public Label(Noeud sommetCourant)	{

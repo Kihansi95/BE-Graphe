@@ -6,7 +6,7 @@ import core.graphe.Liaison;
 
 public class VitesseComparator implements Comparator<Liaison> {
 
-	@Override
+	//@Override
 	public int compare(Liaison first, Liaison second) {
 		return second.getDescripteur().vitesseMax() - first.getDescripteur().vitesseMax();
 	}
