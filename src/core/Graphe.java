@@ -192,18 +192,26 @@ public class Graphe {
     }
     
     /**
-     * Get les noeuds de graphe.<br/>
+     * Get tous les noeuds de graphe.<br/>
      * <b>ceci n'est qu'une copie de la liste, toutes modification ne sera ignoré</b>
      * @return List Noeud
      */
     public ArrayList<Noeud> getNoeuds()	{
     	return noeuds;
     }
-     /**
-      * get ne noeud avec son numro
-      */
-    public Noeud getNoeudInt(int numero){
-    	return this.noeuds.get(numero);
+    
+    /**
+     * get le noeud correspond à numéro dans l'agrument
+     * @param numNoeud
+     * @return le Noeud correspond à numNoeud
+     * @throws SommetNonExisteException 
+     */
+    public Noeud getNoeud(int numNoeud) throws SommetNonExisteException	{
+    	try	{
+    		return getNoeuds().get(numNoeud);    		
+    	} catch(IndexOutOfBoundsException e)	{
+    		throw new SommetNonExisteException("Noeud n° "+numNoeud+" n'existe pas dans la carte "+this);
+    	}
     }
     
     /**
@@ -213,6 +221,11 @@ public class Graphe {
      */
     public List<Liaison> getRoutes()	{
     	return new LinkedList<Liaison>(routes);
+    }
+    
+    @Override
+    public String toString()	{
+    	return this.nomCarte;
     }
     
     /*

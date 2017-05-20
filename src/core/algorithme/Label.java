@@ -4,6 +4,7 @@ import core.graphe.*;
 
 public class Label implements Comparable<Label> {
 	
+	final protected static float PRECISION = 1000f;
 	private boolean marquage;
 	private float cout;
 	private Label pere;

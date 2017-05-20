@@ -21,6 +21,17 @@ public class Chemin {
 	 */
 	private Stack<Liaison> routesEmpruntes;
 	
+	/**
+	 * Clone d'un chemin
+	 * @param chemin
+	 */
+	public Chemin(final Chemin chemin)	{
+		if(chemin != null)	{
+			this.noeudsPasses.addAll(chemin.noeudsPasses);
+			this.routesEmpruntes.addAll(chemin.routesEmpruntes);			
+		}
+	}
+	
 	public Chemin(Noeud origine){
 		this(origine, null, null);
 	}
