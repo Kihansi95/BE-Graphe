@@ -65,7 +65,7 @@ public class Chemin {
 		// asset
 		Noeud lastNoeud = noeudsPasses.get(noeudsPasses.size() - 1);
 		
-		if(liaison.getDescripteur().isSensUnique())	{
+		if(liaison.isSensUnique())	{
 			
 			// vérif si prédécesseur est bien la fin de chemin
 			if(!liaison.getPredecesseur().equals(lastNoeud))
@@ -82,7 +82,7 @@ public class Chemin {
 		}
 		
 		// add new noeud and new liaison
-		if(liaison.getDescripteur().isSensUnique())	{
+		if(liaison.isSensUnique())	{
 			noeudsPasses.push(liaison.getSuccesseur());
 		}	else	{
 			Noeud newNoeud = liaison.getPredecesseur() == lastNoeud? liaison.getSuccesseur() : liaison.getPredecesseur();
@@ -137,7 +137,7 @@ public class Chemin {
 		switch(choix)	{
 		case TEMPS:
 			for(Liaison route : this.routesEmpruntes)
-				coutChemin +=  route.getLongueur() *60f / (route.getDescripteur().vitesseMax() * 1000f);
+				coutChemin +=  route.getLongueur() *60f / (route.getVitesseMax() * 1000f);
 			break;
 		case DISTANCE:
 			for(Liaison route : this.routesEmpruntes)

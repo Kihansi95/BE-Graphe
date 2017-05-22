@@ -9,6 +9,7 @@ import javax.naming.OperationNotSupportedException;
 import base.Readarg;
 import core.Algo;
 import core.Graphe;
+import core.algorithme.astar.PccStar;
 import core.algorithme.dijkstra.Label;
 import core.algorithme.dijkstra.Pcc;
 import core.graphe.Noeud;
@@ -18,6 +19,8 @@ public class Covoiturage extends Pcc {
 	
 	private Voyagueur pieton;
 	private Voyagueur automobile;
+	
+	private Noeud destination;
 	
 	private PccSetLabel pccModif;
 	
@@ -33,18 +36,29 @@ public class Covoiturage extends Pcc {
 		case 0:
 			System.err.println("Non implemente");
 			throw new OperationNotSupportedException();
+			
 		case 1:
 			int numNoeud = readarg.lireInt("Noeud U1 > ");
 			departPieton = this.graphe.getNoeud(numNoeud);
+			
 			numNoeud = readarg.lireInt("Noeud U2 > ");
 			departAuto = this.graphe.getNoeud(numNoeud);
+			
+			numNoeud = readarg.lireInt("Noeud destination > ");
+			this.destination = this.graphe.getNoeud(numNoeud);
 			break;
+			
 		case 2:
 			System.out.println("Cliquez pour U1...");
 			departPieton = this.graphe.getNoeudByClick();
+			
 			System.out.println("Cliquez pour U2...");
 			departAuto = this.graphe.getNoeudByClick();
+			
+			System.out.println("Cliquez pour destination...");
+			this.destination = this.graphe.getNoeudByClick();
 			break;
+			
 		default:
 			System.err.println("Selection inconnu");
 			throw new RuntimeException();	
@@ -64,7 +78,7 @@ public class Covoiturage extends Pcc {
     }
 	
 	public void run()  	{
-		
+		try {
 	
 		// Dijkstra les noeuds
 		pccModif.contraintVision(pieton).run();
@@ -73,7 +87,22 @@ public class Covoiturage extends Pcc {
 		pccModif.contraintVision(automobile).run();
 		Set<LabelCovoiturage> pointsAuto = pccModif.getPointsAtteints();
 		
+		// intersection les 2 ensembles => points de rdv
+		pointsPietons.retainAll(pointsAuto); 
 		
+		// A* de destination vers tous les points
+		this.graphe.reverse();
+		
+		// TODO pas pccStar mais pcc 1 vers plusieurs (pas toutes)
+		// prototype:
+		PccPlusieurs pcc = new PccPlusieurs(this.graphe, pointsPietons, this.destination);
+		
+		
+		// get le label le plus optimiser dans points Pietons
+		
+		} catch (SommetNonExisteException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

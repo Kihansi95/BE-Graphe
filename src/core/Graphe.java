@@ -61,7 +61,6 @@ public class Graphe {
     // Deux malheureux getters.
     public Dessin getDessin() { return dessin ; }
     public int getZone() { return numzone ; }
-
     
     public Graphe (String nomCarte, DataInputStream dis, Dessin dessin) {
 
@@ -192,15 +191,6 @@ public class Graphe {
     }
     
     /**
-     * Get tous les noeuds de graphe.<br/>
-     * <b>ceci n'est qu'une copie de la liste, toutes modification ne sera ignoré</b>
-     * @return List Noeud
-     */
-    public ArrayList<Noeud> getNoeuds()	{
-    	return noeuds;
-    }
-    
-    /**
      * get le noeud correspond à numéro dans l'agrument
      * @param numNoeud
      * @return le Noeud correspond à numNoeud
@@ -208,7 +198,7 @@ public class Graphe {
      */
     public Noeud getNoeud(int numNoeud) throws SommetNonExisteException	{
     	try	{
-    		return getNoeuds().get(numNoeud);    		
+    		return this.noeuds.get(numNoeud);    		
     	} catch(IndexOutOfBoundsException e)	{
     		throw new SommetNonExisteException("Noeud n° "+numNoeud+" n'existe pas dans la carte "+this);
     	}
@@ -257,6 +247,17 @@ public class Graphe {
     @Override
     public String toString()	{
     	return this.nomCarte;
+    }
+    
+    /**
+     * Reverser toutes les liaison d'un graphe
+     * @return le graphe lui meme
+     */
+    public Graphe reverse()	{
+    	for(Liaison route : this.routes)
+    		if(route.isSensUnique())
+    			route.reverse();	//TODO check si reverse marche bien
+    	return this;
     }
     
     /*
@@ -388,9 +389,9 @@ public class Graphe {
 			current_node = Utils.read24bits(dis) ;
 			
 			if(i == 0)
-				chemin = new Chemin(this.getNoeuds().get(current_node));
+				chemin = new Chemin(this.noeuds.get(current_node));
 			else
-				chemin.addSommet(this.getNoeuds().get(current_node), Critere.VITESSE);
+				chemin.addSommet(this.noeuds.get(current_node), Critere.VITESSE);
 	    }
 
 	    if ((current_zone != last_zone) || (current_node != last_node)) {

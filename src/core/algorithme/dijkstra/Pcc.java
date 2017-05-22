@@ -126,19 +126,7 @@ public class Pcc extends Algo {
 		sommets.put(noeudOrigine,label_origine);
 		sommets.put(noeudDestination, label_destination);
 
-		//TODO : creer les labels que si besoin
-		/*for(Noeud noeud : this.graphe.getNoeuds())	{
-			Label label = this.newLabel(noeud);
-			sommets.put(noeud, label);
-			if(noeud.equals(this.noeudDestination))
-				label_destination = label;
-			if(noeud.equals(this.noeudOrigine))	{
-				label_origine = label;
-				label.setCout(0f);
-			}
-		}
-		*/
-		if (noeudOrigine == noeudDestination){
+		if (noeudOrigine.equals(noeudDestination)){
 			System.out.println("la destination est le point de départ... je ne peux rien faire \n");
 		
 		}
@@ -146,17 +134,14 @@ public class Pcc extends Algo {
 			List<Noeud> successeurs ;
 			Label label_actuel = null ;
 	
-		boolean destination_atteinte = false ;
 		// PROCEDURE ALGORITHME
 		// TODO : changer la consition du while : tas vide
-		while(!visites.isEmpty() && !destination_atteinte)	{
+		while(!visites.isEmpty() && !label_destination.isMarque())	{
 			
 			label_actuel = visites.deleteMin() ; // au 1er while on delete l'origine
 			label_actuel.marquer();
 			nbMarque++;	
-			if (label_destination.isMarque()){
-				destination_atteinte = true ;
-			}
+			
 			successeurs = label_actuel.getSommetCourant().getSuccesseurs();
 			
 		
@@ -190,13 +175,14 @@ public class Pcc extends Algo {
 		}	
 		
 		// FIN ALGORITHME
-		this.solution = buildChemin(label_destination);
 		
 		if(label_destination.isMarque())	{
+			this.solution = buildChemin(label_actuel);
 			System.out.println("Pas de route de "+label_origine.getSommetCourant() +" vers "+label_destination.getSommetCourant());
 			System.out.println("Chemin actuellement trouve : " + this.solution);
 			this.solution.dessiner(getDessin(), this.graphe.getZone(), this.couleurSolution());
 		}	else	{
+			this.solution = buildChemin(label_destination);
 			System.out.println("Le chemin le plus cours: " + this.solution);
 			this.solution.dessiner(getDessin(), this.graphe.getZone(), this.couleurSolution());
 		}

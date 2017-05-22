@@ -17,7 +17,7 @@ import exceptions.SuccesseurNonExistantException;
 
 public class Noeud {
 	
-	public final static int RAD = 10; //radian de noeud
+	public final static int RAD = 5; //radian de noeud
 	
 	// variables
 	private float longitude ;
@@ -73,24 +73,15 @@ public class Noeud {
 		liaisons.add(liaison);
 	}
 	
+	public boolean removeLiaison(Liaison liaison)	{
+		return liaisons.remove(liaison);
+	}
+	
 	/*
 	 * getteur de la liste des liaisons
 	 */
 	public ArrayList<Liaison> getLiaisons(){
 		return new ArrayList<Liaison> (this.liaisons);
-	}
-	
-	/**
-	 * get Liaison qui va vers destination (dest)
-	 * @param dest: le noeud destinatire
-	 * @return List
-	 */
-	public List<Liaison> getLiaisons(Noeud dest)	{
-		List<Liaison> liaisons_possibles = new ArrayList<Liaison>();
-		for(Liaison l : liaisons)
-			if(l.getSuccesseur().equals(dest))
-				liaisons_possibles.add(l);
-		return liaisons_possibles;
 	}
 	
 	/**
@@ -174,5 +165,18 @@ public class Noeud {
 	@Override
 	public String toString()	{
 		return this.zone +":" + this.numero;
+	}
+
+	/**
+	 * get Liaison qui va vers destination (dest)
+	 * @param dest: le noeud destinatire
+	 * @return List
+	 */
+	private List<Liaison> getLiaisons(Noeud dest)	{
+		List<Liaison> liaisons_possibles = new ArrayList<Liaison>();
+		for(Liaison l : liaisons)
+			if(l.getSuccesseur().equals(dest))
+				liaisons_possibles.add(l);
+		return liaisons_possibles;
 	}
 }

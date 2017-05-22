@@ -64,7 +64,7 @@ public class Liaison{
 	 * @return la vitesse maximale
 	 */
 	public int getVitesseMax()	{
-		return this.getDescripteur().vitesseMax();
+		return descripteur.vitesseMax();
 	}
 	
 	public void addSegment(Segment segment)	{
@@ -72,15 +72,16 @@ public class Liaison{
 			throw new IllegalArgumentException();
 		segments.add(segment);
 	}
-	public List<Segment> getSegments (){
-		return segments ;
-	}
 
 	/**
 	 * @return the descripteurs
-	 */
+	 *//*
 	public Descripteur getDescripteur() {
 		return descripteur;
+	}*/
+	
+	public boolean isSensUnique()	{
+		return descripteur.isSensUnique();
 	}
 
 	/**
@@ -103,7 +104,7 @@ public class Liaison{
 	 * @param int: numéro de zone dans lequel on dessine
 	 */
 	public void dessiner(Dessin dessin, int zone )	{
-		Couleur.set(dessin, getDescripteur().getType()) ;	// couleur par définition de la route
+		Couleur.set(dessin, descripteur.getType()) ;	// couleur par définition de la route
 		this.dessiner(dessin, zone, null);
 	}
 	
@@ -136,5 +137,17 @@ public class Liaison{
 	@Override
 	public String toString()	{
 		return "Liaison "+predecesseur + (descripteur.isSensUnique()?" -> ":" <-> ") + successeur+ " - "+descripteur;
+	}
+
+	/**
+	 * Renverser le sens de liaison
+	 */
+	public void reverse() {
+		this.predecesseur.removeLiaison(this);
+		this.successeur.addLiaison(this);
+		
+		Noeud tmp = this.predecesseur;		//TODO dangereux, check si ca ne cree pas de boucle
+		this.predecesseur = this.successeur;
+		this.successeur = tmp;
 	}
 }
