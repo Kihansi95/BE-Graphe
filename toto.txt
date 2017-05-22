@@ -1,0 +1,46 @@
+>>> Algorithme Dijkstra de 0:35 vers -1:606 <<<
+
+Solution de Dijkstra de 0:35 vers -1:606
+Chemin de 0:35 vers -1:606
+0:35
+--> 0:8 par Liaison 0:35 -> 0:8 - route : Pont Notre-Dame  (oneway) 70 km/h max 
+--> 0:302 par Liaison 0:8 -> 0:302 - route : Rue de la Cité  (oneway) 70 km/h max 
+--> 0:538 par Liaison 0:302 -> 0:538 - route : Rue de la Cité  (oneway) 70 km/h max 
+--> 0:311 par Liaison 0:538 -> 0:311 - route : Rue de la Cité  (oneway) 70 km/h max 
+--> 0:520 par Liaison 0:311 -> 0:520 - route : Rue de la Cité  (oneway) 70 km/h max 
+--> 0:521 par Liaison 0:520 -> 0:521 - route : Petit Pont  (oneway) 70 km/h max 
+--> 0:171 par Liaison 0:521 -> 0:171 - route : Petit-Pont  (oneway) 70 km/h max 
+--> 0:6 par Liaison 0:171 -> 0:6 - route : Petit Pont  (oneway) 90 km/h max 
+--> 0:222 par Liaison 0:6 -> 0:222 - route : Place du Petit Pont  (oneway) 70 km/h max 
+--> 0:221 par Liaison 0:222 -> 0:221 - route : Place du Petit Pont  (oneway) 70 km/h max 
+--> 0:223 par Liaison 0:221 -> 0:223 - route : Rue du Petit Pont  (oneway) 70 km/h max 
+--> 0:428 par Liaison 0:223 -> 0:428 - route : Rue Saint-Jacques  (oneway) 70 km/h max 
+--> 0:251 par Liaison 0:428 -> 0:251 - route : Rue Saint-Jacques  (oneway) 70 km/h max 
+--> 0:256 par Liaison 0:251 -> 0:256 - route : Boulevard Saint-Germain  (oneway) 70 km/h max 
+--> 0:402 par Liaison 0:256 -> 0:402 - route : Boulevard Saint-Germain  (oneway) 70 km/h max 
+--> 0:257 par Liaison 0:402 -> 0:257 - route : Boulevard Saint-Germain  (oneway) 70 km/h max 
+--> 0:250 par Liaison 0:257 -> 0:250 - route : Boulevard Saint-Germain  (oneway) 70 km/h max 
+--> 0:528 par Liaison 0:250 -> 0:528 - route : Boulevard Saint-Germain  (oneway) 70 km/h max 
+--> 0:386 par Liaison 0:528 -> 0:386 - route : Boulevard Saint-Germain  (oneway) 70 km/h max 
+--> 0:387 par Liaison 0:386 -> 0:387 - route : Boulevard Saint-Germain  (oneway) 70 km/h max 
+--> 0:467 par Liaison 0:387 -> 0:467 - route : Boulevard Saint-Germain  (oneway) 70 km/h max 
+--> 0:469 par Liaison 0:467 -> 0:469 - route : Boulevard Saint-Germain  (oneway) 70 km/h max 
+--> 0:384 par Liaison 0:469 -> 0:384 - route : Boulevard Saint-Germain  (oneway) 70 km/h max 
+--> 0:473 par Liaison 0:384 -> 0:473 - route : Boulevard Saint-Germain  (oneway) 70 km/h max 
+--> 0:468 par Liaison 0:473 -> 0:468 - route : Boulevard Saint-Germain  (oneway) 70 km/h max 
+--> 0:385 par Liaison 0:468 -> 0:385 - route : Boulevard Saint-Germain  (oneway) 70 km/h max 
+--> 0:476 par Liaison 0:385 -> 0:476 - route : Boulevard Saint-Germain  (oneway) 70 km/h max 
+--> 0:477 par Liaison 0:476 -> 0:477 - route : Boulevard Saint-Germain  (oneway) 70 km/h max 
+--> 0:475 par Liaison 0:477 -> 0:475 - route : Boulevard Saint-Germain  (oneway) 70 km/h max 
+--> 0:625 par Liaison 0:475 <-> 0:625 - route : Quai Saint-Bernard 90 km/h max 
+--> -1:606 par Liaison 0:625 <-> -1:606 - route : Quai Saint-Bernard 90 km/h max 
+===========================
+Longueur totale = 2280.0 m
+Temps total = 1.818286 minutes
+
+=============================================================================================
+Performance: 
+Temps d'execution (ns): 	26
+Nb noeud visites :			628
+Nb noeud marque :			571
+Nb max dans le tas :		73
