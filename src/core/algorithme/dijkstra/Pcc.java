@@ -206,7 +206,6 @@ public class Pcc extends Algo {
     	while(destination.getLiaison() != null)	{
     		tmp.push(destination.getLiaison());
     		destination = destination.getPere();
-    		// TODO : Je ne suis pas sur qu'il faille stocker la liaison optimale dans le label. C'est pas le sujet .. 
     	}
     	
     	Chemin chemin = new Chemin(destination.getSommetCourant());

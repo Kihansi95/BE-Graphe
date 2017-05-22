@@ -16,7 +16,6 @@ public class PccStar extends Pcc {
 
     public PccStar(Graphe gr, PrintStream sortie, Readarg readarg) throws SommetNonExisteException {
     	super(gr, sortie, readarg) ;
-
     }
     
     public Color couleurSuccesseurVisite()	{	return Color.GREEN;		}

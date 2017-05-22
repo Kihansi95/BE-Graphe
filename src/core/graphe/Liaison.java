@@ -8,7 +8,7 @@ import base.Couleur;
 import base.Descripteur;
 import base.Dessin;
 
-public class Liaison implements Comparable<Liaison>{
+public class Liaison{
 	
 	private float longueur; // en metres !!!!!
 	
@@ -60,6 +60,13 @@ public class Liaison implements Comparable<Liaison>{
 		return longueur;
 	}
 	
+	/**
+	 * @return la vitesse maximale
+	 */
+	public int getVitesseMax()	{
+		return this.getDescripteur().vitesseMax();
+	}
+	
 	public void addSegment(Segment segment)	{
 		if(segment == null)
 			throw new IllegalArgumentException();
@@ -89,17 +96,7 @@ public class Liaison implements Comparable<Liaison>{
 	public Noeud getPredecesseur()	{
 		return predecesseur;
 	}
-	
-	/**
-	 * Compare longueur
-	 * @param liaison
-	 * @return > 0 si this > liaison.
-	 */
-	public int compareTo(Liaison liaison)	{
-		return (int) ((getLongueur() - liaison.getLongueur())*PRECISION);
-	}
-	private static final float PRECISION = 10000000f;
-	
+
 	/**
 	 * Dessiner la route.
 	 * @param dessin 
@@ -134,24 +131,6 @@ public class Liaison implements Comparable<Liaison>{
 		if (successeur.inZone(zone)) {
 			dessin.drawLine(current_long, current_lat, successeur.getLongitude(), successeur.getLatitude());
 		}
-	}
-	
-	public float coutRoute(Boolean choix){
-		float cout = 0.0f ;
-		if (choix==true){
-			// on calcul le cout temporel
-			// la vitesse est en km/h
-			//la longueur en m.
-			// donc on met la vitesse en m/h 
-			// et pour plus de lisibilit�, on met le temps en minute
-			cout = (this.getLongueur()/(this.getDescripteur().vitesseMax()* 1000))*60;
-		}
-		else {
-			// on calcul le cout en distance 
-			cout = this.getLongueur();
-		}
-		
-		return cout ;
 	}
 
 	@Override

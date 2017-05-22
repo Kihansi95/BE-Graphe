@@ -22,8 +22,6 @@ public class Label implements Comparable<Label> {
 		
 		this.cout = Float.MAX_VALUE ;
 		this.pere = null ; 
-		
-		//TODO pour Duc
 		this.liaisonOptimal = null;
 	}
 	
@@ -69,7 +67,7 @@ public class Label implements Comparable<Label> {
 		
 		switch (critere)	{
 		case TEMPS:
-			this.cout = pere.cout + liaison.getLongueur()/liaison.getDescripteur().vitesseMax();
+			this.cout = pere.cout + liaison.getLongueur()/liaison.getVitesseMax();
 			break;
 		case DISTANCE:
 			this.cout = pere.cout + liaison.getLongueur();
