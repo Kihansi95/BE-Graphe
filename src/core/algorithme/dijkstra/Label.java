@@ -1,4 +1,4 @@
-package core.algorithme;
+package core.algorithme.dijkstra;
 
 import core.graphe.*;
 

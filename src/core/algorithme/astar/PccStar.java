@@ -1,13 +1,18 @@
-package core.algorithme ;
+package core.algorithme.astar ;
 
+import java.awt.Color;
 import java.io.* ;
 
 import base.Readarg ;
 import core.Graphe;
+import core.algorithme.dijkstra.Label;
+import core.algorithme.dijkstra.Pcc;
 import core.graphe.Noeud;
 import exceptions.SommetNonExisteException;
 
 public class PccStar extends Pcc {
+	
+	private static final Color COULEUR_SOLUTION = Color.ORANGE;
 
     public PccStar(Graphe gr, PrintStream sortie, Readarg readarg) throws SommetNonExisteException {
     	super(gr, sortie, readarg) ;

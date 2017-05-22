@@ -1,4 +1,4 @@
-package core.algorithme ;
+package core.algorithme.dijkstra ;
 
 import java.awt.Color;
 import java.io.* ;
@@ -143,6 +143,8 @@ public class Pcc extends Algo {
 			
 			// si non successeurs: no route
 			if(successeurs.isEmpty())	{
+				if(visites.isEmpty())
+					break;
 				label_actuel = visites.deleteMin();
 				continue;
 			}
@@ -169,8 +171,10 @@ public class Pcc extends Algo {
 			// label suivant
 			if(maxTas < visites.size())
 				maxTas = visites.size();
-			label_actuel = visites.deleteMin();
 			
+			if(visites.isEmpty())
+				break;
+			label_actuel = visites.deleteMin();
 		}	
 		
 		// FIN ALGORITHME

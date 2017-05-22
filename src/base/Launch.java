@@ -20,8 +20,8 @@ import base.Openfile;
 import base.Readarg;
 import core.* ;
 import core.algorithme.Connexite;
-import core.algorithme.Pcc;	
-import core.algorithme.PccStar;
+import core.algorithme.astar.PccStar;
+import core.algorithme.dijkstra.Pcc;
 
 import java.io.* ;
 

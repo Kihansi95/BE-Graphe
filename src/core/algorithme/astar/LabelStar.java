@@ -1,6 +1,7 @@
-package core.algorithme;
+package core.algorithme.astar;
 
 import core.Graphe;
+import core.algorithme.dijkstra.Label;
 import core.graphe.Critere;
 import core.graphe.Liaison;
 import core.graphe.Noeud;
