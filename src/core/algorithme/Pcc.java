@@ -147,8 +147,10 @@ public class Pcc extends Algo {
 			List<Noeud> successeurs = label_actuel.getSommetCourant().getSuccesseurs();
 			
 			// si non successeurs: no route
-			if(successeurs.isEmpty())
-				break;
+			if(successeurs.isEmpty())	{
+				label_actuel = visites.deleteMin();
+				continue;
+			}
 			
 			// visiter chaque successeur
 			for(Noeud succ : successeurs)	{		
