@@ -1,9 +1,10 @@
 package application;
 
-public final class Covoiturage {
+import base.Readarg;
 
+public final class Covoiturage {
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+
 
 	}
 
