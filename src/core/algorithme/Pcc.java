@@ -135,11 +135,6 @@ public class Pcc extends Algo {
 			}
 		}
 		
-		if(label_destination == null)
-			throw new RuntimeException("Sommet destination non existant");
-		if(label_origine == null)
-			throw new RuntimeException("Sommet origine non existant");
-		
 		Label label_actuel = this.getLabel(this.noeudOrigine); // pop the origine;
 		
 		// PROCEDURE ALGORITHME
