@@ -7,11 +7,11 @@ import core.graphe.Noeud;
 
 public class LabelStar extends Label {
 	
-	private double butEstimation;
+	private double heuristique;
 
 	public LabelStar(Noeud sommetCourant) {
 		super(sommetCourant);
-		this.butEstimation = 0f; // pas besoin de cout heuristique mtn
+		this.heuristique = 0f; // pas besoin de cout heuristique mtn
 	}
 	
 	protected void updateEstimation(final Label destination, Critere critere, Graphe graphe)	{
@@ -26,10 +26,10 @@ public class LabelStar extends Label {
 		
 		switch(critere)	{
 		case DISTANCE:
-			this.butEstimation = distance_estime;
+			this.heuristique = distance_estime;
 			break;
 		case TEMPS:
-			this.butEstimation = (distance_estime )/ ( graphe.getVitesseMax() );
+			this.heuristique = (distance_estime )/ ( graphe.getVitesseMax() );
 			break;
 		default:
 			System.out.println("Critere non supporte pour cet algorithme");
@@ -38,7 +38,7 @@ public class LabelStar extends Label {
 	
 	@Override
 	public int compareTo(Label label) { 
-		return (int)((this.getCout() + this.butEstimation - label.getCout() - ((LabelStar) label).butEstimation)*PRECISION) ;
+		return (int)((this.getCout() + this.heuristique - label.getCout() - ((LabelStar) label).heuristique)*PRECISION) ;
 	}
 
 }

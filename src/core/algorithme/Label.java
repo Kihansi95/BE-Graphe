@@ -9,7 +9,6 @@ public class Label implements Comparable<Label> {
 	private float cout;
 	private Label pere;
 	private Noeud sommetCourant;
-	private double heuristique ; // TODO : a supprimer ? 
 
 	// Je sauvegarde ici la liaison optimale trouvé à chaque fois on maj son père
 	private Liaison liaisonOptimal;
@@ -58,14 +57,6 @@ public class Label implements Comparable<Label> {
 	public int compareTo(Label label) { 
 		return (int)((this.cout - label.cout)*1000f) ;
 	}
-	
-	public double getHeuristique() {
-		return heuristique;
-	}
-
-	public void setHeuristique(float heuristique) {
-		this.heuristique = heuristique;
-	}	
 	
 	/**
 	 * Maj son père et liaison de père vers sommet courant

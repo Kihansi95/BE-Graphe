@@ -6,6 +6,6 @@ public class SommetNonExisteException extends Exception {
 	}
 
 	public SommetNonExisteException() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
 }
