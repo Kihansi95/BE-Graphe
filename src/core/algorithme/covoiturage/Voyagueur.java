@@ -1,14 +1,16 @@
 package core.algorithme.covoiturage;
 
+import core.algorithme.dijkstra.Label;
+
 public class Voyagueur {
 	private int vitesseMax;
 	private String nom;
-	private float latitude;
-	private float longitude;
+	private Label depart;
 	
-	public Voyagueur(String nom, int vitessemax)	{
+	public Voyagueur(String nom, int vitesseMax, Label depart)	{
 		this.nom = new String(nom);
-		this.vitesseMax = vitessemax;
+		this.vitesseMax = vitesseMax;
+		this.depart = depart;
 	}
 	
 	public int getVitesseMax()	{
@@ -17,5 +19,12 @@ public class Voyagueur {
 	
 	public String toSring()	{
 		return nom;
+	}
+
+	/**
+	 * @return the depart
+	 */
+	public Label getDepart() {
+		return depart;
 	}
 }

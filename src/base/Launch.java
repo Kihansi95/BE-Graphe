@@ -21,7 +21,9 @@ import base.Readarg;
 import core.* ;
 import core.algorithme.Connexite;
 import core.algorithme.astar.PccStar;
+import core.algorithme.covoiturage.Covoiturage;
 import core.algorithme.dijkstra.Pcc;
+import exceptions.SommetNonExisteException;
 
 import java.io.* ;
 
@@ -43,7 +45,7 @@ public class Launch {
 	System.out.println ("3 - Plus court chemin A-star") ;
 	System.out.println ("4 - Cliquer sur la carte pour obtenir un numero de sommet.") ;
 	System.out.println ("5 - Charger un fichier de chemin (.path) et le verifier.") ;
-	
+	System.out.println ("6 - Problem de covoiturage.") ;
 	System.out.println () ;
     }
 
@@ -97,6 +99,8 @@ public class Launch {
 		    String nom_chemin = this.readarg.lireString ("Nom du fichier .path contenant le chemin ? ") ;
 		    graphe.verifierChemin(Openfile.open (nom_chemin), nom_chemin) ;
 		    break ;
+		    
+		case 6 : algo = new Covoiturage(graphe, this.fichierSortie (), this.readarg); break;
 
 		default:
 		    System.out.println ("Choix de menu incorrect : " + choix) ;
@@ -110,7 +114,12 @@ public class Launch {
 	    System.exit(0) ;
 	    
 	    
-	} catch (Throwable t) {
+	} catch(SommetNonExisteException e )	{
+		
+		System.err.println("Vous essayez de choisir un sommet non existant dans la carte");
+		System.exit(1);
+		
+	}	catch (Throwable t) {
 	    t.printStackTrace() ;
 	    System.exit(1) ;
 	}

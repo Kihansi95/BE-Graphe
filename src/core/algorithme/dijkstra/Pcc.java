@@ -2,11 +2,9 @@ package core.algorithme.dijkstra ;
 
 import java.awt.Color;
 import java.io.* ;
-import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.List;
-import java.util.Map;
 import java.util.Stack;
 
 import base.BinaryHeap;
@@ -23,10 +21,10 @@ import exceptions.SuccesseurNonExistantException;
 
 public class Pcc extends Algo {
 	
-	// config couleur de l'algo
-	private static final Color COULEUR_SUCCESSEUR_VISITE = Color.GREEN;
-	private static final Color COULEUR_EXPLORE = Color.BLUE;
-	private static final Color COULEUR_SOLUTION = Color.DARK_GRAY;
+	// config couleur algo
+    public Color couleurSuccesseurVisite()	{	return Color.GREEN;		}
+    public Color couleurExplore()	{	return Color.BLUE;	}
+    public Color couleurSolution()	{	return Color.DARK_GRAY; 	}
 	
     private Noeud noeudOrigine;
     
@@ -54,7 +52,7 @@ public class Pcc extends Algo {
 		int destination = readarg.lireInt ("Numero du sommet destination ? ");
 		this.noeudDestination = gr.getNoeud(destination) ;
 		
-		int choice = readarg.lireInt("Votre critere a optimiser : (0) temps (1) distance (2) vitesse optimale pour chaque route ");
+		int choice = readarg.lireInt("Votre critere a optimiser : (0) temps (1) distance (2) vitesse optimale pour chaque route\n> ");
 		
 		if(choice < 0 && choice >= Critere.values().length)
 			throw new InputMismatchException("Je ne comprends pas votre critere?");
@@ -62,10 +60,6 @@ public class Pcc extends Algo {
 		
 		sommets = null;
     }
-    
-    public Color couleurSuccesseurVisite()	{	return Color.GREEN;		}
-    public Color couleurExplore()	{	return Color.BLUE;	}
-    public Color couleurSolution()	{	return Color.DARK_GRAY; 	}
     
     public Noeud getOrigine()	{
     	return this.noeudOrigine;

@@ -215,6 +215,37 @@ public class Graphe {
     }
     
     /**
+     * get Noeud a proximite au click.
+     * @return Noeud trouve, null sinon
+     */
+    public Noeud getNoeudByClick()	{
+    	if (dessin.waitClick()) {
+    	    float lon = dessin.getClickLon() ;
+    	    float lat = dessin.getClickLat() ;
+    	    
+    	    float minDist = Float.MAX_VALUE ;
+    	    int   noeud   = 0 ;
+    	    
+    	    for (int num_node = 0 ; num_node < longitudes.length ; num_node++) {
+    		float londiff = (longitudes[num_node] - lon) ;
+    		float latdiff = (latitudes[num_node] - lat) ;
+    		float dist = londiff*londiff + latdiff*latdiff ;
+    		if (dist < minDist) {
+    		    noeud = num_node ;
+    		    minDist = dist ;
+    		}
+    	    }
+
+    	    System.out.println("Noeud le plus proche : " + noeud) ;
+    	    dessin.setColor(java.awt.Color.red) ;
+    	    dessin.drawPoint(longitudes[noeud], latitudes[noeud], 5) ;
+    	    return this.noeuds.get(noeud);
+    	}
+    	
+    	return null;
+    }
+    
+    /**
      * Get les routes de graphe.<br/>
      * <b>ceci n'est qu'une copie de la liste, toutes modification ne sera ignoré</b>
      * @return List Liaison
