@@ -1,0 +1,963 @@
+>>> Algorithme Dijkstra de 0:0 vers 0:17000 <<<
+
+Solution de Dijkstra de 0:0 vers 0:17000
+Chemin de 0:0 vers 0:17000
+0:0
+--> 0:1201116 par Liaison 0:0 -> 0:1201116 - autoroute : L'Autoroute du Nord  (oneway) 130 km/h max 
+--> 0:1201117 par Liaison 0:1201116 -> 0:1201117 - autoroute : L'Autoroute du Nord  (oneway) 130 km/h max 
+--> 0:106318 par Liaison 0:1201117 -> 0:106318 - autoroute : L'Autoroute du Nord  (oneway) 130 km/h max 
+--> 0:1 par Liaison 0:106318 -> 0:1 - autoroute : L'Autoroute du Nord  (oneway) 130 km/h max 
+--> 0:106211 par Liaison 0:1 -> 0:106211 - autoroute : L'Autoroute du Nord  (oneway) 130 km/h max 
+--> 0:106212 par Liaison 0:106211 -> 0:106212 - route : .  (oneway) 50 km/h max 
+--> 0:106216 par Liaison 0:106212 -> 0:106216 - route : .  (oneway) 50 km/h max 
+--> 0:103395 par Liaison 0:106216 -> 0:103395 - route : .  (oneway) 50 km/h max 
+--> 0:106207 par Liaison 0:103395 -> 0:106207 - route : .  (oneway) 50 km/h max 
+--> 0:106209 par Liaison 0:106207 -> 0:106209 - route : .  (oneway) 50 km/h max 
+--> 0:106208 par Liaison 0:106209 -> 0:106208 - route : .  (oneway) 50 km/h max 
+--> 0:106148 par Liaison 0:106208 -> 0:106148 - route : .  (oneway) 50 km/h max 
+--> 0:103385 par Liaison 0:106148 -> 0:103385 - route : .  (oneway) 70 km/h max 
+--> 0:106210 par Liaison 0:103385 <-> 0:106210 - route : . 70 km/h max 
+--> 0:106133 par Liaison 0:106210 <-> 0:106133 - route : . 70 km/h max 
+--> 0:106155 par Liaison 0:106133 <-> 0:106155 - route : . 70 km/h max 
+--> 0:103386 par Liaison 0:106155 <-> 0:103386 - route : . 70 km/h max 
+--> 0:1747670 par Liaison 0:103386 <-> 0:1747670 - route : Route des Anniversaires 70 km/h max 
+--> 0:1747669 par Liaison 0:1747670 <-> 0:1747669 - route : Route des Anniversaires 70 km/h max 
+--> 0:237765 par Liaison 0:1747669 <-> 0:237765 - route : Route des Anniversaires 70 km/h max 
+--> 0:237769 par Liaison 0:237765 <-> 0:237769 - route : Route des Anniversaires 70 km/h max 
+--> 0:237767 par Liaison 0:237769 <-> 0:237767 - route : Route des Anniversaires 70 km/h max 
+--> 0:1747668 par Liaison 0:237767 <-> 0:1747668 - route : Route des Anniversaires 70 km/h max 
+--> 0:106156 par Liaison 0:1747668 <-> 0:106156 - route : Route des Anniversaires 70 km/h max 
+--> 0:106182 par Liaison 0:106156 -> 0:106182 - route : Route de la Commune  (oneway) 70 km/h max 
+--> 0:186502 par Liaison 0:106182 -> 0:186502 - route : Route de la Commune  (oneway) 70 km/h max 
+--> 0:106188 par Liaison 0:186502 -> 0:106188 - route : .  (oneway) 70 km/h max 
+--> 0:106200 par Liaison 0:106188 -> 0:106200 - route : .  (oneway) 70 km/h max 
+--> 0:106187 par Liaison 0:106200 -> 0:106187 - route : .  (oneway) 70 km/h max 
+--> 0:106191 par Liaison 0:106187 -> 0:106191 - route : .  (oneway) 70 km/h max 
+--> 0:106195 par Liaison 0:106191 -> 0:106195 - route : .  (oneway) 70 km/h max 
+--> 0:106196 par Liaison 0:106195 -> 0:106196 - route : .  (oneway) 70 km/h max 
+--> 0:112941 par Liaison 0:106196 <-> 0:112941 - route : . 70 km/h max 
+--> 0:106203 par Liaison 0:112941 -> 0:106203 - route : .  (oneway) 70 km/h max 
+--> 0:617063 par Liaison 0:106203 -> 0:617063 - route : .  (oneway) 50 km/h max 
+--> 0:617059 par Liaison 0:617063 -> 0:617059 - route : .  (oneway) 50 km/h max 
+--> 0:617057 par Liaison 0:617059 -> 0:617057 - route : .  (oneway) 50 km/h max 
+--> 0:617054 par Liaison 0:617057 -> 0:617054 - route : .  (oneway) 50 km/h max 
+--> 0:617055 par Liaison 0:617054 -> 0:617055 - route : .  (oneway) 50 km/h max 
+--> 0:1053299 par Liaison 0:617055 -> 0:1053299 - route : .  (oneway) 50 km/h max 
+--> 0:1053297 par Liaison 0:1053299 -> 0:1053297 - route : .  (oneway) 50 km/h max 
+--> 0:1053298 par Liaison 0:1053297 -> 0:1053298 - route : .  (oneway) 50 km/h max 
+--> 0:572368 par Liaison 0:1053298 -> 0:572368 - route : .  (oneway) 50 km/h max 
+--> 0:572367 par Liaison 0:572368 <-> 0:572367 - route : . 50 km/h max 
+--> 0:572366 par Liaison 0:572367 <-> 0:572366 - route : . 50 km/h max 
+--> 0:572365 par Liaison 0:572366 <-> 0:572365 - route : . 50 km/h max 
+--> 0:570109 par Liaison 0:572365 <-> 0:570109 - route : . 70 km/h max 
+--> 0:570108 par Liaison 0:570109 <-> 0:570108 - route : . 70 km/h max 
+--> 0:1597019 par Liaison 0:570108 <-> 0:1597019 - route : Route de Roissy 50 km/h max 
+--> 0:1597016 par Liaison 0:1597019 <-> 0:1597016 - route : Route de Roissy 50 km/h max 
+--> 0:1597017 par Liaison 0:1597016 <-> 0:1597017 - route : Route de Roissy 50 km/h max 
+--> 0:1597021 par Liaison 0:1597017 <-> 0:1597021 - route : Route de Roissy 50 km/h max 
+--> 0:809597 par Liaison 0:1597021 <-> 0:809597 - route : Route de Roissy 50 km/h max 
+--> 0:809587 par Liaison 0:809597 <-> 0:809587 - route : Route de Roissy 50 km/h max 
+--> 0:991134 par Liaison 0:809587 <-> 0:991134 - route : Route de Roissy 50 km/h max 
+--> 0:809588 par Liaison 0:991134 <-> 0:809588 - route : Route de Roissy 50 km/h max 
+--> 0:1597001 par Liaison 0:809588 <-> 0:1597001 - route : Route de Roissy 50 km/h max 
+--> 0:991130 par Liaison 0:1597001 <-> 0:991130 - route : Route de Roissy 50 km/h max 
+--> 0:615689 par Liaison 0:991130 <-> 0:615689 - route : Route de Roissy 50 km/h max 
+--> 0:991107 par Liaison 0:615689 <-> 0:991107 - route : Route de Roissy 50 km/h max 
+--> 0:615690 par Liaison 0:991107 <-> 0:615690 - route : Route de Roissy 50 km/h max 
+--> 0:991132 par Liaison 0:615690 <-> 0:991132 - route : Chemin des Vaches 50 km/h max 
+--> 0:809501 par Liaison 0:991132 <-> 0:809501 - route : Chemin des Vaches 50 km/h max 
+--> 0:809502 par Liaison 0:809501 <-> 0:809502 - route : D 88e 50 km/h max 
+--> 0:1057323 par Liaison 0:809502 <-> 0:1057323 - route : Avenue du Général Pouderoux 50 km/h max 
+--> 0:559635 par Liaison 0:1057323 <-> 0:559635 - route : Avenue du Général Pouderoux 50 km/h max 
+--> -1:559632 par Liaison 0:559635 <-> -1:559632 - route : Route des Petits Ponts 70 km/h max 
+--> 0:990984 par Liaison -1:559632 <-> 0:990984 - route : Rue de Paris 70 km/h max 
+--> 0:990986 par Liaison 0:990984 <-> 0:990986 - route : Avenue Pablo Neruda 50 km/h max 
+--> 0:990987 par Liaison 0:990986 <-> 0:990987 - route : Avenue Pablo Neruda 50 km/h max 
+--> 0:990988 par Liaison 0:990987 <-> 0:990988 - route : Avenue Pablo Neruda 50 km/h max 
+--> 0:1060246 par Liaison 0:990988 <-> 0:1060246 - route : Avenue Pablo Neruda 50 km/h max 
+--> 0:1060247 par Liaison 0:1060246 <-> 0:1060247 - route : Avenue Pablo Neruda 50 km/h max 
+--> 0:1060241 par Liaison 0:1060247 <-> 0:1060241 - route : Avenue Pablo Neruda 50 km/h max 
+--> 0:1060242 par Liaison 0:1060241 <-> 0:1060242 - route : Avenue Pablo Neruda 50 km/h max 
+--> 0:990985 par Liaison 0:1060242 <-> 0:990985 - route : Avenue Pablo Neruda 50 km/h max 
+--> 0:1057325 par Liaison 0:990985 <-> 0:1057325 - route : Avenue Pablo Neruda 50 km/h max 
+--> 0:990989 par Liaison 0:1057325 <-> 0:990989 - route : Avenue Pablo Neruda 50 km/h max 
+--> 0:990990 par Liaison 0:990989 <-> 0:990990 - route : Avenue Pablo Neruda 50 km/h max 
+--> 0:532583 par Liaison 0:990990 <-> 0:532583 - route : Avenue Pablo Neruda 50 km/h max 
+--> 0:991092 par Liaison 0:532583 <-> 0:991092 - route : Rue Ambroise Rendu 30 km/h max 
+--> 0:532580 par Liaison 0:991092 <-> 0:532580 - route : Rue Ambroise Rendu 30 km/h max 
+--> 0:532582 par Liaison 0:532580 <-> 0:532582 - route : Rue Ambroise Rendu 30 km/h max 
+--> 0:532581 par Liaison 0:532582 <-> 0:532581 - route : Rue Ambroise Rendu 30 km/h max 
+--> 0:532584 par Liaison 0:532581 <-> 0:532584 - route : . 30 km/h max 
+--> 0:532585 par Liaison 0:532584 <-> 0:532585 - route : Rue Ambroise Rendu 30 km/h max 
+--> 0:532625 par Liaison 0:532585 <-> 0:532625 - route : Rue de la Source 30 km/h max 
+--> 0:532564 par Liaison 0:532625 <-> 0:532564 - route : Avenue Lamartine 30 km/h max 
+--> 0:532563 par Liaison 0:532564 <-> 0:532563 - route : Avenue Lamartine 30 km/h max 
+--> 0:991187 par Liaison 0:532563 <-> 0:991187 - route : Avenue Jean-Baptiste Clément 70 km/h max 
+--> 0:363699 par Liaison 0:991187 <-> 0:363699 - route : Avenue des Frenes 30 km/h max 
+--> 0:363698 par Liaison 0:363699 <-> 0:363698 - route : Avenue Roger Salengro 50 km/h max 
+--> 0:532671 par Liaison 0:363698 <-> 0:532671 - route : Avenue Roger Salengro 50 km/h max 
+--> 0:363697 par Liaison 0:532671 <-> 0:363697 - route : Avenue Roger Salengro 50 km/h max 
+--> 0:1371745 par Liaison 0:363697 <-> 0:1371745 - route : Avenue Roger Salengro 50 km/h max 
+--> 0:1371746 par Liaison 0:1371745 -> 0:1371746 - route : .  (oneway) 50 km/h max 
+--> 0:341639 par Liaison 0:1371746 <-> 0:341639 - route : Avenue Roger Salengro 50 km/h max 
+--> 0:341640 par Liaison 0:341639 -> 0:341640 - route : .  (oneway) 50 km/h max 
+--> 0:341637 par Liaison 0:341640 -> 0:341637 - route : .  (oneway) 50 km/h max 
+--> 0:341636 par Liaison 0:341637 <-> 0:341636 - route : Rue Roger Salengro 50 km/h max 
+--> 0:341643 par Liaison 0:341636 -> 0:341643 - route : .  (oneway) 50 km/h max 
+--> 0:341634 par Liaison 0:341643 -> 0:341634 - route : Avenue du Genéral de Gaulle  (oneway) 50 km/h max 
+--> 0:361879 par Liaison 0:341634 -> 0:361879 - route : Avenue du Genéral de Gaulle  (oneway) 50 km/h max 
+--> 0:361876 par Liaison 0:361879 -> 0:361876 - route : Avenue du Genéral de Gaulle  (oneway) 50 km/h max 
+--> 0:361877 par Liaison 0:361876 -> 0:361877 - route : Avenue du Genéral de Gaulle  (oneway) 50 km/h max 
+--> 0:361864 par Liaison 0:361877 -> 0:361864 - route : Avenue du Genéral de Gaulle  (oneway) 50 km/h max 
+--> 0:361977 par Liaison 0:361864 -> 0:361977 - route : Avenue du Genéral de Gaulle  (oneway) 50 km/h max 
+--> 0:361973 par Liaison 0:361977 -> 0:361973 - route : Avenue du Genéral de Gaulle  (oneway) 50 km/h max 
+--> 0:361850 par Liaison 0:361973 -> 0:361850 - route : Avenue du Genéral de Gaulle  (oneway) 50 km/h max 
+--> 0:361815 par Liaison 0:361850 -> 0:361815 - route : Avenue du Genéral de Gaulle  (oneway) 50 km/h max 
+--> 0:341647 par Liaison 0:361815 -> 0:341647 - route : Avenue du Genéral de Gaulle  (oneway) 50 km/h max 
+--> 0:361776 par Liaison 0:341647 -> 0:361776 - route : Avenue du Genéral de Gaulle  (oneway) 50 km/h max 
+--> 0:361806 par Liaison 0:361776 -> 0:361806 - route : Avenue du Genéral de Gaulle  (oneway) 50 km/h max 
+--> 0:341644 par Liaison 0:361806 -> 0:341644 - route : Avenue du Genéral de Gaulle  (oneway) 50 km/h max 
+--> 0:361756 par Liaison 0:341644 -> 0:361756 - route : Avenue Balzac  (oneway) 50 km/h max 
+--> 0:341645 par Liaison 0:361756 -> 0:341645 - route : Avenue Balzac  (oneway) 50 km/h max 
+--> 0:361887 par Liaison 0:341645 -> 0:361887 - route : Avenue du Parc  (oneway) 50 km/h max 
+--> 0:954341 par Liaison 0:361887 -> 0:954341 - route : Avenue du Parc  (oneway) 50 km/h max 
+--> 0:267786 par Liaison 0:954341 -> 0:267786 - route : Avenue du Parc  (oneway) 50 km/h max 
+--> 0:341621 par Liaison 0:267786 <-> 0:341621 - route : . 50 km/h max 
+--> 0:267785 par Liaison 0:341621 <-> 0:267785 - route : . 50 km/h max 
+--> 0:268689 par Liaison 0:267785 <-> 0:268689 - route : . 50 km/h max 
+--> 0:267700 par Liaison 0:268689 <-> 0:267700 - route : . 70 km/h max 
+--> 0:267702 par Liaison 0:267700 -> 0:267702 - route : .  (oneway) 70 km/h max 
+--> 0:154468 par Liaison 0:267702 -> 0:154468 - route : .  (oneway) 50 km/h max 
+--> 0:154466 par Liaison 0:154468 -> 0:154466 - route : .  (oneway) 50 km/h max 
+--> 0:954343 par Liaison 0:154466 <-> 0:954343 - route : . 70 km/h max 
+--> 0:618726 par Liaison 0:954343 <-> 0:618726 - route : . 70 km/h max 
+--> 0:618727 par Liaison 0:618726 <-> 0:618727 - route : . 70 km/h max 
+--> 0:154472 par Liaison 0:618727 <-> 0:154472 - route : . 70 km/h max 
+--> 0:154469 par Liaison 0:154472 <-> 0:154469 - route : . 70 km/h max 
+--> 0:1615825 par Liaison 0:154469 <-> 0:1615825 - route : . 70 km/h max 
+--> 0:1615824 par Liaison 0:1615825 -> 0:1615824 - route : .  (oneway) 50 km/h max 
+--> 0:154443 par Liaison 0:1615824 <-> 0:154443 - route : . 50 km/h max 
+--> 0:154449 par Liaison 0:154443 <-> 0:154449 - route : . 50 km/h max 
+--> 0:154459 par Liaison 0:154449 <-> 0:154459 - route : . 50 km/h max 
+--> 0:154448 par Liaison 0:154459 <-> 0:154448 - route : . 50 km/h max 
+--> 0:154444 par Liaison 0:154448 -> 0:154444 - route : .  (oneway) 50 km/h max 
+--> 0:154445 par Liaison 0:154444 -> 0:154445 - route : .  (oneway) 50 km/h max 
+--> 0:493366 par Liaison 0:154445 -> 0:493366 - route : D 105  (oneway) 50 km/h max 
+--> 0:493368 par Liaison 0:493366 -> 0:493368 - route : D 105  (oneway) 50 km/h max 
+--> 0:1361152 par Liaison 0:493368 <-> 0:1361152 - route : D 105 50 km/h max 
+--> 0:493365 par Liaison 0:1361152 <-> 0:493365 - route : D 105 50 km/h max 
+--> 0:493364 par Liaison 0:493365 <-> 0:493364 - route : D 105 50 km/h max 
+--> 0:2011431 par Liaison 0:493364 <-> 0:2011431 - route : Rue de la Place 30 km/h max 
+--> 0:1504579 par Liaison 0:2011431 <-> 0:1504579 - route : . 30 km/h max 
+--> 0:1504580 par Liaison 0:1504579 <-> 0:1504580 - route : . 30 km/h max 
+--> 0:1504581 par Liaison 0:1504580 <-> 0:1504581 - route : . 30 km/h max 
+--> 0:493574 par Liaison 0:1504581 <-> 0:493574 - route : . 30 km/h max 
+--> 0:493570 par Liaison 0:493574 <-> 0:493570 - route : . 30 km/h max 
+--> 0:360738 par Liaison 0:493570 <-> 0:360738 - route : Rue des Petits Prés 30 km/h max 
+--> 0:360741 par Liaison 0:360738 <-> 0:360741 - route : . 70 km/h max 
+--> 0:360740 par Liaison 0:360741 <-> 0:360740 - route : . 70 km/h max 
+--> 0:1564993 par Liaison 0:360740 <-> 0:1564993 - route : . 70 km/h max 
+--> -1:214585 par Liaison 0:1564993 <-> -1:214585 - route : . 70 km/h max 
+--> 0:1565009 par Liaison -1:214585 <-> 0:1565009 - route : . 70 km/h max 
+--> 0:214586 par Liaison 0:1565009 <-> 0:214586 - route : . 70 km/h max 
+--> 0:290562 par Liaison 0:214586 -> 0:290562 - route : .  (oneway) 70 km/h max 
+--> 0:290563 par Liaison 0:290562 -> 0:290563 - route : .  (oneway) 50 km/h max 
+--> 0:290548 par Liaison 0:290563 -> 0:290548 - route : .  (oneway) 70 km/h max 
+--> 0:290558 par Liaison 0:290548 -> 0:290558 - route : .  (oneway) 50 km/h max 
+--> 0:290559 par Liaison 0:290558 -> 0:290559 - route : .  (oneway) 70 km/h max 
+--> 0:290545 par Liaison 0:290559 <-> 0:290545 - route : Rue du Général Leclerc 70 km/h max 
+--> 0:214587 par Liaison 0:290545 <-> 0:214587 - route : Rue du Général Leclerc 70 km/h max 
+--> 0:2383252 par Liaison 0:214587 <-> 0:2383252 - route : D 418 70 km/h max 
+--> 0:2383251 par Liaison 0:2383252 <-> 0:2383251 - route : D 418 70 km/h max 
+--> 0:214588 par Liaison 0:2383251 <-> 0:214588 - route : D 418 70 km/h max 
+--> 0:962697 par Liaison 0:214588 <-> 0:962697 - route : D 418 70 km/h max 
+--> 0:214589 par Liaison 0:962697 <-> 0:214589 - route : D 418 70 km/h max 
+--> 0:992306 par Liaison 0:214589 -> 0:992306 - route : D 418  (oneway) 70 km/h max 
+--> 0:962670 par Liaison 0:992306 -> 0:962670 - route : D 418  (oneway) 70 km/h max 
+--> 0:962692 par Liaison 0:962670 -> 0:962692 - route : Pont Joffre  (oneway) 70 km/h max 
+--> 0:1620503 par Liaison 0:962692 -> 0:1620503 - route : Rue Gambetta  (oneway) 70 km/h max 
+--> 0:1620510 par Liaison 0:1620503 -> 0:1620510 - route : Rue Gambetta  (oneway) 70 km/h max 
+--> 0:1620500 par Liaison 0:1620510 -> 0:1620500 - route : .  (oneway) 50 km/h max 
+--> 0:1620514 par Liaison 0:1620500 -> 0:1620514 - route : .  (oneway) 50 km/h max 
+--> 0:1620502 par Liaison 0:1620514 -> 0:1620502 - route : .  (oneway) 50 km/h max 
+--> 0:1620499 par Liaison 0:1620502 -> 0:1620499 - route : .  (oneway) 50 km/h max 
+--> 0:1737040 par Liaison 0:1620499 -> 0:1737040 - route : .  (oneway) 70 km/h max 
+--> 0:290540 par Liaison 0:1737040 <-> 0:290540 - route : . 70 km/h max 
+--> 0:962718 par Liaison 0:290540 -> 0:962718 - route : Rue Gambetta  (oneway) 70 km/h max 
+--> 0:488182 par Liaison 0:962718 -> 0:488182 - route : Rue Gambetta  (oneway) 70 km/h max 
+--> 0:290541 par Liaison 0:488182 <-> 0:290541 - route : Rue Saint-Denis 70 km/h max 
+--> 0:488189 par Liaison 0:290541 <-> 0:488189 - route : Rue Saint-Denis 70 km/h max 
+--> 0:488192 par Liaison 0:488189 <-> 0:488192 - route : Rue Saint-Denis 70 km/h max 
+--> 0:962726 par Liaison 0:488192 <-> 0:962726 - route : Rue Saint-Denis 70 km/h max 
+--> 0:290542 par Liaison 0:962726 <-> 0:290542 - route : Rue Saint-Denis 70 km/h max 
+--> 0:290543 par Liaison 0:290542 <-> 0:290543 - route : Rue Saint-Denis 70 km/h max 
+--> 0:488202 par Liaison 0:290543 <-> 0:488202 - route : Rue Saint-Denis 70 km/h max 
+--> 0:962743 par Liaison 0:488202 <-> 0:962743 - route : Rue Saint-Denis 70 km/h max 
+--> 0:488212 par Liaison 0:962743 <-> 0:488212 - route : Rue Saint-Denis 70 km/h max 
+--> 0:962769 par Liaison 0:488212 <-> 0:962769 - route : Rue Saint-Denis 70 km/h max 
+--> 0:962767 par Liaison 0:962769 <-> 0:962767 - route : Rue Saint-Denis 70 km/h max 
+--> 0:1618550 par Liaison 0:962767 <-> 0:1618550 - route : Rue Saint-Denis 70 km/h max 
+--> 0:488210 par Liaison 0:1618550 <-> 0:488210 - route : Rue Saint-Denis 70 km/h max 
+--> 0:1618558 par Liaison 0:488210 <-> 0:1618558 - route : Rue Saint-Denis 70 km/h max 
+--> 0:1618545 par Liaison 0:1618558 <-> 0:1618545 - route : Rue Saint-Denis 70 km/h max 
+--> 0:290544 par Liaison 0:1618545 <-> 0:290544 - route : Rue Saint-Denis 70 km/h max 
+--> 0:962435 par Liaison 0:290544 <-> 0:962435 - route : Rue Saint-Denis 70 km/h max 
+--> 0:962734 par Liaison 0:962435 <-> 0:962734 - route : Avenue Raymond Poincaré 70 km/h max 
+--> 0:962735 par Liaison 0:962734 <-> 0:962735 - route : Avenue Raymond Poincaré 70 km/h max 
+--> 0:201678 par Liaison 0:962735 <-> 0:201678 - route : Avenue Raymond Poincaré 90 km/h max 
+--> 0:488229 par Liaison 0:201678 <-> 0:488229 - route : Avenue Raymond Poincaré 90 km/h max 
+--> 0:488224 par Liaison 0:488229 <-> 0:488224 - route : Avenue Raymond Poincaré 90 km/h max 
+--> 0:1446429 par Liaison 0:488224 <-> 0:1446429 - route : Avenue Raymond Poincaré 90 km/h max 
+--> 0:287586 par Liaison 0:1446429 <-> 0:287586 - route : Avenue Raymond Poincaré 90 km/h max 
+--> 0:287585 par Liaison 0:287586 <-> 0:287585 - route : Avenue Raymond Poincaré 90 km/h max 
+--> 0:1268483 par Liaison 0:287585 <-> 0:1268483 - route : Avenue Raymond Poincaré 90 km/h max 
+--> 0:201676 par Liaison 0:1268483 <-> 0:201676 - route : Avenue Raymond Poincaré 90 km/h max 
+--> 0:201677 par Liaison 0:201676 -> 0:201677 - route : D 231  (oneway) 90 km/h max 
+--> 0:1190947 par Liaison 0:201677 -> 0:1190947 - route : .  (oneway) 50 km/h max 
+--> 0:201674 par Liaison 0:1190947 -> 0:201674 - route : .  (oneway) 50 km/h max 
+--> 0:2444296 par Liaison 0:201674 -> 0:2444296 - route : D 231  (oneway) 90 km/h max 
+--> 0:2444290 par Liaison 0:2444296 -> 0:2444290 - route : D 231  (oneway) 90 km/h max 
+--> 0:1279447 par Liaison 0:2444290 -> 0:1279447 - route : D 231  (oneway) 90 km/h max 
+--> 0:285041 par Liaison 0:1279447 -> 0:285041 - route : .  (oneway) 50 km/h max 
+--> 0:284438 par Liaison 0:285041 -> 0:284438 - route : .  (oneway) 50 km/h max 
+--> 0:201671 par Liaison 0:284438 <-> 0:201671 - route : D 231 90 km/h max 
+--> 0:201666 par Liaison 0:201671 -> 0:201666 - route : D 231  (oneway) 90 km/h max 
+--> 0:201667 par Liaison 0:201666 -> 0:201667 - route : .  (oneway) 50 km/h max 
+--> 0:201668 par Liaison 0:201667 -> 0:201668 - route : .  (oneway) 50 km/h max 
+--> 0:201669 par Liaison 0:201668 -> 0:201669 - route : .  (oneway) 50 km/h max 
+--> 0:448318 par Liaison 0:201669 -> 0:448318 - route : .  (oneway) 90 km/h max 
+--> 0:541998 par Liaison 0:448318 <-> 0:541998 - route : . 90 km/h max 
+--> 0:448317 par Liaison 0:541998 <-> 0:448317 - route : . 90 km/h max 
+--> 0:292350 par Liaison 0:448317 -> 0:292350 - route : .  (oneway) 90 km/h max 
+--> 0:292351 par Liaison 0:292350 -> 0:292351 - route : .  (oneway) 90 km/h max 
+--> 0:2021776 par Liaison 0:292351 -> 0:2021776 - route : .  (oneway) 90 km/h max 
+--> 0:448316 par Liaison 0:2021776 -> 0:448316 - route : .  (oneway) 90 km/h max 
+--> 0:448315 par Liaison 0:448316 -> 0:448315 - route : .  (oneway) 90 km/h max 
+--> 0:448314 par Liaison 0:448315 <-> 0:448314 - route : . 90 km/h max 
+--> 0:446085 par Liaison 0:448314 -> 0:446085 - route : .  (oneway) 90 km/h max 
+--> 0:446079 par Liaison 0:446085 -> 0:446079 - route : .  (oneway) 50 km/h max 
+--> 0:446080 par Liaison 0:446079 -> 0:446080 - route : .  (oneway) 50 km/h max 
+--> 0:446081 par Liaison 0:446080 -> 0:446081 - route : .  (oneway) 50 km/h max 
+--> 0:446088 par Liaison 0:446081 -> 0:446088 - route : .  (oneway) 90 km/h max 
+--> 0:446089 par Liaison 0:446088 <-> 0:446089 - route : . 90 km/h max 
+--> 0:414500 par Liaison 0:446089 -> 0:414500 - route : .  (oneway) 90 km/h max 
+--> 0:414501 par Liaison 0:414500 -> 0:414501 - route : .  (oneway) 50 km/h max 
+--> 0:414495 par Liaison 0:414501 -> 0:414495 - route : .  (oneway) 50 km/h max 
+--> 0:414496 par Liaison 0:414495 -> 0:414496 - route : .  (oneway) 50 km/h max 
+--> 0:1497605 par Liaison 0:414496 -> 0:1497605 - route : .  (oneway) 50 km/h max 
+--> 0:414497 par Liaison 0:1497605 -> 0:414497 - route : .  (oneway) 50 km/h max 
+--> 0:414502 par Liaison 0:414497 -> 0:414502 - route : D 231  (oneway) 90 km/h max 
+--> 0:414534 par Liaison 0:414502 <-> 0:414534 - route : D 231 90 km/h max 
+--> 0:414535 par Liaison 0:414534 -> 0:414535 - route : D 231  (oneway) 90 km/h max 
+--> 0:414505 par Liaison 0:414535 -> 0:414505 - route : .  (oneway) 50 km/h max 
+--> 0:414506 par Liaison 0:414505 -> 0:414506 - route : .  (oneway) 50 km/h max 
+--> 0:541897 par Liaison 0:414506 -> 0:541897 - route : .  (oneway) 30 km/h max 
+--> 0:541895 par Liaison 0:541897 <-> 0:541895 - route : . 30 km/h max 
+--> 0:541893 par Liaison 0:541895 <-> 0:541893 - route : . 30 km/h max 
+--> 0:541889 par Liaison 0:541893 <-> 0:541889 - route : . 30 km/h max 
+--> 0:541892 par Liaison 0:541889 <-> 0:541892 - route : . 30 km/h max 
+--> 0:541891 par Liaison 0:541892 <-> 0:541891 - route : . 30 km/h max 
+--> 0:541890 par Liaison 0:541891 <-> 0:541890 - route : . 30 km/h max 
+--> 0:541916 par Liaison 0:541890 <-> 0:541916 - route : . 30 km/h max 
+--> 0:541915 par Liaison 0:541916 <-> 0:541915 - route : . 30 km/h max 
+--> -1:541925 par Liaison 0:541915 <-> -1:541925 - route : . 30 km/h max 
+--> 0:541922 par Liaison -1:541925 <-> 0:541922 - route : . 30 km/h max 
+--> 0:541923 par Liaison 0:541922 <-> 0:541923 - route : . 30 km/h max 
+--> 0:541926 par Liaison 0:541923 <-> 0:541926 - route : D 21 50 km/h max 
+--> 0:414518 par Liaison 0:541926 <-> 0:414518 - route : D 21 50 km/h max 
+--> 0:414519 par Liaison 0:414518 -> 0:414519 - route : .  (oneway) 50 km/h max 
+--> 0:414543 par Liaison 0:414519 -> 0:414543 - route : D 231  (oneway) 90 km/h max 
+--> 0:414544 par Liaison 0:414543 <-> 0:414544 - route : D 231 90 km/h max 
+--> 0:414523 par Liaison 0:414544 -> 0:414523 - route : D 231  (oneway) 50 km/h max 
+--> 0:414524 par Liaison 0:414523 -> 0:414524 - route : .  (oneway) 50 km/h max 
+--> 0:414525 par Liaison 0:414524 -> 0:414525 - route : .  (oneway) 50 km/h max 
+--> 0:594668 par Liaison 0:414525 -> 0:594668 - route : D 231  (oneway) 50 km/h max 
+--> 0:1689880 par Liaison 0:594668 <-> 0:1689880 - route : D 231 90 km/h max 
+--> 0:614562 par Liaison 0:1689880 <-> 0:614562 - route : D 231 90 km/h max 
+--> 0:1606853 par Liaison 0:614562 <-> 0:1606853 - route : D 231 90 km/h max 
+--> 0:1462903 par Liaison 0:1606853 <-> 0:1462903 - route : D 231 90 km/h max 
+--> 0:2351966 par Liaison 0:1462903 <-> 0:2351966 - route : D 231 90 km/h max 
+--> 0:594669 par Liaison 0:2351966 <-> 0:594669 - route : D 231 90 km/h max 
+--> 0:362740 par Liaison 0:594669 -> 0:362740 - route : .  (oneway) 90 km/h max 
+--> 0:362741 par Liaison 0:362740 -> 0:362741 - route : .  (oneway) 50 km/h max 
+--> 0:362742 par Liaison 0:362741 -> 0:362742 - route : .  (oneway) 50 km/h max 
+--> 0:362743 par Liaison 0:362742 -> 0:362743 - route : .  (oneway) 50 km/h max 
+--> 0:838066 par Liaison 0:362743 -> 0:838066 - route : .  (oneway) 90 km/h max 
+--> 0:2351926 par Liaison 0:838066 <-> 0:2351926 - route : D 231 90 km/h max 
+--> 0:2351921 par Liaison 0:2351926 <-> 0:2351921 - route : D 231 90 km/h max 
+--> 0:2351913 par Liaison 0:2351921 <-> 0:2351913 - route : D 231 90 km/h max 
+--> 0:1729614 par Liaison 0:2351913 <-> 0:1729614 - route : D 231 90 km/h max 
+--> 0:2354555 par Liaison 0:1729614 <-> 0:2354555 - route : D 231 70 km/h max 
+--> 0:1729615 par Liaison 0:2354555 <-> 0:1729615 - route : D 231 70 km/h max 
+--> 0:2354549 par Liaison 0:1729615 <-> 0:2354549 - route : D 231 90 km/h max 
+--> 0:352396 par Liaison 0:2354549 <-> 0:352396 - route : D 231 90 km/h max 
+--> 0:2227232 par Liaison 0:352396 -> 0:2227232 - route : D 231  (oneway) 90 km/h max 
+--> 0:2227233 par Liaison 0:2227232 -> 0:2227233 - route : D 231  (oneway) 90 km/h max 
+--> 0:2227231 par Liaison 0:2227233 -> 0:2227231 - route : D 231  (oneway) 90 km/h max 
+--> 0:2227236 par Liaison 0:2227231 -> 0:2227236 - route : D 231  (oneway) 90 km/h max 
+--> 0:2354545 par Liaison 0:2227236 <-> 0:2354545 - route : D 231 90 km/h max 
+--> 0:2354544 par Liaison 0:2354545 <-> 0:2354544 - route : D 231 90 km/h max 
+--> 0:698447 par Liaison 0:2354544 <-> 0:698447 - route : D 231 90 km/h max 
+--> 0:698448 par Liaison 0:698447 <-> 0:698448 - route : D 231 90 km/h max 
+--> 0:2354537 par Liaison 0:698448 <-> 0:2354537 - route : D 231 90 km/h max 
+--> 0:697917 par Liaison 0:2354537 <-> 0:697917 - route : D 231 90 km/h max 
+--> 0:697930 par Liaison 0:697917 <-> 0:697930 - route : D 231 90 km/h max 
+--> 0:2354519 par Liaison 0:697930 <-> 0:2354519 - route : D 231 90 km/h max 
+--> 0:2354502 par Liaison 0:2354519 <-> 0:2354502 - route : D 231 90 km/h max 
+--> 0:2354495 par Liaison 0:2354502 <-> 0:2354495 - route : D 231 90 km/h max 
+--> 0:2352319 par Liaison 0:2354495 <-> 0:2352319 - route : D 231 90 km/h max 
+--> 0:2352254 par Liaison 0:2352319 <-> 0:2352254 - route : D 231 90 km/h max 
+--> 0:2352252 par Liaison 0:2352254 -> 0:2352252 - route : .  (oneway) 50 km/h max 
+--> 0:2352253 par Liaison 0:2352252 -> 0:2352253 - route : .  (oneway) 50 km/h max 
+--> 0:698443 par Liaison 0:2352253 <-> 0:698443 - route : D 231 90 km/h max 
+--> 0:698444 par Liaison 0:698443 <-> 0:698444 - route : D 231 90 km/h max 
+--> 0:2352196 par Liaison 0:698444 <-> 0:2352196 - route : D 231 90 km/h max 
+--> 0:697929 par Liaison 0:2352196 <-> 0:697929 - route : D 231 90 km/h max 
+--> 0:698429 par Liaison 0:697929 <-> 0:698429 - route : D 231 90 km/h max 
+--> 0:713141 par Liaison 0:698429 <-> 0:713141 - route : D 231 90 km/h max 
+--> 0:713115 par Liaison 0:713141 <-> 0:713115 - route : D 231 90 km/h max 
+--> 0:698454 par Liaison 0:713115 <-> 0:698454 - route : D 231 90 km/h max 
+--> 0:106366 par Liaison 0:698454 -> 0:106366 - route : D 231  (oneway) 50 km/h max 
+--> 0:704893 par Liaison 0:106366 -> 0:704893 - route : Avenue du Général de Gaulle  (oneway) 50 km/h max 
+--> 0:2143979 par Liaison 0:704893 -> 0:2143979 - route : Avenue du Général de Gaulle  (oneway) 50 km/h max 
+--> 0:230029 par Liaison 0:2143979 -> 0:230029 - route : Avenue du Général de Gaulle  (oneway) 50 km/h max 
+--> 0:1288713 par Liaison 0:230029 -> 0:1288713 - route : D 619  (oneway) 90 km/h max 
+--> 0:210607 par Liaison 0:1288713 <-> 0:210607 - route : D 619 90 km/h max 
+--> 0:1208733 par Liaison 0:210607 <-> 0:1208733 - route : D 619 90 km/h max 
+--> 0:1208745 par Liaison 0:1208733 <-> 0:1208745 - route : D 619 90 km/h max 
+--> 0:730199 par Liaison 0:1208745 <-> 0:730199 - route : D 619 90 km/h max 
+--> 0:838074 par Liaison 0:730199 -> 0:838074 - route : D 619  (oneway) 90 km/h max 
+--> 0:724566 par Liaison 0:838074 <-> 0:724566 - route : D 1d 50 km/h max 
+--> 0:724571 par Liaison 0:724566 <-> 0:724571 - route : D 1d 50 km/h max 
+--> 0:724565 par Liaison 0:724571 -> 0:724565 - route : Route de Chalautre  (oneway) 50 km/h max 
+--> 0:1613396 par Liaison 0:724565 <-> 0:1613396 - route : D 1 50 km/h max 
+--> 0:724577 par Liaison 0:1613396 <-> 0:724577 - route : D 1 50 km/h max 
+--> 0:1612873 par Liaison 0:724577 <-> 0:1612873 - route : . 30 km/h max 
+--> 0:229780 par Liaison 0:1612873 <-> 0:229780 - route : D 78 30 km/h max 
+--> 0:229779 par Liaison 0:229780 <-> 0:229779 - route : D 18 30 km/h max 
+--> 0:229778 par Liaison 0:229779 <-> 0:229778 - route : D 18 30 km/h max 
+--> 0:229777 par Liaison 0:229778 <-> 0:229777 - route : D 78 50 km/h max 
+--> 0:1632895 par Liaison 0:229777 <-> 0:1632895 - route : D 49 50 km/h max 
+--> 0:1613456 par Liaison 0:1632895 <-> 0:1613456 - route : D 49 50 km/h max 
+--> 0:1613455 par Liaison 0:1613456 <-> 0:1613455 - route : D 49 50 km/h max 
+--> 0:1613443 par Liaison 0:1613455 <-> 0:1613443 - route : D 49 50 km/h max 
+--> 0:1613448 par Liaison 0:1613443 <-> 0:1613448 - route : D 68a 30 km/h max 
+--> 0:634457 par Liaison 0:1613448 <-> 0:634457 - route : D 439 70 km/h max 
+--> 0:2268372 par Liaison 0:634457 <-> 0:2268372 - route : D 439 70 km/h max 
+--> 0:2318335 par Liaison 0:2268372 <-> 0:2318335 - route : D 439 70 km/h max 
+--> 0:2318298 par Liaison 0:2318335 <-> 0:2318298 - route : D 79 50 km/h max 
+--> 0:2318305 par Liaison 0:2318298 <-> 0:2318305 - route : D 79 50 km/h max 
+--> 0:2318333 par Liaison 0:2318305 <-> 0:2318333 - route : D 79 50 km/h max 
+--> 0:2318334 par Liaison 0:2318333 <-> 0:2318334 - route : D 79 50 km/h max 
+--> 0:2373209 par Liaison 0:2318334 <-> 0:2373209 - route : D 25 50 km/h max 
+--> 0:1843610 par Liaison 0:2373209 <-> 0:1843610 - route : . 30 km/h max 
+--> 0:1843662 par Liaison 0:1843610 <-> 0:1843662 - route : Grande Rue 50 km/h max 
+--> 0:1843653 par Liaison 0:1843662 <-> 0:1843653 - route : Grande Rue 50 km/h max 
+--> 0:1843612 par Liaison 0:1843653 <-> 0:1843612 - route : Grande Rue 50 km/h max 
+--> 0:1843667 par Liaison 0:1843612 <-> 0:1843667 - route : Grande Rue 50 km/h max 
+--> 0:1843614 par Liaison 0:1843667 <-> 0:1843614 - route : Grande Rue 50 km/h max 
+--> 0:1843646 par Liaison 0:1843614 <-> 0:1843646 - route : . 50 km/h max 
+--> 0:1843665 par Liaison 0:1843646 <-> 0:1843665 - route : . 50 km/h max 
+--> 0:1843639 par Liaison 0:1843665 <-> 0:1843639 - route : Rue des Marchais 50 km/h max 
+--> 0:1843642 par Liaison 0:1843639 <-> 0:1843642 - route : Rue des Marchais 50 km/h max 
+--> 0:1843660 par Liaison 0:1843642 <-> 0:1843660 - route : Rue des Marchais 50 km/h max 
+--> 0:2353013 par Liaison 0:1843660 <-> 0:2353013 - route : D 79 50 km/h max 
+--> 0:2351284 par Liaison 0:2353013 <-> 0:2351284 - route : D 79 50 km/h max 
+--> 0:2351287 par Liaison 0:2351284 <-> 0:2351287 - route : D79 50 km/h max 
+--> -1:2351285 par Liaison 0:2351287 <-> -1:2351285 - route : D79 50 km/h max 
+--> 0:2351360 par Liaison -1:2351285 <-> 0:2351360 - route : . 50 km/h max 
+--> 0:2351359 par Liaison 0:2351360 <-> 0:2351359 - route : D 79 50 km/h max 
+--> 0:2378662 par Liaison 0:2351359 <-> 0:2378662 - route : D 79 50 km/h max 
+--> 0:2096570 par Liaison 0:2378662 <-> 0:2096570 - route : D 54b 50 km/h max 
+--> 0:2096518 par Liaison 0:2096570 <-> 0:2096518 - route : D 54b 50 km/h max 
+--> 0:2096519 par Liaison 0:2096518 <-> 0:2096519 - route : D 54 50 km/h max 
+--> 0:2096513 par Liaison 0:2096519 <-> 0:2096513 - route : Grande Rue 70 km/h max 
+--> 0:2096508 par Liaison 0:2096513 <-> 0:2096508 - route : Grande Rue 70 km/h max 
+--> 0:2096504 par Liaison 0:2096508 <-> 0:2096504 - route : Grande Rue 70 km/h max 
+--> 0:2096500 par Liaison 0:2096504 <-> 0:2096500 - route : Grande Rue 70 km/h max 
+--> 0:2096499 par Liaison 0:2096500 <-> 0:2096499 - route : Grande Rue 70 km/h max 
+--> 0:2096498 par Liaison 0:2096499 <-> 0:2096498 - route : Grande Rue 70 km/h max 
+--> 0:70110 par Liaison 0:2096498 <-> 0:70110 - route : Grande Rue 70 km/h max 
+--> -1:70112 par Liaison 0:70110 <-> -1:70112 - route : D 54c 70 km/h max 
+--> 0:723302 par Liaison -1:70112 <-> 0:723302 - route : D 30 70 km/h max 
+--> 0:70113 par Liaison 0:723302 <-> 0:70113 - route : D 30 70 km/h max 
+--> 0:2095284 par Liaison 0:70113 <-> 0:2095284 - route : D 30 70 km/h max 
+--> -1:70114 par Liaison 0:2095284 <-> -1:70114 - route : Rue des Alisiers 70 km/h max 
+--> 0:1896729 par Liaison -1:70114 <-> 0:1896729 - route : D 30 70 km/h max 
+--> 0:69981 par Liaison 0:1896729 <-> 0:69981 - route : D 30 70 km/h max 
+--> 0:1896720 par Liaison 0:69981 <-> 0:1896720 - route : Grande Rue 90 km/h max 
+--> 0:1812099 par Liaison 0:1896720 <-> 0:1812099 - route : Grande Rue 90 km/h max 
+--> 0:1896719 par Liaison 0:1812099 <-> 0:1896719 - route : Grande Rue 90 km/h max 
+--> 0:1509960 par Liaison 0:1896719 <-> 0:1509960 - route : Grande Rue 90 km/h max 
+--> 0:1509958 par Liaison 0:1509960 <-> 0:1509958 - route : Grande Rue 90 km/h max 
+--> 0:1505305 par Liaison 0:1509958 <-> 0:1505305 - route : Grande Rue 90 km/h max 
+--> 0:1201827 par Liaison 0:1505305 <-> 0:1201827 - route : Grande Rue 90 km/h max 
+--> 0:1505307 par Liaison 0:1201827 <-> 0:1505307 - route : Grande rue 50 km/h max 
+--> 0:1201831 par Liaison 0:1505307 <-> 0:1201831 - route : Grande rue 50 km/h max 
+--> 0:1201847 par Liaison 0:1201831 <-> 0:1201847 - route : Grande rue 50 km/h max 
+--> 0:1498274 par Liaison 0:1201847 <-> 0:1498274 - route : Grande rue 50 km/h max 
+--> 0:1201830 par Liaison 0:1498274 <-> 0:1201830 - route : Grande rue 50 km/h max 
+--> 0:1498275 par Liaison 0:1201830 <-> 0:1498275 - route : Grande rue 50 km/h max 
+--> 0:1201848 par Liaison 0:1498275 <-> 0:1201848 - route : Grande rue 50 km/h max 
+--> 0:1498272 par Liaison 0:1201848 <-> 0:1498272 - route : Grande rue 50 km/h max 
+--> 0:1593830 par Liaison 0:1498272 <-> 0:1593830 - route : Grande rue 50 km/h max 
+--> 0:1201832 par Liaison 0:1593830 <-> 0:1201832 - route : Grande rue 50 km/h max 
+--> 0:1212029 par Liaison 0:1201832 <-> 0:1212029 - route : Grande rue 50 km/h max 
+--> 0:1543537 par Liaison 0:1212029 <-> 0:1543537 - route : Grande rue 50 km/h max 
+--> 0:1594469 par Liaison 0:1543537 <-> 0:1594469 - route : Grande rue 50 km/h max 
+--> -1:1201852 par Liaison 0:1594469 <-> -1:1201852 - route : Grande rue 50 km/h max 
+--> 0:1406716 par Liaison -1:1201852 <-> 0:1406716 - route : Rue des Douais 90 km/h max 
+--> 0:1203292 par Liaison 0:1406716 <-> 0:1203292 - route : Rue des Douais 90 km/h max 
+--> 0:1201917 par Liaison 0:1203292 <-> 0:1201917 - route : Rue des Douais 90 km/h max 
+--> 0:1872697 par Liaison 0:1201917 <-> 0:1872697 - route : Avenue des Ouches 90 km/h max 
+--> 0:1623343 par Liaison 0:1872697 <-> 0:1623343 - route : Avenue des Ouches 70 km/h max 
+--> 0:1201916 par Liaison 0:1623343 <-> 0:1201916 - route : Avenue des Ouches 70 km/h max 
+--> 0:1201961 par Liaison 0:1201916 <-> 0:1201961 - route : Avenue des Ouches 50 km/h max 
+--> 0:1201956 par Liaison 0:1201961 <-> 0:1201956 - route : Avenue des Ouches 50 km/h max 
+--> 0:1406888 par Liaison 0:1201956 <-> 0:1406888 - route : Avenue des Ouches 50 km/h max 
+--> 0:1201955 par Liaison 0:1406888 <-> 0:1201955 - route : Avenue des Ouches 30 km/h max 
+--> 0:1201914 par Liaison 0:1201955 <-> 0:1201914 - route : Avenue des Ouches 30 km/h max 
+--> 0:1201915 par Liaison 0:1201914 <-> 0:1201915 - route : Avenue des Ouches 30 km/h max 
+--> 0:1201912 par Liaison 0:1201915 <-> 0:1201912 - route : Rue de l'Hôpital 30 km/h max 
+--> 0:1551178 par Liaison 0:1201912 <-> 0:1551178 - route : Rue des Forges 30 km/h max 
+--> 0:1201913 par Liaison 0:1551178 <-> 0:1201913 - route : Rue des Forges 30 km/h max 
+--> 0:1201954 par Liaison 0:1201913 <-> 0:1201954 - route : Rue des Forges 30 km/h max 
+--> 0:1551176 par Liaison 0:1201954 <-> 0:1551176 - route : Rue des Forges 30 km/h max 
+--> 0:1201905 par Liaison 0:1551176 <-> 0:1201905 - route : Rue des Forges 30 km/h max 
+--> 0:1201906 par Liaison 0:1201905 <-> 0:1201906 - route : Rue des Forges 30 km/h max 
+--> 0:1201907 par Liaison 0:1201906 <-> 0:1201907 - route : Rue des Forges 50 km/h max 
+--> 0:1201908 par Liaison 0:1201907 <-> 0:1201908 - route : Rue des Forges 50 km/h max 
+--> 0:1201909 par Liaison 0:1201908 <-> 0:1201909 - route : Rue des Forges 50 km/h max 
+--> 0:1937175 par Liaison 0:1201909 <-> 0:1937175 - route : Rue Saint-Fiacre 50 km/h max 
+--> 0:1201901 par Liaison 0:1937175 <-> 0:1201901 - route : Rue Saint-Fiacre 50 km/h max 
+--> 0:1201900 par Liaison 0:1201901 <-> 0:1201900 - route : Rue Saint-Fiacre 90 km/h max 
+--> 0:1201903 par Liaison 0:1201900 <-> 0:1201903 - route : Rue Saint-Fiacre 90 km/h max 
+--> 0:1201902 par Liaison 0:1201903 <-> 0:1201902 - route : Rue des Roches 90 km/h max 
+--> 0:1203358 par Liaison 0:1201902 <-> 0:1203358 - route : Rue des Roches 90 km/h max 
+--> 0:1202018 par Liaison 0:1203358 <-> 0:1202018 - route : D 30 90 km/h max 
+--> 0:1398539 par Liaison 0:1202018 <-> 0:1398539 - route : Rue du 11 novembre 90 km/h max 
+--> 0:1202017 par Liaison 0:1398539 <-> 0:1202017 - route : Rue du 11 novembre 90 km/h max 
+--> 0:1202383 par Liaison 0:1202017 <-> 0:1202383 - route : Rue du 11 Novembre 50 km/h max 
+--> 0:1202016 par Liaison 0:1202383 <-> 0:1202016 - route : Rue du 11 Novembre 50 km/h max 
+--> 0:1202015 par Liaison 0:1202016 <-> 0:1202015 - route : Rue du Faubourg Dilo 50 km/h max 
+--> 0:1202014 par Liaison 0:1202015 <-> 0:1202014 - route : Rue du Faubourg Dilo 50 km/h max 
+--> 0:1202370 par Liaison 0:1202014 <-> 0:1202370 - route : Rue du Faubourg Dilo 50 km/h max 
+--> 0:1420908 par Liaison 0:1202370 <-> 0:1420908 - route : Rue du Faubourg Dilo 50 km/h max 
+--> 0:1202013 par Liaison 0:1420908 <-> 0:1202013 - route : Rue du Faubourg Dilo 50 km/h max 
+--> 0:1202369 par Liaison 0:1202013 <-> 0:1202369 - route : Rue de la Halle 50 km/h max 
+--> 0:1202368 par Liaison 0:1202369 <-> 0:1202368 - route : Rue de la Halle 50 km/h max 
+--> 0:1551209 par Liaison 0:1202368 -> 0:1551209 - route : Rue de la Halle  (oneway) 50 km/h max 
+--> 0:1650051 par Liaison 0:1551209 -> 0:1650051 - route : Rue de la Halle  (oneway) 50 km/h max 
+--> 0:1202374 par Liaison 0:1650051 -> 0:1202374 - route : Rue de la Halle  (oneway) 50 km/h max 
+--> 0:1202371 par Liaison 0:1202374 <-> 0:1202371 - route : Rue de la Guimbarde 50 km/h max 
+--> 0:2101133 par Liaison 0:1202371 <-> 0:2101133 - route : Rue Basse du Rempart 50 km/h max 
+--> 0:1202332 par Liaison 0:2101133 <-> 0:1202332 - route : Rue Basse du Rempart 50 km/h max 
+--> 0:1436850 par Liaison 0:1202332 <-> 0:1436850 - route : Rue du Faubourg Aval 50 km/h max 
+--> 0:1435226 par Liaison 0:1436850 <-> 0:1435226 - route : Rue du Faubourg Aval 50 km/h max 
+--> 0:1435227 par Liaison 0:1435226 <-> 0:1435227 - route : Rue du Faubourg Aval 50 km/h max 
+--> 0:1202337 par Liaison 0:1435227 <-> 0:1202337 - route : Rue du Faubourg Aval 50 km/h max 
+--> 0:1436846 par Liaison 0:1202337 <-> 0:1436846 - route : Rue du Faubourg du Pont 70 km/h max 
+--> 0:1033315 par Liaison 0:1436846 <-> 0:1033315 - route : Rue du Faubourg du Pont 70 km/h max 
+--> 0:1207468 par Liaison 0:1033315 <-> 0:1207468 - route : Rue du Faubourg du Pont 50 km/h max 
+--> 0:1436852 par Liaison 0:1207468 <-> 0:1436852 - route : Rue du Faubourg du Pont 70 km/h max 
+--> 0:1033316 par Liaison 0:1436852 <-> 0:1033316 - route : Rue du Faubourg du Pont 70 km/h max 
+--> 0:1207467 par Liaison 0:1033316 <-> 0:1207467 - route : Rue du Faubourg du Pont 50 km/h max 
+--> 0:1033317 par Liaison 0:1207467 <-> 0:1033317 - route : Rue du Faubourg du Pont 70 km/h max 
+--> 0:2101106 par Liaison 0:1033317 -> 0:2101106 - route : .  (oneway) 50 km/h max 
+--> 0:1202339 par Liaison 0:2101106 -> 0:1202339 - route : .  (oneway) 50 km/h max 
+--> 0:1202333 par Liaison 0:1202339 -> 0:1202333 - route : .  (oneway) 50 km/h max 
+--> 0:1202335 par Liaison 0:1202333 -> 0:1202335 - route : .  (oneway) 50 km/h max 
+--> 0:1829253 par Liaison 0:1202335 <-> 0:1829253 - route : N 77 90 km/h max 
+--> 0:1829254 par Liaison 0:1829253 <-> 0:1829254 - route : N 77 90 km/h max 
+--> 0:1655133 par Liaison 0:1829254 <-> 0:1655133 - route : N 77 90 km/h max 
+--> 0:1225861 par Liaison 0:1655133 <-> 0:1225861 - route : N 77 90 km/h max 
+--> 0:1565412 par Liaison 0:1225861 <-> 0:1565412 - route : N 77 50 km/h max 
+--> 0:2301455 par Liaison 0:1565412 <-> 0:2301455 - route : N 77 50 km/h max 
+--> 0:1571013 par Liaison 0:2301455 <-> 0:1571013 - route : N 77 50 km/h max 
+--> 0:1559956 par Liaison 0:1571013 <-> 0:1559956 - route : N 77 50 km/h max 
+--> 0:1559957 par Liaison 0:1559956 <-> 0:1559957 - route : N 77 50 km/h max 
+--> 0:1565415 par Liaison 0:1559957 <-> 0:1565415 - route : N 77 50 km/h max 
+--> 0:712610 par Liaison 0:1565415 <-> 0:712610 - route : N 77 50 km/h max 
+--> 0:712609 par Liaison 0:712610 <-> 0:712609 - route : N 77 90 km/h max 
+--> 0:1559945 par Liaison 0:712609 <-> 0:1559945 - route : N 77 90 km/h max 
+--> 0:1565403 par Liaison 0:1559945 <-> 0:1565403 - route : N 77 90 km/h max 
+--> 0:1559950 par Liaison 0:1565403 <-> 0:1559950 - route : N 77 90 km/h max 
+--> 0:1559988 par Liaison 0:1559950 <-> 0:1559988 - route : N 77 90 km/h max 
+--> 0:1560045 par Liaison 0:1559988 <-> 0:1560045 - route : N 77 90 km/h max 
+--> 0:1519640 par Liaison 0:1560045 <-> 0:1519640 - route : N 77 90 km/h max 
+--> 0:1519650 par Liaison 0:1519640 <-> 0:1519650 - route : N 77 90 km/h max 
+--> 0:1519641 par Liaison 0:1519650 <-> 0:1519641 - route : N 77 90 km/h max 
+--> 0:1519646 par Liaison 0:1519641 <-> 0:1519646 - route : N 77 90 km/h max 
+--> 0:1519647 par Liaison 0:1519646 <-> 0:1519647 - route : N 77 90 km/h max 
+--> 0:1519642 par Liaison 0:1519647 <-> 0:1519642 - route : N 77 90 km/h max 
+--> 0:712607 par Liaison 0:1519642 <-> 0:712607 - route : N 77 90 km/h max 
+--> 0:1519651 par Liaison 0:712607 <-> 0:1519651 - route : Rue Montante 30 km/h max 
+--> -1:1570226 par Liaison 0:1519651 <-> -1:1570226 - route : . 30 km/h max 
+--> 0:1519844 par Liaison -1:1570226 <-> 0:1519844 - route : . 30 km/h max 
+--> 0:1519847 par Liaison 0:1519844 <-> 0:1519847 - route : Rue de Lordonnois 30 km/h max 
+--> 0:1897129 par Liaison 0:1519847 <-> 0:1897129 - route : Rue de Ligny-Le-Châtel 30 km/h max 
+--> 0:1897123 par Liaison 0:1897129 <-> 0:1897123 - route : . 30 km/h max 
+--> 0:1520909 par Liaison 0:1897123 <-> 0:1520909 - route : . 30 km/h max 
+--> 0:1520908 par Liaison 0:1520909 <-> 0:1520908 - route : Rue de l'Étang de la Reine 30 km/h max 
+--> 0:1520913 par Liaison 0:1520908 <-> 0:1520913 - route : Rue de l'Étang de la Reine 30 km/h max 
+--> 0:1520147 par Liaison 0:1520913 <-> 0:1520147 - route : Rue de l'Étang de la Reine 30 km/h max 
+--> 0:1520110 par Liaison 0:1520147 <-> 0:1520110 - route : Rue du Carrouge 30 km/h max 
+--> 0:1520141 par Liaison 0:1520110 <-> 0:1520141 - route : Rue du Carrouge 30 km/h max 
+--> 0:1520260 par Liaison 0:1520141 <-> 0:1520260 - route : Rue du Carrouge 30 km/h max 
+--> 0:1514981 par Liaison 0:1520260 <-> 0:1514981 - route : Rue du Carrouge 30 km/h max 
+--> 0:1520140 par Liaison 0:1514981 <-> 0:1520140 - route : Rue du Carrouge 30 km/h max 
+--> 0:1520151 par Liaison 0:1520140 <-> 0:1520151 - route : Rue du Carrouge 30 km/h max 
+--> 0:1520111 par Liaison 0:1520151 <-> 0:1520111 - route : Rue du Carrouge 30 km/h max 
+--> 0:1520911 par Liaison 0:1520111 <-> 0:1520911 - route : Rue du Carrouge 30 km/h max 
+--> 0:1520127 par Liaison 0:1520911 <-> 0:1520127 - route : Rue du Carrouge 30 km/h max 
+--> 0:1520121 par Liaison 0:1520127 <-> 0:1520121 - route : Guy Dupas 30 km/h max 
+--> 0:1520114 par Liaison 0:1520121 <-> 0:1520114 - route : Rue Dieu 30 km/h max 
+--> 0:1520107 par Liaison 0:1520114 <-> 0:1520107 - route : Rue Dieu 30 km/h max 
+--> 0:1520134 par Liaison 0:1520107 <-> 0:1520134 - route : Avenue de Chablis 70 km/h max 
+--> 0:1520150 par Liaison 0:1520134 <-> 0:1520150 - route : Avenue de Chablis 70 km/h max 
+--> 0:1520268 par Liaison 0:1520150 <-> 0:1520268 - route : Avenue de Chablis 70 km/h max 
+--> 0:1520267 par Liaison 0:1520268 <-> 0:1520267 - route : Avenue de Chablis 70 km/h max 
+--> 0:1520264 par Liaison 0:1520267 <-> 0:1520264 - route : Avenue de Chablis 70 km/h max 
+--> 0:1512822 par Liaison 0:1520264 <-> 0:1512822 - route : Avenue de Chablis 70 km/h max 
+--> 0:1521090 par Liaison 0:1512822 <-> 0:1521090 - route : D 91 70 km/h max 
+--> 0:1521055 par Liaison 0:1521090 <-> 0:1521055 - route : D 91 70 km/h max 
+--> 0:1521058 par Liaison 0:1521055 <-> 0:1521058 - route : D 91 70 km/h max 
+--> 0:1521065 par Liaison 0:1521058 <-> 0:1521065 - route : D 91 70 km/h max 
+--> 0:1521028 par Liaison 0:1521065 <-> 0:1521028 - route : D 91 70 km/h max 
+--> 0:1521021 par Liaison 0:1521028 <-> 0:1521021 - route : D 91 70 km/h max 
+--> 0:1521025 par Liaison 0:1521021 <-> 0:1521025 - route : D 91 70 km/h max 
+--> 0:1521006 par Liaison 0:1521025 <-> 0:1521006 - route : D 91 70 km/h max 
+--> 0:1521008 par Liaison 0:1521006 <-> 0:1521008 - route : D 91 70 km/h max 
+--> 0:1521027 par Liaison 0:1521008 <-> 0:1521027 - route : D 91 70 km/h max 
+--> 0:1521085 par Liaison 0:1521027 <-> 0:1521085 - route : D 91 70 km/h max 
+--> 0:1521009 par Liaison 0:1521085 <-> 0:1521009 - route : D 91 70 km/h max 
+--> 0:1512818 par Liaison 0:1521009 <-> 0:1512818 - route : D 91 70 km/h max 
+--> 0:2407513 par Liaison 0:1512818 <-> 0:2407513 - route : D 91 70 km/h max 
+--> 0:1887452 par Liaison 0:2407513 <-> 0:1887452 - route : D 91 70 km/h max 
+--> 0:1887451 par Liaison 0:1887452 <-> 0:1887451 - route : D 91 70 km/h max 
+--> 0:1512829 par Liaison 0:1887451 <-> 0:1512829 - route : D 91 70 km/h max 
+--> 0:1512827 par Liaison 0:1512829 <-> 0:1512827 - route : D 965 90 km/h max 
+--> 0:1512816 par Liaison 0:1512827 <-> 0:1512816 - route : D 91 70 km/h max 
+--> 0:2063470 par Liaison 0:1512816 <-> 0:2063470 - route : Route d'Auxerre 70 km/h max 
+--> 0:875849 par Liaison 0:2063470 <-> 0:875849 - route : Route d'Auxerre 70 km/h max 
+--> 0:786586 par Liaison 0:875849 <-> 0:786586 - route : Route d'Auxerre 70 km/h max 
+--> 0:875804 par Liaison 0:786586 <-> 0:875804 - route : Route d'Auxerre 70 km/h max 
+--> 0:875809 par Liaison 0:875804 <-> 0:875809 - route : D 91 70 km/h max 
+--> 0:2315546 par Liaison 0:875809 <-> 0:2315546 - route : D 91 70 km/h max 
+--> 0:875808 par Liaison 0:2315546 <-> 0:875808 - route : D 91 70 km/h max 
+--> 0:875803 par Liaison 0:875808 <-> 0:875803 - route : D 91 70 km/h max 
+--> 0:2063475 par Liaison 0:875803 <-> 0:2063475 - route : D 91 70 km/h max 
+--> 0:875853 par Liaison 0:2063475 <-> 0:875853 - route : D 91 70 km/h max 
+--> 0:1361249 par Liaison 0:875853 <-> 0:1361249 - route : D 91 70 km/h max 
+--> 0:1361248 par Liaison 0:1361249 <-> 0:1361248 - route : D 91 70 km/h max 
+--> 0:1361253 par Liaison 0:1361248 <-> 0:1361253 - route : D 91 70 km/h max 
+--> 0:1361254 par Liaison 0:1361253 <-> 0:1361254 - route : D 91 70 km/h max 
+--> 0:1361255 par Liaison 0:1361254 <-> 0:1361255 - route : D 91 70 km/h max 
+--> 0:2338017 par Liaison 0:1361255 <-> 0:2338017 - route : D 91 70 km/h max 
+--> 0:2338013 par Liaison 0:2338017 <-> 0:2338013 - route : D 91 70 km/h max 
+--> 0:1361266 par Liaison 0:2338013 <-> 0:1361266 - route : D 91 70 km/h max 
+--> 0:339329 par Liaison 0:1361266 <-> 0:339329 - route : D 91 70 km/h max 
+--> 0:339328 par Liaison 0:339329 <-> 0:339328 - route : D 956 70 km/h max 
+--> 0:2338236 par Liaison 0:339328 <-> 0:2338236 - route : Route de Nitry 70 km/h max 
+--> 0:2270111 par Liaison 0:2338236 <-> 0:2270111 - route : Route de Nitry 70 km/h max 
+--> 0:2338229 par Liaison 0:2270111 <-> 0:2338229 - route : Route de Nitry 70 km/h max 
+--> 0:2270115 par Liaison 0:2338229 <-> 0:2270115 - route : Route de Nitry 70 km/h max 
+--> 0:2270112 par Liaison 0:2270115 <-> 0:2270112 - route : D 91 70 km/h max 
+--> 0:2270114 par Liaison 0:2270112 <-> 0:2270114 - route : Route de Chablis 70 km/h max 
+--> 0:2270113 par Liaison 0:2270114 <-> 0:2270113 - route : Route de Chablis 70 km/h max 
+--> 0:2338367 par Liaison 0:2270113 <-> 0:2338367 - route : Rue de la République 70 km/h max 
+--> 0:75814 par Liaison 0:2338367 <-> 0:75814 - route : Rue de la République 70 km/h max 
+--> 0:1800666 par Liaison 0:75814 <-> 0:1800666 - route : Rue de la République 70 km/h max 
+--> 0:1800665 par Liaison 0:1800666 <-> 0:1800665 - route : Rue de la République 70 km/h max 
+--> 0:1800669 par Liaison 0:1800665 <-> 0:1800669 - route : Rue de la République 70 km/h max 
+--> -1:75815 par Liaison 0:1800669 <-> -1:75815 - route : Rue de la République 70 km/h max 
+--> 0:1351174 par Liaison -1:75815 <-> 0:1351174 - route : D 944 70 km/h max 
+--> 0:75816 par Liaison 0:1351174 <-> 0:75816 - route : D 944 70 km/h max 
+--> 0:1709060 par Liaison 0:75816 <-> 0:1709060 - route : D 944 70 km/h max 
+--> 0:1709059 par Liaison 0:1709060 -> 0:1709059 - route : .  (oneway) 50 km/h max 
+--> 0:1709064 par Liaison 0:1709059 -> 0:1709064 - route : .  (oneway) 50 km/h max 
+--> 0:109401 par Liaison 0:1709064 -> 0:109401 - route : .  (oneway) 50 km/h max 
+--> 0:43420 par Liaison 0:109401 -> 0:43420 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:651986 par Liaison 0:43420 -> 0:651986 - route : Autoroute du Soleil  (oneway) 50 km/h max 
+--> 0:43433 par Liaison 0:651986 -> 0:43433 - route : Autoroute du Soleil  (oneway) 50 km/h max 
+--> 0:5892 par Liaison 0:43433 -> 0:5892 - route : .  (oneway) 50 km/h max 
+--> 0:810722 par Liaison 0:5892 <-> 0:810722 - route : N 146 90 km/h max 
+--> 0:810723 par Liaison 0:810722 -> 0:810723 - route : N 146  (oneway) 90 km/h max 
+--> 0:69640 par Liaison 0:810723 -> 0:69640 - route : N 146  (oneway) 90 km/h max 
+--> 0:810720 par Liaison 0:69640 -> 0:810720 - route : .  (oneway) 70 km/h max 
+--> 0:810725 par Liaison 0:810720 <-> 0:810725 - route : . 70 km/h max 
+--> 0:810726 par Liaison 0:810725 <-> 0:810726 - route : . 70 km/h max 
+--> 0:810727 par Liaison 0:810726 <-> 0:810727 - route : . 70 km/h max 
+--> 0:810745 par Liaison 0:810727 -> 0:810745 - route : .  (oneway) 50 km/h max 
+--> 0:810743 par Liaison 0:810745 -> 0:810743 - route : .  (oneway) 30 km/h max 
+--> 0:810741 par Liaison 0:810743 -> 0:810741 - route : .  (oneway) 30 km/h max 
+--> 0:810740 par Liaison 0:810741 -> 0:810740 - route : N 6  (oneway) 90 km/h max 
+--> 0:69642 par Liaison 0:810740 <-> 0:69642 - route : N 6 90 km/h max 
+--> 0:810752 par Liaison 0:69642 <-> 0:810752 - route : N 6 90 km/h max 
+--> 0:810754 par Liaison 0:810752 -> 0:810754 - route : D 60a  (oneway) 70 km/h max 
+--> 0:269581 par Liaison 0:810754 <-> 0:269581 - route : D 60a 70 km/h max 
+--> 0:2406947 par Liaison 0:269581 <-> 0:2406947 - route : D 60a 70 km/h max 
+--> 0:2406957 par Liaison 0:2406947 <-> 0:2406957 - route : D 60a 70 km/h max 
+--> 0:2360087 par Liaison 0:2406957 <-> 0:2360087 - route : D 60a 70 km/h max 
+--> 0:1578214 par Liaison 0:2360087 <-> 0:1578214 - route : D 60 50 km/h max 
+--> 0:1578215 par Liaison 0:1578214 <-> 0:1578215 - route : D 60 50 km/h max 
+--> 0:1578216 par Liaison 0:1578215 <-> 0:1578216 - route : D 60 50 km/h max 
+--> 0:1578217 par Liaison 0:1578216 <-> 0:1578217 - route : D 60 50 km/h max 
+--> 0:1578218 par Liaison 0:1578217 <-> 0:1578218 - route : D 60 50 km/h max 
+--> 0:2360134 par Liaison 0:1578218 <-> 0:2360134 - route : D 60 50 km/h max 
+--> 0:2360127 par Liaison 0:2360134 <-> 0:2360127 - route : D 60 50 km/h max 
+--> 0:2360105 par Liaison 0:2360127 <-> 0:2360105 - route : D 60 50 km/h max 
+--> 0:2360128 par Liaison 0:2360105 <-> 0:2360128 - route : D 60 50 km/h max 
+--> 0:2360111 par Liaison 0:2360128 <-> 0:2360111 - route : . 30 km/h max 
+--> 0:2360096 par Liaison 0:2360111 <-> 0:2360096 - route : D 460 50 km/h max 
+--> 0:2360094 par Liaison 0:2360096 <-> 0:2360094 - route : D 460 50 km/h max 
+--> 0:2333951 par Liaison 0:2360094 <-> 0:2333951 - route : D 460 50 km/h max 
+--> 0:2333946 par Liaison 0:2333951 <-> 0:2333946 - route : . 50 km/h max 
+--> 0:86288 par Liaison 0:2333946 <-> 0:86288 - route : . 50 km/h max 
+--> 0:86287 par Liaison 0:86288 <-> 0:86287 - route : . 50 km/h max 
+--> 0:2333949 par Liaison 0:86287 <-> 0:2333949 - route : . 50 km/h max 
+--> 0:251667 par Liaison 0:2333949 <-> 0:251667 - route : N 6 90 km/h max 
+--> 0:2360119 par Liaison 0:251667 <-> 0:2360119 - route : N 6 90 km/h max 
+--> 0:2475552 par Liaison 0:2360119 <-> 0:2475552 - route : N 6 90 km/h max 
+--> 0:2358732 par Liaison 0:2475552 <-> 0:2358732 - route : N 6 90 km/h max 
+--> 0:2475555 par Liaison 0:2358732 <-> 0:2475555 - route : N 6 90 km/h max 
+--> 0:2475546 par Liaison 0:2475555 <-> 0:2475546 - route : N 6 90 km/h max 
+--> 0:251666 par Liaison 0:2475546 <-> 0:251666 - route : N 6 90 km/h max 
+--> 0:2475548 par Liaison 0:251666 <-> 0:2475548 - route : N 6 90 km/h max 
+--> 0:2475558 par Liaison 0:2475548 <-> 0:2475558 - route : N 6 90 km/h max 
+--> 0:251665 par Liaison 0:2475558 <-> 0:251665 - route : N 6 90 km/h max 
+--> 0:2358744 par Liaison 0:251665 <-> 0:2358744 - route : N 6 90 km/h max 
+--> 0:2361040 par Liaison 0:2358744 <-> 0:2361040 - route : N 6 90 km/h max 
+--> 0:2361036 par Liaison 0:2361040 <-> 0:2361036 - route : N 6 90 km/h max 
+--> 0:2361033 par Liaison 0:2361036 <-> 0:2361033 - route : N 6 90 km/h max 
+--> 0:2358721 par Liaison 0:2361033 <-> 0:2358721 - route : N 6 90 km/h max 
+--> 0:2359177 par Liaison 0:2358721 <-> 0:2359177 - route : N 6 90 km/h max 
+--> 0:2357040 par Liaison 0:2359177 <-> 0:2357040 - route : Chemin de Bellevue 30 km/h max 
+--> 0:2359176 par Liaison 0:2357040 <-> 0:2359176 - route : Rue de l'Etang 30 km/h max 
+--> 0:2359170 par Liaison 0:2359176 <-> 0:2359170 - route : Rue de l'Etang 30 km/h max 
+--> 0:2357023 par Liaison 0:2359170 <-> 0:2357023 - route : Rue de l'Etang 30 km/h max 
+--> 0:2357022 par Liaison 0:2357023 <-> 0:2357022 - route : Rue de Boutot 30 km/h max 
+--> 0:2357019 par Liaison 0:2357022 <-> 0:2357019 - route : Rue du Vieil Hôpital 30 km/h max 
+--> 0:715361 par Liaison 0:2357019 <-> 0:715361 - route : Rue du Parc des Sports 30 km/h max 
+--> 0:2357038 par Liaison 0:715361 <-> 0:2357038 - route : Rue Gambetta 30 km/h max 
+--> 0:2356916 par Liaison 0:2357038 <-> 0:2356916 - route : Rue Gambetta 30 km/h max 
+--> 0:2356913 par Liaison 0:2356916 <-> 0:2356913 - route : Rue Gambetta 30 km/h max 
+--> 0:715353 par Liaison 0:2356913 <-> 0:715353 - route : Rue Gambetta 30 km/h max 
+--> 0:715352 par Liaison 0:715353 <-> 0:715352 - route : Rue des Fours 30 km/h max 
+--> 0:501862 par Liaison 0:715352 <-> 0:501862 - route : Rue du Tour des Fossés 50 km/h max 
+--> 0:2360933 par Liaison 0:501862 <-> 0:2360933 - route : Rue Jules Ferry 30 km/h max 
+--> 0:2360932 par Liaison 0:2360933 <-> 0:2360932 - route : Rue Jules Ferry 30 km/h max 
+--> 0:79075 par Liaison 0:2360932 <-> 0:79075 - route : Rue Jules Ferry 30 km/h max 
+--> 0:251668 par Liaison 0:79075 -> 0:251668 - route : Carrefour Les Quatre Vents  (oneway) 50 km/h max 
+--> 0:1753379 par Liaison 0:251668 -> 0:1753379 - route : Carrefour Les Quatre Vents  (oneway) 50 km/h max 
+--> 0:2360919 par Liaison 0:1753379 <-> 0:2360919 - route : D 980 70 km/h max 
+--> 0:2361020 par Liaison 0:2360919 <-> 0:2361020 - route : D 980 70 km/h max 
+--> 0:2361015 par Liaison 0:2361020 <-> 0:2361015 - route : D 980 70 km/h max 
+--> 0:2406560 par Liaison 0:2361015 <-> 0:2406560 - route : D 980 70 km/h max 
+--> 0:268803 par Liaison 0:2406560 <-> 0:268803 - route : D 980 70 km/h max 
+--> 0:268807 par Liaison 0:268803 <-> 0:268807 - route : D 980 70 km/h max 
+--> 0:907772 par Liaison 0:268807 <-> 0:907772 - route : D 980 70 km/h max 
+--> 0:1344983 par Liaison 0:907772 <-> 0:1344983 - route : D 980 70 km/h max 
+--> 0:1344989 par Liaison 0:1344983 <-> 0:1344989 - route : D 980 70 km/h max 
+--> 0:2415542 par Liaison 0:1344989 <-> 0:2415542 - route : D 980 70 km/h max 
+--> 0:2415529 par Liaison 0:2415542 <-> 0:2415529 - route : D 980 70 km/h max 
+--> 0:2414224 par Liaison 0:2415529 <-> 0:2414224 - route : D 980 70 km/h max 
+--> 0:2415544 par Liaison 0:2414224 <-> 0:2415544 - route : D 980 70 km/h max 
+--> 0:2415543 par Liaison 0:2415544 <-> 0:2415543 - route : D 980 70 km/h max 
+--> 0:2415526 par Liaison 0:2415543 <-> 0:2415526 - route : D 980 70 km/h max 
+--> 0:2415530 par Liaison 0:2415526 <-> 0:2415530 - route : D 980 70 km/h max 
+--> 0:470855 par Liaison 0:2415530 <-> 0:470855 - route : D 980 70 km/h max 
+--> 0:470854 par Liaison 0:470855 <-> 0:470854 - route : Route de Saulieu 70 km/h max 
+--> 0:382166 par Liaison 0:470854 <-> 0:382166 - route : Route de Saulieu 70 km/h max 
+--> 0:382169 par Liaison 0:382166 <-> 0:382169 - route : Rue du Faubourg d'Arroux 70 km/h max 
+--> 0:1494858 par Liaison 0:382169 <-> 0:1494858 - route : Rue du Faubourg d'Arroux 70 km/h max 
+--> 0:382167 par Liaison 0:1494858 <-> 0:382167 - route : Rue du Faubourg d'Arroux 70 km/h max 
+--> 0:470776 par Liaison 0:382167 <-> 0:470776 - route : Rue de Paris 30 km/h max 
+--> 0:382172 par Liaison 0:470776 <-> 0:382172 - route : Rue de Dijon 30 km/h max 
+--> 0:382171 par Liaison 0:382172 <-> 0:382171 - route : Place Pierre Saint-Yves 30 km/h max 
+--> 0:1203493 par Liaison 0:382171 <-> 0:1203493 - route : Boulevard Laureau 30 km/h max 
+--> 0:382170 par Liaison 0:1203493 <-> 0:382170 - route : Boulevard Laureau 30 km/h max 
+--> 0:58721 par Liaison 0:382170 <-> 0:58721 - route : Boulevard Frédéric Latouche 30 km/h max 
+--> 0:1203497 par Liaison 0:58721 <-> 0:1203497 - route : Place de Charmasse 70 km/h max 
+--> 0:1203498 par Liaison 0:1203497 <-> 0:1203498 - route : Rue des Enfants de Troupes 30 km/h max 
+--> 0:1494990 par Liaison 0:1203498 <-> 0:1494990 - route : Rue Gaston Joliet 30 km/h max 
+--> 0:1203499 par Liaison 0:1494990 <-> 0:1203499 - route : Rue Gaston Joliet 30 km/h max 
+--> 0:1203500 par Liaison 0:1203499 <-> 0:1203500 - route : Rue Saint Branchez 30 km/h max 
+--> 0:1203501 par Liaison 0:1203500 <-> 0:1203501 - route : Rue du Faubourg Saint Pancrace 50 km/h max 
+--> 0:1203502 par Liaison 0:1203501 <-> 0:1203502 - route : Rue du Faubourg Saint Pancrace 50 km/h max 
+--> 0:1496271 par Liaison 0:1203502 <-> 0:1496271 - route : Rue de Planoise 50 km/h max 
+--> 0:1203503 par Liaison 0:1496271 <-> 0:1203503 - route : Rue de Planoise 50 km/h max 
+--> 0:1496274 par Liaison 0:1203503 <-> 0:1496274 - route : Rue de Planoise 50 km/h max 
+--> 0:2411960 par Liaison 0:1496274 <-> 0:2411960 - route : D 120 50 km/h max 
+--> 0:383534 par Liaison 0:2411960 <-> 0:383534 - route : D 287 50 km/h max 
+--> 0:383525 par Liaison 0:383534 <-> 0:383525 - route : D 61 70 km/h max 
+--> 0:2395939 par Liaison 0:383525 <-> 0:2395939 - route : D 680 90 km/h max 
+--> 0:2294337 par Liaison 0:2395939 <-> 0:2294337 - route : D 680 90 km/h max 
+--> 0:2294398 par Liaison 0:2294337 <-> 0:2294398 - route : D 680 90 km/h max 
+--> 0:2294356 par Liaison 0:2294398 <-> 0:2294356 - route : D 680 90 km/h max 
+--> 0:383532 par Liaison 0:2294356 <-> 0:383532 - route : D 680 90 km/h max 
+--> 0:383531 par Liaison 0:383532 <-> 0:383531 - route : N 80 90 km/h max 
+--> 0:383530 par Liaison 0:383531 <-> 0:383530 - route : D 680 90 km/h max 
+--> 0:383529 par Liaison 0:383530 <-> 0:383529 - route : D 680 90 km/h max 
+--> 0:383528 par Liaison 0:383529 <-> 0:383528 - route : D 680 90 km/h max 
+--> 0:383527 par Liaison 0:383528 <-> 0:383527 - route : D 680 90 km/h max 
+--> 0:2478841 par Liaison 0:383527 <-> 0:2478841 - route : D 680 90 km/h max 
+--> 0:2478840 par Liaison 0:2478841 <-> 0:2478840 - route : D 680 90 km/h max 
+--> 0:1140800 par Liaison 0:2478840 <-> 0:1140800 - route : D 680 90 km/h max 
+--> 0:2478833 par Liaison 0:1140800 <-> 0:2478833 - route : D 680 90 km/h max 
+--> 0:2478847 par Liaison 0:2478833 <-> 0:2478847 - route : D 680 90 km/h max 
+--> 0:2478845 par Liaison 0:2478847 <-> 0:2478845 - route : D 680 90 km/h max 
+--> 0:383526 par Liaison 0:2478845 <-> 0:383526 - route : D 680 90 km/h max 
+--> 0:58707 par Liaison 0:383526 -> 0:58707 - route : .  (oneway) 50 km/h max 
+--> 0:1140807 par Liaison 0:58707 <-> 0:1140807 - route : D 680 90 km/h max 
+--> 0:1140802 par Liaison 0:1140807 <-> 0:1140802 - route : N 80 90 km/h max 
+--> 0:1140804 par Liaison 0:1140802 -> 0:1140804 - route : N 80  (oneway) 90 km/h max 
+--> 0:1140803 par Liaison 0:1140804 -> 0:1140803 - route : Avenue de la République  (oneway) 70 km/h max 
+--> 0:1140797 par Liaison 0:1140803 <-> 0:1140797 - route : Avenue de la République 70 km/h max 
+--> 0:1140799 par Liaison 0:1140797 -> 0:1140799 - route : .  (oneway) 50 km/h max 
+--> 0:1140798 par Liaison 0:1140799 -> 0:1140798 - route : .  (oneway) 50 km/h max 
+--> 0:2398252 par Liaison 0:1140798 <-> 0:2398252 - route : Avenue de la République 70 km/h max 
+--> 0:2398283 par Liaison 0:2398252 <-> 0:2398283 - route : Avenue de la République 70 km/h max 
+--> 0:2398253 par Liaison 0:2398283 <-> 0:2398253 - route : Avenue de la République 70 km/h max 
+--> 0:2398258 par Liaison 0:2398253 <-> 0:2398258 - route : Avenue de la République 70 km/h max 
+--> 0:2398270 par Liaison 0:2398258 -> 0:2398270 - route : .  (oneway) 50 km/h max 
+--> 0:2398300 par Liaison 0:2398270 -> 0:2398300 - route : .  (oneway) 50 km/h max 
+--> 0:2398266 par Liaison 0:2398300 <-> 0:2398266 - route : Avenue de la République 70 km/h max 
+--> 0:119079 par Liaison 0:2398266 <-> 0:119079 - route : Avenue de la République 70 km/h max 
+--> 0:2398627 par Liaison 0:119079 <-> 0:2398627 - route : Avenue de la République 70 km/h max 
+--> 0:2398262 par Liaison 0:2398627 <-> 0:2398262 - route : Avenue de la République 70 km/h max 
+--> 0:2398264 par Liaison 0:2398262 <-> 0:2398264 - route : Avenue de la République 70 km/h max 
+--> 0:2398265 par Liaison 0:2398264 <-> 0:2398265 - route : Avenue de la République 70 km/h max 
+--> 0:2398274 par Liaison 0:2398265 <-> 0:2398274 - route : Avenue de la République 70 km/h max 
+--> 0:2398278 par Liaison 0:2398274 <-> 0:2398278 - route : Avenue de la République 70 km/h max 
+--> 0:2398674 par Liaison 0:2398278 <-> 0:2398674 - route : Avenue de la République 70 km/h max 
+--> 0:2398668 par Liaison 0:2398674 -> 0:2398668 - route : .  (oneway) 50 km/h max 
+--> 0:2398677 par Liaison 0:2398668 -> 0:2398677 - route : .  (oneway) 50 km/h max 
+--> 0:2398689 par Liaison 0:2398677 <-> 0:2398689 - route : Avenue de la République 70 km/h max 
+--> 0:2398647 par Liaison 0:2398689 <-> 0:2398647 - route : Avenue de la République 70 km/h max 
+--> 0:119078 par Liaison 0:2398647 <-> 0:119078 - route : Avenue de la République 70 km/h max 
+--> 0:143827 par Liaison 0:119078 <-> 0:143827 - route : Avenue de la République 70 km/h max 
+--> 0:1139219 par Liaison 0:143827 <-> 0:1139219 - route : D 28 70 km/h max 
+--> 0:1139218 par Liaison 0:1139219 <-> 0:1139218 - route : D 28 70 km/h max 
+--> 0:1142252 par Liaison 0:1139218 <-> 0:1142252 - route : D 28 70 km/h max 
+--> 0:1139625 par Liaison 0:1142252 <-> 0:1139625 - route : D 28 70 km/h max 
+--> 0:1139624 par Liaison 0:1139625 <-> 0:1139624 - route : D 28 70 km/h max 
+--> 0:2284519 par Liaison 0:1139624 <-> 0:2284519 - route : . 70 km/h max 
+--> 0:2284520 par Liaison 0:2284519 <-> 0:2284520 - route : . 50 km/h max 
+--> 0:2284536 par Liaison 0:2284520 <-> 0:2284536 - route : . 50 km/h max 
+--> 0:1953343 par Liaison 0:2284536 <-> 0:1953343 - route : D 164 50 km/h max 
+--> 0:1953344 par Liaison 0:1953343 <-> 0:1953344 - route : D 90 50 km/h max 
+--> 0:2284526 par Liaison 0:1953344 <-> 0:2284526 - route : D 164 50 km/h max 
+--> 0:2284531 par Liaison 0:2284526 <-> 0:2284531 - route : D 164 50 km/h max 
+--> 0:2284513 par Liaison 0:2284531 <-> 0:2284513 - route : D 164 50 km/h max 
+--> 0:2284517 par Liaison 0:2284513 <-> 0:2284517 - route : D 164 50 km/h max 
+--> 0:2284515 par Liaison 0:2284517 <-> 0:2284515 - route : D 980 90 km/h max 
+--> 0:2075698 par Liaison 0:2284515 <-> 0:2075698 - route : D 980 90 km/h max 
+--> 0:2075704 par Liaison 0:2075698 <-> 0:2075704 - route : D 980 90 km/h max 
+--> 0:410649 par Liaison 0:2075704 <-> 0:410649 - route : D 980 90 km/h max 
+--> 0:410648 par Liaison 0:410649 <-> 0:410648 - route : D 980 90 km/h max 
+--> 0:1765104 par Liaison 0:410648 <-> 0:1765104 - route : D 980 90 km/h max 
+--> 0:2394043 par Liaison 0:1765104 <-> 0:2394043 - route : D 980 90 km/h max 
+--> 0:1765163 par Liaison 0:2394043 <-> 0:1765163 - route : D 980 90 km/h max 
+--> 0:1868972 par Liaison 0:1765163 <-> 0:1868972 - route : D 980 90 km/h max 
+--> 0:1523907 par Liaison 0:1868972 <-> 0:1523907 - route : D 980 90 km/h max 
+--> 0:860241 par Liaison 0:1523907 <-> 0:860241 - route : D 980 90 km/h max 
+--> 0:1122379 par Liaison 0:860241 <-> 0:1122379 - route : D 980 90 km/h max 
+--> 0:1113846 par Liaison 0:1122379 <-> 0:1113846 - route : D 980 90 km/h max 
+--> 0:1122421 par Liaison 0:1113846 <-> 0:1122421 - route : D 980 90 km/h max 
+--> 0:263484 par Liaison 0:1122421 <-> 0:263484 - route : D 980 90 km/h max 
+--> 0:1128136 par Liaison 0:263484 <-> 0:1128136 - route : D 980 90 km/h max 
+--> 0:263483 par Liaison 0:1128136 <-> 0:263483 - route : D 980 90 km/h max 
+--> 0:263482 par Liaison 0:263483 <-> 0:263482 - route : D 980 90 km/h max 
+--> 0:725723 par Liaison 0:263482 <-> 0:725723 - route : D 15P 70 km/h max 
+--> 0:1124272 par Liaison 0:725723 <-> 0:1124272 - route : D 15P 70 km/h max 
+--> 0:2014594 par Liaison 0:1124272 <-> 0:2014594 - route : D 15P 70 km/h max 
+--> 0:175535 par Liaison 0:2014594 <-> 0:175535 - route : D 15P 70 km/h max 
+--> 0:2014601 par Liaison 0:175535 <-> 0:2014601 - route : . 30 km/h max 
+--> 0:1195115 par Liaison 0:2014601 <-> 0:1195115 - route : . 30 km/h max 
+--> 0:175534 par Liaison 0:1195115 <-> 0:175534 - route : . 30 km/h max 
+--> 0:175533 par Liaison 0:175534 <-> 0:175533 - route : . 30 km/h max 
+--> 0:1195167 par Liaison 0:175533 <-> 0:1195167 - route : . 30 km/h max 
+--> 0:175532 par Liaison 0:1195167 <-> 0:175532 - route : . 30 km/h max 
+--> 0:175531 par Liaison 0:175532 <-> 0:175531 - route : . 30 km/h max 
+--> 0:175530 par Liaison 0:175531 <-> 0:175530 - route : Promenade du Fouettin 30 km/h max 
+--> 0:716237 par Liaison 0:175530 <-> 0:716237 - route : Promenade du Fouettin 30 km/h max 
+--> 0:628708 par Liaison 0:716237 <-> 0:628708 - route : Promenade du Fouettin 30 km/h max 
+--> 0:1433770 par Liaison 0:628708 <-> 0:1433770 - route : Promenade du Fouettin 30 km/h max 
+--> 0:175528 par Liaison 0:1433770 -> 0:175528 - route : .  (oneway) 50 km/h max 
+--> 0:1433767 par Liaison 0:175528 -> 0:1433767 - route : .  (oneway) 50 km/h max 
+--> 0:1433768 par Liaison 0:1433767 -> 0:1433768 - route : .  (oneway) 50 km/h max 
+--> 0:175527 par Liaison 0:1433768 <-> 0:175527 - route : Rue Anne-Marie Javouhey 30 km/h max 
+--> 0:175526 par Liaison 0:175527 <-> 0:175526 - route : Rue Anne-Marie Javouhey 30 km/h max 
+--> 0:1124790 par Liaison 0:175526 <-> 0:1124790 - route : Rue Bénetin 30 km/h max 
+--> 0:1124789 par Liaison 0:1124790 <-> 0:1124789 - route : . 30 km/h max 
+--> 0:1124893 par Liaison 0:1124789 -> 0:1124893 - route : Rue de la Liberté  (oneway) 30 km/h max 
+--> 0:175525 par Liaison 0:1124893 -> 0:175525 - route : Rue de l'Hôpital  (oneway) 30 km/h max 
+--> 0:1587097 par Liaison 0:175525 -> 0:1587097 - route : Rue de l'Hôpital  (oneway) 30 km/h max 
+--> 0:175524 par Liaison 0:1587097 -> 0:175524 - route : Rue de l'Hôpital  (oneway) 30 km/h max 
+--> 0:712113 par Liaison 0:175524 <-> 0:712113 - route : Petite Rue Prud'hon 30 km/h max 
+--> 0:1135605 par Liaison 0:712113 <-> 0:1135605 - route : Rue de la Digue 90 km/h max 
+--> 0:174913 par Liaison 0:1135605 <-> 0:174913 - route : Rue de la Digue 90 km/h max 
+--> 0:1135606 par Liaison 0:174913 <-> 0:1135606 - route : Rue de la Digue 90 km/h max 
+--> 0:1124299 par Liaison 0:1135606 <-> 0:1124299 - route : Rue de la Digue 90 km/h max 
+--> 0:716242 par Liaison 0:1124299 <-> 0:716242 - route : Rue de la Digue 90 km/h max 
+--> 0:1172639 par Liaison 0:716242 <-> 0:1172639 - route : Rue de la Digue 90 km/h max 
+--> 0:581527 par Liaison 0:1172639 <-> 0:581527 - route : Rue de la Digue 90 km/h max 
+--> 0:1172640 par Liaison 0:581527 <-> 0:1172640 - route : Rue de la Digue 90 km/h max 
+--> 0:263480 par Liaison 0:1172640 <-> 0:263480 - route : Rue de la Digue 90 km/h max 
+--> 0:581528 par Liaison 0:263480 <-> 0:581528 - route : . 90 km/h max 
+--> 0:174914 par Liaison 0:581528 <-> 0:174914 - route : D 980 90 km/h max 
+--> 0:934603 par Liaison 0:174914 <-> 0:934603 - route : D 980 90 km/h max 
+--> 0:934604 par Liaison 0:934603 <-> 0:934604 - route : . 30 km/h max 
+--> 0:706145 par Liaison 0:934604 <-> 0:706145 - route : D 309 50 km/h max 
+--> 0:326355 par Liaison 0:706145 <-> 0:326355 - route : D 17 50 km/h max 
+--> 0:706146 par Liaison 0:326355 <-> 0:706146 - route : D 17 50 km/h max 
+--> 0:706149 par Liaison 0:706146 <-> 0:706149 - route : D 17 50 km/h max 
+--> 0:2334005 par Liaison 0:706149 <-> 0:2334005 - route : D 17 50 km/h max 
+--> 0:1849635 par Liaison 0:2334005 <-> 0:1849635 - route : D 17 50 km/h max 
+--> 0:706147 par Liaison 0:1849635 <-> 0:706147 - route : D 17 50 km/h max 
+--> 0:2333936 par Liaison 0:706147 <-> 0:2333936 - route : Route de Mâcon 50 km/h max 
+--> 0:2333924 par Liaison 0:2333936 <-> 0:2333924 - route : Route de Mâcon 50 km/h max 
+--> 0:2333943 par Liaison 0:2333924 <-> 0:2333943 - route : . 30 km/h max 
+--> 0:2333934 par Liaison 0:2333943 <-> 0:2333934 - route : . 30 km/h max 
+--> 0:2333932 par Liaison 0:2333934 <-> 0:2333932 - route : . 30 km/h max 
+--> 0:2333930 par Liaison 0:2333932 -> 0:2333930 - route : .  (oneway) 50 km/h max 
+--> 0:2333922 par Liaison 0:2333930 <-> 0:2333922 - route : Route de Mâcon 50 km/h max 
+--> 0:738870 par Liaison 0:2333922 <-> 0:738870 - route : Route de Mâcon 50 km/h max 
+--> 0:2332993 par Liaison 0:738870 <-> 0:2332993 - route : Route de Mâcon 50 km/h max 
+--> 0:1107795 par Liaison 0:2332993 <-> 0:1107795 - route : Route de Mâcon 50 km/h max 
+--> 0:1107794 par Liaison 0:1107795 <-> 0:1107794 - route : Route de Mâcon 50 km/h max 
+--> 0:1107792 par Liaison 0:1107794 <-> 0:1107792 - route : Route de Mâcon 50 km/h max 
+--> 0:1107783 par Liaison 0:1107792 <-> 0:1107783 - route : Route de Mâcon 50 km/h max 
+--> 0:668917 par Liaison 0:1107783 <-> 0:668917 - route : Route de Mâcon 50 km/h max 
+--> 0:326356 par Liaison 0:668917 <-> 0:326356 - route : Route de Mâcon 50 km/h max 
+--> 0:531423 par Liaison 0:326356 -> 0:531423 - route : .  (oneway) 50 km/h max 
+--> 0:538346 par Liaison 0:531423 <-> 0:538346 - route : D 17 70 km/h max 
+--> 0:1107827 par Liaison 0:538346 <-> 0:1107827 - route : D 17 70 km/h max 
+--> 0:2333498 par Liaison 0:1107827 <-> 0:2333498 - route : D 17 70 km/h max 
+--> 0:1092349 par Liaison 0:2333498 -> 0:1092349 - route : Rond-point des Deux Roches  (oneway) 50 km/h max 
+--> 0:1108376 par Liaison 0:1092349 <-> 0:1108376 - route : D 89 50 km/h max 
+--> 0:1093385 par Liaison 0:1108376 <-> 0:1093385 - route : D 89 50 km/h max 
+--> 0:1108375 par Liaison 0:1093385 <-> 0:1108375 - route : D 89 50 km/h max 
+--> 0:2334436 par Liaison 0:1108375 <-> 0:2334436 - route : D 89 50 km/h max 
+--> 0:1094563 par Liaison 0:2334436 <-> 0:1094563 - route : D 89 50 km/h max 
+--> 0:1092348 par Liaison 0:1094563 <-> 0:1092348 - route : D 89 50 km/h max 
+--> 0:1094560 par Liaison 0:1092348 <-> 0:1094560 - route : Rue de la Poste 50 km/h max 
+--> 0:1091888 par Liaison 0:1094560 <-> 0:1091888 - route : Rue de la Poste 50 km/h max 
+--> 0:1097498 par Liaison 0:1091888 <-> 0:1097498 - route : D 89 50 km/h max 
+--> 0:1090608 par Liaison 0:1097498 <-> 0:1090608 - route : D 89 50 km/h max 
+--> 0:1088534 par Liaison 0:1090608 <-> 0:1088534 - route : D 89 50 km/h max 
+--> 0:1088501 par Liaison 0:1088534 <-> 0:1088501 - route : D 89 50 km/h max 
+--> 0:1092364 par Liaison 0:1088501 <-> 0:1092364 - route : D 89 50 km/h max 
+--> 0:1092369 par Liaison 0:1092364 <-> 0:1092369 - route : D 89 50 km/h max 
+--> 0:1105127 par Liaison 0:1092369 <-> 0:1105127 - route : D 89 50 km/h max 
+--> 0:1092365 par Liaison 0:1105127 <-> 0:1092365 - route : D 89 50 km/h max 
+--> 0:1105117 par Liaison 0:1092365 <-> 0:1105117 - route : D 89 50 km/h max 
+--> 0:1105300 par Liaison 0:1105117 <-> 0:1105300 - route : D 89 50 km/h max 
+--> 0:1105121 par Liaison 0:1105300 <-> 0:1105121 - route : D 89 50 km/h max 
+--> 0:1092366 par Liaison 0:1105121 <-> 0:1092366 - route : D 89 50 km/h max 
+--> 0:1105107 par Liaison 0:1092366 <-> 0:1105107 - route : D 89 50 km/h max 
+--> 0:1105110 par Liaison 0:1105107 <-> 0:1105110 - route : D 89 50 km/h max 
+--> 0:1105122 par Liaison 0:1105110 <-> 0:1105122 - route : D 89 50 km/h max 
+--> 0:1092367 par Liaison 0:1105122 <-> 0:1092367 - route : D 89 50 km/h max 
+--> 0:1092368 par Liaison 0:1092367 <-> 0:1092368 - route : D 89 50 km/h max 
+--> 0:1105104 par Liaison 0:1092368 <-> 0:1105104 - route : D 89 50 km/h max 
+--> 0:1105840 par Liaison 0:1105104 <-> 0:1105840 - route : D 89 50 km/h max 
+--> 0:1105860 par Liaison 0:1105840 <-> 0:1105860 - route : Route des Allemands 50 km/h max 
+--> 0:1105859 par Liaison 0:1105860 <-> 0:1105859 - route : Route des Allemands 50 km/h max 
+--> 0:367931 par Liaison 0:1105859 <-> 0:367931 - route : Route des Allemands 50 km/h max 
+--> 0:2310935 par Liaison 0:367931 <-> 0:2310935 - route : Route des Allemands 50 km/h max 
+--> 0:367930 par Liaison 0:2310935 <-> 0:367930 - route : Route des Allemands 50 km/h max 
+--> 0:2335965 par Liaison 0:367930 <-> 0:2335965 - route : Route des Allemands 50 km/h max 
+--> 0:2239002 par Liaison 0:2335965 <-> 0:2239002 - route : Route des Allemands 50 km/h max 
+--> 0:367929 par Liaison 0:2239002 <-> 0:367929 - route : Route des Allemands 50 km/h max 
+--> 0:2269461 par Liaison 0:367929 <-> 0:2269461 - route : Route des Allemands 50 km/h max 
+--> 0:16979 par Liaison 0:2269461 <-> 0:16979 - route : Route des Allemands 50 km/h max 
+--> 0:16978 par Liaison 0:16979 <-> 0:16978 - route : Giratoire Alain Girel 50 km/h max 
+--> 0:367928 par Liaison 0:16978 <-> 0:367928 - route : Giratoire Alain Girel 50 km/h max 
+--> 0:367927 par Liaison 0:367928 -> 0:367927 - route : D 89  (oneway) 50 km/h max 
+--> 0:805108 par Liaison 0:367927 <-> 0:805108 - route : D 89 50 km/h max 
+--> 0:2269488 par Liaison 0:805108 <-> 0:2269488 - route : D 89 50 km/h max 
+--> 0:2269506 par Liaison 0:2269488 <-> 0:2269506 - route : D 89 50 km/h max 
+--> 0:2269517 par Liaison 0:2269506 <-> 0:2269517 - route : D 89 50 km/h max 
+--> 0:2307430 par Liaison 0:2269517 <-> 0:2307430 - route : D 89 50 km/h max 
+--> 0:2307447 par Liaison 0:2307430 <-> 0:2307447 - route : D 89 50 km/h max 
+--> 0:2307379 par Liaison 0:2307447 <-> 0:2307379 - route : D 89 50 km/h max 
+--> 0:2307367 par Liaison 0:2307379 <-> 0:2307367 - route : D 89 50 km/h max 
+--> 0:1687433 par Liaison 0:2307367 <-> 0:1687433 - route : D 89 50 km/h max 
+--> 0:2307574 par Liaison 0:1687433 <-> 0:2307574 - route : D 89 50 km/h max 
+--> -1:16957 par Liaison 0:2307574 <-> -1:16957 - route : D 89 50 km/h max 
+--> 0:16956 par Liaison -1:16957 <-> 0:16956 - route : Rue de la Brancionne 70 km/h max 
+--> 0:2307446 par Liaison 0:16956 <-> 0:2307446 - route : Rue de l'Église 50 km/h max 
+--> 0:2307450 par Liaison 0:2307446 <-> 0:2307450 - route : Rue de l'Église 50 km/h max 
+--> 0:2307436 par Liaison 0:2307450 <-> 0:2307436 - route : Rue de l'Église 50 km/h max 
+--> 0:2307435 par Liaison 0:2307436 <-> 0:2307435 - route : Rue de l'Église 50 km/h max 
+--> 0:2307442 par Liaison 0:2307435 <-> 0:2307442 - route : Rue de l'Église 50 km/h max 
+--> 0:367926 par Liaison 0:2307442 <-> 0:367926 - route : Rue de l'Église 50 km/h max 
+--> 0:367925 par Liaison 0:367926 <-> 0:367925 - route : Rue de l'Église 50 km/h max 
+--> 0:2307451 par Liaison 0:367925 <-> 0:2307451 - route : Rue du Puits Boulanger 30 km/h max 
+--> 0:927992 par Liaison 0:2307451 <-> 0:927992 - route : Rue du Puits Boulanger 30 km/h max 
+--> 0:927974 par Liaison 0:927992 -> 0:927974 - route : Rue du Puits Boulanger  (oneway) 30 km/h max 
+--> 0:927975 par Liaison 0:927974 <-> 0:927975 - route : Rue du Puits Boulanger 30 km/h max 
+--> 0:927995 par Liaison 0:927975 <-> 0:927995 - route : Rue du Puits Boulanger 30 km/h max 
+--> 0:807265 par Liaison 0:927995 <-> 0:807265 - route : Rue du Puits Boulanger 30 km/h max 
+--> 0:807263 par Liaison 0:807265 <-> 0:807263 - route : Rue du Puits Boulanger 30 km/h max 
+--> 0:927990 par Liaison 0:807263 <-> 0:927990 - route : Rue de la Cité Fleurie 30 km/h max 
+--> 0:927989 par Liaison 0:927990 <-> 0:927989 - route : Rue d'Estour 30 km/h max 
+--> 0:956267 par Liaison 0:927989 <-> 0:956267 - route : Chemin des Sablons 30 km/h max 
+--> 0:956268 par Liaison 0:956267 <-> 0:956268 - route : . 30 km/h max 
+--> 0:358363 par Liaison 0:956268 <-> 0:358363 - route : Aire de Crêches 30 km/h max 
+--> 0:956405 par Liaison 0:358363 -> 0:956405 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:367608 par Liaison 0:956405 -> 0:367608 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:367609 par Liaison 0:367608 <-> 0:367609 - route : Aire de Dracé 30 km/h max 
+--> 0:2373586 par Liaison 0:367609 <-> 0:2373586 - route : Aire de Dracé 30 km/h max 
+--> 0:2373610 par Liaison 0:2373586 <-> 0:2373610 - route : . 30 km/h max 
+--> 0:2373575 par Liaison 0:2373610 <-> 0:2373575 - route : . 30 km/h max 
+--> 0:1090936 par Liaison 0:2373575 <-> 0:1090936 - route : . 30 km/h max 
+--> 0:2395350 par Liaison 0:1090936 <-> 0:2395350 - route : D 109 50 km/h max 
+--> 0:1247059 par Liaison 0:2395350 <-> 0:1247059 - route : D 109 50 km/h max 
+--> 0:2395351 par Liaison 0:1247059 <-> 0:2395351 - route : D 109 50 km/h max 
+--> 0:1090899 par Liaison 0:2395351 <-> 0:1090899 - route : D 109 50 km/h max 
+--> 0:2373583 par Liaison 0:1090899 <-> 0:2373583 - route : D 109 50 km/h max 
+--> 0:2393137 par Liaison 0:2373583 <-> 0:2393137 - route : D 109 50 km/h max 
+--> 0:1090831 par Liaison 0:2393137 <-> 0:1090831 - route : D 109 50 km/h max 
+--> 0:1283287 par Liaison 0:1090831 <-> 0:1283287 - route : D 109 50 km/h max 
+--> 0:419483 par Liaison 0:1283287 <-> 0:419483 - route : D 109 50 km/h max 
+--> 0:288072 par Liaison 0:419483 -> 0:288072 - route : .  (oneway) 50 km/h max 
+--> 0:288073 par Liaison 0:288072 -> 0:288073 - route : .  (oneway) 50 km/h max 
+--> 0:1840863 par Liaison 0:288073 -> 0:1840863 - route : .  (oneway) 50 km/h max 
+--> 0:2179367 par Liaison 0:1840863 -> 0:2179367 - route : .  (oneway) 50 km/h max 
+--> 0:2179366 par Liaison 0:2179367 <-> 0:2179366 - route : . 50 km/h max 
+--> 0:1596345 par Liaison 0:2179366 <-> 0:1596345 - route : . 30 km/h max 
+--> 0:1596316 par Liaison 0:1596345 <-> 0:1596316 - route : Rue Paulin Bussières 30 km/h max 
+--> 0:1596339 par Liaison 0:1596316 <-> 0:1596339 - route : Rue Paulin Bussières 30 km/h max 
+--> 0:1594530 par Liaison 0:1596339 <-> 0:1594530 - route : Rue Paulin Bussières 30 km/h max 
+--> 0:1594536 par Liaison 0:1594530 <-> 0:1594536 - route : Rue de la République 50 km/h max 
+--> 0:1594527 par Liaison 0:1594536 <-> 0:1594527 - route : Rue Ballofet Dury 30 km/h max 
+--> 0:1833983 par Liaison 0:1594527 -> 0:1833983 - route : .  (oneway) 50 km/h max 
+--> 0:1594533 par Liaison 0:1833983 -> 0:1594533 - route : .  (oneway) 50 km/h max 
+--> 0:2239080 par Liaison 0:1594533 <-> 0:2239080 - route : . 30 km/h max 
+--> 0:2057857 par Liaison 0:2239080 <-> 0:2057857 - route : Avenue de Verdun 70 km/h max 
+--> 0:2097698 par Liaison 0:2057857 <-> 0:2097698 - route : Avenue de Verdun 70 km/h max 
+--> 0:2347145 par Liaison 0:2097698 <-> 0:2347145 - route : Avenue de Verdun 70 km/h max 
+--> 0:2347141 par Liaison 0:2347145 <-> 0:2347141 - route : Avenue de Verdun 70 km/h max 
+--> 0:933444 par Liaison 0:2347141 <-> 0:933444 - route : Avenue de Verdun 70 km/h max 
+--> 0:16996 par Liaison 0:933444 -> 0:16996 - route : .  (oneway) 50 km/h max 
+--> 0:16998 par Liaison 0:16996 -> 0:16998 - route : .  (oneway) 50 km/h max 
+--> 0:16997 par Liaison 0:16998 -> 0:16997 - route : .  (oneway) 50 km/h max 
+--> 0:1687418 par Liaison 0:16997 <-> 0:1687418 - route : D 306 90 km/h max 
+--> 0:982563 par Liaison 0:1687418 <-> 0:982563 - route : D 306 90 km/h max 
+--> 0:982559 par Liaison 0:982563 <-> 0:982559 - route : D 306 90 km/h max 
+--> 0:956625 par Liaison 0:982559 <-> 0:956625 - route : D 306 90 km/h max 
+--> 0:17003 par Liaison 0:956625 <-> 0:17003 - route : D 306 90 km/h max 
+--> 0:17000 par Liaison 0:17003 <-> 0:17000 - route : D 306 90 km/h max 
+===========================
+Longueur totale = 440487.0 m
+Temps total = 422.5338 minutes
+
+=============================================================================================
+Performance: 
+Temps d'execution (ns): 	11899
+Nb noeud visites :			1580077
+Nb noeud marque :			1240746
+Nb max dans le tas :		1401

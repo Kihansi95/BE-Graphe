@@ -1,0 +1,500 @@
+>>> Algorithme Dijkstra de 0:0 vers 0:17000 <<<
+
+Solution de Dijkstra de 0:0 vers 0:17000
+Chemin de 0:0 vers 0:17000
+0:0
+--> 0:1201116 par Liaison 0:0 -> 0:1201116 - autoroute : L'Autoroute du Nord  (oneway) 130 km/h max 
+--> 0:1201117 par Liaison 0:1201116 -> 0:1201117 - autoroute : L'Autoroute du Nord  (oneway) 130 km/h max 
+--> 0:106318 par Liaison 0:1201117 -> 0:106318 - autoroute : L'Autoroute du Nord  (oneway) 130 km/h max 
+--> 0:1 par Liaison 0:106318 -> 0:1 - autoroute : L'Autoroute du Nord  (oneway) 130 km/h max 
+--> 0:106211 par Liaison 0:1 -> 0:106211 - autoroute : L'Autoroute du Nord  (oneway) 130 km/h max 
+--> 0:106135 par Liaison 0:106211 -> 0:106135 - autoroute : L'Autoroute du Nord  (oneway) 130 km/h max 
+--> 0:106020 par Liaison 0:106135 -> 0:106020 - autoroute : L'Autoroute du Nord  (oneway) 130 km/h max 
+--> 0:106121 par Liaison 0:106020 -> 0:106121 - autoroute : L'Autoroute du Nord  (oneway) 130 km/h max 
+--> 0:106024 par Liaison 0:106121 -> 0:106024 - autoroute : L'Autoroute du Nord  (oneway) 130 km/h max 
+--> 0:106048 par Liaison 0:106024 -> 0:106048 - autoroute : L'Autoroute du Nord  (oneway) 130 km/h max 
+--> 0:414433 par Liaison 0:106048 -> 0:414433 - autoroute : L'Autoroute du Nord  (oneway) 130 km/h max 
+--> 0:122207 par Liaison 0:414433 -> 0:122207 - autoroute : L'Autoroute du Nord  (oneway) 130 km/h max 
+--> 0:711211 par Liaison 0:122207 -> 0:711211 - autoroute : L'Autoroute du Nord  (oneway) 130 km/h max 
+--> 0:106968 par Liaison 0:711211 -> 0:106968 - autoroute : L'Autoroute du Nord  (oneway) 130 km/h max 
+--> 0:2224938 par Liaison 0:106968 -> 0:2224938 - autoroute : L'Autoroute du Nord  (oneway) 130 km/h max 
+--> 0:2224939 par Liaison 0:2224938 -> 0:2224939 - autoroute : L'Autoroute du Nord  (oneway) 130 km/h max 
+--> 0:24525 par Liaison 0:2224939 -> 0:24525 - autoroute : L'Autoroute du Nord  (oneway) 130 km/h max 
+--> 0:24526 par Liaison 0:24525 -> 0:24526 - autoroute : L'Autoroute du Nord  (oneway) 130 km/h max 
+--> 0:107335 par Liaison 0:24526 -> 0:107335 - autoroute : L'Autoroute du Nord  (oneway) 130 km/h max 
+--> 0:107318 par Liaison 0:107335 -> 0:107318 - autoroute : L'Autoroute du Nord  (oneway) 130 km/h max 
+--> 0:107300 par Liaison 0:107318 -> 0:107300 - autoroute : L'Autoroute du Nord  (oneway) 130 km/h max 
+--> 0:23711 par Liaison 0:107300 -> 0:23711 - autoroute : L'Autoroute du Nord  (oneway) 130 km/h max 
+--> 0:107279 par Liaison 0:23711 -> 0:107279 - route : .  (oneway) 50 km/h max 
+--> 0:107269 par Liaison 0:107279 -> 0:107269 - route : .  (oneway) 50 km/h max 
+--> 0:107292 par Liaison 0:107269 -> 0:107292 - route : .  (oneway) 50 km/h max 
+--> 0:107283 par Liaison 0:107292 -> 0:107283 - route : .  (oneway) 90 km/h max 
+--> 0:107273 par Liaison 0:107283 -> 0:107273 - route : .  (oneway) 50 km/h max 
+--> 0:107296 par Liaison 0:107273 -> 0:107296 - route : .  (oneway) 50 km/h max 
+--> 0:107274 par Liaison 0:107296 -> 0:107274 - route : .  (oneway) 50 km/h max 
+--> 0:133445 par Liaison 0:107274 <-> 0:133445 - route : Rue de la Chapelle 90 km/h max 
+--> 0:126275 par Liaison 0:133445 <-> 0:126275 - route : Rue de la Chapelle 90 km/h max 
+--> 0:126283 par Liaison 0:126275 <-> 0:126283 - route : Rue de la Chapelle 90 km/h max 
+--> 0:126285 par Liaison 0:126283 <-> 0:126285 - route : Rue de la Chapelle 90 km/h max 
+--> 0:1181764 par Liaison 0:126285 <-> 0:1181764 - route : Rue de la Chapelle 90 km/h max 
+--> 0:126288 par Liaison 0:1181764 <-> 0:126288 - route : Rue de la Chapelle 90 km/h max 
+--> 0:3223 par Liaison 0:126288 <-> 0:3223 - route : Rue de la Chapelle 90 km/h max 
+--> 0:96430 par Liaison 0:3223 <-> 0:96430 - route : Rue Marx Dormoy 50 km/h max 
+--> 0:1617215 par Liaison 0:96430 <-> 0:1617215 - route : Rue Marx Dormoy 50 km/h max 
+--> 0:96191 par Liaison 0:1617215 <-> 0:96191 - route : Rue Marx Dormoy 50 km/h max 
+--> 0:1617214 par Liaison 0:96191 <-> 0:1617214 - route : Rue Marx Dormoy 50 km/h max 
+--> 0:96507 par Liaison 0:1617214 <-> 0:96507 - route : Rue Marx Dormoy 50 km/h max 
+--> 0:96457 par Liaison 0:96507 <-> 0:96457 - route : Rue Marx Dormoy 90 km/h max 
+--> 0:96465 par Liaison 0:96457 <-> 0:96465 - route : Rue Marx Dormoy 90 km/h max 
+--> 0:1986 par Liaison 0:96465 <-> 0:1986 - route : Rue Marx Dormoy 90 km/h max 
+--> 0:96475 par Liaison 0:1986 -> 0:96475 - route : Boulevard de la Chapelle  (oneway) 90 km/h max 
+--> 0:1112171 par Liaison 0:96475 -> 0:1112171 - route : Boulevard de la Chapelle  (oneway) 90 km/h max 
+--> 0:989587 par Liaison 0:1112171 -> 0:989587 - route : Boulevard de la Chapelle  (oneway) 90 km/h max 
+--> 0:1955300 par Liaison 0:989587 -> 0:1955300 - route : Boulevard de la Chapelle  (oneway) 90 km/h max 
+--> 0:227644 par Liaison 0:1955300 -> 0:227644 - route : Boulevard de la Chapelle  (oneway) 90 km/h max 
+--> 0:1891 par Liaison 0:227644 -> 0:1891 - route : Boulevard de la Chapelle  (oneway) 90 km/h max 
+--> 0:1897982 par Liaison 0:1891 <-> 0:1897982 - route : . 90 km/h max 
+--> 0:96249 par Liaison 0:1897982 <-> 0:96249 - route : Boulevard de Magenta 90 km/h max 
+--> 0:96100 par Liaison 0:96249 <-> 0:96100 - route : Boulevard de Magenta 90 km/h max 
+--> 0:1114573 par Liaison 0:96100 <-> 0:1114573 - route : Boulevard de Magenta 90 km/h max 
+--> 0:1883 par Liaison 0:1114573 <-> 0:1883 - route : Boulevard de Magenta 90 km/h max 
+--> 0:1120507 par Liaison 0:1883 <-> 0:1120507 - route : Boulevard de Magenta 90 km/h max 
+--> 0:253080 par Liaison 0:1120507 <-> 0:253080 - route : Boulevard de Magenta 90 km/h max 
+--> 0:96110 par Liaison 0:253080 <-> 0:96110 - route : Boulevard de Magenta 90 km/h max 
+--> 0:1882 par Liaison 0:96110 <-> 0:1882 - route : Boulevard de Magenta 90 km/h max 
+--> 0:96176 par Liaison 0:1882 <-> 0:96176 - route : Boulevard de Magenta 90 km/h max 
+--> 0:96111 par Liaison 0:96176 <-> 0:96111 - route : Boulevard de Magenta 90 km/h max 
+--> 0:998651 par Liaison 0:96111 <-> 0:998651 - route : Boulevard de Magenta 90 km/h max 
+--> 0:1881 par Liaison 0:998651 <-> 0:1881 - route : Boulevard de Magenta 90 km/h max 
+--> 0:1459825 par Liaison 0:1881 <-> 0:1459825 - route : Boulevard de Magenta 90 km/h max 
+--> 0:96051 par Liaison 0:1459825 <-> 0:96051 - route : Boulevard de Magenta 90 km/h max 
+--> 0:96239 par Liaison 0:96051 <-> 0:96239 - route : Boulevard de Magenta 90 km/h max 
+--> 0:1874 par Liaison 0:96239 <-> 0:1874 - route : Boulevard de Magenta 90 km/h max 
+--> 0:1165215 par Liaison 0:1874 <-> 0:1165215 - route : Boulevard de Magenta 90 km/h max 
+--> 0:103257 par Liaison 0:1165215 <-> 0:103257 - route : Boulevard de Magenta 90 km/h max 
+--> 0:1187208 par Liaison 0:103257 <-> 0:1187208 - route : Boulevard de Magenta 90 km/h max 
+--> 0:117489 par Liaison 0:1187208 <-> 0:117489 - route : Boulevard de Magenta 90 km/h max 
+--> 0:117491 par Liaison 0:117489 <-> 0:117491 - route : Boulevard de Magenta 90 km/h max 
+--> 0:1144266 par Liaison 0:117491 <-> 0:1144266 - route : Boulevard de Magenta 90 km/h max 
+--> 0:1144265 par Liaison 0:1144266 <-> 0:1144265 - route : Boulevard de Magenta 90 km/h max 
+--> 0:117492 par Liaison 0:1144265 <-> 0:117492 - route : Boulevard de Magenta 90 km/h max 
+--> 0:148676 par Liaison 0:117492 <-> 0:148676 - route : Boulevard de Magenta 90 km/h max 
+--> 0:899343 par Liaison 0:148676 <-> 0:899343 - route : Boulevard de Magenta 90 km/h max 
+--> 0:95998 par Liaison 0:899343 -> 0:95998 - route : Boulevard de Magenta  (oneway) 90 km/h max 
+--> 0:210976 par Liaison 0:95998 -> 0:210976 - route : Boulevard de Magenta  (oneway) 90 km/h max 
+--> 0:117498 par Liaison 0:210976 -> 0:117498 - route : Boulevard de Magenta  (oneway) 90 km/h max 
+--> 0:210975 par Liaison 0:117498 -> 0:210975 - route : Place de la République  (oneway) 90 km/h max 
+--> 0:529931 par Liaison 0:210975 -> 0:529931 - route : Place de la République  (oneway) 90 km/h max 
+--> 0:514667 par Liaison 0:529931 -> 0:514667 - route : Place de la République  (oneway) 90 km/h max 
+--> 0:710624 par Liaison 0:514667 -> 0:710624 - route : Place de la République  (oneway) 90 km/h max 
+--> 0:742846 par Liaison 0:710624 <-> 0:742846 - route : Boulevard du Temple 90 km/h max 
+--> 0:95965 par Liaison 0:742846 <-> 0:95965 - route : Boulevard du Temple 90 km/h max 
+--> 0:742845 par Liaison 0:95965 <-> 0:742845 - route : Boulevard du Temple 90 km/h max 
+--> 0:95978 par Liaison 0:742845 <-> 0:95978 - route : Boulevard du Temple 90 km/h max 
+--> 0:96001 par Liaison 0:95978 <-> 0:96001 - route : Boulevard du Temple 90 km/h max 
+--> 0:529728 par Liaison 0:96001 <-> 0:529728 - route : Boulevard du Temple 90 km/h max 
+--> 0:95968 par Liaison 0:529728 <-> 0:95968 - route : Boulevard du Temple 90 km/h max 
+--> 0:95970 par Liaison 0:95968 <-> 0:95970 - route : Boulevard des Filles du Calvaire 90 km/h max 
+--> 0:1992825 par Liaison 0:95970 <-> 0:1992825 - route : Boulevard des Filles du Calvaire 90 km/h max 
+--> 0:95967 par Liaison 0:1992825 <-> 0:95967 - route : Boulevard des Filles du Calvaire 90 km/h max 
+--> 0:118614 par Liaison 0:95967 <-> 0:118614 - route : Boulevard des Filles du Calvaire 90 km/h max 
+--> 0:985881 par Liaison 0:118614 <-> 0:985881 - route : Boulevard des Filles du Calvaire 90 km/h max 
+--> 0:985882 par Liaison 0:985881 -> 0:985882 - route : .  (oneway) 30 km/h max 
+--> 0:95982 par Liaison 0:985882 <-> 0:95982 - route : Boulevard Beaumarchais 90 km/h max 
+--> 0:985854 par Liaison 0:95982 <-> 0:985854 - route : Boulevard Beaumarchais 90 km/h max 
+--> 0:110903 par Liaison 0:985854 <-> 0:110903 - route : Boulevard Beaumarchais 90 km/h max 
+--> 0:135267 par Liaison 0:110903 <-> 0:135267 - route : Boulevard Beaumarchais 90 km/h max 
+--> 0:2461822 par Liaison 0:135267 <-> 0:2461822 - route : Boulevard Beaumarchais 90 km/h max 
+--> 0:985853 par Liaison 0:2461822 <-> 0:985853 - route : Boulevard Beaumarchais 90 km/h max 
+--> 0:118612 par Liaison 0:985853 <-> 0:118612 - route : Boulevard Beaumarchais 90 km/h max 
+--> 0:985883 par Liaison 0:118612 <-> 0:985883 - route : Boulevard Beaumarchais 90 km/h max 
+--> 0:985884 par Liaison 0:985883 -> 0:985884 - route : .  (oneway) 30 km/h max 
+--> 0:1197021 par Liaison 0:985884 <-> 0:1197021 - route : Boulevard Beaumarchais 90 km/h max 
+--> 0:118610 par Liaison 0:1197021 <-> 0:118610 - route : Boulevard Beaumarchais 90 km/h max 
+--> 0:985885 par Liaison 0:118610 <-> 0:985885 - route : Boulevard Beaumarchais 90 km/h max 
+--> 0:985818 par Liaison 0:985885 <-> 0:985818 - route : Boulevard Beaumarchais 90 km/h max 
+--> 0:190955 par Liaison 0:985818 -> 0:190955 - route : Boulevard Beaumarchais  (oneway) 90 km/h max 
+--> 0:104732 par Liaison 0:190955 -> 0:104732 - route : Place de la Bastille  (oneway) 90 km/h max 
+--> 0:895818 par Liaison 0:104732 -> 0:895818 - route : Place de la Bastille  (oneway) 70 km/h max 
+--> 0:514669 par Liaison 0:895818 -> 0:514669 - route : Place de la Bastille  (oneway) 70 km/h max 
+--> 0:978291 par Liaison 0:514669 -> 0:978291 - route : Place de la Bastille  (oneway) 70 km/h max 
+--> 0:33368 par Liaison 0:978291 -> 0:33368 - route : Boulevard Bourdon  (oneway) 70 km/h max 
+--> 0:1847 par Liaison 0:33368 -> 0:1847 - route : Boulevard Bourdon  (oneway) 70 km/h max 
+--> 0:34836 par Liaison 0:1847 -> 0:34836 - route : Boulevard Bourdon  (oneway) 70 km/h max 
+--> 0:1846 par Liaison 0:34836 -> 0:1846 - route : Boulevard Bourdon  (oneway) 70 km/h max 
+--> 0:166589 par Liaison 0:1846 <-> 0:166589 - route : Pont Morland 90 km/h max 
+--> 0:1145184 par Liaison 0:166589 -> 0:1145184 - route : Quai de la Rapée  (oneway) 90 km/h max 
+--> 0:166590 par Liaison 0:1145184 -> 0:166590 - route : Quai de la Rapée  (oneway) 90 km/h max 
+--> 0:166592 par Liaison 0:166590 -> 0:166592 - route : .  (oneway) 90 km/h max 
+--> 0:1778238 par Liaison 0:166592 -> 0:1778238 - route : Pont d'Austerlitz  (oneway) 90 km/h max 
+--> 0:682213 par Liaison 0:1778238 -> 0:682213 - route : Place Valhubert  (oneway) 90 km/h max 
+--> 0:139119 par Liaison 0:682213 -> 0:139119 - route : Place Valhubert  (oneway) 90 km/h max 
+--> 0:682199 par Liaison 0:139119 -> 0:682199 - route : Place Valhubert  (oneway) 90 km/h max 
+--> 0:1778231 par Liaison 0:682199 -> 0:1778231 - route : Boulevard de l'Hôpital  (oneway) 90 km/h max 
+--> 0:1778239 par Liaison 0:1778231 <-> 0:1778239 - route : Boulevard de l'Hôpital 90 km/h max 
+--> 0:1850 par Liaison 0:1778239 <-> 0:1850 - route : Boulevard de l'Hôpital 90 km/h max 
+--> 0:1778229 par Liaison 0:1850 <-> 0:1778229 - route : Boulevard de l'Hôpital 90 km/h max 
+--> 0:1778232 par Liaison 0:1778229 <-> 0:1778232 - route : Boulevard de l'Hôpital 90 km/h max 
+--> 0:15092 par Liaison 0:1778232 <-> 0:15092 - route : Boulevard de l'Hôpital 90 km/h max 
+--> 0:1778228 par Liaison 0:15092 <-> 0:1778228 - route : Boulevard de l'Hôpital 90 km/h max 
+--> 0:1778236 par Liaison 0:1778228 <-> 0:1778236 - route : Boulevard de l'Hôpital 90 km/h max 
+--> 0:1778226 par Liaison 0:1778236 <-> 0:1778226 - route : Boulevard de l'Hôpital 90 km/h max 
+--> 0:682204 par Liaison 0:1778226 <-> 0:682204 - route : Boulevard de l'Hôpital 90 km/h max 
+--> 0:20340 par Liaison 0:682204 <-> 0:20340 - route : Boulevard de l'Hôpital 90 km/h max 
+--> 0:157641 par Liaison 0:20340 <-> 0:157641 - route : Boulevard de l'Hôpital 90 km/h max 
+--> 0:1855 par Liaison 0:157641 <-> 0:1855 - route : Boulevard de l'Hôpital 90 km/h max 
+--> 0:20331 par Liaison 0:1855 <-> 0:20331 - route : Boulevard de l'Hôpital 90 km/h max 
+--> 0:169397 par Liaison 0:20331 <-> 0:169397 - route : Boulevard de l'Hôpital 90 km/h max 
+--> 0:3251 par Liaison 0:169397 <-> 0:3251 - route : Boulevard de l'Hôpital 90 km/h max 
+--> 0:20318 par Liaison 0:3251 <-> 0:20318 - route : Boulevard de l'Hôpital 90 km/h max 
+--> 0:20319 par Liaison 0:20318 <-> 0:20319 - route : Boulevard de l'Hôpital 90 km/h max 
+--> 0:1854 par Liaison 0:20319 <-> 0:1854 - route : Boulevard de l'Hôpital 90 km/h max 
+--> 0:1930 par Liaison 0:1854 <-> 0:1930 - route : Boulevard de l'Hôpital 90 km/h max 
+--> 0:1923 par Liaison 0:1930 <-> 0:1923 - route : Boulevard de l'Hôpital 90 km/h max 
+--> 0:1909 par Liaison 0:1923 <-> 0:1909 - route : Boulevard de l'Hôpital 90 km/h max 
+--> 0:1906 par Liaison 0:1909 -> 0:1906 - route : Place d'Italie  (oneway) 50 km/h max 
+--> 0:1907 par Liaison 0:1906 -> 0:1907 - route : Place d'Italie  (oneway) 50 km/h max 
+--> 0:1908 par Liaison 0:1907 -> 0:1908 - route : Place d'Italie  (oneway) 50 km/h max 
+--> 0:1902 par Liaison 0:1908 -> 0:1902 - route : Place d'Italie  (oneway) 50 km/h max 
+--> 0:1901 par Liaison 0:1902 -> 0:1901 - route : Place d'Italie  (oneway) 50 km/h max 
+--> 0:1900 par Liaison 0:1901 <-> 0:1900 - route : Avenue d'Italie 50 km/h max 
+--> 0:20361 par Liaison 0:1900 <-> 0:20361 - route : Avenue d'Italie 50 km/h max 
+--> 0:20365 par Liaison 0:20361 <-> 0:20365 - route : Avenue d'Italie 50 km/h max 
+--> 0:20359 par Liaison 0:20365 <-> 0:20359 - route : Avenue d'Italie 50 km/h max 
+--> 0:1817 par Liaison 0:20359 <-> 0:1817 - route : Avenue d'Italie 50 km/h max 
+--> 0:192738 par Liaison 0:1817 <-> 0:192738 - route : Avenue d'Italie 50 km/h max 
+--> 0:77017 par Liaison 0:192738 <-> 0:77017 - route : Avenue d'Italie 50 km/h max 
+--> 0:188793 par Liaison 0:77017 <-> 0:188793 - route : Avenue d'Italie 50 km/h max 
+--> 0:115023 par Liaison 0:188793 <-> 0:115023 - route : Avenue d'Italie 50 km/h max 
+--> 0:115015 par Liaison 0:115023 <-> 0:115015 - route : Avenue d'Italie 50 km/h max 
+--> 0:115014 par Liaison 0:115015 <-> 0:115014 - route : Avenue d'Italie 50 km/h max 
+--> 0:188791 par Liaison 0:115014 <-> 0:188791 - route : Avenue d'Italie 50 km/h max 
+--> 0:2391 par Liaison 0:188791 <-> 0:2391 - route : Avenue d'Italie 50 km/h max 
+--> 0:66318 par Liaison 0:2391 <-> 0:66318 - route : Avenue d'Italie 50 km/h max 
+--> 0:164314 par Liaison 0:66318 <-> 0:164314 - route : Avenue de la Porte d'Italie 90 km/h max 
+--> 0:214522 par Liaison 0:164314 <-> 0:214522 - route : Avenue de la Porte d'Italie 90 km/h max 
+--> 0:164313 par Liaison 0:214522 <-> 0:164313 - route : Avenue de la Porte d'Italie 90 km/h max 
+--> 0:3255 par Liaison 0:164313 <-> 0:3255 - route : Avenue de la Porte d'Italie 90 km/h max 
+--> 0:114477 par Liaison 0:3255 -> 0:114477 - route : Avenue de la Porte d'Italie  (oneway) 90 km/h max 
+--> 0:550699 par Liaison 0:114477 -> 0:550699 - route : Avenue de la Porte d'Italie  (oneway) 50 km/h max 
+--> 0:114478 par Liaison 0:550699 -> 0:114478 - route : Avenue de la Porte d'Italie  (oneway) 50 km/h max 
+--> 0:173168 par Liaison 0:114478 -> 0:173168 - route : Avenue de Fontainebleau  (oneway) 90 km/h max 
+--> 0:269134 par Liaison 0:173168 -> 0:269134 - route : Avenue de Fontainebleau  (oneway) 90 km/h max 
+--> 0:876349 par Liaison 0:269134 -> 0:876349 - route : Avenue de Fontainebleau  (oneway) 90 km/h max 
+--> 0:269119 par Liaison 0:876349 <-> 0:269119 - route : Rue de la Convention 70 km/h max 
+--> 0:269120 par Liaison 0:269119 <-> 0:269120 - route : Rue de la Convention 70 km/h max 
+--> 0:938512 par Liaison 0:269120 <-> 0:938512 - route : Rue de la Convention 70 km/h max 
+--> 0:833331 par Liaison 0:938512 <-> 0:833331 - route : Rue de la Convention 70 km/h max 
+--> 0:269121 par Liaison 0:833331 <-> 0:269121 - route : Rue de la Convention 70 km/h max 
+--> 0:938510 par Liaison 0:269121 <-> 0:938510 - route : Rue de la Convention 70 km/h max 
+--> 0:269122 par Liaison 0:938510 <-> 0:269122 - route : Rue de la Convention 70 km/h max 
+--> 0:43526 par Liaison 0:269122 <-> 0:43526 - route : Rue de la Convention 70 km/h max 
+--> 0:43529 par Liaison 0:43526 <-> 0:43529 - route : Carrefour Stalingrad 70 km/h max 
+--> 0:175497 par Liaison 0:43529 -> 0:175497 - route : Rue Gabriel Péri  (oneway) 70 km/h max 
+--> 0:1210736 par Liaison 0:175497 -> 0:1210736 - route : Rue Gabriel Péri  (oneway) 70 km/h max 
+--> 0:1209081 par Liaison 0:1210736 -> 0:1209081 - route : Rue Gabriel Péri  (oneway) 70 km/h max 
+--> 0:43554 par Liaison 0:1209081 -> 0:43554 - route : Rue Gabriel Péri  (oneway) 70 km/h max 
+--> 0:43555 par Liaison 0:43554 -> 0:43555 - route : Rue Gabriel Péri  (oneway) 70 km/h max 
+--> 0:43562 par Liaison 0:43555 -> 0:43562 - route : Rue Gabriel Péri  (oneway) 70 km/h max 
+--> 0:43552 par Liaison 0:43562 -> 0:43552 - route : Rue Gabriel Péri  (oneway) 70 km/h max 
+--> 0:43553 par Liaison 0:43552 -> 0:43553 - route : Avenue Gabriel Péri  (oneway) 70 km/h max 
+--> 0:43565 par Liaison 0:43553 -> 0:43565 - route : Avenue Gabriel Péri  (oneway) 70 km/h max 
+--> 0:815390 par Liaison 0:43565 -> 0:815390 - route : Avenue Gabriel Péri  (oneway) 70 km/h max 
+--> 0:43563 par Liaison 0:815390 -> 0:43563 - route : Avenue Gabriel Péri  (oneway) 70 km/h max 
+--> 0:43564 par Liaison 0:43563 -> 0:43564 - route : Avenue Gabriel Péri  (oneway) 70 km/h max 
+--> 0:844593 par Liaison 0:43564 -> 0:844593 - route : Avenue Gabriel Péri  (oneway) 70 km/h max 
+--> 0:456830 par Liaison 0:844593 -> 0:456830 - route : Avenue Gabriel Péri  (oneway) 70 km/h max 
+--> 0:811511 par Liaison 0:456830 -> 0:811511 - route : Avenue Gabriel Péri  (oneway) 70 km/h max 
+--> 0:404802 par Liaison 0:811511 -> 0:404802 - route : Avenue Gabriel Péri  (oneway) 70 km/h max 
+--> 0:404803 par Liaison 0:404802 -> 0:404803 - route : Avenue Gabriel Péri  (oneway) 70 km/h max 
+--> 0:468790 par Liaison 0:404803 -> 0:468790 - route : .  (oneway) 50 km/h max 
+--> 0:404804 par Liaison 0:468790 -> 0:404804 - route : .  (oneway) 50 km/h max 
+--> 0:43522 par Liaison 0:404804 -> 0:43522 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:43525 par Liaison 0:43522 -> 0:43525 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:43524 par Liaison 0:43525 -> 0:43524 - route : .  (oneway) 50 km/h max 
+--> 0:43528 par Liaison 0:43524 -> 0:43528 - route : .  (oneway) 50 km/h max 
+--> 0:146949 par Liaison 0:43528 -> 0:146949 - autoroute : A 106  (oneway) 130 km/h max 
+--> 0:2259799 par Liaison 0:146949 -> 0:2259799 - autoroute : A 106  (oneway) 130 km/h max 
+--> 0:146956 par Liaison 0:2259799 -> 0:146956 - autoroute : A 106  (oneway) 130 km/h max 
+--> 0:142891 par Liaison 0:146956 -> 0:142891 - autoroute : A 106  (oneway) 130 km/h max 
+--> 0:939379 par Liaison 0:142891 -> 0:939379 - route : .  (oneway) 50 km/h max 
+--> 0:1260846 par Liaison 0:939379 <-> 0:1260846 - route : . 30 km/h max 
+--> 0:939381 par Liaison 0:1260846 <-> 0:939381 - route : . 30 km/h max 
+--> 0:939380 par Liaison 0:939381 -> 0:939380 - route : .  (oneway) 50 km/h max 
+--> 0:146959 par Liaison 0:939380 <-> 0:146959 - route : . 30 km/h max 
+--> 0:146953 par Liaison 0:146959 -> 0:146953 - route : .  (oneway) 50 km/h max 
+--> 0:146960 par Liaison 0:146953 -> 0:146960 - route : .  (oneway) 50 km/h max 
+--> 0:146961 par Liaison 0:146960 <-> 0:146961 - route : . 70 km/h max 
+--> 0:146964 par Liaison 0:146961 -> 0:146964 - route : .  (oneway) 70 km/h max 
+--> 0:146962 par Liaison 0:146964 -> 0:146962 - route : .  (oneway) 50 km/h max 
+--> 0:1135590 par Liaison 0:146962 -> 0:1135590 - route : .  (oneway) 50 km/h max 
+--> 0:1135589 par Liaison 0:1135590 -> 0:1135589 - route : .  (oneway) 50 km/h max 
+--> 0:99518 par Liaison 0:1135589 -> 0:99518 - route : N 7  (oneway) 90 km/h max 
+--> 0:149662 par Liaison 0:99518 -> 0:149662 - route : N 7  (oneway) 90 km/h max 
+--> 0:1004964 par Liaison 0:149662 -> 0:1004964 - route : N 7  (oneway) 90 km/h max 
+--> 0:1004935 par Liaison 0:1004964 -> 0:1004935 - route : N 7  (oneway) 90 km/h max 
+--> 0:93396 par Liaison 0:1004935 -> 0:93396 - route : N 7  (oneway) 90 km/h max 
+--> 0:93397 par Liaison 0:93396 -> 0:93397 - route : N 7  (oneway) 70 km/h max 
+--> 0:437090 par Liaison 0:93397 -> 0:437090 - route : N 7  (oneway) 90 km/h max 
+--> 0:93398 par Liaison 0:437090 -> 0:93398 - route : N 7  (oneway) 90 km/h max 
+--> 0:93399 par Liaison 0:93398 -> 0:93399 - route : Avenue François Mitterand  (oneway) 90 km/h max 
+--> 0:1258233 par Liaison 0:93399 -> 0:1258233 - route : N 7  (oneway) 90 km/h max 
+--> 0:688598 par Liaison 0:1258233 -> 0:688598 - route : Avenue François Mitterand  (oneway) 90 km/h max 
+--> 0:688527 par Liaison 0:688598 -> 0:688527 - route : Avenue François Mitterand  (oneway) 90 km/h max 
+--> 0:1809138 par Liaison 0:688527 -> 0:1809138 - route : Avenue François Mitterand  (oneway) 90 km/h max 
+--> 0:1809145 par Liaison 0:1809138 -> 0:1809145 - route : N 7  (oneway) 90 km/h max 
+--> 0:1023492 par Liaison 0:1809145 -> 0:1023492 - route : Avenue François Mitterand  (oneway) 90 km/h max 
+--> 0:688696 par Liaison 0:1023492 -> 0:688696 - route : Avenue François Mitterand  (oneway) 90 km/h max 
+--> 0:62067 par Liaison 0:688696 -> 0:62067 - route : Avenue François Mitterand  (oneway) 90 km/h max 
+--> 0:62063 par Liaison 0:62067 -> 0:62063 - route : Avenue François Mitterand  (oneway) 90 km/h max 
+--> 0:688770 par Liaison 0:62063 -> 0:688770 - route : Avenue François Mitterand  (oneway) 90 km/h max 
+--> 0:62005 par Liaison 0:688770 -> 0:62005 - route : Avenue François Mitterand  (oneway) 90 km/h max 
+--> 0:906395 par Liaison 0:62005 -> 0:906395 - route : Avenue François Mitterand  (oneway) 90 km/h max 
+--> 0:906393 par Liaison 0:906395 -> 0:906393 - route : Avenue François Mitterand  (oneway) 90 km/h max 
+--> 0:1493193 par Liaison 0:906393 -> 0:1493193 - route : Avenue de la Cour de France  (oneway) 90 km/h max 
+--> 0:688776 par Liaison 0:1493193 -> 0:688776 - route : Avenue de la Cour de France  (oneway) 90 km/h max 
+--> 0:665661 par Liaison 0:688776 -> 0:665661 - route : Avenue de la Cour de France  (oneway) 90 km/h max 
+--> 0:1493190 par Liaison 0:665661 -> 0:1493190 - route : Avenue de la Cour de France  (oneway) 90 km/h max 
+--> 0:162017 par Liaison 0:1493190 -> 0:162017 - route : Avenue de la Cour de France  (oneway) 90 km/h max 
+--> 0:688867 par Liaison 0:162017 -> 0:688867 - route : Avenue de la Cour de France  (oneway) 90 km/h max 
+--> 0:162019 par Liaison 0:688867 -> 0:162019 - route : Avenue de la Cour de France  (oneway) 90 km/h max 
+--> 0:1525697 par Liaison 0:162019 -> 0:1525697 - route : Avenue de la Cour de France  (oneway) 90 km/h max 
+--> 0:162016 par Liaison 0:1525697 -> 0:162016 - route : Avenue de la Cour de France  (oneway) 90 km/h max 
+--> 0:688913 par Liaison 0:162016 -> 0:688913 - route : Avenue de la Cour de France  (oneway) 90 km/h max 
+--> 0:162018 par Liaison 0:688913 -> 0:162018 - route : Avenue de la Cour de France  (oneway) 90 km/h max 
+--> 0:552032 par Liaison 0:162018 -> 0:552032 - route : N 7  (oneway) 90 km/h max 
+--> 0:552021 par Liaison 0:552032 -> 0:552021 - route : Avenue du Général De Gaulle  (oneway) 90 km/h max 
+--> 0:552020 par Liaison 0:552021 -> 0:552020 - route : Avenue du Général De Gaulle  (oneway) 90 km/h max 
+--> 0:552009 par Liaison 0:552020 -> 0:552009 - route : Avenue du Général De Gaulle  (oneway) 90 km/h max 
+--> 0:551443 par Liaison 0:552009 -> 0:551443 - route : N 7  (oneway) 90 km/h max 
+--> 0:689133 par Liaison 0:551443 -> 0:689133 - route : N 7  (oneway) 90 km/h max 
+--> 0:551430 par Liaison 0:689133 -> 0:551430 - route : N 7  (oneway) 90 km/h max 
+--> 0:450083 par Liaison 0:551430 -> 0:450083 - route : N 7  (oneway) 90 km/h max 
+--> 0:162015 par Liaison 0:450083 -> 0:162015 - route : N 7  (oneway) 90 km/h max 
+--> 0:551427 par Liaison 0:162015 -> 0:551427 - route : N 7  (oneway) 90 km/h max 
+--> 0:848578 par Liaison 0:551427 -> 0:848578 - route : N 7  (oneway) 90 km/h max 
+--> 0:844288 par Liaison 0:848578 -> 0:844288 - route : N 7  (oneway) 90 km/h max 
+--> 0:859072 par Liaison 0:844288 -> 0:859072 - route : N 7  (oneway) 90 km/h max 
+--> 0:162014 par Liaison 0:859072 -> 0:162014 - route : N 7  (oneway) 90 km/h max 
+--> 0:162013 par Liaison 0:162014 -> 0:162013 - route : .  (oneway) 50 km/h max 
+--> 0:841989 par Liaison 0:162013 -> 0:841989 - route : N 7  (oneway) 90 km/h max 
+--> 0:841992 par Liaison 0:841989 -> 0:841992 - route : N 7  (oneway) 90 km/h max 
+--> 0:437095 par Liaison 0:841992 -> 0:437095 - route : N 7  (oneway) 90 km/h max 
+--> 0:689227 par Liaison 0:437095 -> 0:689227 - route : N 7  (oneway) 90 km/h max 
+--> 0:1834636 par Liaison 0:689227 -> 0:1834636 - route : N 7  (oneway) 90 km/h max 
+--> 0:1834632 par Liaison 0:1834636 -> 0:1834632 - route : N 7  (oneway) 90 km/h max 
+--> 0:682469 par Liaison 0:1834632 -> 0:682469 - route : N 7  (oneway) 90 km/h max 
+--> 0:689232 par Liaison 0:682469 -> 0:689232 - route : N 7  (oneway) 90 km/h max 
+--> 0:689233 par Liaison 0:689232 -> 0:689233 - route : .  (oneway) 50 km/h max 
+--> 0:1963529 par Liaison 0:689233 -> 0:1963529 - route : N 7  (oneway) 90 km/h max 
+--> 0:689240 par Liaison 0:1963529 -> 0:689240 - route : N 7  (oneway) 90 km/h max 
+--> 0:682425 par Liaison 0:689240 -> 0:682425 - route : .  (oneway) 50 km/h max 
+--> 0:682401 par Liaison 0:682425 -> 0:682401 - route : N 7  (oneway) 90 km/h max 
+--> 0:1653423 par Liaison 0:682401 -> 0:1653423 - route : N 7  (oneway) 90 km/h max 
+--> 0:1653422 par Liaison 0:1653423 -> 0:1653422 - route : N 7  (oneway) 90 km/h max 
+--> 0:1653440 par Liaison 0:1653422 -> 0:1653440 - route : N 7  (oneway) 90 km/h max 
+--> 0:689269 par Liaison 0:1653440 -> 0:689269 - route : N 7  (oneway) 90 km/h max 
+--> 0:689247 par Liaison 0:689269 -> 0:689247 - route : N 7  (oneway) 90 km/h max 
+--> 0:689245 par Liaison 0:689247 -> 0:689245 - route : N 7  (oneway) 90 km/h max 
+--> 0:162020 par Liaison 0:689245 -> 0:162020 - route : N 7  (oneway) 90 km/h max 
+--> 0:160013 par Liaison 0:162020 -> 0:160013 - route : .  (oneway) 50 km/h max 
+--> 0:160017 par Liaison 0:160013 -> 0:160017 - route : .  (oneway) 50 km/h max 
+--> 0:160010 par Liaison 0:160017 -> 0:160010 - route : .  (oneway) 50 km/h max 
+--> 0:160014 par Liaison 0:160010 -> 0:160014 - route : N 7  (oneway) 70 km/h max 
+--> 0:160015 par Liaison 0:160014 -> 0:160015 - route : N 7  (oneway) 70 km/h max 
+--> 0:160030 par Liaison 0:160015 -> 0:160030 - route : N 7  (oneway) 70 km/h max 
+--> 0:160016 par Liaison 0:160030 -> 0:160016 - route : N 7  (oneway) 70 km/h max 
+--> 0:98445 par Liaison 0:160016 -> 0:98445 - route : N 7  (oneway) 70 km/h max 
+--> 0:382521 par Liaison 0:98445 <-> 0:382521 - route : N 7 90 km/h max 
+--> 0:1729377 par Liaison 0:382521 <-> 0:1729377 - route : N 7 90 km/h max 
+--> 0:1729378 par Liaison 0:1729377 <-> 0:1729378 - route : N 7 90 km/h max 
+--> 0:160005 par Liaison 0:1729378 <-> 0:160005 - route : N 7 90 km/h max 
+--> 0:171690 par Liaison 0:160005 -> 0:171690 - route : N 7  (oneway) 90 km/h max 
+--> 0:171687 par Liaison 0:171690 -> 0:171687 - route : N 7  (oneway) 90 km/h max 
+--> 0:160002 par Liaison 0:171687 -> 0:160002 - route : N 7  (oneway) 90 km/h max 
+--> 0:382488 par Liaison 0:160002 -> 0:382488 - route : .  (oneway) 50 km/h max 
+--> 0:160003 par Liaison 0:382488 -> 0:160003 - route : .  (oneway) 50 km/h max 
+--> 0:159999 par Liaison 0:160003 -> 0:159999 - route : .  (oneway) 50 km/h max 
+--> 0:171540 par Liaison 0:159999 -> 0:171540 - route : N 7  (oneway) 90 km/h max 
+--> 0:171541 par Liaison 0:171540 -> 0:171541 - route : .  (oneway) 50 km/h max 
+--> 0:171542 par Liaison 0:171541 -> 0:171542 - route : .  (oneway) 50 km/h max 
+--> 0:171534 par Liaison 0:171542 -> 0:171534 - route : La Francilienne  (oneway) 110 km/h max 
+--> 0:171549 par Liaison 0:171534 -> 0:171549 - route : La Francilienne  (oneway) 110 km/h max 
+--> 0:2396766 par Liaison 0:171549 -> 0:2396766 - route : La Francilienne  (oneway) 110 km/h max 
+--> 0:43597 par Liaison 0:2396766 -> 0:43597 - route : La Francilienne  (oneway) 70 km/h max 
+--> 0:43622 par Liaison 0:43597 -> 0:43622 - route : .  (oneway) 50 km/h max 
+--> 0:43577 par Liaison 0:43622 -> 0:43577 - route : .  (oneway) 50 km/h max 
+--> 0:161259 par Liaison 0:43577 -> 0:161259 - autoroute : Autoroute du Soleil  (oneway) 110 km/h max 
+--> 0:161263 par Liaison 0:161259 -> 0:161263 - autoroute : Autoroute du Soleil  (oneway) 110 km/h max 
+--> 0:162301 par Liaison 0:161263 -> 0:162301 - autoroute : Autoroute du Soleil  (oneway) 110 km/h max 
+--> 0:136225 par Liaison 0:162301 -> 0:136225 - autoroute : Autoroute du Soleil  (oneway) 110 km/h max 
+--> 0:136226 par Liaison 0:136225 -> 0:136226 - route : .  (oneway) 50 km/h max 
+--> 0:1877391 par Liaison 0:136226 -> 0:1877391 - route : .  (oneway) 50 km/h max 
+--> 0:1877390 par Liaison 0:1877391 -> 0:1877390 - route : Rue de Milly  (oneway) 70 km/h max 
+--> 0:136214 par Liaison 0:1877390 <-> 0:136214 - route : Rue de Milly 70 km/h max 
+--> 0:569224 par Liaison 0:136214 -> 0:569224 - route : Rue de Milly  (oneway) 70 km/h max 
+--> 0:569215 par Liaison 0:569224 -> 0:569215 - route : Rue de Milly  (oneway) 70 km/h max 
+--> 0:136213 par Liaison 0:569215 -> 0:136213 - route : Rue de Milly  (oneway) 70 km/h max 
+--> 0:569131 par Liaison 0:136213 -> 0:569131 - route : D 948  (oneway) 70 km/h max 
+--> 0:569123 par Liaison 0:569131 -> 0:569123 - route : D 948  (oneway) 70 km/h max 
+--> 0:650065 par Liaison 0:569123 -> 0:650065 - route : D 948  (oneway) 70 km/h max 
+--> 0:350796 par Liaison 0:650065 -> 0:350796 - route : D 948  (oneway) 70 km/h max 
+--> 0:650059 par Liaison 0:350796 -> 0:650059 - route : D 948  (oneway) 70 km/h max 
+--> 0:136212 par Liaison 0:650059 <-> 0:136212 - route : D 948 70 km/h max 
+--> 0:350697 par Liaison 0:136212 -> 0:350697 - route : .  (oneway) 70 km/h max 
+--> 0:350698 par Liaison 0:350697 -> 0:350698 - route : .  (oneway) 50 km/h max 
+--> 0:350699 par Liaison 0:350698 -> 0:350699 - route : .  (oneway) 50 km/h max 
+--> 0:136211 par Liaison 0:350699 -> 0:136211 - route : D 948  (oneway) 70 km/h max 
+--> 0:136210 par Liaison 0:136211 <-> 0:136210 - route : D 948 70 km/h max 
+--> 0:136209 par Liaison 0:136210 <-> 0:136209 - route : D 948 70 km/h max 
+--> 0:136208 par Liaison 0:136209 <-> 0:136208 - route : D 948 70 km/h max 
+--> 0:136207 par Liaison 0:136208 <-> 0:136207 - route : D 948 70 km/h max 
+--> 0:136206 par Liaison 0:136207 <-> 0:136206 - route : D 948 70 km/h max 
+--> 0:1865578 par Liaison 0:136206 -> 0:1865578 - route : D 948  (oneway) 70 km/h max 
+--> 0:136205 par Liaison 0:1865578 -> 0:136205 - route : D 948  (oneway) 70 km/h max 
+--> 0:178229 par Liaison 0:136205 <-> 0:178229 - route : D 948 70 km/h max 
+--> 0:136204 par Liaison 0:178229 <-> 0:136204 - route : D 948 70 km/h max 
+--> 0:136203 par Liaison 0:136204 <-> 0:136203 - route : D 948 70 km/h max 
+--> 0:569114 par Liaison 0:136203 <-> 0:569114 - route : D 141 70 km/h max 
+--> 0:569115 par Liaison 0:569114 <-> 0:569115 - route : D 141 70 km/h max 
+--> 0:1865584 par Liaison 0:569115 <-> 0:1865584 - route : D 141 70 km/h max 
+--> 0:1865569 par Liaison 0:1865584 <-> 0:1865569 - route : . 30 km/h max 
+--> 0:1865570 par Liaison 0:1865569 -> 0:1865570 - route : .  (oneway) 30 km/h max 
+--> 0:671110 par Liaison 0:1865570 -> 0:671110 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:43644 par Liaison 0:671110 -> 0:43644 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:2137706 par Liaison 0:43644 -> 0:2137706 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:135716 par Liaison 0:2137706 -> 0:135716 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:43656 par Liaison 0:135716 -> 0:43656 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:43650 par Liaison 0:43656 -> 0:43650 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:43649 par Liaison 0:43650 -> 0:43649 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:43648 par Liaison 0:43649 -> 0:43648 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:43652 par Liaison 0:43648 -> 0:43652 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:788505 par Liaison 0:43652 -> 0:788505 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:1110674 par Liaison 0:788505 -> 0:1110674 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:68474 par Liaison 0:1110674 -> 0:68474 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:79324 par Liaison 0:68474 -> 0:79324 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:79326 par Liaison 0:79324 -> 0:79326 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:18 par Liaison 0:79326 -> 0:18 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:109382 par Liaison 0:18 -> 0:109382 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:1358353 par Liaison 0:109382 -> 0:1358353 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:109383 par Liaison 0:1358353 -> 0:109383 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:109384 par Liaison 0:109383 -> 0:109384 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:109385 par Liaison 0:109384 -> 0:109385 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:109387 par Liaison 0:109385 -> 0:109387 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:109388 par Liaison 0:109387 -> 0:109388 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:1274064 par Liaison 0:109388 -> 0:1274064 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:167958 par Liaison 0:1274064 -> 0:167958 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:167961 par Liaison 0:167958 -> 0:167961 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:109389 par Liaison 0:167961 -> 0:109389 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:109390 par Liaison 0:109389 -> 0:109390 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:1501069 par Liaison 0:109390 -> 0:1501069 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:1501072 par Liaison 0:1501069 -> 0:1501072 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:1764085 par Liaison 0:1501072 -> 0:1764085 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:1711707 par Liaison 0:1764085 -> 0:1711707 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:109391 par Liaison 0:1711707 -> 0:109391 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:1027018 par Liaison 0:109391 -> 0:1027018 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:109392 par Liaison 0:1027018 -> 0:109392 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:974167 par Liaison 0:109392 -> 0:974167 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:109394 par Liaison 0:974167 -> 0:109394 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:651972 par Liaison 0:109394 -> 0:651972 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:644858 par Liaison 0:651972 -> 0:644858 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:109396 par Liaison 0:644858 -> 0:109396 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:109397 par Liaison 0:109396 -> 0:109397 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:1329402 par Liaison 0:109397 -> 0:1329402 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:109398 par Liaison 0:1329402 -> 0:109398 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:109399 par Liaison 0:109398 -> 0:109399 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:109400 par Liaison 0:109399 -> 0:109400 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:804255 par Liaison 0:109400 -> 0:804255 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:109401 par Liaison 0:804255 -> 0:109401 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:43420 par Liaison 0:109401 -> 0:43420 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:43421 par Liaison 0:43420 -> 0:43421 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:167824 par Liaison 0:43421 -> 0:167824 - autoroute : Autoroute du Soleil  (oneway) 110 km/h max 
+--> 0:167827 par Liaison 0:167824 -> 0:167827 - autoroute : Autoroute du Soleil  (oneway) 110 km/h max 
+--> 0:1413125 par Liaison 0:167827 -> 0:1413125 - autoroute : Autoroute du Soleil  (oneway) 110 km/h max 
+--> 0:1413124 par Liaison 0:1413125 -> 0:1413124 - autoroute : Autoroute du Soleil  (oneway) 110 km/h max 
+--> 0:1378285 par Liaison 0:1413124 -> 0:1378285 - autoroute : Autoroute du Soleil  (oneway) 110 km/h max 
+--> 0:43422 par Liaison 0:1378285 -> 0:43422 - autoroute : Autoroute du Soleil  (oneway) 110 km/h max 
+--> 0:367578 par Liaison 0:43422 -> 0:367578 - autoroute : Autoroute du Soleil  (oneway) 110 km/h max 
+--> 0:367579 par Liaison 0:367578 -> 0:367579 - autoroute : Autoroute du Soleil  (oneway) 110 km/h max 
+--> 0:43425 par Liaison 0:367579 -> 0:43425 - autoroute : Autoroute du Soleil  (oneway) 110 km/h max 
+--> 0:43426 par Liaison 0:43425 -> 0:43426 - autoroute : Autoroute du Soleil  (oneway) 110 km/h max 
+--> 0:43424 par Liaison 0:43426 -> 0:43424 - autoroute : Autoroute du Soleil  (oneway) 110 km/h max 
+--> 0:43423 par Liaison 0:43424 -> 0:43423 - autoroute : Autoroute du Soleil  (oneway) 110 km/h max 
+--> 0:2134119 par Liaison 0:43423 -> 0:2134119 - autoroute : Autoroute du Soleil  (oneway) 110 km/h max 
+--> 0:43437 par Liaison 0:2134119 -> 0:43437 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:43438 par Liaison 0:43437 -> 0:43438 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:2133474 par Liaison 0:43438 -> 0:2133474 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:2133473 par Liaison 0:2133474 -> 0:2133473 - autoroute : Autoroute du Soleil  (oneway) 110 km/h max 
+--> 0:43410 par Liaison 0:2133473 -> 0:43410 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:43411 par Liaison 0:43410 -> 0:43411 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:43412 par Liaison 0:43411 -> 0:43412 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:43413 par Liaison 0:43412 -> 0:43413 - autoroute : Autoroute du Soleil  (oneway) 110 km/h max 
+--> 0:43414 par Liaison 0:43413 -> 0:43414 - autoroute : Autoroute du Soleil  (oneway) 110 km/h max 
+--> 0:43415 par Liaison 0:43414 -> 0:43415 - autoroute : Autoroute du Soleil  (oneway) 110 km/h max 
+--> 0:43417 par Liaison 0:43415 -> 0:43417 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:43416 par Liaison 0:43417 -> 0:43416 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:43418 par Liaison 0:43416 -> 0:43418 - autoroute : Autoroute du Soleil  (oneway) 110 km/h max 
+--> 0:543481 par Liaison 0:43418 -> 0:543481 - autoroute : Autoroute du Soleil  (oneway) 110 km/h max 
+--> 0:1329744 par Liaison 0:543481 -> 0:1329744 - autoroute : Autoroute du Soleil  (oneway) 110 km/h max 
+--> 0:986421 par Liaison 0:1329744 -> 0:986421 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:464035 par Liaison 0:986421 -> 0:464035 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:43399 par Liaison 0:464035 -> 0:43399 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:9038 par Liaison 0:43399 -> 0:9038 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:156622 par Liaison 0:9038 -> 0:156622 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:2237676 par Liaison 0:156622 -> 0:2237676 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:7055 par Liaison 0:2237676 -> 0:7055 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:9032 par Liaison 0:7055 -> 0:9032 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:115448 par Liaison 0:9032 -> 0:115448 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:115449 par Liaison 0:115448 -> 0:115449 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:115450 par Liaison 0:115449 -> 0:115450 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:2257720 par Liaison 0:115450 -> 0:2257720 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:175858 par Liaison 0:2257720 -> 0:175858 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:175860 par Liaison 0:175858 -> 0:175860 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:409567 par Liaison 0:175860 -> 0:409567 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:776448 par Liaison 0:409567 -> 0:776448 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:115341 par Liaison 0:776448 -> 0:115341 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:131656 par Liaison 0:115341 -> 0:131656 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:115343 par Liaison 0:131656 -> 0:115343 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:115347 par Liaison 0:115343 -> 0:115347 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:115334 par Liaison 0:115347 -> 0:115334 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:115333 par Liaison 0:115334 -> 0:115333 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:115352 par Liaison 0:115333 -> 0:115352 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:367619 par Liaison 0:115352 -> 0:367619 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:671051 par Liaison 0:367619 -> 0:671051 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:115353 par Liaison 0:671051 -> 0:115353 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:367599 par Liaison 0:115353 -> 0:367599 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:809037 par Liaison 0:367599 -> 0:809037 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:115357 par Liaison 0:809037 -> 0:115357 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:115358 par Liaison 0:115357 -> 0:115358 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:115359 par Liaison 0:115358 -> 0:115359 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:227536 par Liaison 0:115359 -> 0:227536 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:2307562 par Liaison 0:227536 -> 0:2307562 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:326360 par Liaison 0:2307562 -> 0:326360 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:227551 par Liaison 0:326360 -> 0:227551 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:358363 par Liaison 0:227551 -> 0:358363 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:956405 par Liaison 0:358363 -> 0:956405 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:367608 par Liaison 0:956405 -> 0:367608 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:367615 par Liaison 0:367608 -> 0:367615 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:656788 par Liaison 0:367615 -> 0:656788 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:12208 par Liaison 0:656788 -> 0:12208 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:956601 par Liaison 0:12208 -> 0:956601 - autoroute : Autoroute du Soleil  (oneway) 130 km/h max 
+--> 0:956574 par Liaison 0:956601 <-> 0:956574 - route : . 30 km/h max 
+--> 0:956538 par Liaison 0:956574 <-> 0:956538 - route : Route de Bel Air 50 km/h max 
+--> 0:956521 par Liaison 0:956538 <-> 0:956521 - route : Les Granges 50 km/h max 
+--> 0:956520 par Liaison 0:956521 <-> 0:956520 - route : Les Granges 50 km/h max 
+--> 0:956519 par Liaison 0:956520 <-> 0:956519 - route : Les Granges 50 km/h max 
+--> 0:956517 par Liaison 0:956519 <-> 0:956517 - route : Les Granges 50 km/h max 
+--> 0:956518 par Liaison 0:956517 <-> 0:956518 - route : Les Granges 50 km/h max 
+--> 0:836372 par Liaison 0:956518 <-> 0:836372 - route : D 306; D306 90 km/h max 
+--> 0:17001 par Liaison 0:836372 <-> 0:17001 - route : D 306; D306 90 km/h max 
+--> 0:17000 par Liaison 0:17001 -> 0:17000 - route : .  (oneway) 50 km/h max 
+===========================
+Longueur totale = 459460.0 m
+Temps total = 235.6787 minutes
+
+=============================================================================================
+Performance: 
+Temps d'execution (ns): 	14592
+Nb noeud visites :			1374809
+Nb noeud marque :			1075714
+Nb max dans le tas :		3184

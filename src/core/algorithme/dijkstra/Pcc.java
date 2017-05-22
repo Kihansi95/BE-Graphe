@@ -123,10 +123,17 @@ public class Pcc extends Algo {
 		// init label
 		this.sommets = new HashMap<Noeud, Label>();
 		BinaryHeap<Label> visites = new BinaryHeap<Label>();
-		Label label_destination = null;
-		Label label_origine = null;
+		Label label_destination = this.newLabel(noeudDestination);
+		Label label_origine = this.newLabel(noeudOrigine);
+		label_origine.setCout(0f);
 
-		for(Noeud noeud : this.graphe.getNoeuds())	{
+		
+		visites.insert(label_origine);
+		sommets.put(noeudOrigine,label_origine);
+		sommets.put(noeudDestination, label_destination);
+
+		//TODO : creer les labels que si besoin
+		/*for(Noeud noeud : this.graphe.getNoeuds())	{
 			Label label = this.newLabel(noeud);
 			sommets.put(noeud, label);
 			if(noeud.equals(this.noeudDestination))
@@ -136,24 +143,39 @@ public class Pcc extends Algo {
 				label.setCout(0f);
 			}
 		}
+		*/
+		if (noeudOrigine == noeudDestination){
+			System.out.println("la destination est le point de départ... je ne peux rien faire \n");
 		
-		Label label_actuel = this.getLabel(this.noeudOrigine); // pop the origine;
-		
+		}
+		else {
+			List<Noeud> successeurs ;
+			Label label_actuel = null ;
+	
+		boolean destination_atteinte = false ;
 		// PROCEDURE ALGORITHME
-		while(!label_actuel.equals(label_destination))	{
-			List<Noeud> successeurs = label_actuel.getSommetCourant().getSuccesseurs();
+		// TODO : changer la consition du while : tas vide
+		while(!visites.isEmpty() && !destination_atteinte)	{
 			
-			// si non successeurs: no route
-			if(successeurs.isEmpty())	{
-				if(visites.isEmpty())
-					break;
-				label_actuel = visites.deleteMin();
-				continue;
+			label_actuel = visites.deleteMin() ; // au 1er while on delete l'origine
+			label_actuel.marquer();
+			nbMarque++;	
+			if (label_actuel.getSommetCourant().equals(noeudDestination)){
+				destination_atteinte = true ;
 			}
+			successeurs = label_actuel.getSommetCourant().getSuccesseurs();
 			
+		
 			// visiter chaque successeur
-			for(Noeud succ : successeurs)	{		
-				Label label_succ = getLabel(succ);
+			for(Noeud succ : successeurs){
+				Label label_succ ;
+				if (!sommets.containsKey(succ)){
+				label_succ = this.newLabel(succ);
+				sommets.put(succ, label_succ);
+				}
+				else {
+					label_succ = sommets.get(succ);
+				}
 				if(!label_succ.isMarque())	{					
 					updateSuccesseur(label_succ, label_actuel);
 					if(visites.existe(label_succ))
@@ -166,23 +188,17 @@ public class Pcc extends Algo {
 			}
 			
 			// fin de la visite du sommet actuel, marquer et place dans la solution
-			label_actuel.marquer();
-			nbMarque++;
 			label_actuel.getSommetCourant().dessiner(this.getDessin(), this.couleurExplore()); 
 
-			// label suivant
 			if(maxTas < visites.size())
 				maxTas = visites.size();
-			
-			if(visites.isEmpty())
-				break;
-			label_actuel = visites.deleteMin();
+		
 		}	
 		
 		// FIN ALGORITHME
-		this.solution = buildChemin(label_actuel);
+		this.solution = buildChemin(label_destination);
 		
-		if(!label_actuel.equals(label_destination))	{
+		if(label_destination.isMarque())	{
 			System.out.println("Pas de route de "+label_origine.getSommetCourant() +" vers "+label_destination.getSommetCourant());
 			System.out.println("Chemin actuellement trouve : " + this.solution);
 			this.solution.dessiner(getDessin(), this.graphe.getZone(), this.couleurSolution());
@@ -191,6 +207,7 @@ public class Pcc extends Algo {
 			this.solution.dessiner(getDessin(), this.graphe.getZone(), this.couleurSolution());
 		}
 		
+		}
 		writeDown(nbVisites, nbMarque, maxTas, System.currentTimeMillis() - startTime);
     }
     
