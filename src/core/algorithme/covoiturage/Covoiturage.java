@@ -8,8 +8,8 @@ import core.Graphe;
 
 public final class Covoiturage extends Algo {
 	
-	private Voyageur pieton;
-	private Voyageur voiture;
+	private Voyagueur pieton;
+	private Voyagueur voiture;
 	
 	protected Covoiturage(Graphe gr, PrintStream fichierSortie, Readarg readarg) {
 		super(gr, fichierSortie, readarg);
@@ -18,7 +18,10 @@ public final class Covoiturage extends Algo {
 	public void run()	{
 		
 		// init voyageurs
-		Voyageur pieton = new Voyageur("U1", 10);
+		Voyagueur pieton = new Voyagueur("U1", 10);
+		Voyagueur voiture = new Voyagueur("U2", 100);
+		
+		
 	}
 
 }

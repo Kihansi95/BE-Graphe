@@ -1,12 +1,12 @@
 package core.algorithme.covoiturage;
 
-public class Voyageur {
+public class Voyagueur {
 	private int vitesseMax;
 	private String nom;
 	private float latitude;
 	private float longitude;
 	
-	public Voyageur(String nom, int vitessemax)	{
+	public Voyagueur(String nom, int vitessemax)	{
 		this.nom = new String(nom);
 		this.vitesseMax = vitessemax;
 	}

@@ -19,6 +19,10 @@ public class PccStar extends Pcc {
 
     }
     
+    public Color couleurSuccesseurVisite()	{	return Color.GREEN;		}
+    public Color couleurExplore()	{	return Color.BLUE;	}
+    public Color couleurSolution()	{	return Color.CYAN; 	}
+    
     @Override
     protected Label newLabel(Noeud sommet)	{
     	return new LabelStar(sommet);

@@ -40,7 +40,6 @@ public class Pcc extends Algo {
     private HashMap<Noeud, Label> sommets;
     
     protected Critere critere;
-
     
     public Pcc(Graphe gr, PrintStream sortie, Readarg readarg) throws SommetNonExisteException {
 		super(gr, sortie, readarg) ;
@@ -63,6 +62,10 @@ public class Pcc extends Algo {
 		
 		sommets = null;
     }
+    
+    public Color couleurSuccesseurVisite()	{	return Color.GREEN;		}
+    public Color couleurExplore()	{	return Color.BLUE;	}
+    public Color couleurSolution()	{	return Color.DARK_GRAY; 	}
     
     public Noeud getOrigine()	{
     	return this.noeudOrigine;
@@ -108,7 +111,6 @@ public class Pcc extends Algo {
     public void run() {
 
     	System.out.println("Run "+ this.getClass().getSimpleName() +" de " + this.noeudOrigine + " vers " + this.noeudDestination) ;
-		this.graphe.dessiner();
 		
 		// INIT ALGORITHME
 		
@@ -159,14 +161,14 @@ public class Pcc extends Algo {
 					else
 						visites.insert(label_succ);
 					nbVisites++;
-					label_succ.getSommetCourant().dessiner(this.getDessin(), COULEUR_SUCCESSEUR_VISITE);
+					label_succ.getSommetCourant().dessiner(this.getDessin(), this.couleurSuccesseurVisite());
 				}
 			}
 			
 			// fin de la visite du sommet actuel, marquer et place dans la solution
 			label_actuel.marquer();
 			nbMarque++;
-			label_actuel.getSommetCourant().dessiner(this.getDessin(), COULEUR_EXPLORE); 
+			label_actuel.getSommetCourant().dessiner(this.getDessin(), this.couleurExplore()); 
 
 			// label suivant
 			if(maxTas < visites.size())
@@ -183,10 +185,10 @@ public class Pcc extends Algo {
 		if(!label_actuel.equals(label_destination))	{
 			System.out.println("Pas de route de "+label_origine.getSommetCourant() +" vers "+label_destination.getSommetCourant());
 			System.out.println("Chemin actuellement trouve : " + this.solution);
-			this.solution.dessiner(getDessin(), this.graphe.getZone(), COULEUR_SOLUTION);
+			this.solution.dessiner(getDessin(), this.graphe.getZone(), this.couleurSolution());
 		}	else	{
 			System.out.println("Le chemin le plus cours: " + this.solution);
-			this.solution.dessiner(getDessin(), this.graphe.getZone(), COULEUR_SOLUTION);
+			this.solution.dessiner(getDessin(), this.graphe.getZone(), this.couleurSolution());
 		}
 		
 		writeDown(nbVisites, nbMarque, maxTas, System.currentTimeMillis() - startTime);
