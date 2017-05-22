@@ -30,16 +30,17 @@ public class LabelStar extends Label {
 			this.heuristique = distance_estime;
 			break;
 		case TEMPS:
-			this.heuristique = (distance_estime )/ ( graphe.getVitesseMax() );
+			this.heuristique = (distance_estime )/ ((double) (graphe.getVitesseMax()) );
 			break;
 		default:
 			System.out.println("Critere non supporte pour cet algorithme");
 		}
 	}
 	
+	
 	@Override
 	public int compareTo(Label label) { 
-		return (int)((this.getCout() + this.heuristique - label.getCout() - ((LabelStar) label).heuristique)*PRECISION) ;
+		return (int)(((this.getCout() + this.heuristique) - (label.getCout() + ((LabelStar) label).heuristique))*PRECISION) ;
 	}
 
 }

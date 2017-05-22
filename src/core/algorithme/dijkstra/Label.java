@@ -4,7 +4,7 @@ import core.graphe.*;
 
 public class Label implements Comparable<Label> {
 	
-	final protected static float PRECISION = 1000f;
+	final protected static float PRECISION = 100000f;
 	private boolean marquage;
 	private float cout;
 	private Label pere;
@@ -53,7 +53,8 @@ public class Label implements Comparable<Label> {
 	}
 
 	public int compareTo(Label label) { 
-		return (int)((this.cout - label.cout)*1000f) ;
+		//TODO : conseil prof : return -1 ou 0 ou 1 plutot! comme ça pas besoin de précision 
+		return (int)((this.cout - label.cout)*PRECISION) ;
 	}
 	
 	/**

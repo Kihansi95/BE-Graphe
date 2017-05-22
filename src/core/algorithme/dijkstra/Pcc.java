@@ -154,7 +154,7 @@ public class Pcc extends Algo {
 			label_actuel = visites.deleteMin() ; // au 1er while on delete l'origine
 			label_actuel.marquer();
 			nbMarque++;	
-			if (label_actuel.getSommetCourant().equals(noeudDestination)){
+			if (label_destination.isMarque()){
 				destination_atteinte = true ;
 			}
 			successeurs = label_actuel.getSommetCourant().getSuccesseurs();
