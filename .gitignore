@@ -4,6 +4,10 @@
 bin
 Maps
 .Rhistory
+*.class
+*/*.class
+src/**/*.class
+
 TOTO
 toto
 Toto

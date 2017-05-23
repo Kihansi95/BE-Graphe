@@ -11,7 +11,6 @@ import java.util.List;
 
 import base.Couleur;
 import base.Dessin;
-import core.algorithme.ComparatorFactory;
 import exceptions.PropreSuccesseurException;
 import exceptions.SuccesseurNonExistantException;
 

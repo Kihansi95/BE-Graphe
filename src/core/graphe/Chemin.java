@@ -4,7 +4,6 @@ import  java.util. * ;
 
 import base.Couleur;
 import base.Dessin;
-import core.algorithme.ComparatorFactory;
 import exceptions.CheminNonOrigineException;
 import exceptions.CheminNonRouteException;
 import exceptions.SuccesseurNonExistantException;
