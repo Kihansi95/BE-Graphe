@@ -100,6 +100,7 @@ public class Noeud {
 		routes.sort(ComparatorFactory.getComparator(critere));
 		return routes.get(0);
 	}
+	
 	/**
 	 * @return le nombre de successeur
 	 * @throws PropreSuccesseurException
@@ -171,7 +172,7 @@ public class Noeud {
 	 * @param dest: le noeud destinatire
 	 * @return List
 	 */
-	private List<Liaison> getLiaisons(Noeud dest)	{
+	public List<Liaison> getLiaisons(Noeud dest)	{
 		List<Liaison> liaisons_possibles = new ArrayList<Liaison>();
 		for(Liaison l : liaisons)
 			if(l.getSuccesseur().equals(dest))

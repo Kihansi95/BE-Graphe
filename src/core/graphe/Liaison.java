@@ -18,6 +18,9 @@ public class Liaison{
 	private Noeud successeur;
 	private Noeud predecesseur;
 	
+	private float longitude;
+	private float latitude;
+	
 	/**
 	 * 
 	 * @param successeur
@@ -40,6 +43,9 @@ public class Liaison{
 		this.longueur = longueur;
 		this.descripteur = descripteur;
 		this.segments = segments;
+		
+		this.longitude = (predecesseur.getLongitude() + successeur.getLongitude())/2;
+		this.latitude = (predecesseur.getLatitude() + successeur.getLatitude())/2;
 	}
 	
 	/**
@@ -51,6 +57,14 @@ public class Liaison{
 	 */
 	public Liaison(Noeud predecesseur, Noeud successeur, float longueur, Descripteur descripteur)	{
 		this(predecesseur, successeur, longueur, descripteur, new LinkedList<Segment>());
+	}
+	
+	public float getLongitude()	{
+		return this.longitude;
+	}
+	
+	public float getLatitude()	{
+		return this.latitude;
 	}
 	
 	/**

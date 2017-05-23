@@ -134,43 +134,43 @@ public class Pcc extends Algo {
 			List<Noeud> successeurs ;
 			Label label_actuel = null ;
 	
-		// PROCEDURE ALGORITHME
-		// TODO : changer la consition du while : tas vide
-		while(!visites.isEmpty() && !label_destination.isMarque())	{
+			// PROCEDURE ALGORITHME
+			// TODO : changer la consition du while : tas vide
+			while(!visites.isEmpty() && !label_destination.isMarque())	{
+				
+				label_actuel = visites.deleteMin() ; // au 1er while on delete l'origine
+				label_actuel.marquer();
+				nbMarque++;	
+				
+				successeurs = label_actuel.getSommetCourant().getSuccesseurs();
+				
 			
-			label_actuel = visites.deleteMin() ; // au 1er while on delete l'origine
-			label_actuel.marquer();
-			nbMarque++;	
-			
-			successeurs = label_actuel.getSommetCourant().getSuccesseurs();
-			
-		
-			// visiter chaque successeur
-			for(Noeud succ : successeurs){
-				Label label_succ ;
-				if (!sommets.containsKey(succ)){
-				label_succ = this.newLabel(succ);
-				sommets.put(succ, label_succ);
+				// visiter chaque successeur
+				for(Noeud succ : successeurs){
+					Label label_succ ;
+					if (!sommets.containsKey(succ)){
+					label_succ = this.newLabel(succ);
+					sommets.put(succ, label_succ);
+					}
+					else {
+						label_succ = sommets.get(succ);
+					}
+					if(!label_succ.isMarque())	{					
+						updateSuccesseur(label_succ, label_actuel);
+						if(visites.existe(label_succ))
+							visites.update(label_succ);
+						else
+							visites.insert(label_succ);
+						nbVisites++;
+						label_succ.getSommetCourant().dessiner(this.getDessin(), this.couleurSuccesseurVisite());
+					}
 				}
-				else {
-					label_succ = sommets.get(succ);
-				}
-				if(!label_succ.isMarque())	{					
-					updateSuccesseur(label_succ, label_actuel);
-					if(visites.existe(label_succ))
-						visites.update(label_succ);
-					else
-						visites.insert(label_succ);
-					nbVisites++;
-					label_succ.getSommetCourant().dessiner(this.getDessin(), this.couleurSuccesseurVisite());
-				}
-			}
-			
-			// fin de la visite du sommet actuel, marquer et place dans la solution
-			label_actuel.getSommetCourant().dessiner(this.getDessin(), this.couleurExplore()); 
-
-			if(maxTas < visites.size())
-				maxTas = visites.size();
+				
+				// fin de la visite du sommet actuel, marquer et place dans la solution
+				label_actuel.getSommetCourant().dessiner(this.getDessin(), this.couleurExplore()); 
+	
+				if(maxTas < visites.size())
+					maxTas = visites.size();
 		
 		}	
 		
@@ -272,5 +272,37 @@ public class Pcc extends Algo {
     	}
 		this.sortie.flush();
     }
-
+    
+    /*******************************************************
+     * 
+     * Le services suivantes sont en protected: Reserve pour
+     * les classes filles.
+     * 
+     ********************************************************/
+    
+    protected void setNoeudOrigine(int numNoeud) throws SommetNonExisteException	{
+    	Noeud noeud = this.graphe.getNoeud(numNoeud);
+    	this.noeudOrigine = noeud;
+    }
+    
+    protected void setNoeudDestination(int numNoeud) throws SommetNonExisteException	{
+    	Noeud noeud = this.graphe.getNoeud(numNoeud);
+    	this.noeudDestination = noeud;
+    }
+    
+    /**
+     * Initialiser argument de l'utilisateur. Chaque algo va avoir son propre input
+     * @param readarg
+     * @throws Exception 
+     */
+    protected void initUserChoice(Readarg readarg) throws Exception	{
+		int destination = readarg.lireInt ("Numero du sommet destination ? ");
+		this.noeudDestination = this.graphe.getNoeud(destination) ;
+		
+		int choice = readarg.lireInt("Votre critere a optimiser : (0) temps (1) distance (2) vitesse optimale pour chaque route\n> ");
+		
+		if(choice < 0 && choice >= Critere.values().length)
+			throw new InputMismatchException("Je ne comprends pas votre critere?");
+		this.critere = Critere.values()[choice];
+    }
 }

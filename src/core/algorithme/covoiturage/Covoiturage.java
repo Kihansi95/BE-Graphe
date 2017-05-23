@@ -26,6 +26,8 @@ public class Covoiturage extends Pcc {
 	
 	public Covoiturage(Graphe gr, PrintStream fichierSortie, Readarg readarg) throws SommetNonExisteException, OperationNotSupportedException {
 		super(gr, fichierSortie, readarg);
+
+		
 		this.pccModif = new PccSetLabel(this.graphe, sortie, null);
 		
 		int choice = readarg.lireInt("Choissez votre location par (0) en tapant coordonne (non implemente), (1) en tapant num de noeud, (2) en cliquant sur la carte\n> ");
@@ -95,8 +97,9 @@ public class Covoiturage extends Pcc {
 		
 		// TODO pas pccStar mais pcc 1 vers plusieurs (pas toutes)
 		// prototype:
+		try	{
 		PccPlusieurs pcc = new PccPlusieurs(this.graphe, pointsPietons, this.destination);
-		
+		} catch (Null)
 		
 		// get le label le plus optimiser dans points Pietons
 		

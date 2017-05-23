@@ -2,6 +2,8 @@ package core ;
 
 
 
+import java.awt.Color;
+
 /**
  *   Classe representant un graphe.
  *   A vous de completer selon vos choix de conception.
@@ -11,6 +13,8 @@ import java.io.* ;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import base.* ;
 import core.graphe.Chemin;
@@ -219,8 +223,7 @@ public class Graphe {
     	    	}
     	    }
     	    
-    	    dessin.setColor(java.awt.Color.red) ;
-    	    dessin.drawPoint(chosen.getLongitude(), chosen.getLongitude(), 5) ;
+    	    chosen.dessiner(dessin, Color.red);
 
     	    return chosen;
     	}
@@ -228,6 +231,39 @@ public class Graphe {
     	return null;
     }
     
+    public void showLiaisonByClick()	{
+    	System.out.print("Cliquez votre route: ");
+    	if (dessin.waitClick()) {
+    	    float lon = dessin.getClickLon() ;
+    	    float lat = dessin.getClickLat() ;
+    	    
+    	    float minDist = Float.MAX_VALUE ;
+    	    Liaison chosen  = null;
+    	    
+    	    for(Liaison liaison: this.routes)	{
+    	    	float londiff = liaison.getLongitude() - lon;
+    	    	float latdiff = liaison.getLatitude() - lat;
+    	    	float dist = londiff*londiff + latdiff*latdiff ;
+    	    	if(dist < minDist)	{
+    	    		chosen = liaison;
+    	    		minDist = dist;
+    	    	}
+    	    }
+    	    
+	    	chosen.dessiner(dessin, this.numzone, Color.red);
+	    	this.dessin.putText(chosen.getLongitude(), chosen.getLatitude(), chosen.toString());
+	    	System.out.println(chosen);
+
+    	}
+    }
+    
+	public void showNoeudByClick() {
+		System.out.print("Cliquez votre noeud: ");
+		Noeud noeud = getNoeudByClick();
+		this.dessin.setColor(Color.RED);
+		this.dessin.putText(noeud.getLongitude(), noeud.getLatitude(), noeud.toString());	
+		System.out.println(noeud);
+	}
     /**
      * Get les routes de graphe.<br/>
      * <b>ceci n'est qu'une copie de la liste, toutes modification ne sera ignoré</b>
@@ -295,6 +331,7 @@ public class Graphe {
         return rayon_terre*Math.acos(sinLat+cosLat*cosLong);
     }
 
+    
     public double distance_sommets (int sommet1, int sommet2){
     	double latA = this.noeuds.get(sommet1).getLatitude();
     	double latB = this.noeuds.get(sommet2).getLatitude();
