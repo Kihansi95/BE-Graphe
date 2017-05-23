@@ -46,16 +46,9 @@ public class Graphe {
      * Vitesse maximum existant sur la carte
      */
     private int vitesseMax;
-
-    /*
-     * Ces attributs constituent une structure ad-hoc pour stocker les informations du graphe.
-     * Vous devez modifier et ameliorer ce choix de conception simpliste.
-     */
-    private float[] longitudes ;
-    private float[] latitudes ;
-    private Descripteur[] descripteurs ;
     
     private ArrayList<Noeud> noeuds;
+    
     private List<Liaison> routes;
     
     // Deux malheureux getters.
@@ -94,19 +87,19 @@ public class Graphe {
     	    int[] nsuccesseurs_a_lire = new int[nb_nodes] ;
     	    
     	    // En fonction de vos choix de conception, vous devrez certainement adapter la suite.
-    	    this.longitudes = new float[nb_nodes] ;
-    	    this.latitudes = new float[nb_nodes] ;
-    	    this.descripteurs = new Descripteur[nb_descripteurs] ;
+    	    //this.longitudes = new float[nb_nodes] ;
+    	    //this.latitudes = new float[nb_nodes] ;
+    	    Descripteur[] descripteurs = new Descripteur[nb_descripteurs] ;
     	    
 
     	    // Lecture des noeuds
     	    for (int num_node = 0 ; num_node < nb_nodes ; num_node++) {
     	    	
 	    		// Lecture du noeud numero num_node
-	    		longitudes[num_node] = ((float)dis.readInt ()) / 1E6f ;
-	    		latitudes[num_node] = ((float)dis.readInt ()) / 1E6f ;
+	    		float longitude = ((float)dis.readInt ()) / 1E6f ;
+	    		float latitude = ((float)dis.readInt ()) / 1E6f ;
 	    		
-	    		noeuds.add(new Noeud(num_node, longitudes[num_node], latitudes[num_node]));
+	    		noeuds.add(new Noeud(num_node, longitude, latitude));
 	    		nsuccesseurs_a_lire[num_node] = dis.readUnsignedByte() ;
     	    }
     	    
@@ -214,22 +207,22 @@ public class Graphe {
     	    float lat = dessin.getClickLat() ;
     	    
     	    float minDist = Float.MAX_VALUE ;
-    	    int   noeud   = 0 ;
+    	    Noeud chosen  = null;
     	    
-    	    for (int num_node = 0 ; num_node < longitudes.length ; num_node++) {
-    		float londiff = (longitudes[num_node] - lon) ;
-    		float latdiff = (latitudes[num_node] - lat) ;
-    		float dist = londiff*londiff + latdiff*latdiff ;
-    		if (dist < minDist) {
-    		    noeud = num_node ;
-    		    minDist = dist ;
-    		}
+    	    for(Noeud noeud: this.noeuds)	{
+    	    	float londiff = noeud.getLongitude() - lon;
+    	    	float latdiff = noeud.getLatitude() - lat;
+    	    	float dist = londiff*londiff + latdiff*latdiff ;
+    	    	if(dist < minDist)	{
+    	    		chosen = noeud;
+    	    		minDist = dist;
+    	    	}
     	    }
-
-    	    System.out.println("Noeud le plus proche : " + noeud) ;
+    	    
     	    dessin.setColor(java.awt.Color.red) ;
-    	    dessin.drawPoint(longitudes[noeud], latitudes[noeud], 5) ;
-    	    return this.noeuds.get(noeud);
+    	    dessin.drawPoint(chosen.getLongitude(), chosen.getLongitude(), 5) ;
+
+    	    return chosen;
     	}
     	
     	return null;
@@ -326,22 +319,22 @@ public class Graphe {
 
 	    // On cherche le noeud le plus proche. O(n)
 	    float minDist = Float.MAX_VALUE ;
-	    int   noeud   = 0 ;
+	    Noeud   noeud   = null ;
 	    
-	    for (int num_node = 0 ; num_node < longitudes.length ; num_node++) {
-		float londiff = (longitudes[num_node] - lon) ;
-		float latdiff = (latitudes[num_node] - lat) ;
-		float dist = londiff*londiff + latdiff*latdiff ;
-		if (dist < minDist) {
-		    noeud = num_node ;
-		    minDist = dist ;
-		}
+	    for(Noeud n: this.noeuds)	{
+	    	float londiff = n.getLongitude() - lon;
+	    	float latdiff = n.getLatitude() - lat;
+	    	float dist = londiff*londiff + latdiff*latdiff ;
+	    	if(dist < minDist)	{
+	    		noeud = n;
+	    		minDist = dist;
+	    	}
 	    }
 
 	    System.out.println("Noeud le plus proche : " + noeud) ;
 	    System.out.println() ;
 	    dessin.setColor(java.awt.Color.red) ;
-	    dessin.drawPoint(longitudes[noeud], latitudes[noeud], 5) ;
+	    dessin.drawPoint(noeud.getLongitude(), noeud.getLatitude(), 5) ;
 	}
     }
 
