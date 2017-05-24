@@ -5,6 +5,7 @@ import java.io.* ;
 import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Map;
 import java.util.Stack;
 
 import base.BinaryHeap;
@@ -78,15 +79,6 @@ public class Pcc extends Algo {
     }
     
     /**
-     * Instancier le nouveau label
-     * @param sommet
-     * @return
-     */
-    protected Label newLabel(Noeud sommet)	{
-    	return new Label(sommet);
-    }
-    
-    /**
      * Get label depuis le dictionnaire
      * @param noeud
      * @return
@@ -95,11 +87,26 @@ public class Pcc extends Algo {
     	return this.sommets.get(noeud);
     }
     
+    /***********************************************************
+     * 
+     * Les methodes a s'adapte selon version de classes filles
+     * 
+     ************************************************************/
+    
     /**
-     * nom de l'algorithme
+     * Nom de l'algorithme
      */
     public String toString()	{
     	return "Dijkstra";
+    }
+    
+    /**
+     * Instancier le nouveau label
+     * @param sommet
+     * @return
+     */
+    protected Label newLabel(Noeud sommet)	{
+    	return new Label(sommet);
     }
 
     public void run() {
@@ -139,7 +146,7 @@ public class Pcc extends Algo {
 			while(!visites.isEmpty() && !label_destination.isMarque())	{
 				
 				label_actuel = visites.deleteMin() ; // au 1er while on delete l'origine
-				label_actuel.marquer();
+				label_actuel.setMarquage(true);
 				nbMarque++;	
 				
 				successeurs = label_actuel.getSommetCourant().getSuccesseurs();
@@ -273,36 +280,32 @@ public class Pcc extends Algo {
 		this.sortie.flush();
     }
     
-    /*******************************************************
+    /*********************************************************
      * 
-     * Le services suivantes sont en protected: Reserve pour
-     * les classes filles.
+     * Les services suivantes sont en protected: Reserve pour
+     * les classes filles. ne pas ecraser
      * 
-     ********************************************************/
+     *********************************************************/
     
-    protected void setNoeudOrigine(int numNoeud) throws SommetNonExisteException	{
-    	Noeud noeud = this.graphe.getNoeud(numNoeud);
+    protected void setNoeudOrigine(Noeud noeud) throws SommetNonExisteException	{
+    	if(!graphe.isExistant(noeud))
+    		throw new SommetNonExisteException();
     	this.noeudOrigine = noeud;
     }
     
-    protected void setNoeudDestination(int numNoeud) throws SommetNonExisteException	{
-    	Noeud noeud = this.graphe.getNoeud(numNoeud);
+    protected void setNoeudDestination(Noeud noeud) throws SommetNonExisteException	{
+    	if(!graphe.isExistant(noeud))
+    		throw new SommetNonExisteException();
     	this.noeudDestination = noeud;
     }
     
-    /**
-     * Initialiser argument de l'utilisateur. Chaque algo va avoir son propre input
-     * @param readarg
-     * @throws Exception 
-     */
-    protected void initUserChoice(Readarg readarg) throws Exception	{
-		int destination = readarg.lireInt ("Numero du sommet destination ? ");
-		this.noeudDestination = this.graphe.getNoeud(destination) ;
-		
-		int choice = readarg.lireInt("Votre critere a optimiser : (0) temps (1) distance (2) vitesse optimale pour chaque route\n> ");
-		
-		if(choice < 0 && choice >= Critere.values().length)
-			throw new InputMismatchException("Je ne comprends pas votre critere?");
-		this.critere = Critere.values()[choice];
+    protected HashMap<Noeud, Label> getSommets()	{
+    	return new HashMap<Noeud, Label>(sommets);
+    }
+    
+    protected void clearMarque()	{
+    	for(Map.Entry<Noeud, Label> entry : this.sommets.entrySet())	{
+    		entry.getValue().setMarquage(false);
+    	}
     }
 }

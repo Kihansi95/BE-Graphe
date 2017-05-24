@@ -1,13 +1,13 @@
 package core.algorithme.covoiturage;
 
-import core.algorithme.dijkstra.Label;
+import core.graphe.Noeud;
 
 public class Voyagueur {
 	private int vitesseMax;
 	private String nom;
-	private Label depart;
+	private Noeud depart;
 	
-	public Voyagueur(String nom, int vitesseMax, Label depart)	{
+	public Voyagueur(String nom, int vitesseMax, Noeud depart)	{
 		this.nom = new String(nom);
 		this.vitesseMax = vitesseMax;
 		this.depart = depart;
@@ -24,7 +24,7 @@ public class Voyagueur {
 	/**
 	 * @return the depart
 	 */
-	public Label getDepart() {
+	public Noeud getDepart() {
 		return depart;
 	}
 }

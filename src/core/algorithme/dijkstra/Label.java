@@ -25,12 +25,19 @@ public class Label implements Comparable<Label> {
 		this.liaisonOptimal = null;
 	}
 	
+	public Label(Label label)	{
+		this.marquage = label.marquage;
+		this.cout = label.cout;
+		this.pere = null;	// TODO on doit cloner aussi ou pas le label pere?
+		this.sommetCourant = label.sommetCourant;
+	}
+	
 	public boolean isMarque()	{
 		return marquage;
 	}
 	
-	public void marquer()	{
-		marquage = true;
+	public void setMarquage(boolean marque)	{
+		this.marquage = marquage;
 	}
 	
 	public void setPere(Label pere){

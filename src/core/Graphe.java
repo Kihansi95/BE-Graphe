@@ -202,6 +202,15 @@ public class Graphe {
     }
     
     /**
+     * Verifier si le noeud existe sur la carte
+     * @param noeud
+     * @return
+     */
+    public boolean isExistant(Noeud noeud)	{
+    	return this.noeuds.contains(noeud);
+    }
+    
+    /**
      * get Noeud a proximite au click.
      * @return Noeud trouve, null sinon
      */
@@ -231,6 +240,9 @@ public class Graphe {
     	return null;
     }
     
+    /**
+     * afficher les information d'un liaison sur la carte
+     */
     public void showLiaisonByClick()	{
     	System.out.print("Cliquez votre route: ");
     	if (dessin.waitClick()) {
@@ -257,6 +269,9 @@ public class Graphe {
     	}
     }
     
+    /**
+     * afficher les information d'un liaison sur la carte
+     */
 	public void showNoeudByClick() {
 		System.out.print("Cliquez votre noeud: ");
 		Noeud noeud = getNoeudByClick();
@@ -264,6 +279,7 @@ public class Graphe {
 		this.dessin.putText(noeud.getLongitude(), noeud.getLatitude(), noeud.toString());	
 		System.out.println(noeud);
 	}
+	
     /**
      * Get les routes de graphe.<br/>
      * <b>ceci n'est qu'une copie de la liste, toutes modification ne sera ignoré</b>

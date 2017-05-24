@@ -2,6 +2,8 @@ package core.algorithme.covoiturage;
 
 import java.io.PrintStream;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 import javax.naming.OperationNotSupportedException;
@@ -15,7 +17,7 @@ import core.algorithme.dijkstra.Pcc;
 import core.graphe.Noeud;
 import exceptions.SommetNonExisteException;
 
-public class Covoiturage extends Pcc {
+public class Covoiturage extends PccSetLabel {
 	
 	private Voyagueur pieton;
 	private Voyagueur automobile;
@@ -80,32 +82,47 @@ public class Covoiturage extends Pcc {
     }
 	
 	public void run()  	{
-		try {
 	
-		// Dijkstra les noeuds
-		pccModif.contraintVision(pieton).run();
-		Set<LabelCovoiturage> pointsPietons = pccModif.getPointsAtteints(); 
-		
-		pccModif.contraintVision(automobile).run();
-		Set<LabelCovoiturage> pointsAuto = pccModif.getPointsAtteints();
-		
-		// intersection les 2 ensembles => points de rdv
-		pointsPietons.retainAll(pointsAuto); 
-		
-		// A* de destination vers tous les points
-		this.graphe.reverse();
-		
-		// TODO pas pccStar mais pcc 1 vers plusieurs (pas toutes)
-		// prototype:
-		try	{
-		PccPlusieurs pcc = new PccPlusieurs(this.graphe, pointsPietons, this.destination);
-		} catch (Null)
-		
-		// get le label le plus optimiser dans points Pietons
-		
+		try {
+			// Dijkstra les noeuds
+			
+			this.setNoeudOrigine(pieton.getDepart());
+			this.setNoeudDestination(this.destination);
+			super.run();
+			
+			List<Label> pietonReach = this.getLabelMarque();
+			
+			this.setNoeudOrigine(automobile.getDepart());
+			this.setNoeudDestination(this.destination);
+			super.run();
+			
+			List<Label> automobileReach = this.getLabelMarque();
+			
+			// intersection les 2 ensembles => points de rdv
+			List<Noeud> pointsRdv = new LinkedList<Noeud>();
+			for(Label intersectPoint: pietonReach)
+				if(automobileReach.contains(intersectPoint))
+					pointsRdv.add(intersectPoint.getSommetCourant());
+			
+			// Pcc reverse de destination vers origine
+			this.graphe.reverse();
+			this.setNoeudOrigine(this.destination);
+			this.setEnsembleDestinations(pointsRdv);
+			super.run();
+			
+			// get le point rdv le plus optimiser
+			/*
+			float minCout = Float.MAX_VALUE;
+			Noeud pointOptimiser
+			for(Noeud rdv: pointsRdv)	{
+				if(this.getLabel(rdv).getCout() < minCout)
+					
+			}*/
+			
 		} catch (SommetNonExisteException e) {
 			e.printStackTrace();
 		}
+
 	}
 
 }
