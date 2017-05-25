@@ -185,7 +185,21 @@ public class Pcc extends AbstractPcc {
 		Liaison liaisonOptimal;
 		try {
 			liaisonOptimal = courant.getSommetCourant().getLiaisonOptimal(successeur.getSommetCourant(), this.critere);
-			if(successeur.getCout() > courant.getCout() + liaisonOptimal.getLongueur())	{
+			
+			float coutRelatif = 0f;
+			
+			switch(this.critere)	{
+			case DISTANCE:
+				coutRelatif = liaisonOptimal.getLongueur();
+				break;
+			case TEMPS:
+				coutRelatif = liaisonOptimal.getLongueur()/ liaisonOptimal.getVitesseMax() ;
+				break;
+			default:
+				throw new UnsupportedOperationException("critere "+this.critere +" n'est pas implemente");
+			}
+			
+			if(successeur.getCout() > courant.getCout() + coutRelatif)	{
 				successeur.update(courant, liaisonOptimal, this.critere);
 			}
 	    	
@@ -221,7 +235,7 @@ public class Pcc extends AbstractPcc {
     		this.sortie.println(this.solution);
     		this.sortie.println("=============================================================================================");
     		this.sortie.println("Performance: ");
-    		this.sortie.println("Temps d'execution (ns): \t"+getTempsExcec());
+    		this.sortie.println("Temps d'execution (ms): \t"+getTempsExcec());
     		this.sortie.println("Nb noeud visites :\t\t\t" + getNbVisites());
     		this.sortie.println("Nb noeud marque :\t\t\t" + getnbMarque());
     		this.sortie.println("Nb max dans le tas :\t\t" + getMaxTas());

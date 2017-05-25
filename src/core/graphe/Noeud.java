@@ -33,11 +33,6 @@ public class Noeud {
 		this.liaisons = new ArrayList<Liaison>();
 		this.zone = zone;				// zone == -1 : zone not defined
 	}
-	
-	public Noeud(int numero, float longitude, float latitude)	{
-		this(numero, longitude, latitude, -1);
-	}
-	
 	// getteurs
 	
 	public int getNumero()	{
@@ -139,10 +134,6 @@ public class Noeud {
 	public void dessiner(Dessin dessin, Color color){
 		dessin.setColor(color);
 		dessin.drawPoint (longitude, latitude, RAD);
-	}
-	
-	public void dessiner(Dessin dessin)	{
-		this.dessiner(dessin, Color.GREEN);
 	}
 	
 	public boolean inZone(int zone)	{

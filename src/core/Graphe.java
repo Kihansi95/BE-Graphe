@@ -13,12 +13,15 @@ import java.io.* ;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.TreeMap;
 
 import base.* ;
 import core.graphe.Chemin;
 import core.graphe.Critere;
+import core.graphe.InvisibleNoeud;
 import core.graphe.Liaison;
 import core.graphe.Noeud;
 import core.graphe.Segment;
@@ -51,7 +54,7 @@ public class Graphe {
      */
     private int vitesseMax;
     
-    private ArrayList<Noeud> noeuds;
+    private Map<Integer, Noeud> noeuds;
     
     private List<Liaison> routes;
     
@@ -63,7 +66,7 @@ public class Graphe {
 
     	this.nomCarte = nomCarte ;
     	this.dessin = dessin ;
-    	this.noeuds = new ArrayList<Noeud>();
+    	this.noeuds = new TreeMap<Integer, Noeud>();
     	this.routes = new ArrayList<Liaison>();
     	Utils.calibrer(nomCarte, dessin) ;
     	
@@ -103,7 +106,7 @@ public class Graphe {
 	    		float longitude = ((float)dis.readInt ()) / 1E6f ;
 	    		float latitude = ((float)dis.readInt ()) / 1E6f ;
 	    		
-	    		noeuds.add(new Noeud(num_node, longitude, latitude));
+	    		noeuds.put(num_node, new Noeud(num_node, longitude, latitude, this.numzone));
 	    		nsuccesseurs_a_lire[num_node] = dis.readUnsignedByte() ;
     	    }
     	    
@@ -143,9 +146,15 @@ public class Graphe {
 	    		    int nb_segm   = dis.readUnsignedShort() ;		// Nombre de segments constituant l'arete
 	
 	    		    edges++ ;
-	    		    	    		    
-	    		    Noeud successeur = noeuds.get(dest_node);
-	    		    successeur.setZone(succ_zone);
+	    		    
+	    		    Noeud successeur = null;
+	    		    if(!this.noeuds.containsKey(dest_node))	{
+	    		    	successeur = new InvisibleNoeud(dest_node, succ_zone);
+	    		    	noeuds.put(dest_node, successeur);
+	    		    }	else	{
+	    		    	successeur = noeuds.get(dest_node);
+	    		    }
+	    		    	
 	    		    Descripteur descripteur = descripteurs[descr_num];
 	    		    Liaison route = new Liaison(predecesseur, successeur, longueur, descripteur);
 	    		    Liaison routeInverse = descripteur.isSensUnique()? null : new Liaison(successeur, predecesseur, longueur, descripteur);
@@ -161,8 +170,12 @@ public class Graphe {
 	    		    }
 	    		    
 	    		    routes.add(route);
+	    		    
 	    		    if(routeInverse != null)
 	    		    	routes.add(routeInverse);
+	    		    
+	    		    //TODO debug
+	    		    route.dessiner(dessin, numzone);
 	    		}
     	    }
     	    
@@ -223,7 +236,7 @@ public class Graphe {
      * @return
      */
     public boolean isExistant(Noeud noeud)	{
-    	return this.noeuds.contains(noeud);
+    	return noeuds.containsValue(noeud);
     }
     
     /**
@@ -238,7 +251,9 @@ public class Graphe {
     	    float minDist = Float.MAX_VALUE ;
     	    Noeud chosen  = null;
     	    
-    	    for(Noeud noeud: this.noeuds)	{
+    	    for(Map.Entry<Integer, Noeud> entry : noeuds.entrySet()) {
+    	    	Noeud noeud = entry.getValue();
+    	    	
     	    	float londiff = noeud.getLongitude() - lon;
     	    	float latdiff = noeud.getLatitude() - lat;
     	    	float dist = londiff*londiff + latdiff*latdiff ;
@@ -328,8 +343,10 @@ public class Graphe {
     	for(Liaison route: this.routes)	
     		route.dessiner(dessin, numzone);
     	
-    	for(Noeud noeud: this.noeuds)	
-    		noeud.dessiner(dessin, null);
+    	for(Map.Entry<Integer, Noeud> entry : noeuds.entrySet()) {
+    		entry.getValue().dessiner(dessin, null);
+    	}
+    	
     }
     
     /**
@@ -339,7 +356,7 @@ public class Graphe {
      * @throws SommetNonExisteException
      */
     public int getZone(int numSommet) throws SommetNonExisteException	{
-    	if(numSommet < 0 || numSommet >= noeuds.size())
+    	if(!noeuds.containsKey(numSommet))
     		throw new SommetNonExisteException();
     	return this.noeuds.get(numSommet).getZone();
     }
@@ -390,7 +407,8 @@ public class Graphe {
 	    float minDist = Float.MAX_VALUE ;
 	    Noeud   noeud   = null ;
 	    
-	    for(Noeud n: this.noeuds)	{
+	    for(Map.Entry<Integer, Noeud> entry : noeuds.entrySet())	{
+	    	Noeud n = entry.getValue();
 	    	float londiff = n.getLongitude() - lon;
 	    	float latdiff = n.getLatitude() - lat;
 	    	float dist = londiff*londiff + latdiff*latdiff ;

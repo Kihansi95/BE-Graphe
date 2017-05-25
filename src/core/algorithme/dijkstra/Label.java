@@ -60,7 +60,6 @@ public class Label implements Comparable<Label> {
 	}
 
 	public int compareTo(Label label) { 
-		//TODO : conseil prof : return -1 ou 0 ou 1 plutot! comme ça pas besoin de précision 
 		return (int)((this.cout - label.cout)*PRECISION) ;
 	}
 	

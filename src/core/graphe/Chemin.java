@@ -84,7 +84,7 @@ public class Chemin {
 		if(liaison.isSensUnique())	{
 			noeudsPasses.push(liaison.getSuccesseur());
 		}	else	{
-			Noeud newNoeud = liaison.getPredecesseur() == lastNoeud? liaison.getSuccesseur() : liaison.getPredecesseur();
+			Noeud newNoeud = liaison.getPredecesseur().equals(lastNoeud)? liaison.getSuccesseur() : liaison.getPredecesseur();
 			noeudsPasses.push(newNoeud);
 		}
 		routesEmpruntes.push(liaison);

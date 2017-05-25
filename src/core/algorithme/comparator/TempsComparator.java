@@ -10,10 +10,17 @@ public class TempsComparator implements Comparator<Liaison> {
 
 	//@Override
 	public int compare(Liaison first, Liaison second) {
+		/*
 		return (int) ((
 				first.getLongueur()/ first.getVitesseMax() 		// first route time
 				- second.getLongueur()/ second.getVitesseMax() 	// second route time
-				)* PRECISION);															// precison before convert to int
+				)* PRECISION);									// precison before convert to int
+		*/
+		
+		if(first.getLongueur()/ first.getVitesseMax() > first.getLongueur()/ first.getVitesseMax())
+			return 1;
+		return -1;
+		
 	}
 	
 }

@@ -143,7 +143,7 @@ public class Liaison{
 			current_lat += s.getDeltaLat();
 		}
 		
-		if (successeur.inZone(zone)) {
+		if (successeur.inZone(zone) && !successeur.equals(predecesseur)) {
 			dessin.drawLine(current_long, current_lat, successeur.getLongitude(), successeur.getLatitude());
 		}
 	}
