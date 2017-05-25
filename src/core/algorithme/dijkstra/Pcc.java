@@ -13,6 +13,7 @@ import base.Dessin;
 import base.Readarg ;
 import core.Algo;
 import core.Graphe;
+import core.algorithme.AbstractPcc;
 import core.graphe.Chemin;
 import core.graphe.Critere;
 import core.graphe.Liaison;
@@ -20,7 +21,7 @@ import core.graphe.Noeud;
 import exceptions.SommetNonExisteException;
 import exceptions.SuccesseurNonExistantException;
 
-public class Pcc extends Algo {
+public class Pcc extends AbstractPcc {
 	
 	// config couleur algo
     public Color couleurSuccesseurVisite()	{	return Color.GREEN;		}
@@ -31,35 +32,46 @@ public class Pcc extends Algo {
     
     private Noeud noeudDestination;
     
-    private Chemin solution;
-	
-    /**
-     * Dictionnaire de Noeud - Label, empty si run n'est pas appelé
-     */
-    private HashMap<Noeud, Label> sommets;
+    protected Chemin solution;
     
-    protected Critere critere;
+    protected boolean hasSolution;
     
     public Pcc(Graphe gr, PrintStream sortie, Readarg readarg) throws SommetNonExisteException {
 		super(gr, sortie, readarg) ;
 		this.noeudOrigine = null;
 		this.noeudDestination = null;
 		this.solution = null;
+		this.sommets = null;
 
-		int origine = readarg.lireInt ("Numero du sommet d'origine ? ") ;
-		this.noeudOrigine = gr.getNoeud(origine);
+    	int origine = readarg.lireInt ("Numero du sommet d'origine ? ") ;
+		this.noeudOrigine = this.graphe.getNoeud(origine);
 
 		// Demander la zone et le sommet destination.
 		int destination = readarg.lireInt ("Numero du sommet destination ? ");
-		this.noeudDestination = gr.getNoeud(destination) ;
+		this.noeudDestination = this.graphe.getNoeud(destination) ;
 		
 		int choice = readarg.lireInt("Votre critere a optimiser : (0) temps (1) distance (2) vitesse optimale pour chaque route\n> ");
 		
 		if(choice < 0 && choice >= Critere.values().length)
 			throw new InputMismatchException("Je ne comprends pas votre critere?");
 		this.critere = Critere.values()[choice];
-		
-		sommets = null;
+		hasSolution = false;
+    }
+    
+    public Pcc(Graphe gr, PrintStream sortie, Noeud origine, Noeud destination, Critere critere)	{
+    	super(gr, sortie, null);
+    	this.noeudOrigine = origine;
+    	this.noeudDestination = destination;
+    	this.critere = critere;
+    }
+    
+    /**
+     * Instancier le nouveau label
+     * @param sommet
+     * @return
+     */
+    protected Label newLabel(Noeud sommet)	{
+    	return new Label(sommet);
     }
     
     public Noeud getOrigine()	{
@@ -68,6 +80,10 @@ public class Pcc extends Algo {
     
     public Noeud getDestination()	{
     	return this.noeudDestination;
+    }
+    
+    public boolean hasSolution()	{
+    	return this.hasSolution;
     }
     
     /**
@@ -79,21 +95,6 @@ public class Pcc extends Algo {
     }
     
     /**
-     * Get label depuis le dictionnaire
-     * @param noeud
-     * @return
-     */
-    protected Label getLabel(Noeud noeud)	{
-    	return this.sommets.get(noeud);
-    }
-    
-    /***********************************************************
-     * 
-     * Les methodes a s'adapte selon version de classes filles
-     * 
-     ************************************************************/
-    
-    /**
      * Nom de l'algorithme
      */
     public String toString()	{
@@ -101,121 +102,76 @@ public class Pcc extends Algo {
     }
     
     /**
-     * Instancier le nouveau label
-     * @param sommet
-     * @return
+     * Set le point depart
+     * @param noeud
+     * @throws SommetNonExisteException
      */
-    protected Label newLabel(Noeud sommet)	{
-    	return new Label(sommet);
+    public void setNoeudOrigine(Noeud noeud) throws SommetNonExisteException	{
+    	if(!graphe.isExistant(noeud))
+    		throw new SommetNonExisteException();
+    	this.noeudOrigine = noeud;
     }
-
-    public void run() {
-
-    	System.out.println("Run "+ this.getClass().getSimpleName() +" de " + this.noeudOrigine + " vers " + this.noeudDestination) ;
+    
+    /**
+     * Set le point d'arrive
+     * @param noeud
+     * @throws SommetNonExisteException
+     */
+    public void setNoeudDestination(Noeud noeud) throws SommetNonExisteException	{
+    	if(!graphe.isExistant(noeud))
+    		throw new SommetNonExisteException();
+    	this.noeudDestination = noeud;
+    }
+    
+    // --------- Les methodes override
+    
+    protected void initialize()	{
 		
-		// INIT ALGORITHME
-		
-		// init perfomance
-		long startTime = System.currentTimeMillis();
-		int nbVisites = 0; 
-		int nbMarque = 0; 
-		int maxTas = 0;
-	
-		// init label
-		this.sommets = new HashMap<Noeud, Label>();
-		BinaryHeap<Label> visites = new BinaryHeap<Label>();
+    	// init label
 		Label label_destination = this.newLabel(noeudDestination);
 		Label label_origine = this.newLabel(noeudOrigine);
 		label_origine.setCout(0f);
 
 		
-		visites.insert(label_origine);
-		sommets.put(noeudOrigine,label_origine);
-		sommets.put(noeudDestination, label_destination);
-
-		if (noeudOrigine.equals(noeudDestination)){
-			System.out.println("la destination est le point de départ... je ne peux rien faire \n");
+		this.tas.insert(label_origine);
+		this.sommets.put(noeudOrigine,label_origine);
+		this.sommets.put(noeudDestination, label_destination);
 		
-		}
-		else {
-			List<Noeud> successeurs ;
-			Label label_actuel = null ;
-	
-			// PROCEDURE ALGORITHME
-			// TODO : changer la consition du while : tas vide
-			while(!visites.isEmpty() && !label_destination.isMarque())	{
-				
-				label_actuel = visites.deleteMin() ; // au 1er while on delete l'origine
-				label_actuel.setMarquage(true);
-				nbMarque++;	
-				
-				successeurs = label_actuel.getSommetCourant().getSuccesseurs();
-				
-			
-				// visiter chaque successeur
-				for(Noeud succ : successeurs){
-					Label label_succ ;
-					if (!sommets.containsKey(succ)){
-					label_succ = this.newLabel(succ);
-					sommets.put(succ, label_succ);
-					}
-					else {
-						label_succ = sommets.get(succ);
-					}
-					if(!label_succ.isMarque())	{					
-						updateSuccesseur(label_succ, label_actuel);
-						if(visites.existe(label_succ))
-							visites.update(label_succ);
-						else
-							visites.insert(label_succ);
-						nbVisites++;
-						label_succ.getSommetCourant().dessiner(this.getDessin(), this.couleurSuccesseurVisite());
-					}
-				}
-				
-				// fin de la visite du sommet actuel, marquer et place dans la solution
-				label_actuel.getSommetCourant().dessiner(this.getDessin(), this.couleurExplore()); 
-	
-				if(maxTas < visites.size())
-					maxTas = visites.size();
-		
-		}	
-		
-		// FIN ALGORITHME
-		
-		if(label_destination.isMarque())	{
-			this.solution = buildChemin(label_actuel);
-			System.out.println("Pas de route de "+label_origine.getSommetCourant() +" vers "+label_destination.getSommetCourant());
-			System.out.println("Chemin actuellement trouve : " + this.solution);
-			this.solution.dessiner(getDessin(), this.graphe.getZone(), this.couleurSolution());
-		}	else	{
-			this.solution = buildChemin(label_destination);
-			System.out.println("Le chemin le plus cours: " + this.solution);
-			this.solution.dessiner(getDessin(), this.graphe.getZone(), this.couleurSolution());
-		}
-		
-		}
-		writeDown(nbVisites, nbMarque, maxTas, System.currentTimeMillis() - startTime);
+		System.out.println("Run "+ this.getClass().getSimpleName() +" de " + this.noeudOrigine + " vers " + this.noeudDestination) ;
     }
     
-    /**
-     * Reconstruire le Chemin grace a la notion de label
-     * @param destination: Le dernier label apres l'algo
-     * @return Chemin: chemin de solution
-     */
-    protected Chemin buildChemin(Label destination)	{
-    	
-    	Stack<Liaison> tmp = new Stack<Liaison>();
-    	
-    	while(destination.getLiaison() != null)	{
-    		tmp.push(destination.getLiaison());
-    		destination = destination.getPere();
+    protected boolean conditionContinue()	{
+    	return !this.tas.isEmpty() && !this.getLabel(noeudDestination).isMarque();
+    }
+    
+    protected void processing()	{
+    	if (noeudOrigine.equals(noeudDestination)){
+    		System.out.println("la destination est le point de départ... je ne peux rien faire \n");
     	}
+    	else {
+    		super.processing();
+    	}
+    }
+    
+    protected void terminate()	{
     	
-    	Chemin chemin = new Chemin(destination.getSommetCourant());
-    	while(!tmp.isEmpty()) chemin.addRoute(tmp.pop());
+    	Label label_destination = this.getLabel(noeudDestination);
+    	Label label_origine = this.getLabel(noeudOrigine);
     	
-    	return chemin;
+    	if(!label_destination.isMarque())	{
+    		this.hasSolution = false;
+			this.solution = buildChemin(this.labelActuel);
+			System.out.println("Pas de route de "+label_origine.getSommetCourant() +" vers "+label_destination.getSommetCourant());
+			System.out.println("Chemin actuellement trouve : " + this.solution);
+			this.solution.dessiner(this.getDessin(), this.graphe.getZone(), this.couleurSolution());
+		}	else	{
+			this.hasSolution = true;
+			this.solution = buildChemin(label_destination);
+			System.out.println("Le chemin le plus cours: " + this.solution);
+			this.solution.dessiner(this.getDessin(), this.graphe.getZone(), this.couleurSolution());
+		}
+    	
+    	writeDown();
     }
     
     /**
@@ -238,22 +194,15 @@ public class Pcc extends Algo {
 		}
 		
 		return successeur;
-
     }
     
-    /**
-     * Shortcut dessin
-     * @return
-     */
-    protected Dessin getDessin()	{
-    	return this.graphe.getDessin();
-    }
+
     
     /**
      * Ecrire la solution dans fichier de sortie.
      * @param solution
      */
-    protected void writeDown(int nbVisites, int nbMarque, int maxTas, long tempsExec)	{
+    protected void writeDown()	{
     	
     	this.sortie.println(">>> Algorithme "+this +" de "+this.noeudOrigine+ " vers "+this.noeudDestination +" <<<\n");
     	
@@ -272,40 +221,33 @@ public class Pcc extends Algo {
     		this.sortie.println(this.solution);
     		this.sortie.println("=============================================================================================");
     		this.sortie.println("Performance: ");
-    		this.sortie.println("Temps d'execution (ns): \t"+tempsExec);
-    		this.sortie.println("Nb noeud visites :\t\t\t" + nbVisites);
-    		this.sortie.println("Nb noeud marque :\t\t\t" + nbMarque);
-    		this.sortie.println("Nb max dans le tas :\t\t" + maxTas);
+    		this.sortie.println("Temps d'execution (ns): \t"+getTempsExcec());
+    		this.sortie.println("Nb noeud visites :\t\t\t" + getNbVisites());
+    		this.sortie.println("Nb noeud marque :\t\t\t" + getnbMarque());
+    		this.sortie.println("Nb max dans le tas :\t\t" + getMaxTas());
     	}
 		this.sortie.flush();
     }
+
     
-    /*********************************************************
-     * 
-     * Les services suivantes sont en protected: Reserve pour
-     * les classes filles. ne pas ecraser
-     * 
-     *********************************************************/
-    
-    protected void setNoeudOrigine(Noeud noeud) throws SommetNonExisteException	{
-    	if(!graphe.isExistant(noeud))
-    		throw new SommetNonExisteException();
-    	this.noeudOrigine = noeud;
-    }
-    
-    protected void setNoeudDestination(Noeud noeud) throws SommetNonExisteException	{
-    	if(!graphe.isExistant(noeud))
-    		throw new SommetNonExisteException();
-    	this.noeudDestination = noeud;
-    }
-    
-    protected HashMap<Noeud, Label> getSommets()	{
-    	return new HashMap<Noeud, Label>(sommets);
-    }
-    
-    protected void clearMarque()	{
-    	for(Map.Entry<Noeud, Label> entry : this.sommets.entrySet())	{
-    		entry.getValue().setMarquage(false);
+    /**
+     * Reconstruire le Chemin grace a la notion de label
+     * @param destination: Le dernier label apres l'algo
+     * @return Chemin: chemin de solution
+     */
+    protected Chemin buildChemin(Label destination)	{
+    	
+    	Stack<Liaison> tmp = new Stack<Liaison>();
+    	
+    	while(destination.getLiaison() != null)	{
+    		tmp.push(destination.getLiaison());
+    		destination = destination.getPere();
     	}
+    	
+    	Chemin chemin = new Chemin(destination.getSommetCourant());
+    	while(!tmp.isEmpty()) chemin.addRoute(tmp.pop());
+    	
+    	return chemin;
     }
+    
 }

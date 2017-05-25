@@ -7,6 +7,7 @@ import base.Readarg ;
 import core.Graphe;
 import core.algorithme.dijkstra.Label;
 import core.algorithme.dijkstra.Pcc;
+import core.graphe.Critere;
 import core.graphe.Noeud;
 import exceptions.SommetNonExisteException;
 
@@ -16,6 +17,10 @@ public class PccStar extends Pcc {
 
     public PccStar(Graphe gr, PrintStream sortie, Readarg readarg) throws SommetNonExisteException {
     	super(gr, sortie, readarg) ;
+    }
+    
+    public PccStar(Graphe gr, PrintStream sortie, Noeud origine, Noeud destination, Critere critere)	{
+    	super(gr, sortie, origine, destination, critere);
     }
     
     public Color couleurSuccesseurVisite()	{	return Color.GREEN;		}

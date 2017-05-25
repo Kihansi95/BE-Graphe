@@ -21,11 +21,12 @@ import base.Readarg;
 import core.* ;
 import core.algorithme.Connexite;
 import core.algorithme.astar.PccStar;
-import core.algorithme.covoiturage.Covoiturage;
 import core.algorithme.dijkstra.Pcc;
 import exceptions.SommetNonExisteException;
 
 import java.io.* ;
+
+import application.Covoiturage;
 
 public class Launch {
 
@@ -45,7 +46,7 @@ public class Launch {
 	System.out.println ("3 - Plus court chemin A-star") ;
 	System.out.println ("4 - Cliquer sur la carte pour obtenir un numero de sommet.") ;
 	System.out.println ("5 - Charger un fichier de chemin (.path) et le verifier.") ;
-	System.out.println ("6 - Problem de covoiturage.") ;
+
 	System.out.println ("9 - Obtenir info de liaison sur la carte.") ;
 	System.out.println ("10 - Obtenir info de noeud sur la carte.") ;
 	System.out.println ();
@@ -107,8 +108,6 @@ public class Launch {
 		case 10 :
 			graphe.showNoeudByClick();
 		    break;
-		case 6 : algo = new Covoiturage(graphe, this.fichierSortie (), this.readarg); break;
-
 		default:
 		    System.out.println ("Choix de menu incorrect : " + choix) ;
 		    System.exit(1) ;

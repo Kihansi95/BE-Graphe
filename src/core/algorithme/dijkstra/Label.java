@@ -37,7 +37,7 @@ public class Label implements Comparable<Label> {
 	}
 	
 	public void setMarquage(boolean marque)	{
-		this.marquage = marquage;
+		this.marquage = marque;
 	}
 	
 	public void setPere(Label pere){

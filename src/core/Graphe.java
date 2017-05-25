@@ -202,6 +202,22 @@ public class Graphe {
     }
     
     /**
+     * Retourner le nombre de noeud dans le graphe
+     * @return int
+     */
+    public int getNombreNoeud()	{
+    	return this.noeuds.size();
+    }
+    
+    /**
+     * Retourner le nombre de liaison
+     * @return int
+     */
+    public int getNombreLiaison()	{
+    	return this.routes.size();
+    }
+    
+    /**
      * Verifier si le noeud existe sur la carte
      * @param noeud
      * @return
