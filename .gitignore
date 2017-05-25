@@ -8,7 +8,9 @@ Maps
 */*.class
 src/**/*.class
 
-TOTO.txt
-toto.txt
-Toto.txt
+TOTO
+toto
+Toto
+
+*.txt
 *.xlsx
