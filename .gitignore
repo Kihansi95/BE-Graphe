@@ -1,16 +1,20 @@
+# eclipse
 .classpath
 .project
 .settings
 bin
-Maps
 .Rhistory
 *.class
 */*.class
-src/**/*.class
 
+# project
+src/**/*.class
+Maps
+doc
+
+# project output
 TOTO
 toto
 Toto
-
 *.txt
 *.xlsx

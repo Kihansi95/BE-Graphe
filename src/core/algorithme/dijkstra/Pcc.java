@@ -2,16 +2,10 @@ package core.algorithme.dijkstra ;
 
 import java.awt.Color;
 import java.io.* ;
-import java.util.HashMap;
 import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Map;
 import java.util.Stack;
 
-import base.BinaryHeap;
-import base.Dessin;
 import base.Readarg ;
-import core.Algo;
 import core.Graphe;
 import core.algorithme.AbstractPcc;
 import core.graphe.Chemin;

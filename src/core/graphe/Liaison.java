@@ -8,11 +8,26 @@ import base.Couleur;
 import base.Descripteur;
 import base.Dessin;
 
+/**
+ * Représenter partiellement la route. 
+ * Liaison n'est que dans le sens unique, si la route est dans double sens, liaison doit être doublés.
+ * @author Anais RABARY
+ */
 public class Liaison{
 	
-	private float longueur; // en metres !!!!!
+	/**
+	 * Longueur de laision en mettre
+	 */
+	private float longueur;
 	
+	/**
+	 * @see base.Descripteur
+	 */
 	private Descripteur descripteur;
+	
+	/**
+	 * L'ensemble de segments d'une liaison
+	 */
 	private List<Segment> segments;
 	
 	private Noeud successeur;
@@ -59,6 +74,10 @@ public class Liaison{
 		this(predecesseur, successeur, longueur, descripteur, new LinkedList<Segment>());
 	}
 	
+	/**
+	 * Longtiude du noeud sur la carte (Graphe)
+	 * @return float
+	 */
 	public float getLongitude()	{
 		return this.longitude;
 	}
@@ -68,38 +87,42 @@ public class Liaison{
 	}
 	
 	/**
-	 * @return the longueur
+	 * Longueur de la liaison en m
+	 * @return longueur
 	 */
 	public float getLongueur() {
 		return longueur;
 	}
 	
 	/**
+	 * Vitesse maximale sur une liaison en km/h
 	 * @return la vitesse maximale
 	 */
 	public int getVitesseMax()	{
 		return descripteur.vitesseMax();
 	}
 	
+	/**
+	 * Ajouter un segment dans une liaison
+	 * @param segment nouveau segment
+	 */
 	public void addSegment(Segment segment)	{
 		if(segment == null)
 			throw new IllegalArgumentException();
 		segments.add(segment);
 	}
-
-	/**
-	 * @return the descripteurs
-	 *//*
-	public Descripteur getDescripteur() {
-		return descripteur;
-	}*/
 	
+	/**
+	 * Permet de savoir si la route est il unique
+	 * @return true s'il n'existe pas de liaison dans le sens inverse
+	 * @see base.descripteur#isSensUnique
+	 */
 	public boolean isSensUnique()	{
 		return descripteur.isSensUnique();
 	}
 
 	/**
-	 * @return the successeur
+	 * @return le successeur
 	 */
 	public Noeud getSuccesseur() {
 		return successeur;
@@ -113,9 +136,10 @@ public class Liaison{
 	}
 
 	/**
-	 * Dessiner la route.
+	 * Dessiner la route avec couleur par defaut
 	 * @param dessin 
 	 * @param int: numéro de zone dans lequel on dessine
+	 * @see core.graphe.Liaison#dessiner(Dessin, int, Color)
 	 */
 	public void dessiner(Dessin dessin, int zone )	{
 		Couleur.set(dessin, descripteur.getType()) ;	// couleur par définition de la route
@@ -127,6 +151,7 @@ public class Liaison{
 	 * @param dessin
 	 * @param zone
 	 * @param color
+	 * @see core.graphe.Segment#dessiner(Dessin, float, float)
 	 */
 	public void dessiner(Dessin dessin, int zone, Color color)	{
 		if(color != null)
@@ -151,6 +176,32 @@ public class Liaison{
 	@Override
 	public String toString()	{
 		return "Liaison "+predecesseur + (descripteur.isSensUnique()?" -> ":" <-> ") + successeur+ " - "+descripteur;
+	}
+	
+	/**
+	 * @return type de la route
+	 * @see base.Descripteur#showType
+	 */
+	public TypeRoute getType()	{
+		switch(this.descripteur.getType())	{
+		case 'a': 
+			return TypeRoute.AUTOROUTE; 
+		case 'b': case 'c': case 'd': case 'e': case 'f': case 'g': case 'h': case 'i': case 'j': case 'k': case 'l': case 'm': case 'n': case 'o': 
+			return TypeRoute.ROUTE; 
+		case 'z': 
+			return TypeRoute.COTE;
+		default : 
+			return TypeRoute.UNKNOWN;
+		}
+	}
+	
+	public boolean isType(TypeRoute... types)	{
+		if(types.length == 0)
+			return true;
+		for(TypeRoute type : types)
+			if(type == TypeRoute.ALL || getType() == type)
+				return true;
+		return false;
 	}
 
 	/**

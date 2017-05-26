@@ -1,4 +1,4 @@
-package core.algorithme.covoiturage;
+package application;
 
 import core.graphe.Noeud;
 

@@ -1,23 +1,18 @@
 package application;
 
-import java.io.PrintStream;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 import javax.naming.OperationNotSupportedException;
 
 import base.Readarg;
-import core.Algo;
 import core.Graphe;
-import core.algorithme.AbstractPcc;
-import core.algorithme.astar.PccStar;
-import core.algorithme.covoiturage.LabelCovoiturage;
-import core.algorithme.covoiturage.PccSetLabel;
-import core.algorithme.covoiturage.Voyagueur;
 import core.algorithme.dijkstra.Label;
-import core.algorithme.dijkstra.Pcc;
+import core.algorithme.dijkstramultidest.LabelCovoiturage;
+import core.algorithme.dijkstramultidest.PccSetLabel;
+import core.graphe.Critere;
 import core.graphe.Noeud;
 import exceptions.SommetNonExisteException;
 
@@ -29,7 +24,7 @@ public class Covoiturage {
 	
 	private Noeud destination;
 	
-	private Pcc algo;
+	private Critere critere;
 	
 	public Covoiturage(Graphe gr, Readarg readarg) throws SommetNonExisteException, OperationNotSupportedException {
 		
@@ -66,6 +61,11 @@ public class Covoiturage {
 			throw new RuntimeException();	
 		}
 		
+		int numCritere = readarg.lireInt("Votre critere (0) Temps (1) Distance > ");
+		if(numCritere < 0 && numCritere >= Critere.values().length)
+			throw new InputMismatchException("Je ne comprends pas votre critere?");
+		this.critere = Critere.values()[numCritere];
+		
 	}
 	
 	/**
@@ -80,40 +80,89 @@ public class Covoiturage {
 	public void run()  	{
 	
 		try {
+			// TODO check if retainAll will use equals() method or use directly the specified @
+			List<Label> zoneRdv = null;
+			
 			// Dijkstra les noeuds
+			PccSetLabel algo = new PccSetLabel(this.graphe, pieton.getDepart(), null, this.critere);
+			algo.run();
 			
-			algo.setNoeudOrigine(pieton.getDepart());
-			algo.setNoeudDestination(this.destination);
-			super.run();
+			zoneRdv = algo.getLabelsMarques();
+			List<Noeud> pietonReach = new ArrayList<Noeud>();
 			
-			List<Label> pietonReach = this.getLabelMarque();
+			for(Label point: zoneRdv){
+				pietonReach.add(point.getSommetCourant());
+			}
 			
-			this.setNoeudOrigine(automobile.getDepart());
-			this.setNoeudDestination(this.destination);
-			super.run();
+			algo.clearMarque();
+			algo.setNoeudOrigine(automobile.getDepart());
+			algo.setDestinations(pietonReach);
+			algo.run();
 			
-			List<Label> automobileReach = this.getLabelMarque();
 			
-			// intersection les 2 ensembles => points de rdv
-			List<Noeud> pointsRdv = new LinkedList<Noeud>();
-			for(Label intersectPoint: pietonReach)
-				if(automobileReach.contains(intersectPoint))
-					pointsRdv.add(intersectPoint.getSommetCourant());
+			List<Label> zoneAutomobile = algo.getLabelsMarques();
+
+			// intersect 2 zones and update cout to zoneRdv
+			List<Noeud> noeudsRdv = new ArrayList<Noeud>();
 			
-			// Pcc reverse de destination vers origine
+			for(Label point1: zoneRdv)		{
+				
+				boolean updated = false;
+				
+				// if we find the common label: update cout and quit the loop
+				for(Label point2: zoneAutomobile)	{
+					
+					if(point1.equals(point2))	{
+						float coutUpdate = point1.getCout() + point2.getCout();
+						point1.setCout(coutUpdate);
+						updated = true;
+						noeudsRdv.add(point1.getSommetCourant());
+						break;
+					}
+					
+				}
+				
+				// not updated == not common between set
+				if(!updated)	{
+					zoneRdv.remove(point1);
+				}
+				
+			}
+			
+			// Pcc reverse de destination vers le rdv
 			this.graphe.reverse();
-			this.setNoeudOrigine(this.destination);
-			this.setEnsembleDestinations(pointsRdv);
-			super.run();
+			algo.setNoeudOrigine(this.destination);
+			algo.setDestinations(noeudsRdv);
+			algo.run();
 			
 			// get le point rdv le plus optimiser
-			/*
-			float minCout = Float.MAX_VALUE;
-			Noeud pointOptimiser
-			for(Noeud rdv: pointsRdv)	{
-				if(this.getLabel(rdv).getCout() < minCout)
+			List<Label> zoneRdvFromDestination = algo.getLabelsMarques();
+			
+			for(Label point1: zoneRdv)		{
+				
+				boolean updated = false;
+				
+				// if we find the common label: update cout and quit the loop
+				for(Label point2: zoneRdvFromDestination)	{
 					
-			}*/
+					if(point1.equals(point2))	{
+						float coutUpdate = point1.getCout() + point2.getCout();
+						point1.setCout(coutUpdate);
+						updated = true;
+						noeudsRdv.add(point1.getSommetCourant());
+						break;
+					}
+					
+				}
+				
+				// not updated == not common between set
+				if(!updated)	{
+					zoneRdv.remove(point1);
+				}
+				
+			}
+			
+			
 			
 		} catch (SommetNonExisteException e) {
 			e.printStackTrace();

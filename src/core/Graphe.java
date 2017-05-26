@@ -11,13 +11,10 @@ import java.awt.Color;
 
 import java.io.* ;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.TreeMap;
 
 import base.* ;
 import core.graphe.Chemin;
@@ -67,7 +64,7 @@ public class Graphe {
 
     	this.nomCarte = nomCarte ;
     	this.dessin = dessin ;
-    	this.noeuds = new TreeMap<Integer, Noeud>();
+    	this.noeuds = new HashMap<Integer, Noeud>();
     	this.routes = new ArrayList<Liaison>();
     	Utils.calibrer(nomCarte, dessin) ;
     	
@@ -480,13 +477,15 @@ public class Graphe {
 			if(i == 0)
 				chemin = new Chemin(this.noeuds.get(current_node));
 			else
-				chemin.addSommet(this.noeuds.get(current_node), Critere.VITESSE);
+				chemin.addSommet(this.noeuds.get(current_node), Critere.TEMPS);
 	    }
 
 	    if ((current_zone != last_zone) || (current_node != last_node)) {
 		    System.out.println("Le chemin " + nom_chemin + " ne termine pas sur le bon noeud.") ;
 		    System.exit(1) ;
 		}
+	    
+	    System.out.println("Chemin construit: "+chemin);
 
 	} catch (IOException e) {
 	    e.printStackTrace() ;

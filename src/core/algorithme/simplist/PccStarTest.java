@@ -1,14 +1,14 @@
-package core.algorithme.test;
+package core.algorithme.simplist;
 
 import core.Graphe;
+import core.algorithme.astar.PccStar;
 import core.algorithme.dijkstra.Label;
-import core.algorithme.dijkstra.Pcc;
 import core.graphe.Critere;
 import core.graphe.Noeud;
 
-public class PccTest extends Pcc {
+public class PccStarTest extends PccStar{
 	
-	public PccTest(Graphe gr, Noeud origine, Noeud destination, Critere critere)	{
+	public PccStarTest(Graphe gr, Noeud origine, Noeud destination, Critere critere)	{
 		super(gr, null, origine, destination, critere);	
 		hasSolution = false;
 	}
@@ -25,5 +25,5 @@ public class PccTest extends Pcc {
 		}
     	
     }
-	
+
 }

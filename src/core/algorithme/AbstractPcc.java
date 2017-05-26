@@ -15,20 +15,41 @@ import core.algorithme.dijkstra.Label;
 import core.graphe.Critere;
 import core.graphe.Noeud;
 
+/**
+ * La classe qui conserve le principe de Dijkstra. Chaque version de Pcc va modifier en fonction de son besoin mais pas cette classe
+ * @author Duc Hau NGUYEN, Anais RABARY
+ */
 public abstract class AbstractPcc extends Algo {
 	
-    // Dictionnaire de Noeud - Label, empty si run n'est pas appele
-    protected HashMap<Noeud, Label> sommets;
+    /**
+     *  Dictionnaire de Noeud - Label, empty si run n'est pas appele
+     */
+    protected Map<Noeud, Label> sommets;
     
+    /**
+     * Critere d'optimisation de la route
+     */
     protected Critere critere;
     
-    // indicateur de performances
+    /**
+     * Temps d'excecution en ms
+     */
 	private long tempsExec = 0;
+	
+	/**
+	 * Nombre de successeur visité
+	 */
 	private int nbVisites = 0; 
+	
+	/**
+	 * Nombre de sommet visité
+	 */
 	private int nbMarque = 0; 
+	
+	/**
+	 * Nombre de sommet maximal dans le tas
+	 */
 	private int maxTas = 0;
-    
-    // performance de l'algo
 	
 	protected AbstractPcc(Graphe gr, PrintStream fichierSortie, Readarg readarg) {
 		super(gr, fichierSortie, readarg);
@@ -36,6 +57,12 @@ public abstract class AbstractPcc extends Algo {
 	}
 	
 	// abstract: need to s'adapter a chaque version
+	
+	/**
+	 * Declare version de label nécessaire pour le fonctionnement
+	 * @param sommet
+	 * @return core.algorithme.dijkstra.Label
+	 */
 	abstract protected Label newLabel(Noeud sommet);
 	
 	/**
@@ -51,8 +78,13 @@ public abstract class AbstractPcc extends Algo {
 	// configuration de couleur
 	abstract protected Color couleurSuccesseurVisite();
 	abstract protected Color couleurExplore();
-	abstract protected Color couleurSolution();
+	
+	/**
+	 * L'invserse de condition d'arrêt
+	 * @return boolean false pour arrêt le parcour
+	 */
 	abstract protected boolean conditionContinue();
+	
 	abstract protected Label updateSuccesseur(Label successeur, Label courant);
 	
 	public long getTempsExcec()	{ return tempsExec; }
@@ -64,7 +96,7 @@ public abstract class AbstractPcc extends Algo {
 		return sommets.get(noeud);
 	}
 	
-    public HashMap<Noeud, Label> getSommets()	{
+    public Map<Noeud, Label> getSommets()	{
     	return new HashMap<Noeud, Label>(sommets);
     }
     

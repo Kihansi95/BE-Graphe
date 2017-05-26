@@ -1,4 +1,4 @@
-package core.algorithme.covoiturage;
+package core.algorithme.dijkstramultidest;
 
 import core.algorithme.dijkstra.Label;
 import core.graphe.Noeud;

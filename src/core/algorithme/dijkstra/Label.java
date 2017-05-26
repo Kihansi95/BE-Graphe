@@ -14,13 +14,17 @@ public class Label implements Comparable<Label> {
 	private Liaison liaisonOptimal;
 	
 	public Label(Noeud sommetCourant)	{
+		this(sommetCourant, Float.MAX_VALUE);
+	}
+	
+	public Label(Noeud sommetCourant, float cout)	{
 		if(sommetCourant == null)
 			throw new IllegalArgumentException("sommet courant est null\n");
 		
 		this.sommetCourant = sommetCourant;
 		this.marquage = false;
 		
-		this.cout = Float.MAX_VALUE ;
+		this.cout = cout ;
 		this.pere = null ; 
 		this.liaisonOptimal = null;
 	}
@@ -83,7 +87,7 @@ public class Label implements Comparable<Label> {
 	public static float calculCout(Liaison liaison, Critere critere)	{
 		switch (critere)	{
 		case TEMPS:
-			return liaison.getLongueur()/liaison.getVitesseMax();
+			return liaison.getLongueur() * 60f / (liaison.getVitesseMax() * 1000f);
 		case DISTANCE:
 			return liaison.getLongueur();
 		case VITESSE:
