@@ -9,8 +9,9 @@ bin
 
 # project
 src/**/*.class
-Maps
-doc
+Maps/
+doc/
+doc/*
 
 # project output
 TOTO
