@@ -17,6 +17,7 @@ import core.algorithme.dijkstra.Pcc;
 import core.algorithme.test.PccStarTest;
 import core.algorithme.test.PccTest;
 import core.graphe.Critere;
+import core.graphe.Noeud;
 import exceptions.SommetNonExisteException;
 
 /**
@@ -75,19 +76,25 @@ public class EvaluationPerformance {
 			writeTitle(sheet,offsetColumne);
 			
 			for(int i = 0; i < this.nbLoop; i++)	{
-				int numOrigine = rd.nextInt(graphe.getNombreNoeud());		// origine et dest aleatoire
+				
+				int maxNum = graphe.getNoeuds().size();
+				
+				int numOrigine = rd.nextInt(maxNum);		// origine et dest aleatoire
+				Noeud origine = graphe.getNoeuds().get(numOrigine);
+				
 				int numDestination = numOrigine;
 				while(numDestination == numOrigine)	{
-					numDestination = rd.nextInt(graphe.getNombreNoeud());
+					numDestination = rd.nextInt(maxNum);
 				} 
+				Noeud destination = graphe.getNoeuds().get(numDestination);
 				
 				// test Pcc en temps
-				PccTest pcc = new PccTest(graphe, graphe.getNoeud(numOrigine), graphe.getNoeud(numDestination), Critere.TEMPS);
+				PccTest pcc = new PccTest(graphe, origine, destination, Critere.TEMPS);
 				pcc.run();	
 				writeData(sheet.createRow(offsetLigne + i), 0, pcc);
 				
 				// test PccStar en temps
-				PccStarTest pccStar = new PccStarTest(graphe, graphe.getNoeud(numOrigine), graphe.getNoeud(numDestination), Critere.TEMPS);
+				PccStarTest pccStar = new PccStarTest(graphe, origine, destination, Critere.TEMPS);
 				pccStar.run();
 				writeData(sheet.getRow(offsetLigne + i), offsetColumne, pccStar);
 			}
@@ -124,25 +131,28 @@ public class EvaluationPerformance {
 	}
 	
 	private void writeTitle(XSSFSheet sheet, int offsetColumn)	{	
-		XSSFRow row = sheet.createRow(4);
+		XSSFRow row = sheet.createRow(3);
+		row.createCell(0).setCellValue("PCC");
+		row.createCell(0+offsetColumn).setCellValue("PCC Star");
 		
+		row = sheet.createRow(4);
 		// titre pour pcc
 		row.createCell(0).setCellValue("Depart");
 		row.createCell(1).setCellValue("Destination");
 		row.createCell(2).setCellValue("Existe Solution");
 		row.createCell(3).setCellValue("CPU (ms)");
-		row.createCell(4).setCellValue("Nombre noeud max dans le Tas");
-		row.createCell(5).setCellValue("Nombre de noeud visite");
-		row.createCell(6).setCellValue("Nombre de noeud marque");
+		row.createCell(4).setCellValue("Max dans tas");
+		row.createCell(5).setCellValue("Noeud visite");
+		row.createCell(6).setCellValue("Noeud marque");
 		
 		// titre pour pcc star
 		row.createCell(0 + offsetColumn).setCellValue("Depart");
 		row.createCell(1 + offsetColumn).setCellValue("Destination");
 		row.createCell(2 + offsetColumn).setCellValue("Existe Solution");
 		row.createCell(3 + offsetColumn).setCellValue("CPU (ms)");
-		row.createCell(4 + offsetColumn).setCellValue("Nombre noeud max dans le Tas");
-		row.createCell(5 + offsetColumn).setCellValue("Nombre de noeud visite");
-		row.createCell(6 + offsetColumn).setCellValue("Nombre de noeud marque");
+		row.createCell(4 + offsetColumn).setCellValue("Max dans tas");
+		row.createCell(5 + offsetColumn).setCellValue("Noeud visite");
+		row.createCell(6 + offsetColumn).setCellValue("Noeud marque");
 	}
 
 }

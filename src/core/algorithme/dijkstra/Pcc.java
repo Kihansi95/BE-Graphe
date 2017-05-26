@@ -126,6 +126,7 @@ public class Pcc extends AbstractPcc {
     // --------- Les methodes override
     
     protected void initialize()	{
+    	System.out.println("Run "+ this.getClass().getSimpleName() +" de " + this.noeudOrigine + " vers " + this.noeudDestination) ;
 		
     	// init label
 		Label label_destination = this.newLabel(noeudDestination);
@@ -137,7 +138,6 @@ public class Pcc extends AbstractPcc {
 		this.sommets.put(noeudOrigine,label_origine);
 		this.sommets.put(noeudDestination, label_destination);
 		
-		System.out.println("Run "+ this.getClass().getSimpleName() +" de " + this.noeudOrigine + " vers " + this.noeudDestination) ;
     }
     
     protected boolean conditionContinue()	{
@@ -185,21 +185,9 @@ public class Pcc extends AbstractPcc {
 		Liaison liaisonOptimal;
 		try {
 			liaisonOptimal = courant.getSommetCourant().getLiaisonOptimal(successeur.getSommetCourant(), this.critere);
+			float coutLiaison = Label.calculCout(liaisonOptimal, critere);
 			
-			float coutRelatif = 0f;
-			
-			switch(this.critere)	{
-			case DISTANCE:
-				coutRelatif = liaisonOptimal.getLongueur();
-				break;
-			case TEMPS:
-				coutRelatif = liaisonOptimal.getLongueur()/ liaisonOptimal.getVitesseMax() ;
-				break;
-			default:
-				throw new UnsupportedOperationException("critere "+this.critere +" n'est pas implemente");
-			}
-			
-			if(successeur.getCout() > courant.getCout() + coutRelatif)	{
+			if(successeur.getCout() > courant.getCout() + coutLiaison)	{
 				successeur.update(courant, liaisonOptimal, this.critere);
 			}
 	    	

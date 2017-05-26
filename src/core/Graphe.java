@@ -11,6 +11,7 @@ import java.awt.Color;
 
 import java.io.* ;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -215,6 +216,14 @@ public class Graphe {
     }
     
     /**
+     * get the clone noeud map
+     * @return
+     */
+    public List<Noeud> getNoeuds()	{
+    	return new LinkedList<Noeud>(this.noeuds.values());
+    }
+    
+    /**
      * Retourner le nombre de noeud dans le graphe
      * @return int
      */
@@ -236,7 +245,7 @@ public class Graphe {
      * @return
      */
     public boolean isExistant(Noeud noeud)	{
-    	return noeuds.containsValue(noeud);
+    	return noeud != null && noeuds.containsValue(noeud);
     }
     
     /**

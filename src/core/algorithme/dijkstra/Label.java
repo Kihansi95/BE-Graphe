@@ -71,21 +71,26 @@ public class Label implements Comparable<Label> {
 	public void update(Label pere, Liaison liaison, Critere critere)	{
 		this.pere = pere;
 		this.liaisonOptimal = liaison;
-		
+		this.cout = pere.cout + calculCout(liaison, critere);		
+	}
+	
+	/**
+	 * Le cout chaque label va se mettre
+	 * @param liaison
+	 * @param critere
+	 * @return
+	 */
+	public static float calculCout(Liaison liaison, Critere critere)	{
 		switch (critere)	{
 		case TEMPS:
-			this.cout = pere.cout + liaison.getLongueur()/liaison.getVitesseMax();
-			break;
+			return liaison.getLongueur()/liaison.getVitesseMax();
 		case DISTANCE:
-			this.cout = pere.cout + liaison.getLongueur();
-			break;
+			return liaison.getLongueur();
 		case VITESSE:
-			this.cout = pere.cout + liaison.getLongueur();
-			break;
+			return liaison.getLongueur();
 		default:
 			throw new IllegalArgumentException("Critere num " + critere + " non connu");
-			
-		}			
+		}
 	}
 	
 	public Liaison getLiaison()	{
@@ -101,4 +106,6 @@ public class Label implements Comparable<Label> {
 	public String toString()	{
 		return "Label no "+sommetCourant.getNumero()+" - cout = "+cout;
 	}
+	
+
 }
