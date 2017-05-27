@@ -30,15 +30,17 @@ public class EvaluationPerformance {
 		EvaluationPerformance eval = new EvaluationPerformance(new Readarg(args));
 		try {
 			eval.run();
-		} catch (SommetNonExisteException | IOException e) {
+		} catch (SommetNonExisteException e) {
 			e.printStackTrace();
+		} catch (IOException e2)	{
+			e2.printStackTrace();
 		}
 
 	}
 	
 	private XSSFWorkbook workbook;
 	private String nomFichier;
-	private int nbLoop;			//TODO ingorer pour l'instant
+	private int nbLoop;			
 	private String[] maps;
 	private Random rd;
 	
