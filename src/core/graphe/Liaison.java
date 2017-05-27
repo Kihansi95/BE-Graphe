@@ -168,7 +168,7 @@ public class Liaison{
 			current_lat += s.getDeltaLat();
 		}
 		
-		if (successeur.inZone(zone) && !successeur.equals(predecesseur)) {
+		if (successeur.inZone(zone) && !(successeur instanceof InvisibleNoeud) && !successeur.equals(predecesseur)) {
 			dessin.drawLine(current_long, current_lat, successeur.getLongitude(), successeur.getLatitude());
 		}
 	}

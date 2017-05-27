@@ -35,7 +35,6 @@ public class Pcc extends AbstractPcc {
 		this.noeudOrigine = null;
 		this.noeudDestination = null;
 		this.solution = null;
-		this.sommets = null;
 
     	int origine = readarg.lireInt ("Numero du sommet d'origine ? ") ;
 		this.noeudOrigine = this.graphe.getNoeud(origine);
@@ -101,7 +100,7 @@ public class Pcc extends AbstractPcc {
      * @throws SommetNonExisteException
      */
     public void setNoeudOrigine(Noeud noeud) throws SommetNonExisteException	{
-    	if(!graphe.isExistant(noeud))
+    	if(noeud == null || !graphe.isExistant(noeud))
     		throw new SommetNonExisteException();
     	this.noeudOrigine = noeud;
     }
@@ -112,7 +111,7 @@ public class Pcc extends AbstractPcc {
      * @throws SommetNonExisteException
      */
     public void setNoeudDestination(Noeud noeud) throws SommetNonExisteException	{
-    	if(!graphe.isExistant(noeud))
+    	if(noeud == null ||!graphe.isExistant(noeud))
     		throw new SommetNonExisteException();
     	this.noeudDestination = noeud;
     }

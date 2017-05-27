@@ -205,11 +205,10 @@ public class Graphe {
      * @throws SommetNonExisteException 
      */
     public Noeud getNoeud(int numNoeud) throws SommetNonExisteException	{
-    	try	{
-    		return this.noeuds.get(numNoeud);    		
-    	} catch(IndexOutOfBoundsException e)	{
-    		throw new SommetNonExisteException("Noeud n° "+numNoeud+" n'existe pas dans la carte "+this);
-    	}
+    	Noeud noeud = this.noeuds.get(numNoeud);  
+    	if(noeud == null)
+    		throw new SommetNonExisteException("Noeud num: "+numNoeud +" n'existe pas sur la carte");
+    	return noeud;
     }
     
     /**

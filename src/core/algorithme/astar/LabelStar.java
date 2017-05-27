@@ -3,7 +3,6 @@ package core.algorithme.astar;
 import core.Graphe;
 import core.algorithme.dijkstra.Label;
 import core.graphe.Critere;
-import core.graphe.Liaison;
 import core.graphe.Noeud;
 
 public class LabelStar extends Label {
@@ -30,7 +29,7 @@ public class LabelStar extends Label {
 			this.heuristique = distance_estime;
 			break;
 		case TEMPS:
-			this.heuristique = (distance_estime )/ ((double) (graphe.getVitesseMax()) );
+			this.heuristique = (distance_estime * 60f )/ (graphe.getVitesseMax() * 1000f );
 			break;
 		default:
 			System.out.println("Critere non supporte pour cet algorithme");
