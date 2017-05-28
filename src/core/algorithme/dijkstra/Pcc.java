@@ -12,6 +12,7 @@ import core.graphe.Chemin;
 import core.graphe.Critere;
 import core.graphe.Liaison;
 import core.graphe.Noeud;
+import exceptions.CheminNullException;
 import exceptions.SommetNonExisteException;
 import exceptions.SuccesseurNonExistantException;
 
@@ -138,16 +139,16 @@ public class Pcc extends AbstractPcc {
     	return !this.tas.isEmpty() && !this.getLabel(noeudDestination).isMarque();
     }
     
-    protected void processing()	{
+    protected void processing()	throws CheminNullException {
     	if (noeudOrigine.equals(noeudDestination)){
-    		System.out.println("la destination est le point de départ... je ne peux rien faire \n");
+    		new cheminNullException("Origine = destination");
     	}
     	else {
     		super.processing();
     	}
     }
     
-    protected void terminate()	{
+    protected void terminate() throws NullPointerException	{
     	
     	Label label_destination = this.getLabel(noeudDestination);
     	Label label_origine = this.getLabel(noeudOrigine);
@@ -231,7 +232,7 @@ public class Pcc extends AbstractPcc {
      * @param destination: Le dernier label apres l'algo
      * @return Chemin: chemin de solution
      */
-    protected Chemin buildChemin(Label destination)	{
+    protected Chemin buildChemin(Label destination)	throws NullPointerException{
     	
     	Stack<Liaison> tmp = new Stack<Liaison>();
     	
