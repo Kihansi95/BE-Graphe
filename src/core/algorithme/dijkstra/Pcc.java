@@ -39,7 +39,6 @@ public class Pcc extends AbstractPcc {
 
     	int origine = readarg.lireInt ("Numero du sommet d'origine ? ") ;
 		this.noeudOrigine = this.graphe.getNoeud(origine);
-		System.out.println("toto");
 		
 		// Demander la zone et le sommet destination.
 		int destination = readarg.lireInt ("Numero du sommet destination ? ");
@@ -148,7 +147,7 @@ public class Pcc extends AbstractPcc {
     	}
     }
     
-    protected void terminate() throws NullPointerException	{
+    protected void terminate() {
     	
     	Label label_destination = this.getLabel(noeudDestination);
     	Label label_origine = this.getLabel(noeudOrigine);
@@ -205,7 +204,7 @@ public class Pcc extends AbstractPcc {
      * Ecrire la solution dans fichier de sortie.
      * @param solution
      */
-    protected void writeDown() throws NullPointerException	{
+    protected void writeDown() {
     	
     	this.sortie.println(">>> Algorithme "+this +" de "+this.noeudOrigine+ " vers "+this.noeudDestination +" <<<\n");
     	
@@ -238,7 +237,7 @@ public class Pcc extends AbstractPcc {
      * @param destination: Le dernier label apres l'algo
      * @return Chemin: chemin de solution
      */
-    protected Chemin buildChemin(Label destination)	throws NullPointerException{
+    protected Chemin buildChemin(Label destination){
     	
     	Stack<Liaison> tmp = new Stack<Liaison>();
     	

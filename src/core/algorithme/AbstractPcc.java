@@ -126,10 +126,6 @@ public abstract class AbstractPcc extends Algo {
 			this.tempsExec = System.currentTimeMillis() - startTime;
 			terminate();
 			
-		}  catch (NullPointerException e2){
-			System.err.println("pointeur null, je m'arrête");
-			e2.printStackTrace();
-			System.exit(1);
 		} catch (CheminNullException e){
 			System.err.println("la destination est le point de depart... je ne peux rien faire \n");
 			
