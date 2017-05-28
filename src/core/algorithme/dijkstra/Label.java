@@ -1,5 +1,6 @@
 package core.algorithme.dijkstra;
 
+import core.algorithme.astar.LabelStar;
 import core.graphe.*;
 
 public class Label implements Comparable<Label> {
@@ -64,7 +65,15 @@ public class Label implements Comparable<Label> {
 	}
 
 	public int compareTo(Label label) { 
-		return (int)((this.cout - label.cout)*PRECISION) ;
+		int res =1;
+		float comp = (this.getCout() - label.getCout()) ;
+		
+		if (comp<0)
+			res=-1;
+		if (comp==0)
+			res = 0;
+		return res ;
+		//return (int)((this.cout - label.cout)*PRECISION) ;
 	}
 	
 	/**

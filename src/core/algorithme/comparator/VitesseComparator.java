@@ -8,7 +8,14 @@ public class VitesseComparator implements Comparator<Liaison> {
 
 	//@Override
 	public int compare(Liaison first, Liaison second) {
-		return second.getVitesseMax() - first.getVitesseMax();
+		int res =1;
+		int comp = second.getVitesseMax() - first.getVitesseMax();
+		if (comp<0)
+			res=-1;
+		if (comp==0)
+			res = 0;
+		return res ;
+		//return second.getVitesseMax() - first.getVitesseMax();
 	}
 
 }

@@ -39,7 +39,15 @@ public class LabelStar extends Label {
 	
 	@Override
 	public int compareTo(Label label) { 
-		return (int)(((this.getCout() + this.heuristique) - (label.getCout() + ((LabelStar) label).heuristique))*PRECISION) ;
+		int res =1;
+		double comp = ((this.getCout() + this.heuristique) - (label.getCout() + ((LabelStar) label).heuristique)) ;
+		
+		if (comp<0)
+			res=-1;
+		if (comp==0)
+			res = 0;
+		return res ;
+		//return (int)(((this.getCout() + this.heuristique) - (label.getCout() + ((LabelStar) label).heuristique))*PRECISION) ;
 	}
 
 }
