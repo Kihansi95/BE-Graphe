@@ -111,26 +111,28 @@ public abstract class AbstractPcc extends Algo {
     protected  BinaryHeap<Label> tas; 
     
 	public void run()	{
-		
-		long startTime = System.currentTimeMillis();
-		this.nbVisites = 0; 
-		this.nbMarque = 0; 
-		this.maxTas = 0;
-		
-		this.sommets = new HashMap<Noeud, Label>();
-		this.tas = new BinaryHeap<Label>();
-		
-		initialize();
 		try {
-		processing();
-		this.tempsExec = System.currentTimeMillis() - startTime;
-		terminate();
+			long startTime = System.currentTimeMillis();
+			this.nbVisites = 0; 
+			this.nbMarque = 0; 
+			this.maxTas = 0;
+		
+			this.sommets = new HashMap<Noeud, Label>();
+			this.tas = new BinaryHeap<Label>();
+		
+			initialize();
+		
+			processing();
+			this.tempsExec = System.currentTimeMillis() - startTime;
+			terminate();
+			
+		}  catch (NullPointerException e2){
+			System.err.println("pointeur null, je m'arrête");
+			e2.printStackTrace();
+			System.exit(1);
 		} catch (CheminNullException e){
 			System.err.println("la destination est le point de depart... je ne peux rien faire \n");
-			System.exit(1);
-		}   catch (NullPointerException e2){
-			System.err.println("pointeur null, je m'arrête");
-			System.exit(1);
+			
 		}
 		
 		
