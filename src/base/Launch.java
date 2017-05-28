@@ -105,7 +105,7 @@ public class Launch {
 		case 6:
 			Covoiturage app = new Covoiturage(graphe, this.readarg);
 			app.run();
-		  
+			break;
 		case 8:
 			graphe.showLiaisonByClick();
 			break;

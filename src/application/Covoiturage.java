@@ -156,9 +156,8 @@ public class Covoiturage {
 
 	}
 
-	private void afficherNoeud(Label fromPieton) {
-		Label tmp = fromPieton;
-		while(tmp != null)	{
+	private void afficherNoeud(Label destination) {
+		for(Label tmp = destination; tmp != null; tmp = tmp.getPere())	{
 			tmp.getSommetCourant().dessiner(graphe.getDessin(), Color.DARK_GRAY);
 			if(tmp.getLiaison() != null) tmp.getLiaison().dessiner(graphe.getDessin(), this.graphe.getZone(),Color.DARK_GRAY );
 		}
