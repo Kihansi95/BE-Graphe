@@ -46,9 +46,9 @@ public class Launch {
 	System.out.println ("3 - Plus court chemin A-star") ;
 	System.out.println ("4 - Cliquer sur la carte pour obtenir un numero de sommet.") ;
 	System.out.println ("5 - Charger un fichier de chemin (.path) et le verifier.") ;
-
-	System.out.println ("9 - Obtenir info de liaison sur la carte.") ;
-	System.out.println ("10 - Obtenir info de noeud sur la carte.") ;
+	System.out.println ("6 - Application de covoiturage.") ;
+	System.out.println ("8 - Identifier liaison sur la carte.") ;
+	System.out.println ("9 - Identifier noeud sur la carte.") ;
 	System.out.println ();
     }
 
@@ -102,10 +102,14 @@ public class Launch {
 		    String nom_chemin = this.readarg.lireString ("Nom du fichier .path contenant le chemin ? ") ;
 		    graphe.verifierChemin(Openfile.open (nom_chemin), nom_chemin) ;
 		    break ;
-		case 9:
+		case 6:
+			Covoiturage app = new Covoiturage(graphe, this.readarg);
+			app.run();
+		  
+		case 8:
 			graphe.showLiaisonByClick();
 			break;
-		case 10 :
+		case 9 :
 			graphe.showNoeudByClick();
 		    break;
 		default:

@@ -2,14 +2,10 @@ package core.graphe;
 
 
 import java.awt.Color;
-import java.io.DataInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import base.Couleur;
 import base.Dessin;
 import exceptions.PropreSuccesseurException;
 import exceptions.SuccesseurNonExistantException;

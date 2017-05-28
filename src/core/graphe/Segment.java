@@ -4,12 +4,21 @@ import base.Dessin;
 
 public class Segment {
 
-	private float deltaLong;
-	private float deltaLat;
+	private float nextLong;
+	private float nextLat;
 	
-	public Segment(float deltaLong, float deltaLat)	{
-		this.deltaLong = deltaLong;
-		this.deltaLat = deltaLat;
+	public Segment(float nextLong, float nextLat)	{
+		this.nextLong = nextLong;
+		this.nextLat = nextLat;
+	}
+	
+	/**
+	 * Cloner un segment
+	 * @param segment
+	 */
+	public Segment(Segment segment)	{
+		this.nextLat = segment.nextLat;
+		this.nextLong = segment.nextLong;
 	}
 
 	/**
@@ -19,23 +28,19 @@ public class Segment {
 	 * @param from_lat
 	 */
 	public void dessiner(Dessin dessin, float from_long, float from_lat) {
-		dessin.drawLine(from_long, from_lat, (from_long + deltaLong), (from_lat + deltaLat));
+		dessin.drawLine(from_long, from_lat, nextLong, nextLat);
 	}
-
-	/**
-	 * get delta longitude
-	 * @return float
-	 */
-	public float getDeltaLong() {
-		return deltaLong;
+	
+	public float getNextLong()	{
+		return nextLong;
 	}
-
-	/**
-	 * get delta latitude
-	 * @return float
-	 */
-	public float getDeltaLat() {
-		return deltaLat;
+	
+	public float getNextLat()	{
+		return nextLat;
+	}
+	
+	public String toString()	{
+		return "["+nextLong+","+nextLat+"]";
 	}
 
 }

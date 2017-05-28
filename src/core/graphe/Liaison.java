@@ -1,7 +1,8 @@
 package core.graphe;
 
 import java.awt.Color;
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import base.Couleur;
@@ -28,7 +29,7 @@ public class Liaison{
 	/**
 	 * L'ensemble de segments d'une liaison
 	 */
-	private List<Segment> segments;
+	protected List<Segment> segments;
 	
 	private Noeud successeur;
 	private Noeud predecesseur;
@@ -71,7 +72,24 @@ public class Liaison{
 	 * @param descripteur
 	 */
 	public Liaison(Noeud predecesseur, Noeud successeur, float longueur, Descripteur descripteur)	{
-		this(predecesseur, successeur, longueur, descripteur, new LinkedList<Segment>());
+		this(predecesseur, successeur, longueur, descripteur, new ArrayList<Segment>());
+	}
+	
+	/**
+	 * Cloner une liaison
+	 * @param liaison
+	 */
+	public Liaison(Liaison liaison)	{
+		this.longueur = liaison.longueur;
+		this.longitude = liaison.longitude;
+		this.latitude = liaison.latitude;
+		this.segments = new ArrayList<Segment>();
+		for(Segment s: liaison.segments)	{
+			this.segments.add(new Segment(s));
+		}
+		this.descripteur = liaison.descripteur;
+		this.successeur = liaison.successeur;
+		this.predecesseur = liaison.predecesseur;
 	}
 	
 	/**
@@ -164,8 +182,8 @@ public class Liaison{
 		
 		for(Segment s: segments)	{
 			s.dessiner(dessin, current_long, current_lat);
-			current_long += s.getDeltaLong();
-			current_lat += s.getDeltaLat();
+			current_long = s.getNextLong();
+			current_lat = s.getNextLat();
 		}
 		
 		if (successeur.inZone(zone) && !(successeur instanceof InvisibleNoeud) && !successeur.equals(predecesseur)) {
@@ -214,5 +232,8 @@ public class Liaison{
 		Noeud tmp = this.predecesseur;		//TODO dangereux, check si ca ne cree pas de boucle
 		this.predecesseur = this.successeur;
 		this.successeur = tmp;
+		
+		Collections.reverse(segments);
 	}
+	
 }

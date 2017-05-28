@@ -41,5 +41,10 @@ public class LabelStar extends Label {
 	public int compareTo(Label label) { 
 		return (int)(((this.getCout() + this.heuristique) - (label.getCout() + ((LabelStar) label).heuristique))*PRECISION) ;
 	}
+	
+	@Override
+	public String toString()	{
+		return super.toString() + ", heuristique: " + this.heuristique;
+	}
 
 }

@@ -2,12 +2,12 @@ package application;
 
 import core.graphe.Noeud;
 
-public class Voyagueur {
+public class Voyageur {
 	private int vitesseMax;
 	private String nom;
 	private Noeud depart;
 	
-	public Voyagueur(String nom, int vitesseMax, Noeud depart)	{
+	public Voyageur(String nom, int vitesseMax, Noeud depart)	{
 		this.nom = new String(nom);
 		this.vitesseMax = vitesseMax;
 		this.depart = depart;

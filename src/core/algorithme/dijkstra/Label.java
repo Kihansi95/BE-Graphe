@@ -108,7 +108,7 @@ public class Label implements Comparable<Label> {
 	
 	@Override
 	public String toString()	{
-		return "Label no "+sommetCourant.getNumero()+" - cout = "+cout;
+		return "Label "+sommetCourant.getNumero()+", cout: "+cout;
 	}
 	
 

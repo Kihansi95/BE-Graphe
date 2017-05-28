@@ -38,7 +38,6 @@ public class Pcc extends AbstractPcc {
 
     	int origine = readarg.lireInt ("Numero du sommet d'origine ? ") ;
 		this.noeudOrigine = this.graphe.getNoeud(origine);
-		System.out.println("toto");
 		
 		// Demander la zone et le sommet destination.
 		int destination = readarg.lireInt ("Numero du sommet destination ? ");

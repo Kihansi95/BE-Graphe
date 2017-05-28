@@ -21,6 +21,7 @@ import core.graphe.Chemin;
 import core.graphe.Critere;
 import core.graphe.InvisibleNoeud;
 import core.graphe.Liaison;
+import core.graphe.LiaisonInverse;
 import core.graphe.Noeud;
 import core.graphe.Segment;
 import exceptions.SommetNonExisteException;
@@ -155,25 +156,27 @@ public class Graphe {
 	    		    	
 	    		    Descripteur descripteur = descripteurs[descr_num];
 	    		    Liaison route = new Liaison(predecesseur, successeur, longueur, descripteur);
-	    		    Liaison routeInverse = descripteur.isSensUnique()? null : new Liaison(successeur, predecesseur, longueur, descripteur);
+	    		    // Liaison routeInverse = descripteur.isSensUnique()? null : new Liaison(successeur, predecesseur, longueur, descripteur);
 	    		    
 	    		    // Chaque segment est dessine'
+	    		    float current_long = predecesseur.getLongitude();
+	    		    float current_lat = predecesseur.getLatitude();
 	    		    for (int i = 0 ; i < nb_segm ; i++) {
 		    			float delta_lon = (dis.readShort()) / 2.0E5f ;
 		    			float delta_lat = (dis.readShort()) / 2.0E5f ;
-		    			Segment segment = new Segment(delta_lon, delta_lat);
+		    			Segment segment = new Segment(current_long + delta_lon, current_lat + delta_lat);
 		    			route.addSegment(segment);
-		    			if(routeInverse != null)
-		    				routeInverse.addSegment(segment);
+		    			current_long = segment.getNextLong();
+		    			current_lat = segment.getNextLat();
 	    		    }
 	    		    
 	    		    routes.add(route);
 	    		    
-	    		    if(routeInverse != null)
+	    		    if(!descripteur.isSensUnique())	{
+	    		    	Liaison routeInverse = new Liaison(route);
+	    		    	routeInverse.reverse();
 	    		    	routes.add(routeInverse);
-	    		    
-	    		    //TODO debug
-	    		    route.dessiner(dessin, numzone);
+	    		    }
 	    		}
     	    }
     	    
