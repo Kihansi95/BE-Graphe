@@ -150,8 +150,8 @@ public class Covoiturage {
 			cheminCommun.dessiner(graphe.getDessin(), graphe.getZone(), Color.DARK_GRAY);
 			
 			System.out.println("De U1 a rdv: "+cheminDePieton);
-			System.out.println("De U2 a rdv: "+cheminDePieton);
-			System.out.println("De rdv jusqu'à la destination: "+cheminDePieton);
+			System.out.println("De U2 a rdv: "+cheminDeAuto);
+			System.out.println("De rdv jusqu'à la destination: "+cheminCommun);
 			
 			
 		} catch (SommetNonExisteException e) {
