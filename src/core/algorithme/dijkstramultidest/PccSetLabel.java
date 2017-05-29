@@ -1,6 +1,6 @@
 package core.algorithme.dijkstramultidest;
 
-import java.util.ArrayList;
+import java.awt.Color;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -13,6 +13,8 @@ import core.graphe.Critere;
 import core.graphe.Noeud;
 
 public class PccSetLabel extends Pcc {
+	
+	public Color couleurExplore()	{	return Color.YELLOW;	}
 
 	private Set<Noeud> destinations;
 	
@@ -30,7 +32,7 @@ public class PccSetLabel extends Pcc {
 	}
 
 	protected Label newLabel(Noeud sommet) {
-		return new LabelCovoiturage(sommet);
+		return new Label(sommet);
 	}
 
 	@Override

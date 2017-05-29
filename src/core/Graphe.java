@@ -21,7 +21,6 @@ import core.graphe.Chemin;
 import core.graphe.Critere;
 import core.graphe.InvisibleNoeud;
 import core.graphe.Liaison;
-import core.graphe.LiaisonInverse;
 import core.graphe.Noeud;
 import core.graphe.Segment;
 import exceptions.SommetNonExisteException;

@@ -1,19 +1,18 @@
 package application;
 
 import java.awt.Color;
-import java.util.ArrayList;
 import java.util.InputMismatchException;
-import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
-
+import java.util.Stack;
 
 import base.Readarg;
 import core.Graphe;
 import core.algorithme.dijkstra.Label;
-import core.algorithme.dijkstramultidest.LabelCovoiturage;
 import core.algorithme.dijkstramultidest.PccSetLabel;
+import core.graphe.Chemin;
 import core.graphe.Critere;
+import core.graphe.Liaison;
 import core.graphe.Noeud;
 import exceptions.SommetNonExisteException;
 
@@ -81,15 +80,6 @@ public class Covoiturage {
 		
 	}
 	
-	/**
-     * Instancier le nouveau label
-     * @param sommet
-     * @return
-     */
-    protected Label newLabel(Noeud sommet)	{
-    	return new LabelCovoiturage(sommet);
-    }
-	
 	public void run()  	{
 	
 		try {
@@ -127,6 +117,11 @@ public class Covoiturage {
 			intersect(reachableFromDestination, reachableFromPieton);
 			intersect(reachableFromDestination, reachableFromAuto);
 			
+			if(reachableFromDestination.isEmpty())	{
+				System.out.println("Pas de solution");
+				return;
+			}
+			
 			//get point optimal
 			float coutMin = Float.MAX_VALUE;
 			Label fromDest = null, fromPieton = null, fromAuto = null;
@@ -145,9 +140,18 @@ public class Covoiturage {
 			}
 			
 			// visualize solution
-			afficherNoeud(fromPieton);
-			afficherNoeud(fromAuto);
-			afficherNoeud(fromDest);
+			this.graphe.reverse();
+			Chemin cheminDePieton = buildChemin(fromPieton);
+			Chemin cheminDeAuto = this.buildChemin(fromAuto);
+			Chemin cheminCommun = this.buildCheminCommun(fromDest);
+			
+			cheminDePieton.dessiner(graphe.getDessin(), graphe.getZone(), Color.GREEN);
+			cheminDeAuto.dessiner(graphe.getDessin(), graphe.getZone(), Color.MAGENTA);
+			cheminCommun.dessiner(graphe.getDessin(), graphe.getZone(), Color.DARK_GRAY);
+			
+			System.out.println("De U1 a rdv: "+cheminDePieton);
+			System.out.println("De U2 a rdv: "+cheminDePieton);
+			System.out.println("De rdv jusqu'à la destination: "+cheminDePieton);
 			
 			
 		} catch (SommetNonExisteException e) {
@@ -156,13 +160,41 @@ public class Covoiturage {
 
 	}
 
-	private void afficherNoeud(Label destination) {
+	/**
+	 * Afficher le chemin grace a Label.
+	 * @param destination
+	 * @param color
+	 */
+	private void afficherChemin(Label destination, Color color) {
 		for(Label tmp = destination; tmp != null; tmp = tmp.getPere())	{
-			tmp.getSommetCourant().dessiner(graphe.getDessin(), Color.DARK_GRAY);
-			if(tmp.getLiaison() != null) tmp.getLiaison().dessiner(graphe.getDessin(), this.graphe.getZone(),Color.DARK_GRAY );
+			tmp.getSommetCourant().dessiner(graphe.getDessin(), color);
+			if(tmp.getLiaison() != null) tmp.getLiaison().dessiner(graphe.getDessin(), this.graphe.getZone(),color );
 		}
 	}
 
+	private Chemin buildChemin(Label destination)	{
+    	
+    	Stack<Liaison> tmp = new Stack<Liaison>();
+    	
+    	while(destination.getLiaison() != null)	{
+    		tmp.push(destination.getLiaison());
+    		destination = destination.getPere();
+    	}
+    	
+    	Chemin chemin = new Chemin(destination.getSommetCourant());
+    	while(!tmp.isEmpty()) chemin.addRoute(tmp.pop());
+    	
+    	return chemin;
+    }
+	
+	private Chemin buildCheminCommun(Label rdv)	{
+		Chemin chemin = new Chemin(rdv.getSommetCourant());
+		for(Label tmp = rdv.getPere(); tmp!= null; tmp = tmp.getPere())	{
+			chemin.addSommet(tmp.getSommetCourant(), this.critere);
+		}
+		return chemin;
+	}
+	
 	/**
 	 * Pour chaque ensemble ne garde que les labels possede le noeud commun.
 	 * @param set1
