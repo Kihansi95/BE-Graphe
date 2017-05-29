@@ -12,6 +12,7 @@ import core.graphe.Chemin;
 import core.graphe.Critere;
 import core.graphe.Liaison;
 import core.graphe.Noeud;
+import exceptions.CheminNullException;
 import exceptions.SommetNonExisteException;
 import exceptions.SuccesseurNonExistantException;
 
@@ -137,27 +138,33 @@ public class Pcc extends AbstractPcc {
     	return !this.tas.isEmpty() && !this.getLabel(noeudDestination).isMarque();
     }
     
-    protected void processing()	{
+    protected void processing()	throws CheminNullException {
     	if (noeudOrigine.equals(noeudDestination)){
-    		System.out.println("la destination est le point de départ... je ne peux rien faire \n");
+    		new CheminNullException("Origine = destination");
     	}
     	else {
     		super.processing();
     	}
     }
     
-    protected void terminate()	{
+    protected void terminate() {
     	
     	Label label_destination = this.getLabel(noeudDestination);
     	Label label_origine = this.getLabel(noeudOrigine);
     	
     	if(!label_destination.isMarque())	{
     		this.hasSolution = false;
-			this.solution = buildChemin(this.labelActuel);
-			System.out.println("Pas de route de "+label_origine.getSommetCourant() +" vers "+label_destination.getSommetCourant());
-			System.out.println("Chemin actuellement trouve : " + this.solution);
-			this.solution.dessiner(this.getDessin(), this.graphe.getZone(), this.couleurSolution());
-		}	else	{
+    		if (getDestination().equals(getOrigine())){
+    			System.out.println ("Chemin Nul car destination == origine");
+    		}
+    		else {
+    			this.solution = buildChemin(this.labelActuel);
+    			System.out.println("Pas de route de "+label_origine.getSommetCourant() +" vers "+label_destination.getSommetCourant());
+    			System.out.println("Chemin actuellement trouve : " + this.solution);
+    			this.solution.dessiner(this.getDessin(), this.graphe.getZone(), this.couleurSolution());
+    		}
+    		
+    	}	else	{
 			this.hasSolution = true;
 			this.solution = buildChemin(label_destination);
 			System.out.println("Le chemin le plus cours: " + this.solution);
@@ -197,7 +204,7 @@ public class Pcc extends AbstractPcc {
      * Ecrire la solution dans fichier de sortie.
      * @param solution
      */
-    protected void writeDown()	{
+    protected void writeDown() {
     	
     	this.sortie.println(">>> Algorithme "+this +" de "+this.noeudOrigine+ " vers "+this.noeudDestination +" <<<\n");
     	
@@ -230,7 +237,7 @@ public class Pcc extends AbstractPcc {
      * @param destination: Le dernier label apres l'algo
      * @return Chemin: chemin de solution
      */
-    protected Chemin buildChemin(Label destination)	{
+    protected Chemin buildChemin(Label destination){
     	
     	Stack<Liaison> tmp = new Stack<Liaison>();
     	

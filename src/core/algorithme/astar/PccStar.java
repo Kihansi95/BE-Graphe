@@ -24,7 +24,7 @@ public class PccStar extends Pcc {
     }
     
     public Color couleurSuccesseurVisite()	{	return Color.GREEN;		}
-    public Color couleurExplore()	{	return Color.BLUE;	}
+    public Color couleurExplore()	{	return Color.MAGENTA;	}
     public Color couleurSolution()	{	return Color.CYAN; 	}
     
     @Override

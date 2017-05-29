@@ -14,6 +14,7 @@ import core.Graphe;
 import core.algorithme.dijkstra.Label;
 import core.graphe.Critere;
 import core.graphe.Noeud;
+import exceptions.CheminNullException;
 
 /**
  * La classe qui conserve le principe de Dijkstra. Chaque version de Pcc va modifier en fonction de son besoin mais pas cette classe
@@ -81,7 +82,7 @@ public abstract class AbstractPcc extends Algo {
 	
 	/**
 	 * L'invserse de condition d'arrêt
-	 * @return boolean false pour arrêt le parcour
+	 * @return boolean false pour arrêt le parcours
 	 */
 	abstract protected boolean conditionContinue();
 	
@@ -110,24 +111,30 @@ public abstract class AbstractPcc extends Algo {
     protected  BinaryHeap<Label> tas; 
     
 	public void run()	{
+		try {
+			long startTime = System.currentTimeMillis();
+			this.nbVisites = 0; 
+			this.nbMarque = 0; 
+			this.maxTas = 0;
 		
-		long startTime = System.currentTimeMillis();
-		this.nbVisites = 0; 
-		this.nbMarque = 0; 
-		this.maxTas = 0;
+			this.sommets = new HashMap<Noeud, Label>();
+			this.tas = new BinaryHeap<Label>();
 		
-		this.sommets = new HashMap<Noeud, Label>();
-		this.tas = new BinaryHeap<Label>();
+			initialize();
 		
-		initialize();
+			processing();
+			this.tempsExec = System.currentTimeMillis() - startTime;
+			terminate();
+			
+		} catch (CheminNullException e){
+			System.err.println("la destination est le point de depart... je ne peux rien faire \n");
+			
+		}
 		
-		processing();
-    			
-		this.tempsExec = System.currentTimeMillis() - startTime;
-		terminate();
+		
 	}
 	
-	protected void processing()	{
+	protected void processing() throws CheminNullException	{
 		this.labelActuel = null ;
 		
 		// PROCEDURE ALGORITHME
